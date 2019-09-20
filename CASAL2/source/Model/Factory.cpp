@@ -27,6 +27,9 @@
 #include "MCMCs/Factory.h"
 #include "Minimisers/Factory.h"
 #include "Model/Model.h"
+#include "Model/Models/Age.h"
+#include "Model/Models/Length.h"
+#include "Model/Models/PiApproximation.h"
 #include "Observations/Factory.h"
 #include "Penalties/Factory.h"
 #include "Processes/Factory.h"
@@ -129,5 +132,24 @@ base::Object* Factory::CreateObject(const string& object_type, const string& sub
   LOG_FINE() << "Couldn't find appropriate factory";
   return nullptr;
 }
+
+/**
+ * Factory class to create different model types
+ */
+niwa::Model* Factory::Create(const string& object_type, const string& sub_type) {
+
+	if (object_type == PARAM_MODEL) {
+		if (sub_type == PARAM_AGE) {
+			return new model::Age();
+		} else if (sub_type == PARAM_LENGTH) {
+			return new model::Length();
+		} else if (sub_type == PARAM_PI_APPROX)
+			return new model::PiApproximation();
+	}
+
+	LOG_CODE_ERROR() << object_type << "." << sub_type << " is not valid";
+	return nullptr;
+}
+
 
 } /* namespace niwa */

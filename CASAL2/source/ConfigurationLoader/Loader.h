@@ -59,6 +59,7 @@ public:
 
   // accessors
   vector<FileLine>&           file_lines() { return file_lines_; }
+  string											model_type() const { return model_type_; }
 
 private:
   // Methods
@@ -71,6 +72,7 @@ private:
   vector<vector<FileLine>>		blocks_;
   parameters::Table*          current_table_ = nullptr;
   map<string, unsigned>       inline_count_;
+  string											model_type_ = "";
 };
 
 } /* namespace configuration */

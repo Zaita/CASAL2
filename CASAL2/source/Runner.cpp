@@ -130,6 +130,9 @@ int Runner::Go() {
 
 		Logging &logging = Logging::Instance();
 		config_loader.ParseFileLines();
+
+		std::cout << "Config file specifies models of type " << config_loader.model_type() << endl;
+
 		config_loader.Build(model_list);
 		if (logging.errors().size() > 0) {
 			logging.FlushErrors();

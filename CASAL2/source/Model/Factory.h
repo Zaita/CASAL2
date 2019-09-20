@@ -24,24 +24,27 @@ namespace niwa {
 
 using std::string;
 class Model;
-namespace base { class Object; }
+namespace base {
+class Object;
+}
 
 /**
  * Class definition
  */
 class Factory {
-  friend class Model;
+	friend class Model;
 public:
-  // methods
-  base::Object*               CreateObject(const string& object_type, const string& sub_type, PartitionType partition_type = PartitionType::kInvalid);
+	// methods
+	base::Object* CreateObject(const string &object_type, const string &sub_type, PartitionType partition_type = PartitionType::kInvalid);
+	niwa::Model* 	Create(const string &object_type, const string &sub_type);
 
 private:
-  // methods
-  Factory(Model* model);
-  virtual ~Factory() = default;
+	// methods
+	Factory(Model *model);
+	virtual ~Factory() = default;
 
-  // members
-  Model*                      model_;
+	// members
+	Model *model_;
 };
 
 } /* namespace niwa */

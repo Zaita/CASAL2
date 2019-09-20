@@ -116,9 +116,29 @@ void Loader::ParseFileLines() {
 					if (utilities::ToLowercase(block[0].line_) != "@model")
 						LOG_FATAL()
 						<< "The first block to be processed must be @model. Actual was " << block[0].line_;
+
+					bool found_model_type = false;
+					for(auto& file_line : block) {
+						if (file_line.line_.length() > 4 && utilities::ToLowercase(file_line.line_.substr(0, 4)) == PARAM_TYPE) {
+							found_model_type = true;
+							std::cout << "Found model type: " << file_line.line_ << std::endl;
+
+							vector<string> line_parts;
+							boost::split(line_parts, file_line.line_, boost::is_any_of(" "));
+							if (line_parts.size() != 2)
+								LOG_FATAL() << "@model type must be either age, length or pi_approx";
+							std::cout << "Setting model type to " << line_parts[1] << std::endl;
+							model_type_ = line_parts[1];
+						}
+					}
+
+					if (!found_model_type) {
+						LOG_FINEST() << "@model.type is not specified. Using the default " << PARAM_AGE;
+						std::cout << "No model type specified. Using default age" << endl;
+						model_type_ = PARAM_AGE;
+					}
 				}
 
-//				ParseBlock(block);
 				blocks_.push_back(block);
 				first_block = false;
 			}
@@ -158,7 +178,6 @@ void Loader::ParseFileLines() {
 	}
 
 	blocks_.push_back(block);
-//	ParseBlock(block);
 }
 
 /**
@@ -281,12 +300,12 @@ void Loader::ParseBlock(Model* model, vector<FileLine> &block) {
 	/**
 	 * If this is the model, tell it what type of model it is
 	 */
-	if (block_type == PARAM_MODEL && sub_type != "") {
-		if (!utilities::To<PartitionType>(sub_type, partition_type))
-			LOG_FATAL()
-			<< "Could not convert value " << sub_type << " to a valid type (age, length, hybrid) for the @model block";
-		model->set_partition_type(partition_type);
-	}
+//	if (block_type == PARAM_MODEL && sub_type != "") {
+//		if (!utilities::To<PartitionType>(sub_type, partition_type))
+//			LOG_FATAL()
+//			<< "Could not convert value " << sub_type << " to a valid type (age, length, hybrid) for the @model block";
+//		model->set_partition_type(partition_type);
+//	}
 
 	/**
 	 * Load the parameters into our new object

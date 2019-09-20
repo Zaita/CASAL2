@@ -22,8 +22,9 @@ enum class PartitionType {
   kAge      = 1,
   kLength   = 2,
 //  kHybrid   = 4,
-  kModel    = 2048,
-  kInvalid  = 4096
+  kModel    = 4,
+	kPiApprox = 5,
+	kInvalid  = 4096
 };
 
 inline PartitionType operator&(PartitionType a, PartitionType b) {
