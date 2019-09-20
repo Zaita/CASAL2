@@ -163,15 +163,18 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
         standard_report.Prepare();
 
       // load our configuration file
-      configuration::Loader config_loader(model);
-      if (!config_loader.LoadConfigFile()) {
+      configuration::Loader config_loader;
+      if (!config_loader.LoadConfigFile(model.global_configuration())) {
         Logging::Instance().FlushErrors();
         return_code = -1;
         break;
       }
 
+      vector<Model*> model_list;
+      model_list.push_back(&model);
       Logging& logging = Logging::Instance();
       config_loader.ParseFileLines();
+      config_loader.Build(model_list);
       if (logging.errors().size() > 0) {
         logging.FlushErrors();
         return_code = -1;

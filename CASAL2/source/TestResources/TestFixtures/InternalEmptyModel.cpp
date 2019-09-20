@@ -82,13 +82,16 @@ void InternalEmptyModel::AddConfigurationLine(const string& line, const string& 
  * configuration file for execution in the model
  */
 void InternalEmptyModel::LoadConfiguration() {
-  configuration::Loader loader(*model_);
+  configuration::Loader loader;
 
   for (config::FileLine file_line : configuration_file_)
     loader.AddFileLine(file_line);
 
-  loader.LoadConfigFile();
+  loader.LoadConfigFile(model_->global_configuration());
   loader.ParseFileLines();
+  vector<Model*> model_list;
+  model_list.push_back(model_);
+  loader.Build(model_list);
 }
 
 } /* namespace sizeweights */

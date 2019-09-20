@@ -76,7 +76,7 @@ private:
   // Members
   vector<string>              command_line_parameters_;
   utilities::RunParameters    options_;
-  bool                        skip_loading_config_file_;
+  bool                        skip_loading_config_file_ = false;
 };
 } /* namespace niwa */
 #endif /* GLOBALCONFIGURATION_H_ */

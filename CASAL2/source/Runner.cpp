@@ -16,6 +16,7 @@
 #include "Runner.h"
 
 #include <string>
+#include <iostream>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim_all.hpp>
 #include <boost/algorithm/string/split.hpp>
@@ -31,6 +32,8 @@
 // namespaces
 namespace niwa {
 using std::string;
+using std::cout;
+using std::endl;
 
 /**
  * Default constructor
@@ -50,7 +53,7 @@ Runner::~Runner() {
 int Runner::Go() {
 
 	RunMode::Type run_mode = run_parameters_.run_mode_;
-	reports::StandardHeader standard_report(&master_model_);
+
 	int return_code = 0;
 
 	/**
@@ -101,14 +104,25 @@ int Runner::Go() {
 	case RunMode::kProfiling:
 	case RunMode::kProjection:
 	case RunMode::kTesting:
+		reports::StandardHeader standard_report(&master_model_);
 		if (!global_configuration_.debug_mode() && !global_configuration_.disable_standard_report()) {
 			standard_report.Prepare();
 			master_model_.managers().report()->set_std_header(standard_report.header());
 		}
 
+		vector<Model*> model_list;
+		model_list.push_back(&master_model_);
+		for (unsigned i = 0; i < 5; ++i) {
+			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
+			Model* model = new Model();
+			model->set_id(i+1);
+			model_list.push_back(model);
+			cout << "Appended model with id " << model->id() << endl;
+		}
+
 		// load our configuration file
-		configuration::Loader config_loader(master_model_);
-		if (!config_loader.LoadConfigFile()) {
+		configuration::Loader config_loader;
+		if (!config_loader.LoadConfigFile(global_configuration_)) {
 			Logging::Instance().FlushErrors();
 			return_code = -1;
 			break;
@@ -116,6 +130,7 @@ int Runner::Go() {
 
 		Logging &logging = Logging::Instance();
 		config_loader.ParseFileLines();
+		config_loader.Build(model_list);
 		if (logging.errors().size() > 0) {
 			logging.FlushErrors();
 			return_code = -1;

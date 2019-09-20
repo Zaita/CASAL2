@@ -101,6 +101,8 @@ public:
   virtual const vector<unsigned>&     length_bins() const { return length_bins_; }
   virtual bool                length_plus() const { return length_plus_; }
   virtual unsigned            length_plus_group() const { return length_plus_group_; }
+  void												set_id(unsigned id) { id_ = id; }
+  unsigned										id() const { return id_; }
 
   // manager accessors
   virtual Managers&           managers();
@@ -127,6 +129,7 @@ protected:
   void                        RunProjection();
 
   // Members
+  unsigned										id_ = 0;
   RunMode::Type               run_mode_ = RunMode::kInvalid;
   State::Type                 state_    = State::kStartUp;
   unsigned                    start_year_ = 0;

@@ -34,7 +34,7 @@ class LoaderTest {
 public:
   bool HandleOperators(vector<string> &line_values) {
     Model model;
-    Loader loader(model);
+    Loader loader;
     string error = "";
     if (!utilities::String::HandleOperators(line_values, error)) {
       cout << "ERROR: " << error << endl;
