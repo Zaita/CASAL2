@@ -6,6 +6,7 @@ operating_system_ = ""
 path_             = ""
 compiler_path_    = ""
 gfortran_path_    = ""
+python_cmd_       = ""
 compiler_version_ = ""
 latex_path_       = ""
 git_path_         = ""
@@ -25,11 +26,13 @@ allowed_build_types_ = [ "debug", "release", "test" ]
 allowed_build_parameters_ = [ "", "adolc", "betadiff", "cppad" ]
 allowed_library_parameters_ = [ "release", "test", "adolc", "betadiff", "cppad" ]
 
+
+
 def PrintError(error_message):
-  print "\n\n\n"
-  print "###### ERROR ######"
-  print "Error Description:"
-  print error_message
-  print "###### ERROR ######"
-  print "\n\n\n"
+  print("\n\n\n")
+  print("###### ERROR ######")
+  print( "Error Description:")
+  print(error_message)
+  print("###### ERROR ######")
+  print("\n\n\n")
   return False
