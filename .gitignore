@@ -153,3 +153,9 @@
 /Documentation/UserManual/CASAL2.pdf
 /CASAL2/.settings/org.eclipse.cdt.ui.prefs
 /CASAL2/.settings/org.eclipse.cdt.codan.core.prefs
+/ThirdParty/parser/__pycache__
+/ThirdParty/parser/parser
+/ThirdParty/googletest_googlemock/googletest-release-1.8.1
+/ThirdParty/googletest_googlemock/__pycache__
+/ThirdParty/boost/boost_1_71_0
+/ThirdParty/boost/__pycache__
