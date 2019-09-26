@@ -15,7 +15,9 @@ steps:
     sudo apt -y install g++ gfortran cmake unzip p7zip-full
   displayName: 'Installing C++ build environment'
 
-- script: sudo apt -y install python3
+- script: |
+    sudo apt -y install python3 python3-pip
+    sudo pip3 install pytz
   displayName: 'Installing Python3 build environment'
 
 - script: |
