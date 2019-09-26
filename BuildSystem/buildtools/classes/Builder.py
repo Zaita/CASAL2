@@ -7,7 +7,6 @@ import fileinput
 import re
 import time
 from datetime import datetime, date
-from dateutil import tz
 
 import Globals
 
@@ -48,7 +47,7 @@ class MainCode:
       del time_pieces[-1];
       temp = ' '.join(time_pieces)
       local_time = datetime.strptime(temp, '%Y-%m-%d %H:%M:%S')
-      utc_time   = local_time.replace(tzinfo=tz.tzlocal()).astimezone(tz.tzutc())
+      utc_time   = local_time.astimezone(pytz.utc)
             
       version = '// This file is automatically built by the build system. Do not modify this file\n'
       version += '#ifndef VERSION_H_\n'
