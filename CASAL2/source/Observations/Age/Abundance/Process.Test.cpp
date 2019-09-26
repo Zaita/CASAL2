@@ -14,6 +14,7 @@
 
 #include <iostream>
 
+#include "Model/Models/Age.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Observations/Manager.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"

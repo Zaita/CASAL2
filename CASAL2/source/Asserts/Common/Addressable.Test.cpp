@@ -15,7 +15,7 @@
 // headers
 #include "Addressable.h"
 
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 

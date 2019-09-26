@@ -12,7 +12,7 @@
 // headers
 #include "Partition.h"
 
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 
 // namespaces

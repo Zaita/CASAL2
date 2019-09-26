@@ -15,7 +15,7 @@
 
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Processes/Manager.h"
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "Partition/Partition.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 

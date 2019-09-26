@@ -18,6 +18,7 @@
 #include <iostream>
 
 #include "Model/Factory.h"
+#include "Model/Models/Age.h"
 #include "Processes/Factory.h"
 #include "TimeSteps/Factory.h"
 #include "TimeSteps/Manager.h"

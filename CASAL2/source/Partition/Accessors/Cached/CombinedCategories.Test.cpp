@@ -15,6 +15,7 @@
 #include "CombinedCategories.h"
 
 #include "Model/Factory.h"
+#include "Model/Models/Age.h"
 #include "TimeSteps/Manager.h"
 #include "Partition/Partition.h"
 #include "TestResources/TestFixtures/BasicModel.h"

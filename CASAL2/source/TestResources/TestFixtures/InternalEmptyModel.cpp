@@ -24,7 +24,7 @@
 #include "InitialisationPhases/Manager.h"
 #include "LengthWeights/Manager.h"
 #include "Minimisers/Manager.h"
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Observations/Manager.h"
 #include "Partition/Accessors/Category.h"

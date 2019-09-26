@@ -17,6 +17,7 @@
 #include <iostream>
 
 #include "Model/Factory.h"
+#include "Model/Models/Age.h"
 #include "Observations/Manager.h"
 #include "Partition/Partition.h"
 #include "TestResources/TestFixtures/BasicModel.h"

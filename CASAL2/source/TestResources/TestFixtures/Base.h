@@ -21,8 +21,7 @@
 
 // namespaces
 namespace niwa {
-class Model;
-
+namespace model { class Age; }
 namespace testfixtures {
 
 /**
@@ -30,14 +29,14 @@ namespace testfixtures {
  */
 class Base : public ::testing::Test {
 public:
-  Base();
-  virtual                     ~Base();
+  Base() = default;
+  virtual                     ~Base() = default;
   virtual void                SetUp() override;
   virtual void                TearDown() override;
 
 protected:
   // members
-  Model*                      model_;
+  model::Age*                      model_ = nullptr;
 };
 
 } /* namespace testfixtures */

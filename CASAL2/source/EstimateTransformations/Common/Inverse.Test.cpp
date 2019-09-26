@@ -12,7 +12,7 @@
 
 // headers
 #include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 #include "TestResources/Models/TwoSex.h"
 #include "TestResources/Models/TwoSexWithDLib.h"

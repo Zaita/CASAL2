@@ -16,7 +16,7 @@
 #include "AgeWeights/Manager.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Estimates/Manager.h"
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 #include "TestResources/Models/TwoSexHalfAges.h"
 

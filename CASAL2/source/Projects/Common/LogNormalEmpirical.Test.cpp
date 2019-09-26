@@ -16,7 +16,7 @@
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Projects/Manager.h"
 #include "DerivedQuantities/Manager.h"
-#include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"
 #include "TestResources/Models/CasalComplex1.h"
 #include "Utilities/RandomNumberGenerator.h"

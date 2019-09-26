@@ -25,7 +25,7 @@
 
 // Namespaces
 namespace niwa {
-class Model;
+namespace model { class Age; }
 
 namespace testfixtures {
 using std::string;

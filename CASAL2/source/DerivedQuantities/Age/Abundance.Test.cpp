@@ -16,6 +16,7 @@
 
 #include "DerivedQuantities/Manager.h"
 #include "Model/Factory.h"
+#include "Model/Models/Age.h"
 #include "TimeSteps/Manager.h"
 #include "Partition/Partition.h"
 #include "TestResources/TestFixtures/InternalEmptyModel.h"

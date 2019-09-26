@@ -13,6 +13,7 @@
 #include "Base.h"
 
 #include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "Model/Managers.h"
 
 // namespaces
@@ -22,18 +23,8 @@ namespace testfixtures {
 /**
  *
  */
-Base::Base() { }
-
-/**
- *
- */
-Base::~Base() { }
-
-/**
- *
- */
 void Base::SetUp() {
-  model_ = new Model();
+  model_ = new model::Age();
 }
 
 /**

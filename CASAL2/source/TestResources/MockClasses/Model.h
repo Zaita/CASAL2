@@ -20,6 +20,7 @@
 #include <gmock/gmock.h>
 
 #include "Model/Model.h"
+#include "Model/Models/Age.h"
 #include "Model/Managers.h"
 #include "Model/Objects.h"
 #include "Utilities/PartitionType.h"
@@ -33,7 +34,7 @@ using ::testing::DoDefault;
 /**
  * Class Definition
  */
-class MockModel : public niwa::Model {
+class MockModel : public niwa::model::Age {
 public:
   // Constructor
   MockModel() {
