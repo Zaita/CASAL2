@@ -10,6 +10,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: |
+    sudo apt-get update
+    sudo apt -y install g++
+    sudo apt -y install gfortran
+  displayName: 'Installing C++ build environment'
+  
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
