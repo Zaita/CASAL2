@@ -23,7 +23,12 @@ steps:
 - script: |
     cd BuildSystem
     ./doBuild.sh thirdparty parser
-  displayName: 'Build single third-party library to test'
+  displayName: 'Build third-party libraries'
+
+- script: |
+    cd BuildSystem
+    ./doBuild.shdebug
+  displayName: 'Build Debug stand-alone binary'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
