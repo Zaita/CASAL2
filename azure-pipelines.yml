@@ -12,10 +12,17 @@ pool:
 steps:
 - script: |
     sudo apt-get update
-    sudo apt -y install g++
-    sudo apt -y install gfortran
+    sudo apt -y install g++ gfortran cmake unzip p7zip-full
   displayName: 'Installing C++ build environment'
-  
+
+- script: sudo apt -y install python3
+  displayName: 'Installing Python3 build environment'
+
+- script: |
+    cd BuildSystem
+    ./doBuild.sh thirdparty parser
+  displayName: 'Build single third-party library to test'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
