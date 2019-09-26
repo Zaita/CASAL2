@@ -6,6 +6,7 @@ import shutil
 import fileinput
 import re
 import time
+import pytz
 from datetime import datetime, date
 
 import Globals
@@ -44,9 +45,8 @@ class MainCode:
         return Globals.PrintError('Format printed by GIT did not meet expectations. Expected 3 lines but got ' + str(len(lines)))
 
       time_pieces = lines[2].split(' ')
-      del time_pieces[-1];
       temp = ' '.join(time_pieces)
-      local_time = datetime.strptime(temp, '%Y-%m-%d %H:%M:%S')
+      local_time = datetime.strptime(temp, '%Y-%m-%d %H:%M:%S %z')
       utc_time   = local_time.astimezone(pytz.utc)
             
       version = '// This file is automatically built by the build system. Do not modify this file\n'
