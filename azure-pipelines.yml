@@ -27,8 +27,18 @@ steps:
 
 - script: |
     cd BuildSystem
-    ./doBuild.shdebug
-  displayName: 'Build Debug stand-alone binary'
+    ./doBuild.sh debug
+  displayName: 'Build "Debug" standalone binary'
+
+- script: |
+    cd BuildSystem
+    ./doBuild.sh test
+  displayName: 'Build "Unit Test" standalone binary'
+
+- script: |
+    cd BuildSystem/bin/linux/test/
+    ./casal2
+  displayName: 'Run Unit Tests standalone binary'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
