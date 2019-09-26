@@ -134,7 +134,6 @@ void Loader::ParseFileLines() {
 
 					if (!found_model_type) {
 						LOG_FINEST() << "@model.type is not specified. Using the default " << PARAM_AGE;
-						std::cout << "No model type specified. Using default age" << endl;
 						model_type_ = PARAM_AGE;
 					}
 				}
