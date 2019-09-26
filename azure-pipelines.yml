@@ -22,7 +22,7 @@ steps:
 
 - script: |
     cd BuildSystem
-    ./doBuild.sh thirdparty parser
+    ./doBuild.sh thirdparty
   displayName: 'Build third-party libraries'
 
 - script: |
