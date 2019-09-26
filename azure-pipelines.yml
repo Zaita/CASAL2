@@ -11,34 +11,16 @@ pool:
 
 steps:
 - script: |
-    sudo apt-get update
-    sudo apt -y install g++ gfortran cmake unzip p7zip-full
-  displayName: 'Installing C++ build environment'
+    apt-get update
+    apt-get upgrade -y
+  displayName: 'Updating Distro'
 
 - script: |
-    sudo apt -y install python3 python3-pip
-    sudo pip3 install pytz
-  displayName: 'Installing Python3 build environment'
-
-- script: |
-    cd BuildSystem
-    ./doBuild.sh thirdparty
-  displayName: 'Build third-party libraries'
-
-- script: |
-    cd BuildSystem
-    ./doBuild.sh debug
-  displayName: 'Build "Debug" standalone binary'
-
-- script: |
-    cd BuildSystem
-    ./doBuild.sh test
-  displayName: 'Build "Unit Test" standalone binary'
-
-- script: |
-    cd BuildSystem/bin/linux/test/
-    ./casal2
-  displayName: 'Run Unit Tests standalone binary'
+    g++ -v
+    gfortran -v
+    cmake --version
+    python3 --version
+  displayName: 'Checking Development Environment Tools'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
