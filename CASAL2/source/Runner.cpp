@@ -25,9 +25,9 @@
 #include "BaseClasses/Object.h"
 #include "ConfigurationLoader/Loader.h"
 #include "Model/Factory.h"
-#include "Reports/Common/StandardHeader.h"
 #include "Reports/Manager.h"
 #include "Utilities/RandomNumberGenerator.h"
+#include "Utilities/StandardHeader.h"
 
 // namespaces
 namespace niwa {
@@ -104,20 +104,9 @@ int Runner::Go() {
 	case RunMode::kProfiling:
 	case RunMode::kProjection:
 	case RunMode::kTesting:
-		reports::StandardHeader standard_report(&master_model_);
+		utilities::StandardHeader standard_header;
 		if (!global_configuration_.debug_mode() && !global_configuration_.disable_standard_report()) {
-			standard_report.Prepare();
-			master_model_.managers().report()->set_std_header(standard_report.header());
-		}
-
-		vector<Model*> model_list;
-		model_list.push_back(&master_model_);
-		for (unsigned i = 0; i < 5; ++i) {
-			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
-			Model* model = new Model();
-			model->set_id(i+1);
-			model_list.push_back(model);
-			cout << "Appended model with id " << model->id() << endl;
+			standard_header.PrintTop(global_configuration_);
 		}
 
 		// load our configuration file
@@ -132,6 +121,20 @@ int Runner::Go() {
 		config_loader.ParseFileLines();
 
 		std::cout << "Config file specifies models of type " << config_loader.model_type() << endl;
+		string model_type = config_loader.model_type();
+
+		// TODO: REMOVE MASTER MODEL
+		vector<Model*> model_list;
+//		model_list.push_back(&master_model_);
+//		for (unsigned i = 0; i < 2; ++i) {
+//			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
+//			Model* model =  master_model_.factory().Create(PARAM_MODEL, model_type);
+//			model->set_id(i+1);
+//			model_list.push_back(model);
+//			cout << "Appended model with id " << model->id() << endl;
+//		}
+		Model* model = master_model_.factory().Create(PARAM_MODEL, model_type);
+		model_list.push_back(model);
 
 		config_loader.Build(model_list);
 		if (logging.errors().size() > 0) {
@@ -141,17 +144,17 @@ int Runner::Go() {
 		}
 
 		// override any config file values from our command line
-		master_model_.global_configuration().ParseOptions(&master_model_);
-		utilities::RandomNumberGenerator::Instance().Reset(master_model_.global_configuration().random_seed());
+		model->global_configuration().ParseOptions(model);
+		utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 
 		// Thread off the reports
-		reports::Manager *report_manager = master_model_.managers().report();
+		reports::Manager *report_manager = model->managers().report();
 		std::thread report_thread([&report_manager]() {
 			report_manager->FlushReports();
 		});
 
 		// Run the model
-		return_code = master_model_.Start(run_mode);
+		return_code = model->Start(run_mode);
 
 		// finish report thread
 		report_manager->StopThread();
@@ -163,8 +166,8 @@ int Runner::Go() {
 		} else
 			logging.FlushWarnings();
 
-		if (!master_model_.global_configuration().debug_mode() && !master_model_.global_configuration().disable_standard_report())
-			standard_report.Finalise();
+		if (!model->global_configuration().debug_mode() && !model->global_configuration().disable_standard_report())
+			standard_header.PrintBottom();
 		break;
 
 	} // switch(run_mode)

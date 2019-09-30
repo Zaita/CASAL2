@@ -71,12 +71,15 @@ public:
   bool                  create_mpd_file() const { return options_.create_mpd_file_; }
   unsigned              estimation_phases() const { return options_.estimation_phases_; }
   bool                  skip_estimation() const { return options_.skip_estimation_; }
+  void									set_standard_header(const string& header) { standard_header_ = header; }
+  const string&					standard_header() const { return standard_header_; }
 
 private:
   // Members
   vector<string>              command_line_parameters_;
   utilities::RunParameters    options_;
   bool                        skip_loading_config_file_ = false;
+  string											standard_header_ = "";
 };
 } /* namespace niwa */
 #endif /* GLOBALCONFIGURATION_H_ */

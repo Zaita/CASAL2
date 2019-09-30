@@ -51,8 +51,6 @@ public:
   // accessors
   void                        set_report_suffix(const string& suffix) { report_suffix_ = suffix; }
   const string&               report_suffix() const { return report_suffix_; }
-  const string&               std_header() const { return std_header_; }
-  void                        set_std_header(const string& header) { std_header_ = header; }
 
 protected:
   // methods

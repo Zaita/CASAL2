@@ -116,7 +116,7 @@ public:
 
 protected:
   // Methods
-  void                        Validate();
+  void                				Validate();
   void                        Build();
   void                        Verify();
   void                        Iterate();
@@ -127,6 +127,8 @@ protected:
   void                        RunProfiling();
   void                        RunSimulation();
   void                        RunProjection();
+
+  virtual void								DoValidate() { };
 
   // Members
   unsigned										id_ = 0;

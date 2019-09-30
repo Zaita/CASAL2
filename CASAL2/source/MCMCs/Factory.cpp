@@ -30,6 +30,9 @@ MCMC* Factory::Create(Model* model, const string& object_type, const string& sub
   if (object_type == PARAM_MCMC) {
     if (sub_type == "" || sub_type == PARAM_INDEPENDENCE_METROPOLIS || sub_type == PARAM_METROPOLIS_HASTINGS)
       object = new IndependenceMetropolis(model);
+    else if (sub_type == PARAM_RASMUSSEN_DUNN)
+    	object = new IndependenceMetropolis(model);
+
   }
 
   if (object)

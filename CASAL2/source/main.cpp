@@ -27,7 +27,6 @@ int main(int argc, char **argv) {
 #include "Model/Factory.h"
 #include "Model/Managers.h"
 #include "Model/Model.h"
-#include "Reports/Common/StandardHeader.h"
 #include "Reports/Manager.h"
 #include "Utilities/CommandLineParser/CommandLineParser.h"
 #include "Utilities/RandomNumberGenerator.h"
@@ -48,7 +47,7 @@ int main(int argc, char *argv[]) {
 	try {
 		Runner runner;
 
-		reports::StandardHeader standard_report(&runner.model());
+//		reports::StandardHeader standard_report(&runner.model());
 
 		utilities::RunParameters parameters;
 		utilities::CommandLineParser parser;

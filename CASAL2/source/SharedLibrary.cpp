@@ -24,7 +24,6 @@
 #include "Model/Model.h"
 #include "Minimisers/Manager.h"
 #include "Reports/Manager.h"
-#include "Reports/Common/StandardHeader.h"
 #include "Translations/Translations.h"
 #include "Utilities/CommandLineParser/CommandLineParser.h"
 #include "Utilities/RandomNumberGenerator.h"
@@ -103,7 +102,7 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
     model.global_configuration().set_run_parameters(options);
     RunMode::Type run_mode = options.run_mode_;
 
-    reports::StandardHeader standard_report(&model);
+//    reports::StandardHeader standard_report(&model);
 
     vector<string> cmd_parameters;
     for (int i = 0; i < argc; ++i) cmd_parameters.push_back(argv[i]);
@@ -159,8 +158,8 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
     case RunMode::kProfiling:
     case RunMode::kProjection:
     {
-      if (!model.global_configuration().debug_mode() && !model.global_configuration().disable_standard_report())
-        standard_report.Prepare();
+//      if (!model.global_configuration().debug_mode() && !model.global_configuration().disable_standard_report())
+//        standard_report.Prepare();
 
       // load our configuration file
       configuration::Loader config_loader;
@@ -202,8 +201,8 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
       } else if (run_mode != RunMode::kTesting)
         logging.FlushWarnings();
 
-      if (!model.global_configuration().debug_mode() && !model.global_configuration().disable_standard_report())
-        standard_report.Finalise();
+//      if (!model.global_configuration().debug_mode() && !model.global_configuration().disable_standard_report())
+//        standard_report.Finalise();
     }
       break;
     } // switch(run_mode)

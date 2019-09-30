@@ -11,7 +11,7 @@
 
 // headers
 #include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Models/Age.h"
+#include "Model/Model.h"
 
 // namespaces
 namespace niwa {
@@ -31,7 +31,7 @@ public:
 private:
 	// members
 	GlobalConfiguration					global_configuration_;
-	model::Age									master_model_;
+	Model												master_model_;
 	utilities::RunParameters		run_parameters_;
 };
 

@@ -517,6 +517,7 @@
 #define PARAM_RANDOM_NUMBER_SEED                  "random_number_seed"
 #define PARAM_RANDOMDRAW                          "random_draw"
 #define PARAM_RANDOMWALK                          "random_walk"
+#define PARAM_RASMUSSEN_DUNN											"rasmussen_dunn"
 #define PARAM_RATE                                "rate"
 #define PARAM_RATES                               "rates"
 #define PARAM_RATIO                               "ratio"

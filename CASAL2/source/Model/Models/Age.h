@@ -26,6 +26,7 @@ public:
 	Age();
 	virtual ~Age();
 //	bool 												Start(RunMode::Type run_mode);
+	void													DoValidate() override;
 };
 
 } /* namespace model */

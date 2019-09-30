@@ -130,7 +130,7 @@ void Report::PrepareTabular() {
 
   // Put a header in each file. this is for R library compatibility more than anything.
   if (file_name_ != "" && write_mode_ == PARAM_OVERWRITE)
-    cache_ << model_->managers().report()->std_header() << "\n";
+    cache_ << model_->global_configuration().standard_header() << "\n";
   DoPrepareTabular();
   Report::lock_.unlock();
 
