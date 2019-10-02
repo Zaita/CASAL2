@@ -11,8 +11,25 @@ pool:
 
 steps:
 - script: |
-    g++ --version
-    gfotran --version
-    python --version
-    7za -version
-  displayName: 'Checking Versions of Software' 
+    pip install pytz
+  displayName: 'Installing Python3 build environment'
+
+- script: |
+    cd BuildSystem
+    doBuild.bat thirdparty
+  displayName: 'Build third-party libraries'
+
+- script: |
+    cd BuildSystem
+    doBuild.bat debug
+  displayName: 'Build "Debug" standalone binary'
+
+- script: |
+    cd BuildSystem
+    doBuild.bat test
+  displayName: 'Build "Unit Test" standalone binary'
+
+- script: |
+    cd BuildSystem/bin/windows/test/
+    casal2.exe
+  displayName: 'Run Unit Tests standalone binary'
