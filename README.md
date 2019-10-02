@@ -1,7 +1,8 @@
 Casal2
 ======
 
-**The Casal2 project has been migrated to NIWA administration to complete the production version Casal2 1.0. The GitHub repository will be archived.**
+**This is a fork of the NIWA Casal2 code base. This is being used for research and to build new faster/better techniques **
+**While compatible with Casal2, this fork will likely be considerably further ahead with technologies (e.g. python, threading etc) **
 
 Casal2 is an open source age structured population dynamics model. 
 It can implement a range of a statistical catch-at-age 
