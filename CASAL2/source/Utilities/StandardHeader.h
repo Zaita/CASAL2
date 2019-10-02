@@ -31,7 +31,7 @@ namespace utilities {
 class StandardHeader {
 public:
 	void												PrintTop(GlobalConfiguration& global_config);
-	void												PrintBottom();
+	void												PrintBottom(GlobalConfiguration& global_config);
 
 private:
   // Variables

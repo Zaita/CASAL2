@@ -105,9 +105,7 @@ int Runner::Go() {
 	case RunMode::kProjection:
 	case RunMode::kTesting:
 		utilities::StandardHeader standard_header;
-		if (!global_configuration_.debug_mode() && !global_configuration_.disable_standard_report()) {
-			standard_header.PrintTop(global_configuration_);
-		}
+		standard_header.PrintTop(global_configuration_);
 
 		// load our configuration file
 		configuration::Loader config_loader;
@@ -166,10 +164,8 @@ int Runner::Go() {
 		} else
 			logging.FlushWarnings();
 
-		if (!model->global_configuration().debug_mode() && !model->global_configuration().disable_standard_report())
-			standard_header.PrintBottom();
+		standard_header.PrintBottom(global_configuration_);
 		break;
-
 	} // switch(run_mode)
 
 	return return_code;

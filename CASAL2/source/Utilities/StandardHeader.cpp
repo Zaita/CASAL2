@@ -74,7 +74,7 @@ void StandardHeader::PrintTop(GlobalConfiguration &global_config) {
 #elif _MSC_VER
 #else
 	cout << "-- Username: ";
-	header* cUsername = getenv("LOGNAME");
+	auto* cUsername = getenv("LOGNAME");
 	if (cUsername != NULL)
 		header << cUsername << endl;
 	else {
@@ -87,14 +87,19 @@ void StandardHeader::PrintTop(GlobalConfiguration &global_config) {
 	header << "-- Process Id: " << getpid() << endl;
 #endif
 
-	cout << header.str() << endl;
+	if (!global_config.debug_mode() && !global_config.disable_standard_report())
+		cout << header.str() << endl;
+
 	global_config.set_standard_header(header.str());
 }
 
 /**
  *
  */
-void StandardHeader::PrintBottom() {
+void StandardHeader::PrintBottom(GlobalConfiguration &global_config) {
+	if (global_config.debug_mode() || global_config.disable_standard_report())
+		return;
+
 #if !defined(__MINGW32__) && !defined(_MSC_VER)
 	times(&cpu_stop);
 	double cpu_time=(static_cast<double>(cpu_stop.tms_utime)+static_cast<double>(cpu_stop.tms_stime))-(static_cast<double>(cpu_start.tms_utime) + static_cast<double>(cpu_start.tms_stime));
