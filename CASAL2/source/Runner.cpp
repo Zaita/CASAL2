@@ -152,7 +152,7 @@ int Runner::Go() {
 		});
 
 		// Run the model
-		return_code = model->Start(run_mode);
+		return_code = model->Start(run_mode) ? 0 : -1;
 
 		// finish report thread
 		report_manager->StopThread();
