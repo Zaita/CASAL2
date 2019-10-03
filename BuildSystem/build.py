@@ -14,7 +14,7 @@ from Builder import *
 from Documentation import *
 #from Archiver import *
 #from rlibrary import *
-#from ModelRunner import *
+from ModelRunner import *
 #from Installer import *
 #from DebBuilder import *
 

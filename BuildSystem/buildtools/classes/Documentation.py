@@ -7,7 +7,6 @@ import re
 import collections
 import copy
 from datetime import datetime, date
-from dateutil import tz
 import pytz
 
 import Globals
