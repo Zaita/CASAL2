@@ -174,6 +174,7 @@ bool Model::Start(RunMode::Type run_mode) {
 	LOG_CODE_ERROR()
 	<< "Model state should always be startup when entering the start method";
 	if (global_configuration_->estimable_value_file() != "") {
+		LOG_MEDIUM() << "estimable_value_file(): " << global_configuration_->estimable_value_file();
 		configuration::EstimableValuesLoader loader(this);
 		loader.LoadValues(global_configuration_->estimable_value_file());
 	}

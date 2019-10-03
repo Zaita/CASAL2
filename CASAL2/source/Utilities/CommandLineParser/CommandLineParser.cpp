@@ -100,7 +100,6 @@ void CommandLineParser::Parse(int argc, char* argv[], RunParameters& options) {
   }
 
   LOG_TRACE();
-
   if (parameters.count("debug"))
     options.debug_mode_ = true;
   if (parameters.count("config"))

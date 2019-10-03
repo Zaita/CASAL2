@@ -118,7 +118,6 @@ int Runner::Go() {
 		Logging &logging = Logging::Instance();
 		config_loader.ParseFileLines();
 
-		std::cout << "Config file specifies models of type " << config_loader.model_type() << endl;
 		string model_type = config_loader.model_type();
 
 		// TODO: REMOVE MASTER MODEL
@@ -132,6 +131,7 @@ int Runner::Go() {
 //			cout << "Appended model with id " << model->id() << endl;
 //		}
 		Model* model = master_model_.factory().Create(PARAM_MODEL, model_type);
+
 		model_list.push_back(model);
 
 		config_loader.Build(model_list);
@@ -143,6 +143,7 @@ int Runner::Go() {
 
 		// override any config file values from our command line
 		model->global_configuration().ParseOptions(model);
+		model->global_configuration().set_run_parameters(run_parameters_); // TODO: Set global_configuration for models too from Runner
 		utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 
 		// Thread off the reports

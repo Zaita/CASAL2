@@ -1,5 +1,5 @@
 ## Estimation script for LIN3&4 base model (2014 assessment)
-@minimiser gammdiff
+@minimiser betadiff
 type betadiff
 tolerance 0.00002
 iterations 1000
