@@ -11,7 +11,7 @@ sys.path.insert(0, "buildtools/classes")
 from System import *
 from Globals import *
 from Builder import *
-#from Documentation import *
+from Documentation import *
 #from Archiver import *
 #from rlibrary import *
 #from ModelRunner import *
@@ -81,8 +81,8 @@ def start_build_system():
 
   if Globals.compiler_path_ == "":
     return Globals.PrintError("g++ is not in the current path")
-  if Globals.gfortran_path_ == "":
-    return Globals.PrintError("gfortran for g++ is not installed. Please install the GCC Fortran compiler")
+  #if Globals.gfortran_path_ == "":
+  #  return Globals.PrintError("gfortran for g++ is not installed. Please install the GCC Fortran compiler")
   if Globals.git_path_ == "":
     return Globals.PrintError("git is not in the current path. Please install a git command line client (e.g http://git-scm.com/downloads)")  
   if Globals.operating_system_ == 'windows' and os.path.exists(Globals.git_path_ + '\\sh.exe'):
@@ -102,7 +102,9 @@ def start_build_system():
 Get the build information from the user
 """
 def start():
-  print('-- Checking for dateutil Python module')
+  print('-- Checking for Timezone Python module')
+  if'pytz' not in sys.modules:
+    return Globals.PrintError("Python requires the module pytz for the build system to work")
   print('-- Checking for datetime Python module')
   if'datetime' not in sys.modules:
     return Globals.PrintError("Python requires the module datetime for the build system to work")
