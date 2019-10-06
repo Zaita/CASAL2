@@ -89,39 +89,12 @@ bool ParameterList::Add(const string& label, const string& value, const string& 
 }
 
 /**
- * Add a new table to our parameter list
- *
- * @param label The label for the table
- * @param columns A vector containing the columns
- * @param data A double vector containing the data
- * @param file_name Name of file where table definition finished
- * @param line_number Line number where table definition finished
- * @return true on success, false on failure
- */
-//bool ParameterList::AddTable(const string& label, const vector<string>& columns, const vector<vector<string> >& data, const string& file_name, const unsigned& line_number) {
-//  if (tables_.find(label) == tables_.end())
-//    return false;
-//
-//  parameters::TablePtr table = tables_.find(label)->second;
-//  if (table->requires_comlums())
-//    table->AddColumns(columns);
-//  else
-//    table->AddRow(columns);
-//  for (vector<string> row : data)
-//    table->AddRow(row);
-//  table->set_file_name(file_name);
-//  table->set_line_number(line_number);
-//
-//  return true;
-//}
-
-/**
  *
  */
 void ParameterList::Populate(Model* model) {
   LOG_TRACE();
   if (already_populated_) {
-    LOG_CODE_ERROR() << "  if (already_populated_)";
+    LOG_CODE_ERROR() << "  if (already_populated_): " << parent_block_type_;
   }
 
   already_populated_ = true;

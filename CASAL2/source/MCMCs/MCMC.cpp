@@ -63,29 +63,29 @@ void MCMC::Build() {
     model_->managers().report()->Pause();
 
     if (model_->managers().report()->HasType(PARAM_MCMC_OBJECTIVE)) {
-      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
-      objective_report->set_block_type(PARAM_REPORT);
-      objective_report->set_defined_file_name(__FILE__);
-      objective_report->set_defined_line_number(__LINE__);
-      objective_report->parameters().Add(PARAM_LABEL, "mcmc_objective", __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_OBJECTIVE, __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_FILE_NAME, "mcmc_objectives.out", __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
-      objective_report->Validate();
-      model_->managers().report()->AddObject(objective_report);
+//      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
+//      objective_report->set_block_type(PARAM_REPORT);
+//      objective_report->set_defined_file_name(__FILE__);
+//      objective_report->set_defined_line_number(__LINE__);
+//      objective_report->parameters().Add(PARAM_LABEL, "mcmc_objective", __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_OBJECTIVE, __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_FILE_NAME, "mcmc_objectives.out", __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
+//      objective_report->Validate();
+//      model_->managers().report()->AddObject(objective_report);
     }
 
     if (model_->managers().report()->HasType(PARAM_MCMC_SAMPLE)) {
-      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
-      sample_report->set_block_type(PARAM_REPORT);
-      sample_report->set_defined_file_name(__FILE__);
-      sample_report->set_defined_line_number(__LINE__);
-      sample_report->parameters().Add(PARAM_LABEL, "mcmc_sample", __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_SAMPLE, __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_FILE_NAME, "mcmc_samples.out", __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
-      sample_report->Validate();
-      model_->managers().report()->AddObject(sample_report);
+//      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
+//      sample_report->set_block_type(PARAM_REPORT);
+//      sample_report->set_defined_file_name(__FILE__);
+//      sample_report->set_defined_line_number(__LINE__);
+//      sample_report->parameters().Add(PARAM_LABEL, "mcmc_sample", __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_SAMPLE, __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_FILE_NAME, "mcmc_samples.out", __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
+//      sample_report->Validate();
+//      model_->managers().report()->AddObject(sample_report);
     }
 
     model_->managers().report()->Resume();
@@ -98,29 +98,29 @@ void MCMC::Build() {
     LOG_FINE() << "Sample file name: " << sample_name;
 
     if (model_->managers().report()->HasType(PARAM_MCMC_OBJECTIVE)) {
-      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
-      objective_report->set_block_type(PARAM_REPORT);
-      objective_report->set_defined_file_name(__FILE__);
-      objective_report->set_defined_line_number(__LINE__);
-      objective_report->parameters().Add(PARAM_LABEL, "mcmc_objective", __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_OBJECTIVE, __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_FILE_NAME, objective_name, __FILE__, __LINE__);
-      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
-      objective_report->Validate();
-      model_->managers().report()->AddObject(objective_report);
+//      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
+//      objective_report->set_block_type(PARAM_REPORT);
+//      objective_report->set_defined_file_name(__FILE__);
+//      objective_report->set_defined_line_number(__LINE__);
+//      objective_report->parameters().Add(PARAM_LABEL, "mcmc_objective", __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_OBJECTIVE, __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_FILE_NAME, objective_name, __FILE__, __LINE__);
+//      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
+//      objective_report->Validate();
+//      model_->managers().report()->AddObject(objective_report);
     }
 
     if (model_->managers().report()->HasType(PARAM_MCMC_SAMPLE)) {
-      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
-      sample_report->set_block_type(PARAM_REPORT);
-      sample_report->set_defined_file_name(__FILE__);
-      sample_report->set_defined_line_number(__LINE__);
-      sample_report->parameters().Add(PARAM_LABEL, "mcmc_sample", __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_SAMPLE, __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_FILE_NAME, sample_name, __FILE__, __LINE__);
-      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
-      sample_report->Validate();
-      model_->managers().report()->AddObject(sample_report);
+//      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
+//      sample_report->set_block_type(PARAM_REPORT);
+//      sample_report->set_defined_file_name(__FILE__);
+//      sample_report->set_defined_line_number(__LINE__);
+//      sample_report->parameters().Add(PARAM_LABEL, "mcmc_sample", __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_TYPE, PARAM_MCMC_SAMPLE, __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_FILE_NAME, sample_name, __FILE__, __LINE__);
+//      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
+//      sample_report->Validate();
+//      model_->managers().report()->AddObject(sample_report);
     }
 
     model_->managers().report()->Resume();
@@ -140,6 +140,7 @@ void MCMC::Execute() {
       LOG_FATAL() << "Failed to load MPD Data from mpd.out file";
   }
 
+  LOG_FINEST() << "Running into MCMC now...";
   DoExecute();
 }
 } /* namespace niwa */

@@ -34,6 +34,8 @@ void ObjectiveFunction::DoExecute() {
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
   cache_ <<"values " << REPORT_R_VECTOR <<"\n";
 
+  if (model_ == nullptr)
+  	LOG_CODE_ERROR() << "model_ == nullptr";
   ::niwa::ObjectiveFunction& obj_function = model_->objective_function();
 
   const vector<objective::Score>& score_list = obj_function.score_list();

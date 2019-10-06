@@ -66,8 +66,8 @@ public:
   // Methods
   Model();
   virtual                     ~Model();
-  bool                        Start(RunMode::Type run_mode);
-  void                        FullIteration();
+  virtual bool                Start(RunMode::Type run_mode);
+  virtual void                FullIteration();
   void                        Subscribe(State::Type state, Executor* executor) { executors_[state].push_back(executor); }
   void                        PopulateParameters();
 

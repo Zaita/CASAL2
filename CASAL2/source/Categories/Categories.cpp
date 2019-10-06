@@ -63,6 +63,9 @@ Categories::Categories(Model* model) : model_(model) {
  * Note: all parameters are populated from configuration files
  */
 void Categories::Validate() {
+	if (model_->partition_type() == PartitionType::kPiApprox)
+		return;
+
   // Check that we actually had a categories block
   if (block_type_ == "")
     LOG_ERROR() << "The @categories block is missing from the configuration file. This block is required";
@@ -156,7 +159,10 @@ void Categories::Validate() {
 
       category_names_.push_back(names_[i]);
     }
-  } else {
+  } else if (model_->partition_type() == PartitionType::kPiApprox) {
+  	return;
+
+	} else {
     LOG_FATAL() << "There is no functionality, currently to deal with a partition structures that are not age or length";
   }
 

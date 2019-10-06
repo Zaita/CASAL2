@@ -121,13 +121,11 @@ void Loader::ParseFileLines() {
 					for(auto& file_line : block) {
 						if (file_line.line_.length() > 4 && utilities::ToLowercase(file_line.line_.substr(0, 4)) == PARAM_TYPE) {
 							found_model_type = true;
-							std::cout << "Found model type: " << file_line.line_ << std::endl;
 
 							vector<string> line_parts;
 							boost::split(line_parts, file_line.line_, boost::is_any_of(" "));
 							if (line_parts.size() != 2)
 								LOG_FATAL() << "@model type must be either age, length or pi_approx";
-							std::cout << "Setting model type to " << line_parts[1] << std::endl;
 							model_type_ = line_parts[1];
 						}
 					}
@@ -211,7 +209,7 @@ void Loader::ParseBlock(Model* model, vector<FileLine> &block) {
 	vector<string> line_parts;
 	string block_type = "";
 	string block_label = "";
-
+	LOG_FINEST() << "Block[0].line_: " << block[0].line_;
 	boost::split(line_parts, block[0].line_, boost::is_any_of(" "));
 	if (line_parts.size() == 0)
 		LOG_FATAL()

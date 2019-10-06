@@ -38,7 +38,13 @@ void Manager::Validate() {
   LOG_CODE_ERROR() << "This method is not supported";
 }
 
+/**
+ *
+ */
 void Manager::Validate(Model* model) {
+	if (model->partition_type() == PartitionType::kPiApprox)
+		return;
+
   LOG_TRACE();
   for (auto minimiser : objects_)
     minimiser->Validate();

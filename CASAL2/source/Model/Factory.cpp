@@ -29,6 +29,7 @@
 #include "Model/Model.h"
 #include "Model/Models/Age.h"
 #include "Model/Models/Length.h"
+#include "Model/Models/Multivariate.h"
 #include "Model/Models/PiApproximation.h"
 #include "Observations/Factory.h"
 #include "Penalties/Factory.h"
@@ -143,6 +144,8 @@ niwa::Model* Factory::Create(const string& object_type, const string& sub_type) 
 			return new model::Age();
 		} else if (sub_type == PARAM_LENGTH) {
 			return new model::Length();
+		} else if (sub_type == PARAM_MULTIVARIATE) {
+			return new model::Multivariate();
 		} else if (sub_type == PARAM_PI_APPROX)
 			return new model::PiApproximation();
 	}

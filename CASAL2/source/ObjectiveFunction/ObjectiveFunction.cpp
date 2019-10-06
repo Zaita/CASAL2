@@ -158,6 +158,10 @@ void ObjectiveFunction::CalculateScore() {
     jacobians_ += AS_DOUBLE(new_score.score_);
   }
 
+  LOG_MEDIUM() << "objective.likelihoods_: " << likelihoods_;
+  LOG_MEDIUM() << "objective.penalties_: " << penalties_;
+  LOG_MEDIUM() << "objective.priors_: " << priors_;
+  LOG_MEDIUM() << "objective.additional_priors_: " << additional_priors_;
   LOG_MEDIUM() << "objective.score: " << score_;
 }
 

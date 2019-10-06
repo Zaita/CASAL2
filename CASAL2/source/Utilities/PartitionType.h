@@ -24,6 +24,7 @@ enum class PartitionType {
 //  kHybrid   = 4,
   kModel    = 4,
 	kPiApprox = 5,
+	kMultivariate = 6,
 	kInvalid  = 4096
 };
 

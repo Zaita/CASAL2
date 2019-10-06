@@ -16,6 +16,7 @@
 #include "Model/Managers.h"
 #include "MCMCs/Manager.h"
 #include "MCMCs/Common/IndependenceMetropolis.h"
+#include "MCMCs/Common/RasmussenDunn.h"
 
 // namespaces
 namespace niwa {
@@ -31,7 +32,7 @@ MCMC* Factory::Create(Model* model, const string& object_type, const string& sub
     if (sub_type == "" || sub_type == PARAM_INDEPENDENCE_METROPOLIS || sub_type == PARAM_METROPOLIS_HASTINGS)
       object = new IndependenceMetropolis(model);
     else if (sub_type == PARAM_RASMUSSEN_DUNN)
-    	object = new IndependenceMetropolis(model);
+    	object = new RasmussenDunn(model);
 
   }
 

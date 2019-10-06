@@ -31,7 +31,7 @@ void Manager::Validate(Model* model) {
   LOG_TRACE();
   base::Manager<niwa::processes::Manager, niwa::Process>::Validate();
 
-  if (objects_.size() == 0)
+  if (objects_.size() == 0 && model->partition_type() == PartitionType::kAge)
     LOG_ERROR() << "The configuration file requires you specify at least one type of process. E.g @recruitment, @mortality, @ageing";
 
   PartitionType partition_type = model->partition_type();
