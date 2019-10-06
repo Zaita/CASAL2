@@ -10,8 +10,6 @@
 // headers
 #include "PiApproximation.h"
 
-#include <Eigen/Eigen>
-
 #include "Estimates/Manager.h"
 #include "Model/Managers.h"
 #include "MCMCs/Manager.h"
@@ -50,7 +48,6 @@ bool PiApproximation::Start(RunMode::Type run_mode) {
 	run_mode_ = run_mode;
 
 	RegisterAsAddressable(PARAM_A, &objective_score_);
-	cout << "Validation: Objective Score: " << objective_score_ << endl;
 
 	managers_->mcmc()->Validate(this);
 	managers_->report()->Validate();
@@ -60,8 +57,6 @@ bool PiApproximation::Start(RunMode::Type run_mode) {
 	managers_->report()->Build();
 	managers_->selectivity()->Build();
 	managers_->estimate()->Build(this);
-
-	cout << "PiApprox Obj: " << objective_function_ << endl;
 
 	if (run_mode == RunMode::kBasic)
 		FullIteration();

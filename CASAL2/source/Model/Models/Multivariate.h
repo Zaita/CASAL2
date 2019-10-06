@@ -27,9 +27,8 @@ public:
 
 
 private:
+	bool												use_random_ = false;
 	double											objective_score_ = 0.0;
-	unsigned										inside_ = 0;
-	unsigned										outside_ = 0;
 };
 
 } /* namespace model */

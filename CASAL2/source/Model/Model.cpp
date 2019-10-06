@@ -62,7 +62,7 @@ Model::Model() {
 	LOG_TRACE();
 
 	parameters_.Bind<string>(PARAM_TYPE, &type_, "TBA: Type of model (the partition structure). Either age, length or hybrid", "", PARAM_AGE)->set_allowed_values(
-		{ PARAM_AGE, PARAM_LENGTH, PARAM_HYBRID, PARAM_PI_APPROX });
+		{ PARAM_AGE, PARAM_LENGTH, PARAM_HYBRID, PARAM_MULTIVARIATE, PARAM_PI_APPROX });
 	parameters_.Bind<string>(PARAM_BASE_UNITS, &base_weight_units_,
 		"Define the units for the base weight. This will be the default unit of any weight input parameters ", "grams, kgs or tonnes", PARAM_TONNES)->set_allowed_values(
 		{ PARAM_GRAMS, PARAM_TONNES, PARAM_KGS });

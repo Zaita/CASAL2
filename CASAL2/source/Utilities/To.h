@@ -166,6 +166,8 @@ inline bool To(const ::std::string arg, PartitionType &result) {
 //    result = PartitionType::kHybrid;
   else if (value == PARAM_MODEL)
     result = PartitionType::kModel;
+  else if (value == PARAM_MULTIVARIATE)
+  	result = PartitionType::kMultivariate;
   else if (value == PARAM_PI_APPROX)
   	result = PartitionType::kPiApprox;
 
