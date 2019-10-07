@@ -15,7 +15,6 @@
 #include <cmath>
 #include <set>
 
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
 
@@ -24,7 +23,6 @@ namespace niwa {
 namespace likelihoods {
 
 using std::set;
-namespace dc = niwa::utilities::doublecompare;
 namespace math = niwa::utilities::math;
 
 /**
@@ -50,7 +48,7 @@ void Multinomial::GetScores(map<unsigned, vector<observations::Comparison> >& co
       Double error_value = AdjustErrorValue(comparison.process_error_, comparison.error_value_) * error_value_multiplier_;
 
       Double score = math::LnFactorial(error_value * comparison.observed_)
-                      - error_value * comparison.observed_ * log(dc::ZeroFun(comparison.expected_, comparison.delta_));
+                      - error_value * comparison.observed_ * log(math::ZeroFun(comparison.expected_, comparison.delta_));
 
       comparison.adjusted_error_ = error_value;
       comparison.score_ = score * multiplier_;

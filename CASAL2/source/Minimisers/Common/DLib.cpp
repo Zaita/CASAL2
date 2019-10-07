@@ -21,7 +21,6 @@
 #include "EstimateTransformations/Manager.h"
 #include "Model/Model.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Math.h"
 
 // namespaces
@@ -29,7 +28,7 @@ namespace niwa {
 namespace minimisers {
 
 using namespace dlib;
-namespace dc = utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 
 const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_original_values) {
@@ -68,7 +67,7 @@ const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_or
   Double plus_eps = 0.0;
   Double original_estimate_value = 0.0;
   for (unsigned i = 0; i < estimates.size(); ++i) {
-    if (dc::IsEqual(estimates[i]->lower_bound(), estimates[i]->upper_bound())) {
+    if (math::IsEqual(estimates[i]->lower_bound(), estimates[i]->upper_bound())) {
       gradient_values(i) = 0.0;
 
     } else {

@@ -14,7 +14,7 @@
 #include "Model/Model.h"
 #include "Model/Managers.h"
 #include "Penalties/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // namespaces
 namespace niwa {
@@ -42,8 +42,8 @@ Process::Process(Model* model) : Penalty(model) {
 void Process::Trigger(const string& source_label, Double value_1, Double value_2) {
 
   if (log_scale_) {
-    value_1 = log(utilities::doublecompare::ZeroFun(value_1));
-    value_2 = log(utilities::doublecompare::ZeroFun(value_2));
+    value_1 = log(utilities::math::ZeroFun(value_1));
+    value_2 = log(utilities::math::ZeroFun(value_2));
   }
 
   string name  = label_ + "(" + source_label + ")";

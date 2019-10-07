@@ -24,7 +24,7 @@
 #include "Selectivities/Manager.h"
 #include "TimeSteps/TimeStep.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/To.h"
 
 
@@ -32,7 +32,7 @@
 namespace niwa {
 namespace processes {
 namespace age {
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 /**
  * Default constructor
  *
@@ -337,7 +337,7 @@ void MortalityHollingRate::DoExecute() {
     Mortality = PredatorVulnerable * (a_ * pow(Vulnerable, (x_ - 1.0))) / (b_ + pow(Vulnerable, (x_ - 1.0)));
     prey_mortality_by_year_.push_back(Mortality);
     // Work out exploitation rate to remove (catch/vulnerable Abundance)
-    Double Exploitation = Mortality / dc::ZeroFun(Vulnerable, ZERO);
+    Double Exploitation = Mortality / math::ZeroFun(Vulnerable, math::ZERO);
 
     if (Exploitation > u_max_) {
       LOG_FINE() << "Exloitation rate larger than u_max = " << Exploitation << " this is rescaled to u_max = " << u_max_;

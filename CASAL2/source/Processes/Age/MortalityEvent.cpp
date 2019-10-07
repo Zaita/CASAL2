@@ -16,7 +16,7 @@
 #include "Categories/Categories.h"
 #include "Penalties/Manager.h"
 #include "Selectivities/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // Namespaces
 namespace niwa {
@@ -143,7 +143,7 @@ void MortalityEvent::DoExecute() {
      */
     Double exploitation = 0;
     LOG_FINEST() << "vulnerable biomass = " << vulnerable << " catch = " << catch_years_[model_->current_year()];
-    exploitation = catch_years_[model_->current_year()] / utilities::doublecompare::ZeroFun(vulnerable);
+    exploitation = catch_years_[model_->current_year()] / utilities::math::ZeroFun(vulnerable);
 
     if (exploitation > u_max_) {
       exploitation = u_max_;

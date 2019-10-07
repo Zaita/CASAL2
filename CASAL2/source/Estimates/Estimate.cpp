@@ -17,7 +17,7 @@
 #include "EstimateTransformations/Factory.h"
 #include "Model/Factory.h"
 #include "Model/Model.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/To.h"
 
 // Namespaces
@@ -119,7 +119,7 @@ void Estimate::Reset() {
    * Reset the value if the bounds are the same so we can ensure all of the
    * "same" parameters are aligned
    */
-  if (utilities::doublecompare::IsEqual(lower_bound_, upper_bound_))
+  if (utilities::math::IsEqual(lower_bound_, upper_bound_))
     set_value(value());
 }
 

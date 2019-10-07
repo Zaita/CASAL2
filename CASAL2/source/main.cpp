@@ -47,8 +47,6 @@ int main(int argc, char *argv[]) {
 	try {
 		Runner runner;
 
-//		reports::StandardHeader standard_report(&runner.model());
-
 		utilities::RunParameters parameters;
 		utilities::CommandLineParser parser;
 		parser.Parse(argc, argv, parameters);

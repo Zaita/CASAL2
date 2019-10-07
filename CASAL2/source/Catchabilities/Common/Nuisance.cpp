@@ -13,14 +13,14 @@
 #include "Nuisance.h"
 
 #include "AdditionalPriors/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/To.h"
 
 // namespaces
 namespace niwa {
 namespace catchabilities {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math 	= niwa::utilities::math;
 namespace utils = niwa::utilities;
 
 /**
@@ -148,9 +148,9 @@ void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comp
   for (auto year_iterator = comparisons.begin(); year_iterator != comparisons.end(); ++year_iterator) {
     // Iterate over each category
     for (observations::Comparison& comparison : year_iterator->second) {
-      if (comparison.expected_ <= ZERO)
-        LOG_WARNING() << "Expected less than " << ZERO << " you may want to check this.";
-      comparison.expected_ = dc::ZeroFun(comparison.expected_,ZERO);
+      if (comparison.expected_ <= math::ZERO)
+        LOG_WARNING() << "Expected less than " << math::ZERO << " you may want to check this.";
+      comparison.expected_ = math::ZeroFun(comparison.expected_, math::ZERO);
         n++;
         Double cv = comparison.error_value_;
         if (comparison.error_value_ > 0.0 && comparison.process_error_ > 0.0)
@@ -171,7 +171,7 @@ void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comp
     for (auto year_iterator = comparisons.begin(); year_iterator != comparisons.end(); ++year_iterator) {
       // Iterate over each category
       for (observations::Comparison& comparison : year_iterator->second) {
-        comparison.expected_ = dc::ZeroFun(comparison.expected_,ZERO);
+        comparison.expected_ = math::ZeroFun(comparison.expected_, math::ZERO);
           n++;
           Double cv = comparison.error_value_;
           if (comparison.error_value_ > 0.0 && comparison.process_error_ > 0.0)
@@ -190,7 +190,7 @@ void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comp
     for (auto year_iterator = comparisons.begin(); year_iterator != comparisons.end(); ++year_iterator) {
       // Iterate over each category
       for (observations::Comparison& comparison : year_iterator->second) {
-        comparison.expected_ = dc::ZeroFun(comparison.expected_,ZERO);
+        comparison.expected_ = math::ZeroFun(comparison.expected_, math::ZERO);
           n++;
           Double cv = comparison.error_value_;
           if (comparison.error_value_ > 0.0 && comparison.process_error_ > 0.0)
@@ -213,7 +213,7 @@ void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comp
       for (auto year_iterator = comparisons.begin(); year_iterator != comparisons.end(); ++year_iterator) {
         // Iterate over each category
         for (observations::Comparison& comparison : year_iterator->second) {
-          comparison.expected_ = dc::ZeroFun(comparison.expected_,ZERO);
+          comparison.expected_ = math::ZeroFun(comparison.expected_, math::ZERO);
             n++;
             Double cv = comparison.error_value_;
             if (comparison.error_value_ > 0.0 && comparison.process_error_ > 0.0)

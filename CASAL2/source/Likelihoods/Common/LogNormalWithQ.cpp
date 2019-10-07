@@ -14,14 +14,14 @@
 #include <Likelihoods/Common/LogNormalWithQ.h>
 #include <cmath>
 
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {
 namespace likelihoods {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Adjust the error value based on the process error
@@ -49,7 +49,7 @@ void LogNormalWithQ::GetScores(map<unsigned, vector<observations::Comparison> >&
 
       Double error_value = AdjustErrorValue(comparison.process_error_, comparison.error_value_) * error_value_multiplier_;
       Double sigma = sqrt(log(1 + error_value * error_value));
-      Double score = log(comparison.observed_ / dc::ZeroFun(comparison.expected_, comparison.delta_)) / sigma + 0.5 * sigma;
+      Double score = log(comparison.observed_ / math::ZeroFun(comparison.expected_, comparison.delta_)) / sigma + 0.5 * sigma;
       score = log(sigma) + 0.5 * (score * score);
 
       comparison.adjusted_error_ = error_value;

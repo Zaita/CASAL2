@@ -21,14 +21,14 @@
 #include "Model/Managers.h"
 #include "Reports/Manager.h"
 #include "Reports/Common/MPD.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // Namespaces
 namespace niwa {
 namespace estimates {
 
 using std::set;
-namespace dc = utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Destructor
@@ -85,7 +85,7 @@ void Manager::Validate(Model* model) {
   unsigned count = objects_.size();
   objects_.erase(
       std::remove_if(objects_.begin(), objects_.end(),
-         [](Estimate* estimate) {return dc::IsEqual(estimate->lower_bound(), estimate->upper_bound()); }
+         [](Estimate* estimate) {return math::IsEqual(estimate->lower_bound(), estimate->upper_bound()); }
        ),
        objects_.end()
   );

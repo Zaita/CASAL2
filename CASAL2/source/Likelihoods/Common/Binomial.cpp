@@ -13,7 +13,6 @@
 // Headers
 #include <Likelihoods/Common/Binomial.h>
 #include "Utilities/Math.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/RandomNumberGenerator.h"
 
 // Namespaces
@@ -21,7 +20,6 @@ namespace niwa {
 namespace likelihoods {
 
 namespace math = niwa::utilities::math;
-namespace dc = niwa::utilities::doublecompare;
 
 /**
  * Adjust the error value based on the process error
@@ -53,8 +51,8 @@ void Binomial::GetScores(map<unsigned, vector<observations::Comparison> >& compa
         Double score = math::LnFactorial(error_value)
                         - math::LnFactorial(error_value * (1.0 - comparison.observed_))
                         - math::LnFactorial(error_value * comparison.observed_)
-                        + error_value * comparison.observed_ * log(dc::ZeroFun(comparison.expected_, comparison.delta_))
-                        + error_value * (1.0 - comparison.observed_) * log(dc::ZeroFun(1.0 - comparison.expected_, comparison.delta_));
+                        + error_value * comparison.observed_ * log(math::ZeroFun(comparison.expected_, comparison.delta_))
+                        + error_value * (1.0 - comparison.observed_) * log(math::ZeroFun(1.0 - comparison.expected_, comparison.delta_));
 
         comparison.adjusted_error_ = error_value;
         comparison.score_ = -score * multiplier_;

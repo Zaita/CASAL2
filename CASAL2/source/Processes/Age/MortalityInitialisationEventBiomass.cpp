@@ -16,9 +16,9 @@
 #include "Categories/Categories.h"
 #include "Penalties/Manager.h"
 #include "Selectivities/Manager.h"
-#include "Utilities/DoubleCompare.h"
-#include "Utilities/To.h"
 #include "TimeSteps/Manager.h"
+#include "Utilities/Math.h"
+#include "Utilities/To.h"
 
 // Namespaces
 namespace niwa {
@@ -116,7 +116,7 @@ void MortalityInitialisationEventBiomass::DoExecute() {
      */
     Double exploitation = 0;
     LOG_FINEST() << "vulnerable biomass = " << vulnerable << " catch = " << catch_;
-    exploitation = catch_ / utilities::doublecompare::ZeroFun(vulnerable);
+    exploitation = catch_ / utilities::math::ZeroFun(vulnerable);
     if (exploitation > u_max_) {
       exploitation = u_max_;
       if (penalty_)

@@ -19,7 +19,6 @@
 #include "InitialisationPhases/Manager.h"
 #include "Estimates/Manager.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Math.h"
 #include "Utilities/To.h"
 
@@ -28,7 +27,6 @@ namespace niwa {
 namespace processes {
 namespace age {
 
-namespace dc = niwa::utilities::doublecompare;
 namespace math = niwa::utilities::math;
 
 /**
@@ -98,7 +96,7 @@ void RecruitmentBevertonHoltWithDeviations::DoValidate() {
   Double running_total = 0.0;
   for (Double value : proportions_) // Again, ADOLC prevents std::accum
     running_total += value;
-  if (!dc::IsOne(running_total))
+  if (!math::IsOne(running_total))
     LOG_ERROR_P(PARAM_PROPORTIONS) << " sum total is " << running_total << " when it should be 1.0";
 
   if (recruit_dev_values_.size() != ((model_->final_year() - model_->start_year()) + 1))

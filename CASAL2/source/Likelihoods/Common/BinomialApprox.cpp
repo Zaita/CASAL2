@@ -14,14 +14,15 @@
 #include <Likelihoods/Common/BinomialApprox.h>
 #include <cmath>
 
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
+
 
 // Namespaces
 namespace niwa {
 namespace likelihoods {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Adjust the error value based on the process error
@@ -47,8 +48,8 @@ void BinomialApprox::GetScores(map<unsigned, vector<observations::Comparison> >&
     for (observations::Comparison& comparison : year_iterator->second) {
       Double error_value = AdjustErrorValue(comparison.process_error_, comparison.error_value_) * error_value_multiplier_;
 
-      Double std_error = sqrt((dc::ZeroFun(comparison.expected_, comparison.delta_)
-                          * dc::ZeroFun(1.0 - comparison.expected_, comparison.delta_)) / error_value);
+      Double std_error = sqrt((math::ZeroFun(comparison.expected_, comparison.delta_)
+                          * math::ZeroFun(1.0 - comparison.expected_, comparison.delta_)) / error_value);
 
       Double score = log(std_error) + 0.5 * pow((comparison.observed_ - comparison.expected_) / std_error, 2.0);
       comparison.adjusted_error_ = error_value;

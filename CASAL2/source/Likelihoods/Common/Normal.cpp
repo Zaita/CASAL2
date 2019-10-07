@@ -12,14 +12,14 @@
 
 // Headers
 #include <Likelihoods/Common/Normal.h>
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {
 namespace likelihoods {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Adjust the error value based on the process error
@@ -48,7 +48,7 @@ void Normal::GetScores(map<unsigned, vector<observations::Comparison> >& compari
       comparison.adjusted_error_ = error_value;
 
       Double sigma = error_value * comparison.expected_;
-      Double score = (comparison.observed_ - comparison.expected_) / dc::ZeroFun(error_value * comparison.expected_, comparison.delta_);
+      Double score = (comparison.observed_ - comparison.expected_) / math::ZeroFun(error_value * comparison.expected_, comparison.delta_);
       score = log(sigma) + 0.5 * (score * score);
       comparison.score_ = score * multiplier_;
     }

@@ -23,7 +23,7 @@
 #include "Selectivities/Manager.h"
 #include "TimeSteps/TimeStep.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/To.h"
 
 
@@ -31,7 +31,8 @@
 namespace niwa {
 namespace processes {
 namespace age {
-namespace dc = niwa::utilities::doublecompare;
+
+namespace math = niwa::utilities::math;
 /**
  * Default constructor
  *
@@ -166,8 +167,8 @@ void MortalityPreySuitability::DoExecute() {
        LOG_FINEST() << ": Vulnerable abundance for prey category " << prey_category_labels_[category_offset] << " = " << Vulnerable_by_Prey[prey_category_labels_[category_offset]];
     }
 
-    TotalPreyAvailability = dc::ZeroFun(TotalPreyAvailability, ZERO);
-    TotalPreyVulnerable = dc::ZeroFun(TotalPreyVulnerable / TotalPreyAvailability, ZERO);
+    TotalPreyAvailability = math::ZeroFun(TotalPreyAvailability, math::ZERO);
+    TotalPreyVulnerable = math::ZeroFun(TotalPreyVulnerable / TotalPreyAvailability, math::ZERO);
 
     /*
      * Loop through the predators calculating vulnerable predator abyundance

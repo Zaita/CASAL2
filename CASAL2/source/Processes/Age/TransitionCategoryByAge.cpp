@@ -19,7 +19,7 @@
 #include "Model/Model.h"
 #include "Penalties/Manager.h"
 #include "Selectivities/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/To.h"
 
 // namespaces
@@ -153,7 +153,7 @@ void TransitionCategoryByAge::DoExecute() {
     }
     LOG_FINE() << "total_stock: " << total_stock << " at age " << min_age_ + i;
 
-    Double exploitation = n_[current_year][i] / utilities::doublecompare::ZeroFun(total_stock);
+    Double exploitation = n_[current_year][i] / utilities::math::ZeroFun(total_stock);
     LOG_FINE() << "exploitation: " << exploitation << "; n: " << n_[current_year][i];
     if (exploitation > u_max_) {
       exploitation = u_max_;

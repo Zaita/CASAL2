@@ -22,7 +22,6 @@
 #include "Categories/Categories.h"
 #include "Partition/Accessors/All.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Map.h"
 #include "Utilities/Math.h"
 #include "Utilities/To.h"

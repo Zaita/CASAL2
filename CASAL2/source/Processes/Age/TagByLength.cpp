@@ -15,7 +15,6 @@
 #include "Categories/Categories.h"
 #include "Selectivities/Manager.h"
 #include "Penalties/Manager.h"
-#include "Utilities/DoubleCompare.h"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim_all.hpp>

@@ -24,7 +24,6 @@
 #include "Selectivities/Manager.h"
 #include "TimeSteps/TimeStep.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/To.h"
 #include "Utilities/Math.h"
 #include "AgeWeights/Manager.h"
@@ -529,7 +528,7 @@ void MortalityInstantaneous::DoExecute() {
       Double exploitation = 0.0;
       // If fishery occurs in this time step calculate exploitation rate
       if (fishery.time_step_index_ == time_step_index) {
-        exploitation = fishery.catches_[year] / utilities::doublecompare::ZeroFun(fishery.vulnerability_);
+        exploitation = fishery.catches_[year] / math::ZeroFun(fishery.vulnerability_);
         LOG_FINEST() << " Vulnerable biomass for fishery : " << fishery.label_ << " = " << fishery.vulnerability_ << " with Catch = " << fishery.catches_[model_->current_year()] << " = exploitation = " << exploitation;
       }
 

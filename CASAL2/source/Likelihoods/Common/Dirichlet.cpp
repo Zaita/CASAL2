@@ -14,7 +14,6 @@
 #include <cmath>
 #include <set>
 
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
 
@@ -24,7 +23,6 @@ namespace niwa {
 namespace likelihoods {
 
 using std::set;
-namespace dc = niwa::utilities::doublecompare;
 namespace math = niwa::utilities::math;
 
 /**
@@ -52,8 +50,8 @@ void Dirichlet::GetScores(map<unsigned, vector<observations::Comparison> >& comp
   for (auto year_iterator = comparisons.begin(); year_iterator != comparisons.end(); ++year_iterator) {
     for (observations::Comparison& comparison : year_iterator->second) {
       Double error_value = AdjustErrorValue(comparison.process_error_, comparison.error_value_) * error_value_multiplier_;
-      Double alpha = dc::ZeroFun(comparison.expected_,comparison.delta_) * error_value;
-      Double a2_a3 = math::LnGamma(alpha) - ((alpha - 1.0) * log(dc::ZeroFun(comparison.observed_,comparison.delta_)));
+      Double alpha = math::ZeroFun(comparison.expected_,comparison.delta_) * error_value;
+      Double a2_a3 = math::LnGamma(alpha) - ((alpha - 1.0) * log(math::ZeroFun(comparison.observed_,comparison.delta_)));
 
       comparison.adjusted_error_ = error_value;
       comparison.score_ = a2_a3 * multiplier_;
@@ -106,7 +104,7 @@ Double Dirichlet::GetInitialScore(map<unsigned, vector<observations::Comparison>
     // Calculate score
     Double temp_score = AdjustErrorValue(comparison.process_error_, comparison.error_value_) * error_value_multiplier_;
     LOG_FINEST() << "Adding: " << temp_score << " = AdjustErrorValue(" << comparison.process_error_ << ", " << comparison.error_value_ << ")  * " << error_value_multiplier_ << ")";
-    a1 += dc::ZeroFun(comparison.expected_, comparison.delta_) * temp_score;
+    a1 += math::ZeroFun(comparison.expected_, comparison.delta_) * temp_score;
   }
 
   score  = -math::LnGamma(a1);

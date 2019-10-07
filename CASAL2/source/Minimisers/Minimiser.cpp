@@ -25,12 +25,12 @@
 #include "Estimates/Manager.h"
 #include "Logging/Logging.h"
 #include "Model/Model.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // Namespaces
 namespace niwa {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 namespace ublas = boost::numeric::ublas;
 
 /**
@@ -102,7 +102,7 @@ void Minimiser::BuildCovarianceMatrix() {
     zero_row.push_back(1);
     for (unsigned j = 0; j < hessian_size_; ++j) {
       hessian_matrix(i,j) = hessian_[i][j];
-      if( !dc::IsZero( hessian_matrix(i,j) ) ) zero_row[i] = 0;
+      if( !math::IsZero( hessian_matrix(i,j) ) ) zero_row[i] = 0;
     }
     if( zero_row[i] ) hessian_matrix(i,i) = 1.0;
   }

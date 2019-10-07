@@ -19,7 +19,6 @@
 #include "InitialisationPhases/Manager.h"
 #include "Estimates/Manager.h"
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
 #include "Utilities/Math.h"
 #include "Utilities/To.h"
 
@@ -28,7 +27,6 @@ namespace niwa {
 namespace processes {
 namespace age {
 
-namespace dc = niwa::utilities::doublecompare;
 namespace math = niwa::utilities::math;
 
 /**

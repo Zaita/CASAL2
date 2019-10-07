@@ -13,7 +13,6 @@
 #include "TimeStep.h"
 
 #include "TimeSteps/Manager.h"
-#include "Utilities/DoubleCompare.h"
 
 // namespaces
 namespace niwa {

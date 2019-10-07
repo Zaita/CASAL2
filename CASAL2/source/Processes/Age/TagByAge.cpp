@@ -15,12 +15,14 @@
 #include "Categories/Categories.h"
 #include "Selectivities/Manager.h"
 #include "Penalties/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // namespaces
 namespace niwa {
 namespace processes {
 namespace age {
+
+namespace math = niwa::utilities::math;
 
 /**
  * Default constructor
@@ -190,7 +192,7 @@ void TagByAge::DoValidate() {
         numbers_[year][i - 1] = n_by_year[year] * proportion;
         total_proportion += proportion;
       }
-      if (!utilities::doublecompare::IsOne(total_proportion))
+      if (!math::IsOne(total_proportion))
         LOG_ERROR_P(PARAM_PROPORTIONS) << " total (" << total_proportion << ") is not 1.0 for year " << year;
     }
 
@@ -312,7 +314,7 @@ void TagByAge::DoExecute() {
       Double current = numbers_[current_year][i] *
           ((*from_iter)->data_[offset] * selectivities_[category_label]->GetAgeResult(min_age_ + offset, (*from_iter)->age_length_) / total_stock_with_selectivities);
 
-      Double exploitation = current / utilities::doublecompare::ZeroFun((*from_iter)->data_[offset] * selectivities_[category_label]->GetAgeResult(min_age_ + offset, (*from_iter)->age_length_));
+      Double exploitation = current / math::ZeroFun((*from_iter)->data_[offset] * selectivities_[category_label]->GetAgeResult(min_age_ + offset, (*from_iter)->age_length_));
       if (exploitation > u_max_) {
         LOG_FINE() << "Exploitation(" << exploitation << ") triggered u_max(" << u_max_ << ") with current(" << current << ")";
 

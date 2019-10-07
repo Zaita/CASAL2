@@ -17,14 +17,14 @@
 #include "Minimisers/Manager.h"
 #include "ObjectiveFunction/ObjectiveFunction.h"
 #include "Reports/Manager.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
 
 // namespaces
 namespace niwa {
 namespace mcmcs {
 
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Default constructor
@@ -306,7 +306,7 @@ void IndependenceMetropolis::UpdateStepSize() {
       // modify the stepsize so that AcceptanceRate = 0.24
       step_size_ *= ((Double)successful_jumps_since_adapt_ / (Double)jumps_since_adapt_) * 4.166667;
       // Ensure the stepsize remains positive
-      step_size_ = AS_DOUBLE(dc::ZeroFun(step_size_, 1e-10));
+      step_size_ = AS_DOUBLE(math::ZeroFun(step_size_, 1e-10));
       // reset counters
     } else if (adapt_stepsize_method_ == PARAM_DOUBLE_HALF) {
       // This is a half or double method really.
@@ -660,7 +660,7 @@ void IndependenceMetropolis::DoExecute() {
       }
 
       // Check if we accept this jump
-      if (dc::IsEqual(ratio, 1.0) || rng.uniform() < ratio) {
+      if (math::IsEqual(ratio, 1.0) || rng.uniform() < ratio) {
         LOG_MEDIUM() << "Accept: Possible. Iteration = " << jumps_ << ", score = " << score << " Previous score " << previous_score;
         // Accept this jump
         successful_jumps_++;

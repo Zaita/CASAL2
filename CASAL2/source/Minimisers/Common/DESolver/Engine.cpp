@@ -12,14 +12,14 @@
  */
 #ifndef USE_AUTODIFF
 // Headers
-#include <Minimisers/Common/DESolver/Engine.h>
+#include "Engine.h"
 
 #include <memory>
 #include <iostream>
 #include <cmath>
 
+#include "Utilities/Math.h"
 #include "Utilities/RandomNumberGenerator.h"
-#include "Utilities/DoubleCompare.h"
 #include "Logging/Logging.h"
 
 // Namespaces
@@ -27,7 +27,7 @@ namespace niwa {
 namespace minimisers {
 namespace desolver {
 
-namespace compare = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  * Default constructor
@@ -45,6 +45,7 @@ Engine::Engine(unsigned vector_size, unsigned population_size, double tolerance)
   best_energy_      = 1e20;
   step_size_        = 1e-6;
   tolerance_        = tolerance;
+  penalty_          = 0.0;
 
   // Resize vectors
   current_values_.resize(vector_size_);
@@ -277,7 +278,7 @@ bool Engine::GenerateGradient() {
 void Engine::ScaleValues() {
   for (unsigned i = 0; i < vector_size_; ++i) {
     // Boundary-Pinning
-    if (compare::IsEqual(lower_bounds_[i], upper_bounds_[i]))
+    if (math::IsEqual(lower_bounds_[i], upper_bounds_[i]))
       scaled_values_[i] = 0.0;
     else
       scaled_values_[i] = ScaleValue(current_values_[i], lower_bounds_[i], upper_bounds_[i]);
@@ -289,7 +290,7 @@ void Engine::ScaleValues() {
  */
 void Engine::UnScaleValues() {
   for (unsigned i = 0; i < vector_size_; ++i) {
-    if (compare::IsEqual(lower_bounds_[i], upper_bounds_[i]))
+    if (math::IsEqual(lower_bounds_[i], upper_bounds_[i]))
       current_values_[i] = lower_bounds_[i];
     else
       current_values_[i] = UnScaleValue(scaled_values_[i], lower_bounds_[i], upper_bounds_[i]);
@@ -306,9 +307,9 @@ void Engine::UnScaleValues() {
  * @return The scaled value
  */
 double Engine::ScaleValue(double value, double min, double max) {
-  if (compare::IsEqual(value, min))
+  if (math::IsEqual(value, min))
     return -1;
-  else if (compare::IsEqual(value, max))
+  else if (math::IsEqual(value, max))
     return 1;
 
   return asin(2 * (value - min) / (max - min) - 1) / 1.57079633;

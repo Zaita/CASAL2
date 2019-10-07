@@ -14,7 +14,6 @@
 #include "Penalty.h"
 
 #include "Penalties/Manager.h"
-#include "Utilities/DoubleCompare.h"
 
 // Namespaces
 namespace niwa {

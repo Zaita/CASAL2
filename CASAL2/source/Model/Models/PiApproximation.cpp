@@ -25,6 +25,8 @@
 namespace niwa {
 namespace model {
 
+namespace math = niwa::utilities::math;
+
 /**
  *
  */
@@ -112,7 +114,7 @@ void PiApproximation::FullIteration() {
 	double insided 		= inside_ * 1.0;
 	double outsided 	= outside_ * 1.0;
 	double pi_approx 	= 4 * (insided / (insided + outsided));
-	objective_score_ 	= PI + abs(PI - pi_approx);
+	objective_score_ 	= math::PI + abs(math::PI - pi_approx);
 
 	managers().penalty()->FlagPenalty("PI_Approximation", objective_score_);
 	cout << "Objective Score: " << objective_score_ << " (" << (inside_ + outside_) << ") - " << "inside_ / outside_: " << inside_ << " : " << outside_ << "; new_x/new_y: " << new_x << "/" << new_y << endl;

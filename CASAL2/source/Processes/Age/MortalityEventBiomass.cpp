@@ -15,8 +15,8 @@
 #include "Model/Model.h"
 #include "Penalties/Manager.h"
 #include "Selectivities/Manager.h"
-#include "Utilities/DoubleCompare.h"
 #include "TimeSteps/Manager.h"
+#include "Utilities/Math.h"
 
 // namespaces
 namespace niwa {
@@ -137,7 +137,7 @@ void MortalityEventBiomass::DoExecute() {
   /**
    * Work out the exploitation rate to remove (catch/vulnerable)
    */
-  Double exploitation = catch_years_[model_->current_year()] / utilities::doublecompare::ZeroFun(vulnerable);
+  Double exploitation = catch_years_[model_->current_year()] / math::ZeroFun(vulnerable);
   if (exploitation > u_max_) {
     exploitation = u_max_;
     actual_catches_.push_back(vulnerable * u_max_);

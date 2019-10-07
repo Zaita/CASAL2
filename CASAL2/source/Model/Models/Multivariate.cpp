@@ -10,7 +10,7 @@
 // headers
 #include "Multivariate.h"
 
-#include <Eigen/Eigen>
+//#include <Eigen/Eigen>
 
 #include "Estimates/Manager.h"
 #include "Model/Managers.h"
@@ -26,7 +26,8 @@
 // namespaces
 namespace niwa {
 namespace model {
-using std::swap;
+
+namespace math = niwa::utilities::math;
 
 /**
  *
@@ -80,56 +81,57 @@ bool Multivariate::Start(RunMode::Type run_mode) {
  *
  */
 void Multivariate::DoValidate() { }
-
-class Mvn
-{
-public:
-  Mvn(const Eigen::VectorXd& mu,
-      const Eigen::MatrixXd& s) : mean(mu), sigma(s) { };
-  ~Mvn() { };
-  double pdf(const Eigen::VectorXd& x) const {
-  	double n = x.rows();
-		double sqrt2pi = std::sqrt(2 * PI);
-		double quadform  = (x - mean).transpose() * sigma.inverse() * (x - mean);
-		double norm = std::pow(sqrt2pi, - n) *
-									std::pow(sigma.determinant(), - 0.5);
-
-		return norm * exp(-0.5 * quadform);
-  }
-
-  Eigen::VectorXd sample(unsigned int nr_iterations = 20) const;
-  Eigen::VectorXd mean;
-  Eigen::MatrixXd sigma;
-};
+//
+//class Mvn
+//{
+//public:
+//  Mvn(const Eigen::VectorXd& mu,
+//      const Eigen::MatrixXd& s) : mean(mu), sigma(s) { };
+//  ~Mvn() { };
+//  double pdf(const Eigen::VectorXd& x) const {
+//  	double n = x.rows();
+//		double sqrt2pi = std::sqrt(2 * math::PI);
+//		double quadform  = (x - mean).transpose() * sigma.inverse() * (x - mean);
+//		double norm = std::pow(sqrt2pi, - n) *
+//									std::pow(sigma.determinant(), - 0.5);
+//
+//		return norm * exp(-0.5 * quadform);
+//  }
+//
+//  Eigen::VectorXd sample(unsigned int nr_iterations = 20) const;
+//  Eigen::VectorXd mean;
+//  Eigen::MatrixXd sigma;
+//};
 
 void Multivariate::FullIteration() {
 	Reset();
 
 	// Define the covariance matrix and the mean
-	Eigen::MatrixXd sigma(2, 2);
-	sigma << 1, 0.1,
-					 0.1, 1;
-	Eigen::VectorXd mean(2);
-	mean << 0, 0;
-	Mvn mvn(mean, sigma);
+//	Eigen::MatrixXd sigma(2, 2);
+//	sigma << 1, 0.1,
+//					 0.1, 1;
+//	Eigen::VectorXd mean(2);
+//	mean << 0, 0;
+//	Mvn mvn(mean, sigma);
 
-	double new_x = 0.0;
-	double new_y = 0.0;
-
-	if (use_random_) {
-		new_x = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
-		new_y = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
-	} else {
-		new_x = managers().selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
-		new_y = managers().selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
-	}
-
-	Eigen::VectorXd test(2);
-	test << new_x, new_y;
-	objective_score_ = 1.0 - mvn.pdf(test);
-
-	managers().penalty()->FlagPenalty("PI_Approximation", objective_score_);
-	cout << "Objective Score: " << objective_score_ << "; new_x/new_y: " << new_x << "/" << new_y << endl;
+//	double new_x = 0.0;
+////	double new_y = 0.0;
+//
+//	if (use_random_) {
+//		new_x = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
+////		new_y = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
+//	} else {
+//		new_x = managers().selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
+////		new_y = managers().selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
+//	}
+//
+////	Eigen::VectorXd test(2);
+////	test << new_x, new_y;
+//	objective_score_ = exp(-new_x); //1.0 - mvn.pdf(test);
+//
+//	managers().penalty()->FlagPenalty("PI_Approximation", objective_score_);
+//	cout << "Objective Score: " << objective_score_ << "; new_x/new_y: " << new_x << endl; //<< "/" << new_y << endl;
+	LOG_FATAL() << "Multivariate Model type has not yet been implemented";
 }
 
 

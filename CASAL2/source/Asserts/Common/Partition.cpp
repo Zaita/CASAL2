@@ -16,7 +16,7 @@
 #include "Categories/Categories.h"
 #include "Partition/Category.h"
 #include "Partition/Partition.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // namespaces
 namespace niwa {
@@ -70,7 +70,7 @@ void Partition::Execute() {
     LOG_FATAL_P(PARAM_VALUES) << ": number of values provided (" << values_.size() << ") does not match partition size (" << data.size() << ")";
 
   for (unsigned i = 0; i < values_.size(); ++i) {
-    if (!utilities::doublecompare::IsBasicallyEqual(values_[i], data[i])) {
+    if (!utilities::math::IsBasicallyEqual(values_[i], data[i])) {
       std::streamsize prec = std::cout.precision();
       std::cout.precision(9);
 

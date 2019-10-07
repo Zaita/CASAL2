@@ -19,20 +19,61 @@
 
 // Headers
 #include <cmath>
+#include <map>
+#include <vector>
 
-#include "Utilities/DoubleCompare.h"
+#include "Logging/Logging.h"
 #include "Utilities/Types.h"
 #include "Utilities/Distribution.h"
-
-#define PI 3.14159265358979
 
 // Namespaces
 namespace niwa {
 namespace utilities {
 namespace math {
 
-namespace dc = niwa::utilities::doublecompare;
+using std::vector;
+using std::map;
 using niwa::utilities::Double;
+
+// Const Expressions
+constexpr double ONE 				= 1.0;
+constexpr double TRUE_ZERO 	= 0.0;
+constexpr double ZERO 			= 1e-15;
+constexpr double CLOSE 			= 1e-5;
+constexpr double DELTA 			= 1e-11;
+constexpr double PI = 3.14159265358979;
+
+constexpr bool IsZero(const Double& value) { return (value < ZERO && value > -ZERO); }
+
+//inline bool IsZero(const Double &value) { return (value < ZERO && value > -ZERO); }
+//inline bool IsInfinite(const Double &value) { return (isinf(value));}
+inline bool IsTrueZero(const Double &value) { return (value < TRUE_ZERO && value > -TRUE_ZERO); }
+inline bool IsOne(const Double &value) { return ( ((value-ONE) < ZERO) && ((value-ONE) > -ZERO) ); }
+inline bool IsEqual(Double A, Double B) { return ( ((A-B) < ZERO) && ((A-B) > -ZERO) ); }
+inline bool IsBasicallyEqual(Double A, Double B) { return ( ((A-B) < CLOSE) && ((A-B) > -CLOSE) ); }
+
+inline niwa::utilities::Double ZeroFun(Double x) {
+  if (x >= ZERO)
+    return x;
+
+  return ZERO / (2.0 - (x / ZERO));
+}
+
+inline niwa::utilities::Double ZeroFun(Double x, Double delta) {
+  if (x >= delta)
+    return x;
+
+  return delta / (2.0 - (x / delta));
+}
+
+#ifdef USE_AUTODIFF
+inline double ZeroFun(double x) {
+  if (x >= ZERO)
+    return x;
+
+  return ZERO / (2.0 - (x / ZERO));
+}
+#endif
 
 /**
  * LnGamma
@@ -231,9 +272,9 @@ inline void cond_assign(Double &res, const Double &cond, const Double &arg) {
  */
 
 inline Double scale_value(Double value, Double min, Double max) {
-  if (dc::IsEqual(value, min))
+  if (IsEqual(value, min))
     return -1;
-  else if (dc::IsEqual(value, max))
+  else if (IsEqual(value, max))
     return 1;
 
   return asin(2 * (value - min) / (max - min) - 1) / 1.57079633;
@@ -277,7 +318,7 @@ inline Double mean(const vector<Double>& Values){
 }
 
 // Return the mean for an unsigned map
-inline Double mean(const map<unsigned, Double>& Values){
+inline Double mean(const map<unsigned, Double>& Values) {
   Double mu = 0.0;
   Double total = 0.0;
   for (const auto& value : Values)

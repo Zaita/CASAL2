@@ -18,14 +18,16 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Utilities/DoubleCompare.h"
 #include "Categories/Categories.h"
 #include "Likelihoods/Manager.h"
 #include "Model/Managers.h"
 #include "Model/Model.h"
+#include "Utilities/Math.h"
 
 // Namespaces
 namespace niwa {
+
+namespace math = niwa::utilities::math;
 
 /**
  * Default Constructor
@@ -36,7 +38,7 @@ Observation::Observation(Model* model) : model_(model) {
   parameters_.Bind<string>(PARAM_TYPE, &type_, "Type of observation", "");
   parameters_.Bind<string>(PARAM_LIKELIHOOD, &likelihood_type_, "Type of likelihood to use", "");
   parameters_.Bind<string>(PARAM_CATEGORIES, &category_labels_, "Category labels to use", "", true);
-  parameters_.Bind<Double>(PARAM_DELTA, &delta_, "Robustification value (delta) for the likelihood", "", DELTA);
+  parameters_.Bind<Double>(PARAM_DELTA, &delta_, "Robustification value (delta) for the likelihood", "", math::DELTA);
   parameters_.Bind<string>(PARAM_SIMULATION_LIKELIHOOD, &simulation_likelihood_label_, "Simulation likelihood to use", "", "");
   parameters_.Bind<Double>(PARAM_LIKELIHOOD_MULTIPLIER, &likelihood_multiplier_, "Likelihood score multiplier", "", Double(1.0));
   parameters_.Bind<Double>(PARAM_ERROR_VALUE_MULTIPLIER, &error_value_multiplier_, "Error value multiplier for likelihood", "", Double(1.0));

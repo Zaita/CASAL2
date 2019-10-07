@@ -13,14 +13,14 @@
 
 #include "Observations/Manager.h"
 #include "Observations/Observation.h"
-#include "Utilities/DoubleCompare.h"
+#include "Utilities/Math.h"
 
 // namespaces
 namespace niwa {
 namespace reports {
 
 namespace obs = niwa::observations;
-namespace dc = niwa::utilities::doublecompare;
+namespace math = niwa::utilities::math;
 
 /**
  *
@@ -80,9 +80,9 @@ void Observation::DoExecute() {
     for (auto iter = comparisons.begin(); iter != comparisons.end(); ++iter) {
       for (obs::Comparison comparison : iter->second) {
         if(observation_->likelihood() == PARAM_BINOMIAL){
-          resid =(comparison.observed_ - comparison.expected_) / sqrt((dc::ZeroFun(comparison.expected_, comparison.delta_) * (1 - dc::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
+          resid =(comparison.observed_ - comparison.expected_) / sqrt((math::ZeroFun(comparison.expected_, comparison.delta_) * (1 - math::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_MULTINOMIAL) {
-            resid = (comparison.observed_ - comparison.expected_) / sqrt((dc::ZeroFun(comparison.expected_, comparison.delta_) * (1 - dc::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
+            resid = (comparison.observed_ - comparison.expected_) / sqrt((math::ZeroFun(comparison.expected_, comparison.delta_) * (1 - math::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_BINOMIAL_APPROX) {
             resid = (comparison.observed_ - comparison.expected_) / sqrt(((comparison.expected_ + comparison.delta_) * (1 -comparison.expected_ + comparison.delta_)) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_LOGNORMAL) {
@@ -312,9 +312,9 @@ void Observation::DoExecuteTabular() {
     for (auto iter = comparisons.begin(); iter != comparisons.end(); ++iter) {
       for (obs::Comparison comparison : iter->second) {
         if(observation_->likelihood() == PARAM_BINOMIAL){
-          resid =(comparison.observed_ - comparison.expected_) / sqrt((dc::ZeroFun(comparison.expected_, comparison.delta_) * (1 - dc::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
+          resid =(comparison.observed_ - comparison.expected_) / sqrt((math::ZeroFun(comparison.expected_, comparison.delta_) * (1 - math::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_MULTINOMIAL) {
-            resid = (comparison.observed_ - comparison.expected_) / sqrt((dc::ZeroFun(comparison.expected_, comparison.delta_) * (1 - dc::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
+            resid = (comparison.observed_ - comparison.expected_) / sqrt((math::ZeroFun(comparison.expected_, comparison.delta_) * (1 - math::ZeroFun(comparison.expected_, comparison.delta_))) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_BINOMIAL_APPROX) {
             resid = (comparison.observed_ - comparison.expected_) / sqrt(((comparison.expected_ + comparison.delta_) * (1 -comparison.expected_ + comparison.delta_)) / comparison.adjusted_error_);
         } else if (observation_->likelihood() == PARAM_LOGNORMAL) {
