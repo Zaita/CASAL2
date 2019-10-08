@@ -75,12 +75,88 @@ class SystemInfo:
       return
     
     return path
-  
+	
+  """
+  This method will determine the compiler to use
+  """
+  def determine_compiler(self):
+    ext = ""
+    if Globals.operating_system_ == "windows":
+      ext = ".exe"
+    # Check for GCC
+    target = "clang++" + ext
+    p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.wait() == 0:
+      Globals.compiler_ = "clang"
+      Globals.compiler_path_ = out.decode("utf-8").rstrip() 
+      print("-- Clang Path: " + out.decode("utf-8").rstrip())
+      return
+
+    target = "g++" + ext
+    p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.wait() == 0:
+      Globals.compiler_ = "gcc"
+      Globals.compiler_path_ = out.decode("utf-8").rstrip() 
+      print("-- G++ Path: " + out.decode("utf-8").rstrip())
+      return
+
+    target = "cl" + ext
+    p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.wait() == 0:
+      Globals.compiler_ = "msvc"
+      Globals.compiler_path_ = out.decode("utf-8").rstrip()
+      print("-- Visual Studio Path: " + out.decode("utf-8").rstrip())
+      return      
+    
+    Globals.PrintError("Could not find a suitable compiler. Checked for clang++, g++ and MS Visual Studio")   
+    exit(-1)
+
+  """
+  Find out Compiler version
+  """
+  def find_compiler_version(self):
+    if Globals.operating_system_ == "windows":
+      Globals.compiler_path_ = Globals.compiler_path_.replace("/", "\\")
+
+    if Globals.compiler_ == "clang":
+      return self.find_clang_version()
+    elif Globals.compiler_ == "gcc":
+      return self.find_gcc_version()
+    elif Globals.compiler_ == "msvc":
+      return self.find_msvc_version()
+
+    return False
+
+
+  """
+  Find the version of the Clang++ compiler we're using
+  """
+  def find_clang_version(self):
+    print("--> Searching for clang compiler verstion in '" + Globals.compiler_path_ + "'")
+    p = subprocess.Popen([Globals.compiler_path_, "-v"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if (p.wait() != 0):
+      return Globals.PrintError("clang++ did not return expected output format to determine the version")
+
+    version = str(err).split(' ')[2]
+    Globals.compiler_version_ = version.lstrip().rstrip()
+    print("--> clang++ version: " + version)
+
+    pieces = Globals.compiler_version_.split('.')
+    if int(pieces[0]) < 9:
+      return Globals.PrintError("clang++ version " + Globals.compiler_version_ + " is not supported due to it's age")
+
+    return True
+
   """
   This method will find the GCC Version
   """
   def find_gcc_version(self):
-    p = subprocess.Popen([Globals.compiler_path_ + "/g++", "-v"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print("--> Searching for g++ compiler verstion in '" + Globals.compiler_path_ + "'")
+    p = subprocess.Popen([Globals.compiler_path_, "-v"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
     err_lines = re.split('version', str(err))
     target_line = err_lines[len(err_lines) - 1].lstrip().rstrip()
@@ -90,7 +166,31 @@ class SystemInfo:
       return Globals.PrintError('STD out did not return correct GCC Version format ' + str(len(pieces)) + ': ' + target_line)
 
     Globals.compiler_version_ = pieces[0].lstrip().rstrip()
-    print('--> Compiler Version: ' + Globals.compiler_version_)
-    
+    print('--> gcc version: ' + Globals.compiler_version_)
+
+    pieces = Globals.compiler_version_.split('.')
+    if int(pieces[0]) < 7:
+      return Globals.PrintError("g++ version " + Globals.compiler_version_ + " is not supported due to it's age")
+
     return True
+
+  """
+  Find the version of the Microsoft Visual Studio Compiler
+  """
+  def find_msvc_version(self):
+    print("--> Searching for msvc compiler verstion in '" + Globals.compiler_path_ + "'")
+    p = subprocess.Popen([Globals.compiler_path_, "/?"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if (p.wait() != 0):
+      return Globals.PrintError("msvc did not return expected output format to determine the version")
+
+    version = str(err).split(' ')[6]
+    Globals.compiler_version_ = version.lstrip().rstrip()
+    print("--> msvc version: " + version)
+
+    pieces = Globals.compiler_version_.split('.')
+    if int(pieces[0]) < 19:
+      return Globals.PrintError("msvc version " + Globals.compiler_version_ + " is not supported due to it's age")
+
+    return True    
   

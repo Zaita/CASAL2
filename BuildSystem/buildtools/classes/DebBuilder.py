@@ -6,7 +6,6 @@ import shutil
 import fileinput
 import re
 from datetime import datetime, date
-from dateutil import tz
 import Globals
 from Builder import *
 
@@ -15,16 +14,16 @@ EX_OK = getattr(os, "EX_OK", 0)
 class DebBuilder:
   do_build_ = "doBuild"
   def start(self, skip_building = 'false'):
-    print '-- Starting Deb Builder'
-    print '-- Skip Building Archive? ' + skip_building
+    print('-- Starting Deb Builder')
+    print('-- Skip Building Archive? ' + skip_building)
 
     if skip_building != 'false':
       if Globals.operating_system_ == "windows":
         self.do_build_ += '.bat'
       else:
         self.do_build_ = './' + self.do_build_ + '.sh'
-      print '--> Building CASAL2 Archive'
-      print '-- Re-Entering the build sytem to build a release binary'
+      print('--> Building CASAL2 Archive')
+      print('-- Re-Entering the build sytem to build a release binary')
       if os.system(self.do_build_ + ' archive') != EX_OK:
         return Globals.PrintError('Failed to build CASAL2 archive')
 
@@ -33,10 +32,10 @@ class DebBuilder:
     lines = out.split('\n')          
     if len(lines) != 3:
       return Globals.PrintError('Format printed by GIT did not meet expectations. Expected 3 lines but got ' + str(len(lines)))
-    print '-- CASAL2 Revision: ' + lines[1]
+    print('-- CASAL2 Revision: ' + lines[1])
     if not os.path.exists('bin/linux/deb'):
       os.mkdir('bin/linux/deb')
-    print lines[1]
+    print(lines[1])
     folder = 'bin/linux/deb/Casal2'   
     os.system('rm -rf ' + folder)
     os.makedirs(folder + '/usr/local/bin')

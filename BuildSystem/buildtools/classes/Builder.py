@@ -111,8 +111,9 @@ class ThirdPartyLibraries:
   lib_special_directory = ""
   
   def start(self):
-    print( "--> Starting build of the third party libraries")
-    print( "-- Operating System: " + Globals.operating_system_)
+    print("--> Starting build of the third party libraries")
+    print("-- Operating System: " + Globals.operating_system_)
+    print("-- Compiler: " + Globals.compiler_)
   
     print( "-- Checking if output folder structure exists"  )
     self.output_directory_ = os.path.normpath(os.getcwd()) + "/bin/" + Globals.operating_system_ + "/thirdparty"

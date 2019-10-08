@@ -12,11 +12,11 @@ from System import *
 from Globals import *
 from Builder import *
 from Documentation import *
-#from Archiver import *
+from Archiver import *
 #from rlibrary import *
 from ModelRunner import *
 #from Installer import *
-#from DebBuilder import *
+from DebBuilder import *
 
 """
 Print the usage for this build system
@@ -60,16 +60,16 @@ gets all of the system information we need and will
 test that executables are in the path that we need
 """
 def start_build_system():
+  system_info.determine_compiler();
+
   if Globals.operating_system_ == "windows":
     Globals.cmd_path_      = system_info.find_exe_path('cmd.exe')
     Globals.python_cmd_    = "python"
-    Globals.compiler_path_ = system_info.find_exe_path('g++.exe')
     Globals.gfortran_path_ = system_info.find_exe_path('gfortran.exe')
     Globals.latex_path_    = system_info.find_exe_path('bibtex.exe')
     Globals.git_path_      = system_info.find_exe_path('git.exe')    
   else:
     Globals.python_cmd_    = "python3"
-    Globals.compiler_path_ = system_info.find_exe_path('g++')
     Globals.gfortran_path_ = system_info.find_exe_path('gfortran')
     Globals.latex_path_    = system_info.find_exe_path('bibtex')
     Globals.git_path_      = system_info.find_exe_path('git')    
@@ -79,22 +79,12 @@ def start_build_system():
       return Globals.PrintError('cmake is not in the current path. Please ensure it has been intalled')    
   system_info.set_new_path()
 
-  if Globals.compiler_path_ == "":
-    return Globals.PrintError("g++ is not in the current path")
-  #if Globals.gfortran_path_ == "":
-  #  return Globals.PrintError("gfortran for g++ is not installed. Please install the GCC Fortran compiler")
   if Globals.git_path_ == "":
     return Globals.PrintError("git is not in the current path. Please install a git command line client (e.g http://git-scm.com/downloads)")  
   if Globals.operating_system_ == 'windows' and os.path.exists(Globals.git_path_ + '\\sh.exe'):
   	return Globals.PrintError("git version has sh.exe in the same location. This will conflict with cmake. Please upgrade to a 64bit version of Git")    
-  if not system_info.find_gcc_version():
+  if not system_info.find_compiler_version():
     return False
-
-  # Check the compiler version to see if it's compatible
-  pieces = Globals.compiler_version_.split('.')
-  gcc_version = str(pieces[0]) + str(pieces[1])
-  if gcc_version < '48':
-    return Globals.PrintError("G++ version " + Globals.compiler_version_ + " is not supported due to its age")
 
   return True  
 

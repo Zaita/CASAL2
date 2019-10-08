@@ -24,13 +24,13 @@ ENDIF ()
 IF (WIN32)
  ## WINDOWS BUILD VARIABLES AND LIBRARIES
  SET(buildOS windows) 
- SET(COMPILE_OPTIONS "${COMPILE_OPTIONS} -D__GNUDOS__ -std=c++11")
+ SET(COMPILE_OPTIONS "${COMPILE_OPTIONS} -D__GNUDOS__ -std=c++17")
  SET(thirdPartyLibraries ${thirdPartyLibraries} pthread)
  
 ELSE (WIN32)
  ## LINUX BUILD VARIABLES AND LIBRARIES
  SET(buildOS linux)
- SET(COMPILE_OPTIONS "${COMPILE_OPTIONS} -fPIC -std=c++11")
+ SET(COMPILE_OPTIONS "${COMPILE_OPTIONS} -fPIC -std=c++17")
  SET(thirdPartyLibraries ${thirdPartyLibraries} pthread rt)
 ENDIF ()
 
