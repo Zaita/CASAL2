@@ -84,15 +84,6 @@ class SystemInfo:
     if Globals.operating_system_ == "windows":
       ext = ".exe"
     # Check for GCC
-    target = "clang++" + ext
-    p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    if p.wait() == 0:
-      Globals.compiler_ = "clang"
-      Globals.compiler_path_ = out.decode("utf-8").rstrip() 
-      print("-- Clang Path: " + out.decode("utf-8").rstrip())
-      return
-
     target = "g++" + ext
     p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
@@ -102,6 +93,7 @@ class SystemInfo:
       print("-- G++ Path: " + out.decode("utf-8").rstrip())
       return
 
+    # Check for Visual Studio
     target = "cl" + ext
     p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
@@ -109,7 +101,17 @@ class SystemInfo:
       Globals.compiler_ = "msvc"
       Globals.compiler_path_ = out.decode("utf-8").rstrip()
       print("-- Visual Studio Path: " + out.decode("utf-8").rstrip())
-      return      
+      return   
+
+    # Check for Clang
+    target = "clang++" + ext
+    p = subprocess.Popen(["which", target], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    if p.wait() == 0:
+      Globals.compiler_ = "clang"
+      Globals.compiler_path_ = out.decode("utf-8").rstrip() 
+      print("-- Clang Path: " + out.decode("utf-8").rstrip())
+      return
     
     Globals.PrintError("Could not find a suitable compiler. Checked for clang++, g++ and MS Visual Studio")   
     exit(-1)
