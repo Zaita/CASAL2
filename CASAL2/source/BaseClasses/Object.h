@@ -21,6 +21,7 @@
 
 // Headers
 #include <string>
+#include <string_view>
 #include <memory>
 
 #include "Logging/Logging.h"
@@ -66,6 +67,7 @@ using std::string;
 using utilities::OrderedMap;
 using std::vector;
 using std::map;
+using std::string_view;
 
 // classes
 class Object {
@@ -107,6 +109,9 @@ public:
   void                        set_estimated(bool value) { is_estimated_ = value;} // This should only be used in Estimate/Creator/EstimateTransformations
   void                        set_time_varying(bool value) { is_time_varying_ = value;} // This should only be TimeVarying.cpp
   string                      block_type() const { return block_type_; }
+
+  // Operators
+	bool operator==(string_view label) const { return label == label_; }
 
 protected:
   // Methods

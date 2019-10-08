@@ -24,6 +24,12 @@ namespace base {
 using std::cout;
 using std::endl;
 
+// Friend Operators
+bool inline operator== (const Object* o, string_view label)
+{
+    return label == o->label();
+}
+
 /**
  * This method will check to see if the addressable has been registered
  * or not

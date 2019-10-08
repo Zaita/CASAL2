@@ -101,14 +101,14 @@ void Manager::Validate(Model* model) {
     vector<string> estimable_labels = estimables.GetEstimables();
 
     for (string label : estimable_labels) {
-      bool match = [](string label, vector<Estimate*> objects) -> bool {
+      auto match = [](string label, vector<Estimate*>& objects) -> bool {
         for (Estimate* estimate : objects) {
           if (estimate->label() == label)
             return true;
         }
         return false;
       };
-      if (!match)
+      if (!match(label, objects_))
         LOG_ERROR() << "The estimable " << label << " was defined in the estimable value file, but has not been defined as an @estimate";
     }
   }
