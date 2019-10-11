@@ -596,7 +596,7 @@ void IndependenceMetropolis::DoExecute() {
     new_link.values_                        = previous_untransformed_candidates;
     chain_.push_back(new_link);
     // Print first value
-		model_->managers().report()->Execute(State::kIterationComplete);
+		model_->managers().report()->Execute(model_->pointer(), State::kIterationComplete);
 
   }
 
@@ -706,7 +706,7 @@ void IndependenceMetropolis::DoExecute() {
 			new_link.values_ = previous_untransformed_candidates;
 			chain_.push_back(new_link);
 			//LOG_MEDIUM() << "Storing: Successful Jumps " << successful_jumps_ << " Jumps : " << jumps_;
-			model_->managers().report()->Execute(State::kIterationComplete);
+			model_->managers().report()->Execute(model_->pointer(), State::kIterationComplete);
 		}
   } while (jumps_ < length_);
 }

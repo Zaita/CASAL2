@@ -34,20 +34,20 @@ public:
   // methods
   VectorSmoothing(Model* model);
   virtual                     ~VectorSmoothing() = default;
-  Double                      GetScore() override final;
+  Double                      GetScore() final;
 
 protected:
   // methods
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
+  void                        DoValidate() final {};
+  void                        DoBuild() final;
   // members
   map<unsigned, Double>*      addressable_map_ = nullptr;
   vector<Double>*             addressable_vector_ = nullptr;
   bool                        log_scale_ = false;
   Double                      multiplier_ = 0.0;
   unsigned                    r_ = 0;
-  unsigned                    upper_;
-  unsigned                    lower_;
+  unsigned                    upper_ = 0;
+  unsigned                    lower_ = 0;
 };
 
 } /* namespace additionalpriors */

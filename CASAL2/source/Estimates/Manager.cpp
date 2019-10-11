@@ -132,14 +132,14 @@ void Manager::Build(Model* model) {
   if (model->global_configuration().create_mpd_file()) {
     model->managers().report()->Pause();
 
-    reports::MPD* report = new reports::MPD(model);
+    reports::MPD* report = new reports::MPD();
     report->set_block_type(PARAM_REPORT);
     report->set_defined_file_name(__FILE__);
     report->set_defined_line_number(__LINE__);
     report->parameters().Add(PARAM_LABEL, "mpd", __FILE__, __LINE__);
     report->parameters().Add(PARAM_TYPE, PARAM_MPD, __FILE__, __LINE__);
     report->parameters().Add(PARAM_FILE_NAME, "mpd.out", __FILE__, __LINE__);
-    report->Validate();
+    report->Validate(model->pointer());
     model->managers().report()->AddObject(report);
 
     model->managers().report()->Resume();

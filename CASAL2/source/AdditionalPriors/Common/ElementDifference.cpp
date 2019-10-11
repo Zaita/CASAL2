@@ -29,13 +29,6 @@ ElementDifference::ElementDifference(Model* model) : AdditionalPrior(model) {
 }
 
 /**
- * Validate our parameters
- */
-void ElementDifference::DoValidate() {
-
-}
-
-/**
  * Build our parameters
  */
 void ElementDifference::DoBuild() {
@@ -44,7 +37,6 @@ void ElementDifference::DoBuild() {
   if (!model_->objects().VerfiyAddressableForUse(second_parameter_, addressable::kLookup, error)) {
     LOG_FATAL_P(PARAM_SECOND_PARAMETER) << "could not be verified for use in additional_prior.element_difference. Error was " << error;
   }
-  error = "";
   if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {
     LOG_FATAL_P(PARAM_PARAMETER) << "could not be verified for use in additional_prior.element_difference. Error was " << error;
   }
@@ -138,6 +130,8 @@ void ElementDifference::DoBuild() {
  * @return Penalty score
  */
 Double ElementDifference::GetScore() {
+	// TODO: Use function pointers to clean this shit up
+
   LOG_TRACE();
   vector<Double> values;
   vector<Double> second_values;

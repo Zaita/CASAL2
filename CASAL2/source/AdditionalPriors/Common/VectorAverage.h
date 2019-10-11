@@ -32,12 +32,12 @@ public:
   // methods
   VectorAverage(Model* model);
   virtual                     ~VectorAverage() = default;
-  Double                      GetScore() override final;
+  Double                      GetScore() final;
 
 protected:
   // methods
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
+  void                        DoValidate() final {};
+  void                        DoBuild() final;
   // members
   string                      method_ = "";
   map<unsigned, Double>*      addressable_map_ = nullptr;

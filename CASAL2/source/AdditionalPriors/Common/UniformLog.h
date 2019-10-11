@@ -6,10 +6,6 @@
  * @section LICENSE
  *
  * Copyright NIWA Science ©2014 - www.niwa.co.nz
- *
- * @section DESCRIPTION
- *
- * TODO: Add documentation
  */
 #ifndef ADDITIONALPRIORS_UNIFORM_LOG_H_
 #define ADDITIONALPRIORS_UNIFORM_LOG_H_
@@ -28,9 +24,9 @@ public:
   // methods
 	UniformLog(Model* model);
   virtual                     ~UniformLog() = default;
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
-  Double                      GetScore() override final;
+  void                        DoValidate() final {};
+  void                        DoBuild() final;
+  Double                      GetScore() final;
 
 protected:
   // members

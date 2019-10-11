@@ -32,7 +32,7 @@ using std::cout;
 using std::endl;
 using std::ios_base;
 
-std::mutex Report::lock_;
+//std::mutex Report::lock_;
 
 inline bool DoesFileExist(const string& file_name) {
   LOG_FINEST() << "Checking if file exists: " << file_name;
@@ -47,7 +47,7 @@ inline bool DoesFileExist(const string& file_name) {
 /**
  * Default constructor
  */
-Report::Report(Model* model) : model_(model) {
+Report::Report() {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label for the report", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The type of report", "");
   parameters_.Bind<string>(PARAM_FILE_NAME, &file_name_, "The File Name if you want this report to be in a seperate file", "", "");
@@ -60,19 +60,19 @@ Report::Report(Model* model) : model_(model) {
  * we cannot specify things like time step and year
  * when the report is not running in the execute phase.
  */
-void Report::Validate() {
-  parameters_.Populate(model_);
-  DoValidate();
+void Report::Validate(shared_ptr<Model> model) {
+  parameters_.Populate(model.get());
+  DoValidate(model);
 }
 
 /**
  *
  */
-void Report::Build() {
-  if (time_step_ != "" && !model_->managers().time_step()->GetTimeStep(time_step_))
+void Report::Build(shared_ptr<Model> model) {
+  if (time_step_ != "" && !model->managers().time_step()->GetTimeStep(time_step_))
     LOG_ERROR_P(PARAM_TIME_STEP) << ": " << time_step_ << " could not be found. Have you defined it?";
 
-  DoBuild();
+  DoBuild(model);
 }
 
 /**
@@ -92,36 +92,39 @@ bool Report::HasYear(unsigned year) {
  * post-build in the model and will allow the report to check if
  * the file it wants to write to exists etc.
  */
-void Report::Prepare() {
+void Report::Prepare(shared_ptr<Model> model) {
   LOG_FINEST() << "preparing report: " << label_;
   Report::lock_.lock();
   SetUpInternalStates();
-  DoPrepare();
+  DoPrepare(model);
   Report::lock_.unlock();
 };
 
 /**
  *
  */
-void Report::Execute() {
+void Report::Execute(shared_ptr<Model> model) {
   Report::lock_.lock();
-  DoExecute();
+  if (model == nullptr)
+  	LOG_CODE_ERROR() << "(model == nullptr)";
+
+  DoExecute(model);
   Report::lock_.unlock();
 }
 
 /**
  *
  */
-void Report::Finalise() {
+void Report::Finalise(shared_ptr<Model> model) {
   Report::lock_.lock();
-  DoFinalise();
+  DoFinalise(model);
   Report::lock_.unlock();
 };
 
 /**
  * Prepare the report
  */
-void Report::PrepareTabular() {
+void Report::PrepareTabular(shared_ptr<Model> model) {
   LOG_FINEST() << "preparing tabular report: " << label_;
   // Put a header in
 
@@ -130,8 +133,8 @@ void Report::PrepareTabular() {
 
   // Put a header in each file. this is for R library compatibility more than anything.
   if (file_name_ != "" && write_mode_ == PARAM_OVERWRITE)
-    cache_ << model_->global_configuration().standard_header() << "\n";
-  DoPrepareTabular();
+    cache_ << model->global_configuration().standard_header() << "\n";
+  DoPrepareTabular(model);
   Report::lock_.unlock();
 
 
@@ -140,18 +143,18 @@ void Report::PrepareTabular() {
 /**
  *
  */
-void Report::ExecuteTabular() {
+void Report::ExecuteTabular(shared_ptr<Model> model) {
   Report::lock_.lock();
-  DoExecuteTabular();
+  DoExecuteTabular(model);
   Report::lock_.unlock();
 }
 
 /**
  *
  */
-void Report::FinaliseTabular() {
+void Report::FinaliseTabular(shared_ptr<Model> model) {
   Report::lock_.lock();
-  DoFinaliseTabular();
+  DoFinaliseTabular(model);
   Report::lock_.unlock();
 }
 
@@ -193,7 +196,9 @@ void Report::FlushCache() {
    * Are we writing to a file?
    */
   if (file_name_ != "") {
-    string suffix = model_->managers().report()->report_suffix();
+    string suffix = ".fixme"; // model_->managers().report()->report_suffix();
+    LOG_CODE_ERROR() << "fix me now";
+    // TODO: Should store this as part of build process
 
     bool overwrite = false;
     if (first_write_ || suffix != last_suffix_)

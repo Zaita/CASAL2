@@ -19,7 +19,7 @@ namespace reports {
 /**
  *
  */
-TimeVarying::TimeVarying(Model* model) : Report(model) {
+TimeVarying::TimeVarying() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection | RunMode::kEstimation | RunMode::kSimulation);
   model_state_ = (State::Type)(State::kIterationComplete);
 }
@@ -27,10 +27,10 @@ TimeVarying::TimeVarying(Model* model) : Report(model) {
 /**
  *
  */
-void TimeVarying::DoExecute() {
+void TimeVarying::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  timevarying::Manager& manager = *model_->managers().time_varying();
-  auto time_varying = manager.objects();
+  auto manager = model->managers().time_varying();
+  auto time_varying = manager->objects();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
 
   for (auto time_var : time_varying) {
@@ -51,12 +51,12 @@ void TimeVarying::DoExecute() {
 /**
  * Execute Tabular report
  */
-void TimeVarying::DoExecuteTabular() { }
+void TimeVarying::DoExecuteTabular(shared_ptr<Model> model) { }
 
 /**
  *
  */
-void TimeVarying::DoFinaliseTabular() {
+void TimeVarying::DoFinaliseTabular(shared_ptr<Model> model) {
 }
 
 } /* namespace reports */

@@ -17,6 +17,8 @@
 #define MODEL_H_
 
 // Headers
+#include <memory>
+
 #include "BaseClasses/Executor.h"
 #include "BaseClasses/Object.h"
 #include "GlobalConfiguration/GlobalConfiguration.h"
@@ -61,7 +63,7 @@ enum Type {
 /**
  * Class definition
  */
-class Model : public base::Object {
+class Model : public base::Object, public std::enable_shared_from_this<Model> {
 public:
   // Methods
   Model();
@@ -113,6 +115,7 @@ public:
   virtual Partition&          partition();
   virtual ObjectiveFunction&  objective_function();
   EquationParser&             equation_parser();
+  shared_ptr<Model>						pointer() { return shared_from_this(); }
 
 protected:
   // Methods

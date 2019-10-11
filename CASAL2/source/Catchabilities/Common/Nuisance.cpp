@@ -41,16 +41,11 @@ Nuisance::Nuisance(Model* model) : Catchability(model) {
 }
 
 /*
- *
- */
-void Nuisance::DoValidate() {
-}
-
-/*
  *  Build
  */
-
 void Nuisance::DoBuild() {
+	// TODO: Fix this shit. Building dynamic parameter feels horrible.
+
   LOG_TRACE();
 
   //This was the first path that I went down, the second was going down an additional prior.
@@ -112,7 +107,7 @@ void Nuisance::DoBuild() {
  *
  * @return this function will solve for q given the comparison structure.
  */
-void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comparisons,const string& likelihood) {
+void Nuisance::CalculateQ(map<unsigned, vector<observations::Comparison> >& comparisons, string_view likelihood) {
   LOG_TRACE();
   LOG_FINEST() << "Converting nuisance q with prior = " << prior_type_ << " and likelihood = " << likelihood;
   if (likelihood != PARAM_NORMAL && likelihood != PARAM_LOGNORMAL) {

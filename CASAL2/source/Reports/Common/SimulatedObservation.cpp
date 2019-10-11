@@ -21,7 +21,7 @@ namespace reports {
 /**
  * default constructor
  */
-SimulatedObservation::SimulatedObservation(Model* model) : Report(model) {
+SimulatedObservation::SimulatedObservation() {
   run_mode_    = RunMode::kSimulation;
   model_state_ = State::kIterationComplete;
   skip_tags_   = true;
@@ -32,8 +32,8 @@ SimulatedObservation::SimulatedObservation(Model* model) : Report(model) {
 /**
  * build method
  */
-void SimulatedObservation::DoBuild() {
-  observation_ = model_->managers().observation()->GetObservation(observation_label_);
+void SimulatedObservation::DoBuild(shared_ptr<Model> model) {
+  observation_ = model->managers().observation()->GetObservation(observation_label_);
   if (!observation_)
     LOG_ERROR_P(PARAM_OBSERVATION) << "(" << observation_label_ << ") could not be found. Have you defined it?";
 }
@@ -41,7 +41,7 @@ void SimulatedObservation::DoBuild() {
 /**
  * execute method
  */
-void SimulatedObservation::DoExecute() {
+void SimulatedObservation::DoExecute(shared_ptr<Model> model) {
   cache_ << CONFIG_SECTION_SYMBOL << PARAM_OBSERVATION << " " << label_ << "\n";
   bool biomass_abundance_obs = false;
   ParameterList& parameter_list = observation_->parameters();

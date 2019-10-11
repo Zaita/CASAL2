@@ -53,6 +53,9 @@ void Beta::DoValidate() {
       << b_ << " - " << mu_ << ") / (" << sigma_ << " * " << sigma_ << ") - 1.0 == " << max_sigma << " <= 0.0";
 }
 
+/**
+ * Do the build of our beta prior
+ */
 void Beta::DoBuild() {
 	string error = "";
 	if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {
@@ -60,18 +63,11 @@ void Beta::DoBuild() {
 	}
   addressable::Type addressable_type = model_->objects().GetAddressableType(parameter_);
   LOG_FINEST() << "type = " << addressable_type;
-  switch(addressable_type) {
-    case addressable::kInvalid:
-      LOG_CODE_ERROR() << "Invalid addressable type: " << parameter_;
-      break;
-    case addressable::kSingle:
-    	addressable_ = model_->objects().GetAddressable(parameter_);
-      break;
-    default:
-      LOG_ERROR() << "The addressable you have provided for use in a additional priors: " << parameter_ << " is not a type that is supported for Beta additional priors";
-      break;
+  if (addressable_type == addressable::kSingle) {
+  	addressable_ = model_->objects().GetAddressable(parameter_);
+  } else {
+  	LOG_ERROR() << "The addressable you have provided for use in a additional priors: " << parameter_ << " is not a type that is supported for Beta additional priors";
   }
-
 }
 
 /**

@@ -22,7 +22,7 @@ namespace reports {
 /**
  * Default constructor
  */
-CategoryInfo::CategoryInfo(Model* model) : Report(model) {
+CategoryInfo::CategoryInfo() {
   run_mode_    = RunMode::kBasic;
   model_state_ = State::kFinalise;
 }
@@ -30,10 +30,8 @@ CategoryInfo::CategoryInfo(Model* model) : Report(model) {
 /**
  *
  */
-void CategoryInfo::DoExecute() {
-
-
-  auto categories = model_->categories();
+void CategoryInfo::DoExecute(shared_ptr<Model> model) {
+  auto categories = model->categories();
   vector<string> names = categories->category_names();
 
   cache_ << "*" << label_ << " " << "("<< type_ << ")"<<"\n";

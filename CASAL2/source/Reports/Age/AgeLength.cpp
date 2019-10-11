@@ -17,7 +17,7 @@ namespace niwa {
 namespace reports {
 namespace age {
 
-AgeLength::AgeLength(Model* model) : Report(model) {
+AgeLength::AgeLength() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection);
   model_state_ = State::kExecute;
 
@@ -27,28 +27,28 @@ AgeLength::AgeLength(Model* model) : Report(model) {
   parameters_.Bind<string>(PARAM_CATEGORY, &category_, "", "");
 }
 
-void AgeLength::DoValidate() {
+void AgeLength::DoValidate(shared_ptr<Model> model) {
  if (!parameters_.Get(PARAM_YEARS)->has_been_defined()) {
-   years_ = model_->years();
+   years_ = model->years();
  }
 }
 
 /**
  *
  */
-void AgeLength::DoExecute() {
-  auto age_length = model_->managers().age_length()->FindAgeLength(age_length_label_);
+void AgeLength::DoExecute(shared_ptr<Model> model) {
+  auto age_length = model->managers().age_length()->FindAgeLength(age_length_label_);
   if (!age_length)
     LOG_FATAL() << "Could not find age_length " << age_length_label_ << " for the report";
 
-  unsigned min_age = model_->min_age();
-  unsigned max_age = model_->max_age();
-  unsigned year = model_->current_year();
-  unsigned time_steps = model_->time_steps().size();
+  unsigned min_age = model->min_age();
+  unsigned max_age = model->max_age();
+  unsigned year = model->current_year();
+  unsigned time_steps = model->time_steps().size();
 
   // Print the header
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
-  cache_ << "year: " << model_->current_year() << "\n";
+  cache_ << "year: " << model->current_year() << "\n";
   cache_ << "time_step: " << time_step_ << "\n";
 
   cache_ << "year time_step ";
@@ -67,12 +67,12 @@ void AgeLength::DoExecute() {
 
   cache_ << "year time_step ";
   cache_ << "age  ";
-  for (auto length : model_->length_bins())
+  for (auto length : model->length_bins())
     cache_ << "L(" << length << ") ";
   cache_ << "\n";
 
-  unsigned start_year = model_->start_year();
-  auto age_lengths = model_->partition().age_length_proportions(category_); // map<category, vector<year, time_step, age, length, proportion>>;
+  unsigned start_year = model->start_year();
+  auto age_lengths = model->partition().age_length_proportions(category_); // map<category, vector<year, time_step, age, length, proportion>>;
   for (unsigned i = 0; i < age_lengths.size(); ++i) {
     if (std::find(years_.begin(), years_.end(), i + start_year) != years_.end()) {
       for (unsigned j = 0; j < age_lengths[i].size(); ++j) {

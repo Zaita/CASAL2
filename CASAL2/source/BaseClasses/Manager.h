@@ -20,6 +20,7 @@
 
 // Headers
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include "Utilities/NoCopy.h"
@@ -28,9 +29,11 @@
 // Namespaces
 namespace niwa {
 class Model;
-namespace base {
+using std::string_view;
 
+namespace base {
 using std::vector;
+using std::string;
 
 // classes
 template <class ClassType, class StoredType>
@@ -46,9 +49,10 @@ public:
   virtual void                Reset();
   void                        AddObject(StoredType* object) { objects_.push_back(object); }
   virtual void                Clear() { objects_.clear(); }
-  bool                        HasType(const std::string& type);
+  bool                        HasType(std::string_view type);
 
   // Accessors/mutators
+  StoredType*									get(string_view label);
   vector<StoredType*>         objects() { return objects_; }
   unsigned                    size() { return objects_.size(); }
 
@@ -60,7 +64,7 @@ protected:
   vector<StoredType*> objects_;
 
   // Macros
-  DISALLOW_COPY_AND_ASSIGN(Manager);
+  DISALLOW_COPY_MOVE_AND_ASSIGN(Manager);
 };
 
 } /* namespace base */

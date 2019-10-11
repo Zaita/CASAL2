@@ -26,7 +26,7 @@ namespace reports {
  *
  * @param model A pointer to the model this report is linked to
  */
-MPD::MPD(Model* model) : Report(model) {
+MPD::MPD() {
   run_mode_ = RunMode::kEstimation;
   model_state_ = State::kFinalise;
 }
@@ -34,14 +34,14 @@ MPD::MPD(Model* model) : Report(model) {
 /**
  * Execute this report
  */
-void MPD::DoExecute() {
+void MPD::DoExecute(shared_ptr<Model> model) {
   cache_ << "* MPD\n";
 
   /**
    * Print our Estimate Values
    */
   cache_ << "estimate_values:\n";
-  auto estimates = model_->managers().estimate()->GetIsEstimated();
+  auto estimates = model->managers().estimate()->GetIsEstimated();
   for (auto estimate : estimates)
     cache_ << estimate->parameter() << " ";
   cache_ << "\n";
@@ -54,7 +54,7 @@ void MPD::DoExecute() {
    * Print our covariance matrix
    */
   cache_ << "covariance_matrix:\n";
-  auto covariance_matrix = model_->managers().minimiser()->active_minimiser()->covariance_matrix();
+  auto covariance_matrix = model->managers().minimiser()->active_minimiser()->covariance_matrix();
   for (unsigned i = 0; i < covariance_matrix.size1(); ++i) {
      for (unsigned j = 0; j < covariance_matrix.size2(); ++j)
        cache_ << covariance_matrix(i,j) << " ";

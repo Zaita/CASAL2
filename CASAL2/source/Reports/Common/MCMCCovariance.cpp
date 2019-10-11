@@ -21,7 +21,7 @@ namespace ublas = boost::numeric::ublas;
 /**
  * Default Constructor
  */
-MCMCCovariance::MCMCCovariance(Model* model) : Report(model) {
+MCMCCovariance::MCMCCovariance() {
   run_mode_ = RunMode::kMCMC;
   model_state_ = State::kFinalise;
 }
@@ -29,8 +29,8 @@ MCMCCovariance::MCMCCovariance(Model* model) : Report(model) {
  *
  *
  */
-void MCMCCovariance::DoExecute() {
-  MCMC* mcmc = model_->managers().mcmc()->active_mcmc();
+void MCMCCovariance::DoExecute(shared_ptr<Model> model) {
+  MCMC* mcmc = model->managers().mcmc()->active_mcmc();
   ublas::matrix<Double>& covariance_matrix = mcmc->covariance_matrix();
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

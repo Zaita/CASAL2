@@ -17,7 +17,7 @@ namespace reports {
 /**
  * Default Constructor
  */
-Manager::Manager(Model* model) : model_(model) {
+Manager::Manager() {
   run_.test_and_set();
   pause_ = false;
   is_paused_ = false;
@@ -25,9 +25,20 @@ Manager::Manager(Model* model) : model_(model) {
 }
 
 /**
- * Destructor
+ *
  */
-Manager::~Manager() noexcept(true) {
+void Manager::Build() {
+	LOG_CODE_ERROR() << "Method not allowed";
+}
+
+void Manager::Validate(shared_ptr<Model> model) {
+  if (objects_.size() == 0)
+    LOG_WARNING() << "No reports have been specified for this model run";
+
+  LOG_FINEST() << "objects_.size(): " << objects_.size();
+  for (auto report : objects_) {
+    report->Validate(model);
+  }
 }
 
 /**
@@ -36,13 +47,13 @@ Manager::~Manager() noexcept(true) {
  * object list into different containers
  * based on their type.
  */
-void Manager::Build() {
+void Manager::Build(shared_ptr<Model> model) {
   if (objects_.size() == 0)
     LOG_WARNING() << "No reports have been specified for this model run";
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
   for (auto report : objects_) {
-    report->Build();
+    report->Build(model);
 
     if ((RunMode::Type)(report->run_mode() & RunMode::kInvalid) == RunMode::kInvalid)
       LOG_CODE_ERROR() << "Report: " << report->label() << " has not been properly configured to have a run mode";
@@ -63,18 +74,18 @@ void Manager::Build() {
  *
  * @param model_state The state the model has just finished
  */
-void Manager::Execute(State::Type model_state) {
+void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
   LOG_TRACE();
-  RunMode::Type run_mode = model_->run_mode();
-  bool tabular = model_->global_configuration().print_tabular();
+  RunMode::Type run_mode = model->run_mode();
+  bool tabular = model->global_configuration().print_tabular();
   LOG_FINE() << "Checking " << state_reports_[model_state].size() << " reports";
   for(auto report : state_reports_[model_state]) {
       LOG_FINE() << "Checking report: " << report->label();
       if ( (RunMode::Type)(report->run_mode() & run_mode) == run_mode) {
         if (tabular)
-          report->ExecuteTabular();
+          report->ExecuteTabular(model);
         else
-          report->Execute();
+          report->Execute(model);
       } else
         LOG_FINE() << "Skipping report: " << report->label() << " because run mode is incorrect";
   }
@@ -88,12 +99,12 @@ void Manager::Execute(State::Type model_state) {
  * @param year The current year for the model
  * @param time_step_label The last time step to be completed
  */
-void Manager::Execute(unsigned year, const string& time_step_label) {
+void Manager::Execute(shared_ptr<Model> model, unsigned year, const string& time_step_label) {
   LOG_TRACE();
   LOG_FINEST() << "year: " << year << "; time_step_label: " << time_step_label << "; reports: " << time_step_reports_[time_step_label].size();
 
-  RunMode::Type run_mode = model_->run_mode();
-  bool tabular = model_->global_configuration().print_tabular();
+  RunMode::Type run_mode = model->run_mode();
+  bool tabular = model->global_configuration().print_tabular();
   for(auto report : time_step_reports_[time_step_label]) {
     LOG_FINE() << "executing report " << report->label();
     if ( (RunMode::Type)(report->run_mode() & run_mode) != run_mode) {
@@ -106,9 +117,9 @@ void Manager::Execute(unsigned year, const string& time_step_label) {
     }
 
     if (tabular)
-      report->ExecuteTabular();
+      report->ExecuteTabular(model);
     else
-      report->Execute();
+      report->Execute(model);
   }
   LOG_TRACE();
 }
@@ -116,10 +127,10 @@ void Manager::Execute(unsigned year, const string& time_step_label) {
 /**
  *
  */
-void Manager::Prepare() {
+void Manager::Prepare(shared_ptr<Model> model) {
   LOG_TRACE();
-  RunMode::Type run_mode = model_->run_mode();
-  bool tabular = model_->global_configuration().print_tabular();
+  RunMode::Type run_mode = model->run_mode();
+  bool tabular = model->global_configuration().print_tabular();
   for (auto report : objects_) {
     if ( (RunMode::Type)(report->run_mode() & run_mode) != run_mode) {
       LOG_FINEST() << "Skipping report: " << report->label() << " because run mode is not right";
@@ -127,19 +138,19 @@ void Manager::Prepare() {
     }
 
     if (tabular)
-      report->PrepareTabular();
+      report->PrepareTabular(model);
     else
-      report->Prepare();
+      report->Prepare(model);
   }
 }
 
 /**
  *
  */
-void Manager::Finalise() {
+void Manager::Finalise(shared_ptr<Model> model) {
   LOG_TRACE();
-  RunMode::Type run_mode = model_->run_mode();
-  bool tabular = model_->global_configuration().print_tabular();
+  RunMode::Type run_mode = model->run_mode();
+  bool tabular = model->global_configuration().print_tabular();
   for (auto report : objects_) {
     if ( (RunMode::Type)(report->run_mode() & run_mode) != run_mode) {
       LOG_FINEST() << "Skipping report: " << report->label() << " because run mode is not right";
@@ -147,9 +158,9 @@ void Manager::Finalise() {
     }
 
     if (tabular)
-      report->FinaliseTabular();
+      report->FinaliseTabular(model);
     else
-      report->Finalise();
+      report->Finalise(model);
   }
 
   LOG_TRACE();

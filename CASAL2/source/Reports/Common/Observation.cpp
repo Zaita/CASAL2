@@ -25,7 +25,7 @@ namespace math = niwa::utilities::math;
 /**
  *
  */
-Observation::Observation(Model* model) : Report(model) {
+Observation::Observation() {
   LOG_TRACE();
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection | RunMode::kSimulation| RunMode::kEstimation | RunMode::kProfiling);
   model_state_ = (State::Type)(State::kIterationComplete);
@@ -37,14 +37,14 @@ Observation::Observation(Model* model) : Report(model) {
 /**
  *
  */
-void Observation::DoBuild() {
+void Observation::DoBuild(shared_ptr<Model> model) {
   LOG_TRACE();
   vector<string> pearson_likelihoods = {PARAM_BINOMIAL, PARAM_MULTINOMIAL,PARAM_LOGNORMAL,PARAM_NORMAL,PARAM_BINOMIAL_APPROX};
   vector<string> normalised_likelihoods = {PARAM_LOGNORMAL,PARAM_NORMAL};
 
-  observation_ = model_->managers().observation()->GetObservation(observation_label_);
+  observation_ = model->managers().observation()->GetObservation(observation_label_);
   if (!observation_) {
-    auto observations = model_->managers().observation()->objects();
+    auto observations = model->managers().observation()->objects();
     for (auto observation : observations)
       cout << observation->label() << endl;
     LOG_ERROR_P(PARAM_OBSERVATION) << " (" << observation_label_ << ") could not be found. Have you defined it?";
@@ -66,7 +66,7 @@ void Observation::DoBuild() {
 /**
  *	Execute the report
  */
-void Observation::DoExecute() {
+void Observation::DoExecute(shared_ptr<Model> model) {
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
   cache_ << "observation_type: " << observation_->type() << "\n";
   cache_ << "likelihood: " << observation_->likelihood() << "\n";
@@ -154,7 +154,7 @@ void Observation::DoExecute() {
 /**
  *	Execute tabular report
  */
-void Observation::DoExecuteTabular() {
+void Observation::DoExecuteTabular(shared_ptr<Model> model) {
   map<unsigned, vector<obs::Comparison>>& comparisons = observation_->comparisons();
   if (first_run_) {
     first_run_ = false;
@@ -352,7 +352,7 @@ void Observation::DoExecuteTabular() {
 /**
  *	Finalise tabular report
  */
-void Observation::DoFinaliseTabular() {
+void Observation::DoFinaliseTabular(shared_ptr<Model> model) {
   ready_for_writing_ = true;
 }
 

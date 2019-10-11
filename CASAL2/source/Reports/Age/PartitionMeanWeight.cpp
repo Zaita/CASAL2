@@ -27,7 +27,7 @@ namespace age {
 /**
  * default constructor
  */
-PartitionMeanWeight::PartitionMeanWeight(Model* model) : Report(model) {
+PartitionMeanWeight::PartitionMeanWeight() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection | RunMode::kSimulation| RunMode::kEstimation | RunMode::kProfiling);
   model_state_ = State::kExecute;
 
@@ -38,59 +38,41 @@ PartitionMeanWeight::PartitionMeanWeight(Model* model) : Report(model) {
 /**
  * Build method
  */
-void PartitionMeanWeight::DoBuild() {
+void PartitionMeanWeight::DoBuild(shared_ptr<Model> model) {
   if (!parameters_.Get(PARAM_YEARS)->has_been_defined()) {
-    years_ = model_->years();
+    years_ = model->years();
   }
 }
 
 /**
  * Execute method
  */
-void PartitionMeanWeight::DoExecute() {
+void PartitionMeanWeight::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model->managers().time_step()->current_time_step();
 
-//  auto categories = Categories::Instance();
-  niwa::partition::accessors::All all_view(model_);
-  unsigned year = model_->current_year();
+  niwa::partition::accessors::All all_view(model.get());
+  unsigned year = model->current_year();
   if (find(years_.begin(),years_.end(), year) != years_.end()) {
     cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
     cache_ << "year: " << year << "\n";
-    for (auto iterator = all_view.Begin(); iterator != all_view.End(); ++iterator) {
-      string category = (*iterator)->name_;
+    for (auto iterator : all_view) {
+      string category = iterator->name_;
       LOG_FINEST() << "printing mean weight for category " << category;
       cache_ << category << " " << REPORT_R_LIST << "\n";
 
       cache_ << "mean_weights " << REPORT_R_LIST << "\n";
       cache_ << "values: ";
 
-      for (unsigned age = (*iterator)->min_age_; age <= (*iterator)->max_age_; ++age) {
-        Double temp = (*iterator)->mean_weight_by_time_step_age_[time_step_index][age]; // Sometimes the AS_DOUBLE Macro can be a pain in the ass.
-        cache_ << AS_DOUBLE(temp) << " ";
+      for (unsigned age = iterator->min_age_; age <= iterator->max_age_; ++age) {
+        Double temp = iterator->mean_weight_by_time_step_age_[time_step_index][age];
+        cache_ << temp << " ";
       }
       cache_<<"\n";
       LOG_FINEST() << "cached mean weight";
       cache_ << REPORT_R_LIST_END <<"\n";
-
-/*
-      // This currently doesn't work
-      cache_ << "age_lengths " << REPORT_R_LIST << "\n";
-      cache_ << "values: ";
-
-      for (unsigned age = (*iterator)->min_age_; age <= (*iterator)->max_age_; ++age) {
-        Double temp1 = (*iterator)->mean_length_by_time_step_age_[time_step_index][age];
-        cache_ << AS_DOUBLE(temp1) << " ";
-      }
-      LOG_FINEST() << "cached mean length";
-
-      cache_<<"\n";
-
-      cache_ << REPORT_R_LIST_END <<"\n";
-*/
       cache_ << REPORT_R_LIST_END <<"\n";
     }
-
 
     ready_for_writing_ = true;
   }

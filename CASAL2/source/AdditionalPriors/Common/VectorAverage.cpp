@@ -27,12 +27,6 @@ VectorAverage::VectorAverage(Model* model) : AdditionalPrior(model) {
   parameters_.Bind<Double>(PARAM_K, &k_, "K Value to use in the calculation", "");
   parameters_.Bind<Double>(PARAM_MULTIPLIER, &multiplier_, "Multiplier for the penalty amount", "", 1);
 }
-
-/**
- * Validate our parameters
- */
-void VectorAverage::DoValidate() { }
-
 /**
  * Build relationships between this object and other objects
  */
@@ -69,6 +63,8 @@ void VectorAverage::DoBuild() {
  * @return Penalty score
  */
 Double VectorAverage::GetScore() {
+	// TODO: Function pointers for difference score types and addressable types to clean this up
+	// TODO: Better unit tests
   vector<Double> values;
   if (addressable_vector_ != 0)
     values.assign((*addressable_vector_).begin(), (*addressable_vector_).end());

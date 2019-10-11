@@ -22,23 +22,17 @@ namespace reports {
 /**
  * Default Constructor
  */
-EstimationResult::EstimationResult(Model* model) : Report(model) {
+EstimationResult::EstimationResult() {
   run_mode_    = RunMode::kEstimation;
   model_state_ = State::kFinalise;
 }
 
 /**
- * Destructor
- */
-EstimationResult::~EstimationResult() noexcept(true) {
-}
-
-/**
  * This method will execute our estimate summary report
  */
-void EstimationResult::DoExecute() {
+void EstimationResult::DoExecute(shared_ptr<Model> model) {
 
-  auto minimiser = model_->managers().minimiser()->active_minimiser();
+  auto minimiser = model->managers().minimiser()->active_minimiser();
   if (minimiser == nullptr) {
     LOG_CODE_ERROR() << "minimiser == nullptr";
   }

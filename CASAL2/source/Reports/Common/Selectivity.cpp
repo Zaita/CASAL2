@@ -16,18 +16,21 @@
 namespace niwa {
 namespace reports {
 
-Selectivity::Selectivity(Model* model) : Report(model) {
+/**
+ *
+ */
+Selectivity::Selectivity() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection | RunMode::kSimulation| RunMode::kEstimation | RunMode::kProfiling);
   model_state_ = (State::Type)(State::kIterationComplete);
 
   parameters_.Bind<string>(PARAM_SELECTIVITY, &selectivity_label_, "Selectivity name", "");
 }
 
-void Selectivity::DoValidate() {
+void Selectivity::DoValidate(shared_ptr<Model> model) {
 }
 
-void Selectivity::DoBuild() {
-  selectivity_ = model_->managers().selectivity()->GetSelectivity(selectivity_label_);
+void Selectivity::DoBuild(shared_ptr<Model> model) {
+  selectivity_ = model->managers().selectivity()->GetSelectivity(selectivity_label_);
   if (!selectivity_)
     LOG_FATAL_P(PARAM_SELECTIVITY) << " " << selectivity_label_ << " does not exist. Have you defined it?";
   if (selectivity_->IsSelectivityLengthBased()) {
@@ -36,7 +39,7 @@ void Selectivity::DoBuild() {
 }
 
 
-void Selectivity::DoExecute() {
+void Selectivity::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
   if (!selectivity_->IsSelectivityLengthBased()) {
     LOG_FINEST() << "Printing age based selectivity";
@@ -54,13 +57,13 @@ void Selectivity::DoExecute() {
     }
 
     cache_ << "Values " << REPORT_R_VECTOR << "\n";
-    for (unsigned i = model_->min_age(); i <= model_->max_age(); ++i)
+    for (unsigned i = model->min_age(); i <= model->max_age(); ++i)
       cache_ << i << " " << AS_DOUBLE(selectivity_->GetAgeResult(i, nullptr)) << "\n";
     ready_for_writing_ = true;
   }
 }
 
-void Selectivity::DoExecuteTabular() {
+void Selectivity::DoExecuteTabular(shared_ptr<Model> model) {
   if (!selectivity_->IsSelectivityLengthBased()) {
     if (first_run_) {
       first_run_ = false;
@@ -68,7 +71,7 @@ void Selectivity::DoExecuteTabular() {
       cache_ << "values " << REPORT_R_DATAFRAME << "\n";
     	string age, selectivity_by_age_label;
 
-      for (unsigned i = model_->min_age(); i <= model_->max_age(); ++i) {
+      for (unsigned i = model->min_age(); i <= model->max_age(); ++i) {
         if (!utilities::To<unsigned, string>(i, age))
           LOG_CODE_ERROR() << "Could not convert the value " << i << " to a string for storage in the tabular report";
         selectivity_by_age_label = "selectivity[" + selectivity_->label() + "]." + age;
@@ -76,7 +79,7 @@ void Selectivity::DoExecuteTabular() {
       }
       cache_ << "\n";
     }
-    for (unsigned i = model_->min_age(); i <= model_->max_age(); ++i) {
+    for (unsigned i = model->min_age(); i <= model->max_age(); ++i) {
     	cache_ << AS_DOUBLE(selectivity_->GetAgeResult(i, nullptr)) << " ";
     }
     cache_ << "\n";
@@ -84,7 +87,7 @@ void Selectivity::DoExecuteTabular() {
 
 }
 
-void Selectivity::DoFinaliseTabular() {
+void Selectivity::DoFinaliseTabular(shared_ptr<Model> model) {
   ready_for_writing_ = true;
 }
 

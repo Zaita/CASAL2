@@ -74,7 +74,7 @@ Managers::Managers(Model* model) {
   process_                = new processes::Manager();
   profile_                = new profiles::Manager();
   project_                = new projects::Manager();
-  report_                 = new reports::Manager(model_);
+  report_                 = new reports::Manager();
   selectivity_            = new selectivities::Manager();
   simulate_               = new simulates::Manager();
   time_step_              = new timesteps::Manager();
@@ -134,7 +134,7 @@ void Managers::Validate() {
   penalty_->Validate();
   profile_->Validate();
   project_->Validate();
-  report_->Validate();
+  report_->Validate(model_->pointer());
   selectivity_->Validate();
   simulate_->Validate();
   time_varying_->Validate();
@@ -170,7 +170,7 @@ void Managers::Build() {
   estimate_->Build(model_);
   estimate_transformation_->Build();
 
-  report_->Build();
+  report_->Build(model_->pointer());
 }
 
 void Managers::Reset() {

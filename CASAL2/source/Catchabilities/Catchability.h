@@ -28,19 +28,20 @@ public:
   // Methods
   Catchability() = delete;
   explicit                    Catchability(Model* model);
-  virtual                     ~Catchability() { };
+  virtual                     ~Catchability() = default;
   void                        Validate();
-  void                        Build() {DoBuild();};
-  void                        Reset() { };
+  void                        Build() { DoBuild(); };
+  void                        Reset() {};
   virtual void                DoValidate() = 0;
   virtual void                DoBuild() = 0;
 
-
   // Accessors
-  virtual Double              q() const = 0;
+  Double              				q() const { return q_; };
+
 protected:
   // members
   Model*                      model_ = nullptr;
+  Double                      q_ = 0.0;
 };
 
 } /* namespace niwa */

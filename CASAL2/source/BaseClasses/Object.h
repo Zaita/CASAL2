@@ -61,13 +61,14 @@ enum Usage {
 };
 };
 
-namespace base {
-
 using std::string;
-using utilities::OrderedMap;
 using std::vector;
 using std::map;
 using std::string_view;
+using utilities::OrderedMap;
+using std::shared_ptr;
+
+namespace base {
 
 // classes
 class Object {
@@ -140,7 +141,7 @@ protected:
   map<string, OrderedMap<string, Double>* > addressable_s_maps_;
   vector<map<string, vector<Double>>* >     unnamed_addressable_s_map_vector_;
 
-  DISALLOW_COPY_AND_ASSIGN(Object);
+  DISALLOW_COPY_MOVE_AND_ASSIGN(Object);
 };
 
 } /* namespace base */

@@ -19,21 +19,19 @@ class Minimiser;
 
 namespace reports {
 namespace ublas = boost::numeric::ublas;
-/**
- *
- */
+
+
 class CorrelationMatrix : public niwa::Report {
 public:
-  CorrelationMatrix(Model* model);
+  CorrelationMatrix();
   virtual                     ~CorrelationMatrix() = default;
-  void                        DoValidate() override final { };
-  void                        DoBuild() override final { };
-  void                        DoExecute() override final;
-  void                        DoExecuteTabular() override final { };
+  void                        DoValidate(shared_ptr<Model> model) final { };
+  void                        DoBuild(shared_ptr<Model> model) final { };
+  void                        DoExecute(shared_ptr<Model> model) final;
+  void                        DoExecuteTabular(shared_ptr<Model> model) final { };
 
 private:
   ublas::matrix<Double>       correlation_matrix_;
-
 };
 
 } /* namespace reports */

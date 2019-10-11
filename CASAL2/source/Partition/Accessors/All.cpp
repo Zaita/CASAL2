@@ -40,6 +40,15 @@ All::DataType::iterator All::End() {
   return data_.end();
 }
 
+All::DataType::iterator All::begin() {
+  return data_.begin();
+}
+
+All::DataType::iterator All::end() {
+  return data_.end();
+}
+
+
 unsigned All::Size() {
   return data_.size();
 }

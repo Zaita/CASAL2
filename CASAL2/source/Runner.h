@@ -25,13 +25,13 @@ public:
 	int													Go();
 	void                  			set_run_parameters(utilities::RunParameters& options) { run_parameters_ = options; }
 	GlobalConfiguration&        global_configuration() { return global_configuration_; }
-	Model&											model() { return master_model_; }
+	//Model&											model() { return master_model_; }
 
 
 private:
 	// members
 	GlobalConfiguration					global_configuration_;
-	Model												master_model_;
+	shared_ptr<Model>						master_model_;
 	utilities::RunParameters		run_parameters_;
 };
 

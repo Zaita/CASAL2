@@ -52,7 +52,9 @@ public:
   All() = delete;
   explicit All(Model* model);
   virtual                     ~All() = default;
-  DataType::iterator          Begin();
+  DataType::iterator          begin();
+  DataType::iterator          end();
+  DataType::iterator          Begin(); // TODO: Remove these
   DataType::iterator          End();
   unsigned                    Size();
 

@@ -98,15 +98,16 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
   bool model_start_return_success = true;
 
   try {
-    Model model;
-    model.global_configuration().set_run_parameters(options);
+    shared_ptr<Model> model;
+    model.reset(new Model());
+    model->global_configuration().set_run_parameters(options);
     RunMode::Type run_mode = options.run_mode_;
 
 //    reports::StandardHeader standard_report(&model);
 
     vector<string> cmd_parameters;
     for (int i = 0; i < argc; ++i) cmd_parameters.push_back(argv[i]);
-    model.global_configuration().set_command_line_parameters(cmd_parameters);
+    model->global_configuration().set_command_line_parameters(cmd_parameters);
 
     /**
      * Check the run mode and call the handler.
@@ -124,20 +125,20 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
 
     case RunMode::kQuery:
       {
-        string lookup = model.global_configuration().object_to_query();
+        string lookup = model->global_configuration().object_to_query();
         vector<string> parts;
         boost::split(parts, lookup, boost::is_any_of("."));
         if (parts.size() == 1)
           parts.push_back("");
         if (parts.size() == 2) {
-          model.set_partition_type(PartitionType::kAge);
-          base::Object* object = model.factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
+          model->set_partition_type(PartitionType::kAge);
+          base::Object* object = model->factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
           if (object) {
             cout << "Printing information for " << parts[0] << " with sub-type " << parts[1] << endl;
             object->PrintParameterQueryInfo();
           } else {
-            model.set_partition_type(PartitionType::kLength);
-            object = model.factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
+            model->set_partition_type(PartitionType::kLength);
+            object = model->factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
             if (object) {
               cout << "Printing information for " << parts[0] << " with sub-type " << parts[1] << endl;
               object->PrintParameterQueryInfo();
@@ -163,14 +164,14 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
 
       // load our configuration file
       configuration::Loader config_loader;
-      if (!config_loader.LoadConfigFile(model.global_configuration())) {
+      if (!config_loader.LoadConfigFile(model->global_configuration())) {
         Logging::Instance().FlushErrors();
         return_code = -1;
         break;
       }
 
-      vector<Model*> model_list;
-      model_list.push_back(&model);
+      vector<shared_ptr<Model>> model_list;
+      model_list.push_back(model);
       Logging& logging = Logging::Instance();
       config_loader.ParseFileLines();
       config_loader.Build(model_list);
@@ -181,15 +182,15 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
       }
 
       // override any config file values from our command line
-      model.global_configuration().ParseOptions(&model);
-      utilities::RandomNumberGenerator::Instance().Reset(model.global_configuration().random_seed());
+      model->global_configuration().ParseOptions(model.get());
+      utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 
       // Thread off the reports
-      reports::Manager* report_manager = model.managers().report();
+      reports::Manager* report_manager = model->managers().report();
       std::thread report_thread([&report_manager]() { report_manager->FlushReports(); });
 
       // Run the model
-      model_start_return_success = model.Start(run_mode);
+      model_start_return_success = model->Start(run_mode);
 
       // finish report thread
       report_manager->StopThread();
@@ -208,7 +209,7 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
     } // switch(run_mode)
 
     if (run_mode == RunMode::kTesting) {
-      auto minimiser = model.managers().minimiser()->active_minimiser();
+      auto minimiser = model->managers().minimiser()->active_minimiser();
       if (minimiser)
         options.minimiser_ = minimiser->type();
     }

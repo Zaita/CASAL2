@@ -16,7 +16,7 @@ namespace ublas = boost::numeric::ublas;
 /**
  *
  */
-CovarianceMatrix::CovarianceMatrix(Model* model) : Report(model) {
+CovarianceMatrix::CovarianceMatrix() {
   run_mode_    = (RunMode::Type)(RunMode::kEstimation | RunMode::kProfiling | RunMode::kMCMC);
   model_state_ = State::kFinalise;
 }
@@ -24,12 +24,12 @@ CovarianceMatrix::CovarianceMatrix(Model* model) : Report(model) {
 /**
  *
  */
-void CovarianceMatrix::DoExecute() {
+void CovarianceMatrix::DoExecute(shared_ptr<Model> model) {
   /*
    * This reports the Covariance, Correlation and Hessian matrix
    */
   LOG_TRACE();
-  auto minimiser_ = model_->managers().minimiser()->active_minimiser();
+  auto minimiser_ = model->managers().minimiser()->active_minimiser();
   covariance_matrix_ = minimiser_->covariance_matrix();
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
@@ -41,8 +41,8 @@ void CovarianceMatrix::DoExecute() {
     cache_ << "\n";
   }
 
-  if (model_->run_mode() == RunMode::kMCMC) {
-    auto mcmc_ = model_->managers().mcmc()->active_mcmc();
+  if (model->run_mode() == RunMode::kMCMC) {
+    auto mcmc_ = model->managers().mcmc()->active_mcmc();
     if (mcmc_->recalculate_covariance()) {
       cache_ << REPORT_END << "\n\n";
       LOG_FINE() << "During the mcmc run you recalculated the the covariance matrix, so we will print the modified matrix at the end of the chain";

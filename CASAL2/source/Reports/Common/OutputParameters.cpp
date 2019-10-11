@@ -22,23 +22,17 @@ namespace reports {
 /**
  * Default constructor
  */
-OutputParameters::OutputParameters(Model* model) : Report(model) {
+OutputParameters::OutputParameters() {
   run_mode_     = (RunMode::Type)(RunMode::kBasic | RunMode::kEstimation | RunMode::kProfiling);
   model_state_  = State::kIterationComplete;
 }
 
 /**
- * Destructor
- */
-OutputParameters::~OutputParameters() noexcept(true) {
-}
-
-/**
  * Execute this report.
  */
-void OutputParameters::DoExecute() {
-  vector<Estimate*> estimates = model_->managers().estimate()->objects();
-  vector<Profile*>  profiles  = model_->managers().profile()->objects();
+void OutputParameters::DoExecute(shared_ptr<Model> model) {
+  vector<Estimate*> estimates = model->managers().estimate()->objects();
+  vector<Profile*>  profiles  = model->managers().profile()->objects();
 
   /**
    * if this is the first run we print the report header etc
@@ -52,7 +46,7 @@ void OutputParameters::DoExecute() {
      for (Estimate* estimate : estimates)
          cache_ << estimate->parameter() << " ";
 
-     if (model_->run_mode() == RunMode::kProfiling) {
+     if (model->run_mode() == RunMode::kProfiling) {
        for (auto profile : profiles)
          cache_ << profile->parameter() << " ";
      }
@@ -63,7 +57,7 @@ void OutputParameters::DoExecute() {
 
    for (Estimate* estimate : estimates)
      cache_ << AS_DOUBLE(estimate->value()) << " ";
-   if (model_->run_mode() == RunMode::kProfiling) {
+   if (model->run_mode() == RunMode::kProfiling) {
      for (Profile* profile : profiles)
        cache_ << AS_DOUBLE(profile->value()) << " ";
    }

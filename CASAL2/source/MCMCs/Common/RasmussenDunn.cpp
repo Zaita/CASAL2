@@ -8,8 +8,7 @@
  */
 
 // headers
-#include "RasmussenDunn.h"
-
+#include <MCMCs/Common/RasmussenDunn.h>
 #include "Model/Model.h"
 
 // namespaces

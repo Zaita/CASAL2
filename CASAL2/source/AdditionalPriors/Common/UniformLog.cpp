@@ -29,20 +29,11 @@ namespace additionalpriors {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-UniformLog::UniformLog(Model* model) : AdditionalPrior(model) {
-
-}
+UniformLog::UniformLog(Model* model) : AdditionalPrior(model) { }
 
 /**
- * Populate any parameters,
- * Validate values are within expected ranges when we cannot use bind<>() overloads
- *
- * Note: all parameters are populated from configuration files
+ * Build our Uniform LOg
  */
-void UniformLog::DoValidate() {
-
-}
-
 void UniformLog::DoBuild() {
 	string error = "";
 	if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {

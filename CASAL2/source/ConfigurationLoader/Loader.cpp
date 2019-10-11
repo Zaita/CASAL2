@@ -180,10 +180,10 @@ void Loader::ParseFileLines() {
 /**
  *
  */
-void Loader::Build(vector<Model*>& model_list) {
-	for (Model* model : model_list) {
+void Loader::Build(vector<shared_ptr<Model>>& model_list) {
+	for (auto model : model_list) {
 		for (auto& block : blocks_) {
-			ParseBlock(model, block);
+			ParseBlock(model.get(), block);
 		}
 	}
 }

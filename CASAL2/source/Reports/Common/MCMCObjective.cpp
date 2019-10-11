@@ -24,7 +24,7 @@ namespace reports {
 /**
  *
  */
-MCMCObjective::MCMCObjective(Model* model) : Report(model) {
+MCMCObjective::MCMCObjective() {
   run_mode_     = RunMode::kMCMC;
   model_state_  = State::kIterationComplete;
   skip_tags_    = true;
@@ -33,8 +33,8 @@ MCMCObjective::MCMCObjective(Model* model) : Report(model) {
 /**
  *
  */
-void MCMCObjective::DoBuild() {
-  mcmc_ = model_->managers().mcmc()->active_mcmc();
+void MCMCObjective::DoBuild(shared_ptr<Model> model) {
+  mcmc_ = model->managers().mcmc()->active_mcmc();
   if (!mcmc_)
     LOG_CODE_ERROR() << "mcmc_ = model_->managers().mcmc()->active_mcmc();";
 }
@@ -42,8 +42,8 @@ void MCMCObjective::DoBuild() {
 /**
  *
  */
-void MCMCObjective::DoPrepare() {
-  if (!model_->global_configuration().resume()) {
+void MCMCObjective::DoPrepare(shared_ptr<Model> model) {
+  if (!model->global_configuration().resume()) {
     cache_ << "*mcmc_objective[mcmc]" << "\n";
   }
 }
@@ -51,13 +51,13 @@ void MCMCObjective::DoPrepare() {
 /**
  *    Print out Chain after each iteration
  */
-void MCMCObjective::DoExecute() {
+void MCMCObjective::DoExecute(shared_ptr<Model> model) {
   if (!mcmc_)
     LOG_CODE_ERROR() << "if (!mcmc_)";
 
-  if (first_write_ && !model_->global_configuration().resume()) {
+  if (first_write_ && !model->global_configuration().resume()) {
   	/// Up here!!!!!!!!!
-  	vector<Estimate*>  estimates = model_->managers().estimate()->GetIsEstimated();
+  	vector<Estimate*>  estimates = model->managers().estimate()->GetIsEstimated();
     cache_ << "starting_covariance_matrix {m}\n";
     auto covariance = mcmc_->covariance_matrix();
     if (estimates.size() != covariance.size1())
@@ -94,7 +94,7 @@ void MCMCObjective::DoExecute() {
 /**
  *
  */
-void MCMCObjective::DoFinalise() {
+void MCMCObjective::DoFinalise(shared_ptr<Model> model) {
   //cache_ << CONFIG_END_REPORT << "\n";
   ready_for_writing_ = true;
 }

@@ -179,7 +179,11 @@ bool Model::Start(RunMode::Type run_mode) {
 		loader.LoadValues(global_configuration_->estimable_value_file());
 	}
 
-	managers_->report()->Execute(State::kStartUp);
+	LOG_FINE() << "A";
+	pointer();
+	LOG_FINE() << "B";
+	managers_->report()->Execute(pointer(), State::kStartUp);
+	LOG_FINE() << "B";
 
 	LOG_FINE() << "Model: State Change to Validate";
 	state_ = State::kValidate;
@@ -189,7 +193,7 @@ bool Model::Start(RunMode::Type run_mode) {
 		return false;
 	}
 
-	managers_->report()->Execute(state_);
+	managers_->report()->Execute(pointer(), state_);
 
 	LOG_FINE() << "Model: State Change to Build";
 	state_ = State::kBuild;
@@ -198,7 +202,7 @@ bool Model::Start(RunMode::Type run_mode) {
 		logging.FlushErrors();
 		return false;
 	}
-	managers_->report()->Execute(state_);
+	managers_->report()->Execute(pointer(), state_);
 
 	LOG_FINE() << "Model: State Change to Verify";
 	state_ = State::kVerify;
@@ -207,11 +211,11 @@ bool Model::Start(RunMode::Type run_mode) {
 		logging.FlushErrors();
 		return false;
 	}
-	managers_->report()->Execute(state_);
+	managers_->report()->Execute(pointer(), state_);
 
 	// prepare all reports
 	LOG_FINE() << "Preparing Reports";
-	managers_->report()->Prepare();
+	managers_->report()->Prepare(pointer());
 
 	switch (run_mode_) {
 	case RunMode::kBasic:
@@ -251,8 +255,8 @@ bool Model::Start(RunMode::Type run_mode) {
 	state_ = State::kFinalise;
 	for (auto executor : executors_[state_])
 		executor->Execute();
-	managers_->report()->Execute(state_);
-	managers_->report()->Finalise();
+	managers_->report()->Execute(pointer(), state_);
+	managers_->report()->Finalise(pointer());
 	return true;
 }
 
@@ -397,7 +401,7 @@ void Model::RunBasic() {
 		}
 		initialisationphases::Manager &init_phase_manager = *managers_->initialisation_phase();
 		init_phase_manager.Execute();
-		managers_->report()->Execute(State::kInitialise);
+		managers_->report()->Execute(pointer(), State::kInitialise);
 
 		state_ = State::kExecute;
 
@@ -473,7 +477,7 @@ void Model::RunBasic() {
 
 		LOG_FINE() << "Model: State change to Iteration Complete";
 		objective_function_->CalculateScore();
-		managers_->report()->Execute(State::kIterationComplete);
+		managers_->report()->Execute(pointer(), State::kIterationComplete);
 	}
 }
 
@@ -520,7 +524,7 @@ void Model::RunEstimation() {
 		run_mode_ = RunMode::kEstimation;
 
 		LOG_FINE() << "Model: State change to Iteration Complete";
-		managers_->report()->Execute(State::kIterationComplete);
+		managers_->report()->Execute(pointer(), State::kIterationComplete);
 	}
 }
 
@@ -612,7 +616,7 @@ void Model::RunProfiling() {
 
 				LOG_FINE() << "Model: State change to Iteration Complete";
 				run_mode_ = RunMode::kProfiling;
-				managers_->report()->Execute(State::kIterationComplete);
+				managers_->report()->Execute(pointer(), State::kIterationComplete);
 
 				profile->NextStep();
 			}
@@ -667,7 +671,7 @@ void Model::RunSimulation() {
 
 		initialisationphases::Manager &init_phase_manager = *managers_->initialisation_phase();
 		init_phase_manager.Execute();
-		managers_->report()->Execute(State::kInitialise);
+		managers_->report()->Execute(pointer(), State::kInitialise);
 
 		state_ = State::kExecute;
 		timesteps::Manager &time_step_manager = *managers_->time_step();
@@ -687,7 +691,7 @@ void Model::RunSimulation() {
 
 		// Model has finished so we can run finalise.
 		LOG_FINE() << "Model: State change to PostExecute";
-		managers_->report()->Execute(State::kIterationComplete);
+		managers_->report()->Execute(pointer(), State::kIterationComplete);
 
 		managers_->report()->WaitForReportsToFinish();
 	}
@@ -759,7 +763,7 @@ void Model::RunProjection() {
 			// Run the intialisation phase
 			init_phase_manager.Execute();
 			// Reset all parameter and re run the model
-			managers_->report()->Execute(State::kInitialise);
+			managers_->report()->Execute(pointer(), State::kInitialise);
 
 			state_ = State::kExecute;
 			LOG_FINE() << "Starting projection years";
@@ -775,7 +779,7 @@ void Model::RunProjection() {
 
 			// Model has finished so we can run finalise.
 			LOG_FINE() << "Model: State change to PostExecute and iteration complete";
-			managers_->report()->Execute(State::kIterationComplete);
+			managers_->report()->Execute(pointer(), State::kIterationComplete);
 
 			// Not sure if we need these
 			//managers_->observation()->CalculateScores();
@@ -805,7 +809,7 @@ void Model::Iterate() {
 	//  }
 	initialisationphases::Manager &init_phase_manager = *managers_->initialisation_phase();
 	init_phase_manager.Execute();
-	managers_->report()->Execute(State::kInitialise);
+	managers_->report()->Execute(pointer(), State::kInitialise);
 
 	state_ = State::kExecute;
 	timesteps::Manager &time_step_manager = *managers_->time_step();

@@ -12,10 +12,11 @@
 namespace niwa {
 namespace reports {
 namespace ublas = boost::numeric::ublas;
+
 /**
  *
  */
-CorrelationMatrix::CorrelationMatrix(Model* model) : Report(model) {
+CorrelationMatrix::CorrelationMatrix() {
   run_mode_    = (RunMode::Type)(RunMode::kEstimation | RunMode::kMCMC);
   model_state_ = State::kFinalise;
 }
@@ -23,12 +24,12 @@ CorrelationMatrix::CorrelationMatrix(Model* model) : Report(model) {
 /**
  *
  */
-void CorrelationMatrix::DoExecute() {
+void CorrelationMatrix::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
   /*
    * This reports the Covariance, Correlation and Hessian matrix
    */
-  auto minimiser_ = model_->managers().minimiser()->active_minimiser();
+  auto minimiser_ = model->managers().minimiser()->active_minimiser();
   if (!minimiser_)
     return;
 

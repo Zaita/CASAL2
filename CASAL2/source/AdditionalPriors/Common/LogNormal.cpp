@@ -35,15 +35,8 @@ LogNormal::LogNormal(Model* model) : AdditionalPrior(model) {
 }
 
 /**
- * Populate any parameters,
- * Validate values are within expected ranges when we cannot use bind<>() overloads
- *
- * Note: all parameters are populated from configuration files
+ * Build our LogNormal prior
  */
-void LogNormal::DoValidate() {
-
-}
-
 void LogNormal::DoBuild() {
 	string error = "";
 	if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {
@@ -78,6 +71,8 @@ void LogNormal::DoBuild() {
  * Return the score for
  */
 Double LogNormal::GetScore() {
+	// TODO: Function pointers to clean this up
+
   score_ = 0.0;
   vector<Double> values;
   vector<Double> second_values;

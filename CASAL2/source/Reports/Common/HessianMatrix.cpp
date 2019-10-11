@@ -15,7 +15,7 @@ namespace ublas = boost::numeric::ublas;
 /**
  *
  */
-HessianMatrix::HessianMatrix(Model* model) : Report(model) {
+HessianMatrix::HessianMatrix() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kEstimation);
   model_state_ = State::kFinalise;
 }
@@ -23,12 +23,12 @@ HessianMatrix::HessianMatrix(Model* model) : Report(model) {
 /**
  * If a minimiser pointer exists this report will ask and print for the hessian matrix
  */
-void HessianMatrix::DoExecute() {
+void HessianMatrix::DoExecute(shared_ptr<Model> model) {
   /*
    * This reports the Hessian matrix
    */
   LOG_TRACE();
-  auto minimiser_ = model_->managers().minimiser()->active_minimiser();
+  auto minimiser_ = model->managers().minimiser()->active_minimiser();
   if (!minimiser_)
     return;
 

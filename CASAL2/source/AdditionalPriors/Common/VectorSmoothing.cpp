@@ -32,12 +32,6 @@ VectorSmoothing::VectorSmoothing(Model* model) : AdditionalPrior(model) {
 }
 
 /**
- * Validate our parameters
- */
-void VectorSmoothing::DoValidate() {
-}
-
-/**
  * Build our parameters
  */
 void VectorSmoothing::DoBuild() {

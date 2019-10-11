@@ -55,7 +55,7 @@ public:
   void                        ClearFileLines() { file_lines_.clear(); }
   void                        AddFileLine(FileLine line);
   void                        ParseFileLines();
-  void												Build(vector<Model*>& model_list);
+  void												Build(vector<shared_ptr<Model>>& model_list);
 
   // accessors
   vector<FileLine>&           file_lines() { return file_lines_; }

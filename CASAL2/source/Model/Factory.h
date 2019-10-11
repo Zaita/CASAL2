@@ -16,8 +16,11 @@
 
 // headers
 #include <string>
+#include <memory>
 
 #include "Utilities/PartitionType.h"
+
+using std::shared_ptr;
 
 // namespaces
 namespace niwa {
@@ -36,7 +39,7 @@ class Factory {
 public:
 	// methods
 	base::Object* CreateObject(const string &object_type, const string &sub_type, PartitionType partition_type = PartitionType::kInvalid);
-	niwa::Model* 	Create(const string &object_type, const string &sub_type);
+	shared_ptr<Model> 	Create(const string &object_type, const string &sub_type);
 
 private:
 	// methods

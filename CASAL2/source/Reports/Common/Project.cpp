@@ -27,7 +27,7 @@ namespace reports {
  *
  * @param model Pointer to the current model context
  */
-Project::Project(Model* model) : Report(model) {
+Project::Project() {
   model_state_ = State::kIterationComplete;
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kSimulation | RunMode::kProjection);
 
@@ -37,8 +37,8 @@ Project::Project(Model* model) : Report(model) {
 /**
  * Build our relationships between this object and other objects
  */
-void Project::DoBuild() {
-  project_ = model_->managers().project()->GetProject(project_label_);
+void Project::DoBuild(shared_ptr<Model> model) {
+  project_ = model->managers().project()->GetProject(project_label_);
   if (!project_) {
     LOG_ERROR_P(PARAM_PROJECT) << "project " << project_label_ << " could not be found. Have you defined it?";
   }
@@ -48,7 +48,12 @@ void Project::DoBuild() {
 /**
  * Execute this report
  */
-void Project::DoExecute() {
+void Project::DoExecute(shared_ptr<Model> model) {
+  project_ = model->managers().project()->GetProject(project_label_);
+  if (!project_) {
+    LOG_CODE_ERROR() << "!project: " << project_label_;
+  }
+
   LOG_FINE() <<" printing report " << label_ << " of type " << project_->type();
   map<unsigned,Double>& values = project_->projected_parameters();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

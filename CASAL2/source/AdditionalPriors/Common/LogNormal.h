@@ -28,9 +28,9 @@ public:
   // methods
 	LogNormal(Model* model);
   virtual                     ~LogNormal() = default;
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
-  Double                      GetScore() override final;
+  void                        DoValidate() final {};
+  void                        DoBuild() final;
+  Double                      GetScore() final;
 
 protected:
   // members
@@ -39,9 +39,9 @@ protected:
   vector<Double>*             addressable_vector_ = nullptr;
   vector<Double*>*            addressable_ptr_vector_ = nullptr;
   Double											score_ = 0.0;
-  Double											mu_;
-  Double											cv_;
-  Double											sigma_;
+  Double											mu_ = 0.0;
+  Double											cv_ = 0.0;
+  Double											sigma_ = 0.0;
 };
 
 } /* namespace additionalpriors */

@@ -17,19 +17,19 @@ namespace reports {
 
 class Selectivity : public niwa::Report {
 public:
-  Selectivity(Model* model);
+  Selectivity();
   virtual ~Selectivity() = default;
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
-  void                        DoPrepare() override final { };
-  void                        DoExecute() override final;
-  void                        DoExecuteTabular() override final;
-  void                        DoFinalise() override final { };
-  void                        DoFinaliseTabular() override final;
+  void                        DoValidate(shared_ptr<Model> model) final;
+  void                        DoBuild(shared_ptr<Model> model) final;
+  void                        DoPrepare(shared_ptr<Model> model) final { };
+  void                        DoExecute(shared_ptr<Model> model) final;
+  void                        DoExecuteTabular(shared_ptr<Model> model) final;
+  void                        DoFinalise(shared_ptr<Model> model) final { };
+  void                        DoFinaliseTabular(shared_ptr<Model> model) final;
 
 private:
-  string                      selectivity_label_;
-  niwa::Selectivity*          selectivity_;
+  string                      selectivity_label_ = "";
+  niwa::Selectivity*          selectivity_ = nullptr;
   bool												first_run_ = true;
 };
 

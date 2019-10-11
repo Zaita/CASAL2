@@ -72,83 +72,83 @@ Report* Factory::Create(Model* model, const string& object_type, const string& s
 
   if (object_type == PARAM_REPORT) {
     if (sub_type == PARAM_CATEGORY_INFO)
-      result = new CategoryInfo(model);
+      result = new CategoryInfo();
     else if (sub_type == PARAM_CATEGORY_LIST)
-      result = new CategoryList(model);
+      result = new CategoryList();
     else if (sub_type == PARAM_CATCHABILITY)
-      result = new Catchability(model);
+      result = new Catchability();
     else if (sub_type == PARAM_COVARIANCE_MATRIX)
-      result = new CovarianceMatrix(model);
+      result = new CovarianceMatrix();
     else if (sub_type == PARAM_CORRELATION_MATRIX)
-      result = new CorrelationMatrix(model);
+      result = new CorrelationMatrix();
     else if (sub_type == PARAM_DERIVED_QUANTITY)
-      result = new DerivedQuantity(model);
+      result = new DerivedQuantity();
     else if (sub_type == PARAM_EQUATION)
-      result = new EquationTest(model);
+      result = new EquationTest();
     else if (sub_type == PARAM_ADDRESSABLE)
-      result = new Addressable(model);
+      result = new Addressable();
     else if (sub_type == PARAM_ESTIMATE_SUMMARY)
-      result = new EstimateSummary(model);
+      result = new EstimateSummary();
     else if (sub_type == PARAM_ESTIMATE_VALUE)
-      result = new EstimateValue(model);
+      result = new EstimateValue();
     else if (sub_type == PARAM_ESTIMATION_RESULT)
-      result = new EstimationResult(model);
+      result = new EstimationResult();
     else if (sub_type == PARAM_HESSIAN_MATRIX)
-      result = new HessianMatrix(model);
+      result = new HessianMatrix();
     else if (sub_type == PARAM_MCMC_COVARIANCE)
-      result = new MCMCCovariance(model);
+      result = new MCMCCovariance();
     else if (sub_type == PARAM_MCMC_OBJECTIVE)
-      result = new MCMCObjective(model);
+      result = new MCMCObjective();
     else if (sub_type == PARAM_MCMC_SAMPLE)
-      result = new MCMCSample(model);
+      result = new MCMCSample();
     else if (sub_type == PARAM_MPD)
-      result = new MPD(model);
+      result = new MPD();
     else if (sub_type == PARAM_PROJECT)
-      result = new Project(model);
+      result = new Project();
     else if (sub_type == PARAM_PROCESS)
-      result = new Process(model);
+      result = new Process();
     else if (sub_type == PARAM_OBJECTIVE_FUNCTION)
-      result = new ObjectiveFunction(model);
+      result = new ObjectiveFunction();
     else if (sub_type == PARAM_OBSERVATION)
-      result = new Observation(model);
+      result = new Observation();
     else if (sub_type == PARAM_OUTPUT_PARAMETERS)
-      result = new OutputParameters(model);
+      result = new OutputParameters();
     else if (sub_type == PARAM_RANDOM_NUMBER_SEED)
-      result = new RandomNumberSeed(model);
+      result = new RandomNumberSeed();
     else if (sub_type == PARAM_SIMULATED_OBSERVATION)
-      result = new SimulatedObservation(model);
+      result = new SimulatedObservation();
     else if (sub_type == PARAM_SELECTIVITY)
-      result = new Selectivity(model);
+      result = new Selectivity();
     else if (sub_type == PARAM_TIME_VARYING)
-      result = new TimeVarying(model);
+      result = new TimeVarying();
     else if (sub_type == PARAM_INITIALISATION_PARTITION)
-      result = new InitialisationPartition(model);
+      result = new InitialisationPartition();
     else if (model->partition_type() == PartitionType::kAge) {
       if (object_type == PARAM_REPORT) {
         if (sub_type == PARAM_AGEING_ERROR)
-          result = new age::AgeingErrorMatrix(model);
+          result = new age::AgeingErrorMatrix();
         if (sub_type == PARAM_AGE_LENGTH)
-          result = new age::AgeLength(model);
+          result = new age::AgeLength();
         else if (sub_type == PARAM_PARTITION_BIOMASS)
-          result = new age::PartitionBiomass(model);
+          result = new age::PartitionBiomass();
         else if (sub_type == PARAM_PARTITION_MEAN_WEIGHT)
-          result = new age::PartitionMeanWeight(model);
+          result = new age::PartitionMeanWeight();
         else if (sub_type == PARAM_INITIALISATION_PARTITION_MEAN_WEIGHT)
-          result = new age::InitialisationPartitionMeanWeight(model);
+          result = new age::InitialisationPartitionMeanWeight();
         else if (sub_type == PARAM_PARTITION)
-          result = new age::Partition(model);
+          result = new age::Partition();
          else if (sub_type == PARAM_REPORT_PARTITION_YEARCROSSAGEMATRIX)
-          result = new age::Partition_YearCrossAgeMatrix(model);
+          result = new age::Partition_YearCrossAgeMatrix();
        }
     } else if (model->partition_type() == PartitionType::kLength) {
       if (sub_type == PARAM_INITIALISATION_PARTITION_MEAN_WEIGHT)
-        result = new age::InitialisationPartitionMeanWeight(model);
+        result = new age::InitialisationPartitionMeanWeight();
       else if (sub_type == PARAM_PARTITION_MEAN_WEIGHT)
-        result = new age::PartitionMeanWeight(model);
+        result = new age::PartitionMeanWeight();
       else if (sub_type == PARAM_PARTITION_BIOMASS)
-        result = new age::PartitionBiomass(model);
+        result = new age::PartitionBiomass();
       else if (sub_type == PARAM_PARTITION)
-        result = new age::Partition(model);
+        result = new age::Partition();
     }
 
 

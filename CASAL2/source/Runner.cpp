@@ -39,6 +39,7 @@ using std::endl;
  * Default constructor
  */
 Runner::Runner() {
+	master_model_.reset(new Model());
 }
 
 /**
@@ -77,14 +78,14 @@ int Runner::Go() {
 		if (parts.size() == 1)
 			parts.push_back("");
 		if (parts.size() == 2) {
-			master_model_.set_partition_type(PartitionType::kAge);
-			base::Object *object = master_model_.factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
+			master_model_->set_partition_type(PartitionType::kAge);
+			base::Object *object = master_model_->factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
 			if (object) {
 				cout << "Printing information for " << parts[0] << " with sub-type " << parts[1] << endl;
 				object->PrintParameterQueryInfo();
 			} else {
-				master_model_.set_partition_type(PartitionType::kLength);
-				object = master_model_.factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
+				master_model_->set_partition_type(PartitionType::kLength);
+				object = master_model_->factory().CreateObject(parts[0], parts[1], PartitionType::kModel);
 				if (object) {
 					cout << "Printing information for " << parts[0] << " with sub-type " << parts[1] << endl;
 					object->PrintParameterQueryInfo();
@@ -121,7 +122,7 @@ int Runner::Go() {
 		string model_type = config_loader.model_type();
 
 		// TODO: REMOVE MASTER MODEL
-		vector<Model*> model_list;
+		vector<shared_ptr<Model>> model_list;
 //		model_list.push_back(&master_model_);
 //		for (unsigned i = 0; i < 2; ++i) {
 //			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
@@ -130,7 +131,7 @@ int Runner::Go() {
 //			model_list.push_back(model);
 //			cout << "Appended model with id " << model->id() << endl;
 //		}
-		Model* model = master_model_.factory().Create(PARAM_MODEL, model_type);
+		shared_ptr<Model> model = master_model_->factory().Create(PARAM_MODEL, model_type);
 
 		model_list.push_back(model);
 
@@ -142,7 +143,7 @@ int Runner::Go() {
 		}
 
 		// override any config file values from our command line
-		model->global_configuration().ParseOptions(model);
+		model->global_configuration().ParseOptions(model.get());
 		model->global_configuration().set_run_parameters(run_parameters_); // TODO: Set global_configuration for models too from Runner
 		utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 

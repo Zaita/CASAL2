@@ -30,12 +30,12 @@ public:
   // methods
   ElementDifference(Model* model);
   virtual                     ~ElementDifference() = default;
-  Double                      GetScore() override final;
+  Double                      GetScore() final;
 
 protected:
   // methods
-  void                        DoValidate() override final;
-  void                        DoBuild() override final;
+  void                        DoValidate() final {};
+  void                        DoBuild() final;
   // members
   string                      second_parameter_;
   Double*                     addressable_ = nullptr;

@@ -27,7 +27,7 @@ namespace length {
 /**
  * Default constructor
  */
-Partition::Partition(Model* model) : Report(model) {
+Partition::Partition() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection);
   model_state_ = State::kExecute;
 
@@ -35,21 +35,24 @@ Partition::Partition(Model* model) : Report(model) {
   parameters_.Bind<unsigned>(PARAM_YEARS, &years_, "Years", "", true);
 }
 
-void Partition::DoValidate() {
+/**
+ * Validate
+ */
+void Partition::DoValidate(shared_ptr<Model> model) {
  if (!parameters_.Get(PARAM_YEARS)->has_been_defined()) {
-   years_ = model_->years();
+   years_ = model->years();
  }
 }
 /**
  *
  */
-void Partition::DoExecute() {
+void Partition::DoExecute(shared_ptr<Model> model) {
 
-  niwa::partition::accessors::All all_view(model_);
-  vector<unsigned> length_bins = model_->length_bins();
+  niwa::partition::accessors::All all_view(model.get());
+  vector<unsigned> length_bins = model->length_bins();
   // Print the header
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
-  cache_ << "year: " << model_->current_year() << "\n";
+  cache_ << "year: " << model->current_year() << "\n";
   cache_ << "time_step: " << time_step_ << "\n";
   cache_ << "values "<< REPORT_R_DATAFRAME<<"\n";
   cache_ << "category";
@@ -57,12 +60,10 @@ void Partition::DoExecute() {
     cache_ << " " << length_bin;
   cache_ << "\n";
 
-  for (auto iterator = all_view.Begin(); iterator != all_view.End(); ++iterator) {
-    cache_ << (*iterator)->name_;
-    for (auto values = (*iterator)->data_.begin(); values != (*iterator)->data_.end(); ++values) {
-        Double value = *values;
+  for (auto iterator : all_view) {
+    cache_ << iterator->name_;
+    for (auto value : iterator->data_) {
         cache_ << " " << std::fixed << AS_DOUBLE(value);
-
     }
     cache_ << "\n";
   }

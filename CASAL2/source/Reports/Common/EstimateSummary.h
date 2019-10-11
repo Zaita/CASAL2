@@ -30,12 +30,12 @@ namespace reports {
 class EstimateSummary : public niwa::Report {
 public:
   // Methods
-  EstimateSummary(Model* model);
-  virtual                     ~EstimateSummary() noexcept(true);
-  void                        DoValidate() override final { };
-  void                        DoBuild() override final { };
-  void                        DoExecute() override final;
-  void                        DoExecuteTabular() override final { };
+  EstimateSummary();
+  virtual                     ~EstimateSummary() noexcept(true) = default;
+  void                        DoValidate(shared_ptr<Model> model) final { };
+  void                        DoBuild(shared_ptr<Model> model) final { };
+  void                        DoExecute(shared_ptr<Model> model) final;
+  void                        DoExecuteTabular(shared_ptr<Model> model) final { };
 };
 
 } /* namespace reports */

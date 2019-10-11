@@ -21,7 +21,7 @@ namespace length {
 /**
  *
  */
-PartitionBiomass::PartitionBiomass(Model* model) : Report(model) {
+PartitionBiomass::PartitionBiomass() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection);
   model_state_ = State::kExecute;
 
@@ -32,8 +32,8 @@ PartitionBiomass::PartitionBiomass(Model* model) : Report(model) {
 /**
  *
  */
-void PartitionBiomass::DoValidate() {
-  vector<unsigned> model_years = model_->years();
+void PartitionBiomass::DoValidate(shared_ptr<Model> model) {
+  vector<unsigned> model_years = model->years();
   for (unsigned year : years_) {
     if (std::find(model_years.begin(), model_years.end(), year) == model_years.end())
       LOG_ERROR_P(PARAM_YEARS) << " value " << year << " is not a valid year in the model";
@@ -43,15 +43,15 @@ void PartitionBiomass::DoValidate() {
 /**
  *
  */
-void PartitionBiomass::DoExecute() {
+void PartitionBiomass::DoExecute(shared_ptr<Model> model) {
   // First, figure out the lowest and highest ages/length
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
-  vector<unsigned> length_bins = model_->length_bins();
+  unsigned time_step_index = model->managers().time_step()->current_time_step();
+  vector<unsigned> length_bins = model->length_bins();
 
-  niwa::partition::accessors::All all_view(model_);
+  niwa::partition::accessors::All all_view(model.get());
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
-  cache_ << "year: " << model_->current_year() << "\n";
+  cache_ << "year: " << model->current_year() << "\n";
   cache_ << "time_step: " << time_step_ << "\n";
   cache_ << "values " << REPORT_R_DATAFRAME << "\n";
 
@@ -63,11 +63,10 @@ void PartitionBiomass::DoExecute() {
   cache_.precision(1);
   cache_ << std::fixed;
 
-  for (auto iterator = all_view.Begin(); iterator != all_view.End(); ++iterator) {
-
-    cache_ << (*iterator)->name_;
-    for (unsigned i = 0; i < (*iterator)->data_.size(); ++i) {
-        cache_ << " " << std::fixed << std::setprecision(5) << AS_DOUBLE(((*iterator)->data_[i] * (*iterator)->mean_weight_by_time_step_length_[time_step_index][i]));
+  for (auto iterator : all_view) {
+    cache_ << iterator->name_;
+    for (unsigned i = 0; i < iterator->data_.size(); ++i) {
+        cache_ << " " << std::fixed << std::setprecision(5) << AS_DOUBLE((iterator->data_[i] * iterator->mean_weight_by_time_step_length_[time_step_index][i]));
     }
     cache_ << "\n";
   }

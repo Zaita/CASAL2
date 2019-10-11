@@ -52,11 +52,11 @@ bool PiApproximation::Start(RunMode::Type run_mode) {
 	RegisterAsAddressable(PARAM_A, &objective_score_);
 
 	managers_->mcmc()->Validate(this);
-	managers_->report()->Validate();
+	managers_->report()->Validate(pointer());
 	managers_->selectivity()->Validate();
 	managers_->estimate()->Validate(this);
 
-	managers_->report()->Build();
+	managers_->report()->Build(pointer());
 	managers_->selectivity()->Build();
 	managers_->estimate()->Build(this);
 
@@ -72,7 +72,7 @@ bool PiApproximation::Start(RunMode::Type run_mode) {
 	}
 
 	objective_function_->CalculateScore();
-	managers_->report()->Execute(State::kIterationComplete);
+	managers_->report()->Execute(pointer(), State::kIterationComplete);
 	return true;
 }
 

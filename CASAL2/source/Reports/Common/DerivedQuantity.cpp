@@ -16,7 +16,7 @@ namespace reports {
 /**
  *
  */
-DerivedQuantity::DerivedQuantity(Model* model) : Report(model) {
+DerivedQuantity::DerivedQuantity() {
   run_mode_    = (RunMode::Type)(RunMode::kBasic | RunMode::kProjection | RunMode::kSimulation| RunMode::kEstimation | RunMode::kProfiling);
   model_state_ = (State::Type)(State::kIterationComplete);
 }
@@ -25,9 +25,9 @@ DerivedQuantity::DerivedQuantity(Model* model) : Report(model) {
 /**
  *
  */
-void DerivedQuantity::DoExecute() {
+void DerivedQuantity::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  derivedquantities::Manager& manager = *model_->managers().derived_quantity();
+  derivedquantities::Manager& manager = *model->managers().derived_quantity();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
 
   auto derived_quantities = manager.objects();
@@ -61,8 +61,8 @@ void DerivedQuantity::DoExecute() {
  * Execute Tabular report
  */
 
-void DerivedQuantity::DoExecuteTabular() {
-  derivedquantities::Manager& manager = *model_->managers().derived_quantity();
+void DerivedQuantity::DoExecuteTabular(shared_ptr<Model> model) {
+  derivedquantities::Manager& manager = *model->managers().derived_quantity();
   auto derived_quantities = manager.objects();
 
   if (first_run_) {
@@ -99,7 +99,7 @@ void DerivedQuantity::DoExecuteTabular() {
 /**
  *
  */
-void DerivedQuantity::DoFinaliseTabular() {
+void DerivedQuantity::DoFinaliseTabular(shared_ptr<Model> model) {
   ready_for_writing_ = true;
 }
 

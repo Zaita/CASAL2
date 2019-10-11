@@ -7,7 +7,6 @@
  *
  * Copyright NIWA Science �2012 - www.niwa.co.nz
  *
- * $Date: 2008-03-04 16:33:32 +1300 (Tue, 04 Mar 2008) $
  */
 
 #include "Logging/Logging.h"
@@ -16,15 +15,6 @@
 // Namespaces
 namespace niwa {
 namespace base {
-
-/**
- * This method is our singleton instance method
- */
-//template <class ClassType, class StoredType>
-//ClassType& Manager<ClassType, StoredType>::Instance() {
-//  static ClassType singleton;
-//  return singleton;
-//}
 
 /**
  * Validate the objects stored in the manager
@@ -74,13 +64,29 @@ void Manager<ClassType, StoredType>::Reset() {
  *
  */
 template <class ClassType, class StoredType>
-bool Manager<ClassType, StoredType>::HasType(const std::string& type) {
+bool Manager<ClassType, StoredType>::HasType(const std::string_view type) {
   for(auto stored_object : objects_) {
     if (stored_object->type() == type)
       return true;
   }
   return false;
 }
+
+/**
+ * Get an object from our manager based on it's label.
+ * As we can compare Object to label this will work nicely.
+ */
+template <class ClassType, class StoredType>
+StoredType* Manager<ClassType, StoredType>::get(string_view label) {
+	for(auto stored_object : objects_) {
+		if (stored_object == label)
+			return stored_object;
+	}
+
+	LOG_FATAL() << "Object " << label << " could not be found in it's manager";
+	return nullptr;
+}
+
 
 } /* namespae base */
 } /* namespace niwa */

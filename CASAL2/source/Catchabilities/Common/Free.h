@@ -26,14 +26,13 @@ class Free : public Catchability {
 public:
   Free() = delete;
   explicit                    Free(Model* model);
-  virtual                     ~Free() { };
-  Double                      q() const override final { return q_; }
-  void                        DoValidate() override final { };
-  void                        DoBuild() override final { };
+  virtual                     ~Free() = default;
+  void                        DoValidate() final {};
+  void                        DoBuild() final {};
 
 private:
   // members
-  Double                      q_;
+
 };
 
 } /* namespace catchabilities */

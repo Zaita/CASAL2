@@ -22,23 +22,17 @@ namespace reports {
 /**
  * Default constructor
  */
-EstimateValue::EstimateValue(Model* model) : Report(model) {
+EstimateValue::EstimateValue() {
   run_mode_     = (RunMode::Type)(RunMode::kBasic | RunMode::kEstimation | RunMode::kProfiling | RunMode::kProjection);
   model_state_  = State::kIterationComplete;
 }
 
 /**
- * Destructor
- */
-EstimateValue::~EstimateValue() noexcept(true) {
-}
-
-/**
  * Execute this report.
  */
-void EstimateValue::DoExecute() {
-  vector<Estimate*> estimates = model_->managers().estimate()->objects();
-  vector<Profile*> profiles = model_->managers().profile()->objects();
+void EstimateValue::DoExecute(shared_ptr<Model> model) {
+  vector<Estimate*> estimates = model->managers().estimate()->objects();
+  vector<Profile*> profiles = model->managers().profile()->objects();
   LOG_TRACE();
   // Check if estiamtes are close to bounds. flag a warning.
   for (Estimate* estimate : estimates) {
@@ -62,8 +56,8 @@ void EstimateValue::DoExecute() {
 /**
  *  Execute the report in tabular format
  */
-void EstimateValue::DoExecuteTabular() {
-  vector<Estimate*> estimates = model_->managers().estimate()->objects();
+void EstimateValue::DoExecuteTabular(shared_ptr<Model> model) {
+  vector<Estimate*> estimates = model->managers().estimate()->objects();
   /**
    * if this is the first run we print the report header etc
    */
@@ -84,7 +78,7 @@ void EstimateValue::DoExecuteTabular() {
 /**
  *  End report signature
  */
-void EstimateValue::DoFinaliseTabular() {
+void EstimateValue::DoFinaliseTabular(shared_ptr<Model> model) {
   ready_for_writing_ = true;
 }
 

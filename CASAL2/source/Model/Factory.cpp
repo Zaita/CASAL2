@@ -137,22 +137,26 @@ base::Object* Factory::CreateObject(const string& object_type, const string& sub
 /**
  * Factory class to create different model types
  */
-niwa::Model* Factory::Create(const string& object_type, const string& sub_type) {
+shared_ptr<Model> Factory::Create(const string& object_type, const string& sub_type) {
+
+	shared_ptr<Model> result;
 
 	if (object_type == PARAM_MODEL) {
 		if (sub_type == PARAM_AGE) {
-			return new model::Age();
+			result.reset(new model::Age());
 		} else if (sub_type == PARAM_LENGTH) {
-			return new model::Length();
+			result.reset(new model::Length());
 		} else if (sub_type == PARAM_MULTIVARIATE) {
-			return new model::Multivariate();
+			result.reset(new model::Multivariate());
 		} else if (sub_type == PARAM_PI_APPROX)
-			return new model::PiApproximation();
+			result.reset(new model::PiApproximation());
 	}
+
+	if (result)
+		return result;
 
 	LOG_CODE_ERROR() << object_type << "." << sub_type << " is not valid";
 	return nullptr;
 }
-
 
 } /* namespace niwa */

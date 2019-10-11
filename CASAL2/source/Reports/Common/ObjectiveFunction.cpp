@@ -22,7 +22,7 @@ namespace reports {
 /**
  * Default constructor
  */
-ObjectiveFunction::ObjectiveFunction(Model* model) : Report(model) {
+ObjectiveFunction::ObjectiveFunction() {
   model_state_ = State::kIterationComplete;
   run_mode_    = (RunMode::Type)(RunMode::kEstimation | RunMode::kBasic | RunMode::kProjection| RunMode::kProfiling);
 }
@@ -30,13 +30,13 @@ ObjectiveFunction::ObjectiveFunction(Model* model) : Report(model) {
 /**
  * Execute the report
  */
-void ObjectiveFunction::DoExecute() {
+void ObjectiveFunction::DoExecute(shared_ptr<Model> model) {
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
   cache_ <<"values " << REPORT_R_VECTOR <<"\n";
 
-  if (model_ == nullptr)
+  if (model == nullptr)
   	LOG_CODE_ERROR() << "model_ == nullptr";
-  ::niwa::ObjectiveFunction& obj_function = model_->objective_function();
+  ::niwa::ObjectiveFunction& obj_function = model->objective_function();
 
   const vector<objective::Score>& score_list = obj_function.score_list();
   for (objective::Score score : score_list) {
