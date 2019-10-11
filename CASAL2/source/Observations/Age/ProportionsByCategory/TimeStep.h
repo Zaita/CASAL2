@@ -28,7 +28,7 @@ namespace age {
 class TimeStepProportionsByCategory : public observations::age::ProportionsByCategory {
 public:
   // methods
-  TimeStepProportionsByCategory(Model* model);
+  TimeStepProportionsByCategory(shared_ptr<Model> model);
   virtual                     ~TimeStepProportionsByCategory() = default;
   void                        DoBuild() override final;
 

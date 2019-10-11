@@ -25,7 +25,7 @@ namespace estimatetransformations {
 /**
  * Default constructor
  */
-AverageDifference::AverageDifference(Model* model) : EstimateTransformation(model) {
+AverageDifference::AverageDifference(shared_ptr<Model> model) : EstimateTransformation(model) {
   parameters_.Bind<string>(PARAM_THETA_TWO, &difference_estimate_label_, "The label of the @estimate block relating to the $\theta_2$ parameter in the transformation see, see the documentation for more information", "");
   parameters_.Bind<string>(PARAM_THETA_ONE, &estimate_label_, "Label of @estimate block relating to the $\theta_1$ parameter in the transformation see, see the documentation for more information", "");
   is_simple_ = false;

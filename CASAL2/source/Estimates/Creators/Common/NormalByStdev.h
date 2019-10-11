@@ -28,7 +28,7 @@ class NormalByStdev : public estimates::Creator {
 public:
   // methods
   NormalByStdev() = delete;
-  explicit NormalByStdev(Model* model);
+  explicit NormalByStdev(shared_ptr<Model> model);
   virtual                     ~NormalByStdev() = default;
   void                        DoCopyParameters(niwa::Estimate* estimate, unsigned index) override final;
 

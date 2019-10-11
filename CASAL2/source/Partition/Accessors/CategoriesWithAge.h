@@ -45,7 +45,7 @@ public:
 
   // Methods
   CategoriesWithAge() = delete;
-  CategoriesWithAge(Model* model, const vector<string>& categories, const unsigned& age);
+  CategoriesWithAge(shared_ptr<Model> model, const vector<string>& categories, const unsigned& age);
   virtual                     ~CategoriesWithAge() = default;
   unsigned                    size();
   DataType::iterator          begin();
@@ -53,7 +53,7 @@ public:
 
 private:
   // Members
-  Model*                      model_;
+  shared_ptr<Model>                      model_;
   map<unsigned, DataType >    data_; // map<year, vector<pair<category, Double*> > >
 };
 

@@ -43,7 +43,7 @@ using std::ios_base;
 /**
  *
  */
-MCMCObjective::MCMCObjective(Model* model) : model_(model) {
+MCMCObjective::MCMCObjective(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

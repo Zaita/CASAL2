@@ -28,7 +28,7 @@ namespace age {
 class ProcessAbundance : public observations::age::Abundance {
 public:
   // methods
-  explicit ProcessAbundance(Model* model);
+  explicit ProcessAbundance(shared_ptr<Model> model);
   virtual                     ~ProcessAbundance() = default;
   void                        DoBuild() override final;
 

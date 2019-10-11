@@ -52,7 +52,7 @@ class MCMC : public niwa::base::Object {
 public:
   // Methods
   MCMC() = delete;
-  explicit MCMC(Model* model);
+  explicit MCMC(shared_ptr<Model> model);
   virtual                     ~MCMC() = default;
   void                        Validate();
   void                        Build();
@@ -76,7 +76,7 @@ protected:
   virtual void                DoExecute() = 0;
 
   // members
-  Model*                      model_;
+  shared_ptr<Model>                      model_;
   unsigned                    length_ = 0;
   unsigned                    starting_iteration_ = 0;
   ublas::matrix<Double>       covariance_matrix_;

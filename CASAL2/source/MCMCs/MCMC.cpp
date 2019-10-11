@@ -26,7 +26,7 @@ namespace niwa {
 /**
  * Constructor
  */
-MCMC::MCMC(Model* model) : model_(model) {
+MCMC::MCMC(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label of the MCMC", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The type of MCMC", "", "");
   parameters_.Bind<unsigned>(PARAM_LENGTH, &length_, "The number of iterations in for the MCMC chain", "");

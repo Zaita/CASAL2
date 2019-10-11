@@ -22,7 +22,7 @@ namespace age {
 /**
  *
  */
-TimeStepBiomass::TimeStepBiomass(Model* model)
+TimeStepBiomass::TimeStepBiomass(shared_ptr<Model> model)
    : observations::age::Biomass(model) {
   parameters_.Bind<Double>(PARAM_TIME_STEP_PROPORTION, &time_step_proportion_, "Proportion through the mortality block of the time step when the observation is evaluated", "", Double(0.5));
 

@@ -27,7 +27,7 @@ class VonBertalanffy : public niwa::AgeLength {
   friend class MockVonBertalanffy;
 public:
   // methods
-  explicit VonBertalanffy(Model* model);
+  explicit VonBertalanffy(shared_ptr<Model> model);
   virtual                     ~VonBertalanffy() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final;

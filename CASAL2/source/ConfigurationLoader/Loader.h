@@ -63,8 +63,8 @@ public:
 
 private:
   // Methods
-  void                        ParseBlock(Model* model, vector<FileLine> &block);
-  void                        HandleInlineDefinitions(Model* model, FileLine& file_line, const string& parent_label);
+  void                        ParseBlock(shared_ptr<Model> model, vector<FileLine> &block);
+  void                        HandleInlineDefinitions(shared_ptr<Model> model, FileLine& file_line, const string& parent_label);
 
 
   // Members

@@ -24,7 +24,7 @@ namespace timevarying {
 /**
  * Default constructor
  */
-Linear::Linear(Model* model) : TimeVarying(model) {
+Linear::Linear(shared_ptr<Model> model) : TimeVarying(model) {
   parameters_.Bind<Double>(PARAM_SLOPE, &slope_, "The slope of the linear trend (additive unit per year)", "");
   parameters_.Bind<Double>(PARAM_INTERCEPT, &intercept_, "The intercept of the linear trend value for the first year", "");
 

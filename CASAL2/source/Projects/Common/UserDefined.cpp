@@ -24,7 +24,7 @@ namespace projects {
 /**
  * Default constructor
  */
-UserDefined::UserDefined(Model* model) : Project(model) {
+UserDefined::UserDefined(shared_ptr<Model> model) : Project(model) {
   parameters_.Bind<string>(PARAM_EQUATION, &equation_input_, "Equation to do a test run of", "");
 }
 

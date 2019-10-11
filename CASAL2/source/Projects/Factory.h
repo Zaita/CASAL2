@@ -28,7 +28,7 @@ namespace projects {
 class Factory {
 public:
   // methods
-  static Project* Create(Model* model, const string& object_type, const string& sub_type);
+  static Project* Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

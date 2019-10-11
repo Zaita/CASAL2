@@ -30,7 +30,7 @@ class Nuisance : public Catchability {
 public:
 	// members
   Nuisance() = delete;
-  explicit                    Nuisance(Model* model);
+  explicit                    Nuisance(shared_ptr<Model> model);
   virtual                     ~Nuisance() {};
   void                        DoValidate() final {};
   void                        DoBuild() final;

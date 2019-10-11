@@ -27,7 +27,7 @@ void Manager::Validate() {
 /**
  *
  */
-void Manager::Validate(Model* model) {
+void Manager::Validate(shared_ptr<Model> model) {
   for (auto mcmc : objects_)
     mcmc->Validate();
 

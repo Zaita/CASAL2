@@ -16,6 +16,10 @@
 #ifndef SOURCE_MODEL_MANAGERS_H_
 #define SOURCE_MODEL_MANAGERS_H_
 
+#include <memory>
+
+using std::shared_ptr;
+
 // namespaces
 namespace niwa {
 
@@ -82,14 +86,14 @@ public:
 
 protected:
   // methods
-  Managers(Model* model);
+  Managers(shared_ptr<Model> model);
   virtual                     ~Managers();
   void                        Validate();
   void                        Build();
   void                        Reset();
 
   // members
-  Model*                              model_;
+  shared_ptr<Model>                   model_;
   additionalpriors::Manager*          additional_prior_;
   ageingerrors::Manager*              ageing_error_;
   agelengths::Manager*                age_length_;

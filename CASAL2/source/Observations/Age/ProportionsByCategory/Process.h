@@ -28,7 +28,7 @@ namespace age {
 class ProcessProportionsByCategory : public observations::age::ProportionsByCategory {
 public:
   // methods
-  ProcessProportionsByCategory(Model* model);
+  ProcessProportionsByCategory(shared_ptr<Model> model);
   virtual                     ~ProcessProportionsByCategory() = default;
   void                        DoBuild() override final;
 

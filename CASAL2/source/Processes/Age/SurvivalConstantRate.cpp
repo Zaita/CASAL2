@@ -26,7 +26,7 @@ namespace age {
 /**
  * Default Constructor
  */
-SurvivalConstantRate::SurvivalConstantRate(Model* model)
+SurvivalConstantRate::SurvivalConstantRate(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   LOG_TRACE();

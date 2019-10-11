@@ -29,7 +29,7 @@ namespace utils = niwa::utilities;
 /**
  * Default constructor
  */
-Biomass::Biomass(Model* model) : Observation(model) {
+Biomass::Biomass(shared_ptr<Model> model) : Observation(model) {
   parameters_.Bind<string>(PARAM_CATCHABILITY, &catchability_label_, "The time-step of the observation", "");
   parameters_.Bind<string>(PARAM_TIME_STEP, &time_step_label_, "The label of time-step that the observation occurs in", "");
   parameters_.Bind<string>(PARAM_OBS, &obs_, "The observed values", "");

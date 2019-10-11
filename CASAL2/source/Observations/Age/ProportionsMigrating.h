@@ -40,7 +40,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class ProportionsMigrating : public niwa::Observation {
 public:
   // Methods
-  explicit ProportionsMigrating(Model* model);
+  explicit ProportionsMigrating(shared_ptr<Model> model);
   virtual                     ~ProportionsMigrating();
   void                        DoValidate() override final;
   void                        DoBuild() override final;

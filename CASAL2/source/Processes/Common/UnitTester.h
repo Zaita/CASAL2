@@ -30,7 +30,7 @@ using niwa::utilities::OrderedMap;
 class UnitTester : public Process {
 public:
   // methods
-  explicit UnitTester(Model* model) : Process(model) {
+  explicit UnitTester(shared_ptr<Model> model) : Process(model) {
     process_type_ = ProcessType::kNullProcess;
     partition_structure_ = PartitionType::kAge | PartitionType::kLength;
 

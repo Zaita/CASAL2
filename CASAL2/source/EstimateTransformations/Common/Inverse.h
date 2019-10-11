@@ -25,7 +25,7 @@ namespace estimatetransformations {
 class Inverse : public EstimateTransformation {
 public:
   Inverse() = delete;
-  explicit Inverse(Model* model);
+  explicit Inverse(shared_ptr<Model> model);
   virtual ~Inverse() = default;
   void                        TransformForObjectiveFunction() override final;
   void                        RestoreFromObjectiveFunction() override final;

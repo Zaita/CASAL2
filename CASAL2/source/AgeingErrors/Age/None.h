@@ -26,7 +26,7 @@ namespace ageingerrors {
 class None : public niwa::AgeingError {
 public:
   // methods
-  None(Model* model);
+  None(shared_ptr<Model> model);
   virtual                   ~None();
 
 protected:

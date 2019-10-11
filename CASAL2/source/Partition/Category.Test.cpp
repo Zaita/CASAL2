@@ -37,7 +37,7 @@ public:
 
 class MockCategories : public Categories {
 public:
-  MockCategories(Model* model) : Categories(model) {
+  MockCategories(shared_ptr<Model> model) : Categories(model) {
     vector<string> names;
     vector<string> sexes  = { "male", "female" };
     vector<string> stages = { "immature", "mature" };
@@ -66,8 +66,8 @@ public:
     distribution_ = distribution;
   }
 
-  MockVonBertalanffy(Model& model, Double linf, Double k, Double t0, bool by_length,
-      Double cv_first, Double cv_last, vector<Double> time_step_proportions, bool casal_switch = false, Distribution distributuion = Distribution::kNormal) : VonBertalanffy(&model) {
+  MockVonBertalanffy(shared_ptr<Model> model, Double linf, Double k, Double t0, bool by_length,
+      Double cv_first, Double cv_last, vector<Double> time_step_proportions, bool casal_switch = false, Distribution distributuion = Distribution::kNormal) : VonBertalanffy(model) {
     linf_ = linf;
     k_ = k;
     t0_ = t0;

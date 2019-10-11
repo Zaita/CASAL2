@@ -49,7 +49,7 @@ void Partition::DoExecute(shared_ptr<Model> model) {
   unsigned highest        = 0;
   unsigned longest_length = 0;
 
-  niwa::partition::accessors::All all_view(model.get());
+  niwa::partition::accessors::All all_view(model);
   for (auto iterator : all_view) {
     if (lowest > iterator->min_age_)
       lowest = iterator->min_age_;

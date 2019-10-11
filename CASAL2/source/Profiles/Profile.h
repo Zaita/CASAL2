@@ -32,7 +32,7 @@ class Profile : public niwa::base::Object {
 public:
   // methods
   Profile() = delete;
-  explicit Profile(Model* model);
+  explicit Profile(shared_ptr<Model> model);
   virtual                     ~Profile() = default;
   void                        Validate();
   void                        Build();
@@ -48,7 +48,7 @@ public:
 
 private:
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   unsigned                    steps_ = 0;
   Double                      lower_bound_ = 0;
   Double                      upper_bound_ = 0;

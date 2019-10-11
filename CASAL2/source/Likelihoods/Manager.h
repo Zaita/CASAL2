@@ -32,7 +32,7 @@ class Manager : public niwa::base::Manager<niwa::likelihoods::Manager, niwa::Lik
 public:
   // methods
   virtual                     ~Manager() noexcept(true) { };
-  Likelihood*                 GetOrCreateLikelihood(Model* model, const string& observation_label, const string& label);
+  Likelihood*                 GetOrCreateLikelihood(shared_ptr<Model> model, const string& observation_label, const string& label);
 
 protected:
   // methods

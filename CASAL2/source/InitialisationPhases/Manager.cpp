@@ -50,7 +50,7 @@ void Manager::Validate() {
 /**
  *
  */
-void Manager::Build(Model* model) {
+void Manager::Build(shared_ptr<Model> model) {
   LOG_TRACE();
 
   // Build our objects

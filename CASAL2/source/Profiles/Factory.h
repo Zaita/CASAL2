@@ -28,7 +28,7 @@ using std::string;
 class Factory {
 public:
   // methods
-  static Profile* Create(Model* model, const string& object_type, const string& sub_type);
+  static Profile* Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

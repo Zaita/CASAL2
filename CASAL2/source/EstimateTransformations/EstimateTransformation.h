@@ -26,7 +26,7 @@ class EstimateTransformation : public niwa::base::Object {
 public:
   // methods
   EstimateTransformation() = delete;
-  explicit EstimateTransformation(Model* model);
+  explicit EstimateTransformation(shared_ptr<Model> model);
   virtual                     ~EstimateTransformation() = default;
   void                        Validate();
   void                        Build();
@@ -50,7 +50,7 @@ protected:
   virtual void                DoRestore() = 0;
 
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   Estimate*                   estimate_ = nullptr;
   bool                        is_transformed_ = false;
   Double                      current_untransformed_value_ = 0.0;

@@ -21,7 +21,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-Process::Process(Model* model) : model_(model) {
+Process::Process(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label of the process", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The type of process", "", "");
 

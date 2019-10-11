@@ -25,7 +25,7 @@ namespace estimatetransformations {
 class LogSum : public EstimateTransformation {
 public:
   LogSum() = delete;
-  explicit LogSum(Model* model);
+  explicit LogSum(shared_ptr<Model> model);
   virtual ~LogSum() = default;
   void                        TransformForObjectiveFunction() override final;
   void                        RestoreFromObjectiveFunction() override final;

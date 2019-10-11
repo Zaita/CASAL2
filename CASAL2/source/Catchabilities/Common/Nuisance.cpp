@@ -33,7 +33,7 @@ namespace utils = niwa::utilities;
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Nuisance::Nuisance(Model* model) : Catchability(model) {
+Nuisance::Nuisance(shared_ptr<Model> model) : Catchability(model) {
   parameters_.Bind<Double>(PARAM_LOWER_BOUND, &lower_bound_, "Upper bound for nuisance catchability", "");
   parameters_.Bind<Double>(PARAM_UPPER_BOUND, &upper_bound_, "Lower bound for nuisance catchability", "");
 

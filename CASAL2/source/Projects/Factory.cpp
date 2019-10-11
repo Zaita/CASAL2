@@ -32,7 +32,7 @@ namespace projects {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-Project* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+Project* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   Project* result = nullptr;
 
   if (object_type == PARAM_PROJECTS || object_type == PARAM_PROJECT) {

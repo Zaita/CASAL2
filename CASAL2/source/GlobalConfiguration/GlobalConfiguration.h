@@ -46,7 +46,7 @@ public:
   GlobalConfiguration() = default;
   virtual                     ~GlobalConfiguration() = default;
   void                        Clear();
-  void                        ParseOptions(Model* model);
+  void                        ParseOptions(shared_ptr<Model> model);
 
   // Accessors and Mutators
   void                  set_command_line_parameters(vector<string> &parameters) { command_line_parameters_ = parameters; }

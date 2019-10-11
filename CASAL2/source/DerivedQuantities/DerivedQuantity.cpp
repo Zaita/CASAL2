@@ -30,7 +30,7 @@ namespace niwa {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-DerivedQuantity::DerivedQuantity(Model* model)
+DerivedQuantity::DerivedQuantity(shared_ptr<Model> model)
   : model_(model),
     partition_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "Label of the derived quantity", "");

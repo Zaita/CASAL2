@@ -43,7 +43,7 @@ using niwa::utilities::Double;
 class Category {
 public:
   // methods
-  Category(Model* model) : model_(model) { };
+  Category(shared_ptr<Model> model) : model_(model) { };
   virtual                     ~Category() = default;
   void                        UpdateMeanLengthData();
   void                        UpdateMeanWeightData();
@@ -79,7 +79,7 @@ public:
 
 private:
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
 };
 
 } /* namespace partitions */

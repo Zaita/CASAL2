@@ -42,7 +42,7 @@ void Manager::Build() {
 /**
  * Build
  */
-void Manager::Build(Model* model) {
+void Manager::Build(shared_ptr<Model> model) {
   LOG_TRACE();
   if (model->run_mode() == RunMode::kProjection) {
     bool ycs_values_exist = false;

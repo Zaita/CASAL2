@@ -22,7 +22,7 @@ namespace additionalpriors {
 class UniformLog : public AdditionalPrior {
 public:
   // methods
-	UniformLog(Model* model);
+	UniformLog(shared_ptr<Model> model);
   virtual                     ~UniformLog() = default;
   void                        DoValidate() final {};
   void                        DoBuild() final;

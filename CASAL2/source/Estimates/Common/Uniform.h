@@ -30,7 +30,7 @@ class Uniform : public niwa::Estimate {
 public:
   // Methods
   Uniform() = delete;
-  explicit Uniform(Model* model);
+  explicit Uniform(shared_ptr<Model> model);
   virtual                     ~Uniform() = default;
   void                        DoValidate() override final { };
   Double                      GetScore() override final { return 0; }

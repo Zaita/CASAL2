@@ -26,7 +26,7 @@ namespace ageingerrors {
 class Normal : public niwa::AgeingError {
 public:
   // methods
-  Normal(Model* model);
+  Normal(shared_ptr<Model> model);
   virtual                     ~Normal() = default;
 
 protected:

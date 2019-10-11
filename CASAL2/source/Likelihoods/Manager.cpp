@@ -28,7 +28,7 @@ Manager::Manager() {
 /**
  *
  */
-Likelihood* Manager::GetOrCreateLikelihood(Model* model, const string& observation_label, const string& label) {
+Likelihood* Manager::GetOrCreateLikelihood(shared_ptr<Model> model, const string& observation_label, const string& label) {
   LOG_FINEST() << observation_label << " + " << label;
   Likelihood* labelled = nullptr;
   Likelihood* factory  = nullptr;

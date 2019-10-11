@@ -25,7 +25,7 @@ namespace estimatetransformations {
 class AverageDifference : public EstimateTransformation {
 public:
   AverageDifference() = delete;
-  explicit AverageDifference(Model* model);
+  explicit AverageDifference(shared_ptr<Model> model);
   virtual ~AverageDifference() = default;
   void                        TransformForObjectiveFunction() override final;
   void                        RestoreFromObjectiveFunction() override final;

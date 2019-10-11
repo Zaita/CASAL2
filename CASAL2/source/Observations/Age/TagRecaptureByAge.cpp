@@ -32,7 +32,7 @@ namespace age {
 /**
  * Default constructor
  */
-TagRecaptureByAge::TagRecaptureByAge(Model* model) : Observation(model) {
+TagRecaptureByAge::TagRecaptureByAge(shared_ptr<Model> model) : Observation(model) {
   recaptures_table_ = new parameters::Table(PARAM_RECAPTURED);
   scanned_table_ = new parameters::Table(PARAM_SCANNED);
 

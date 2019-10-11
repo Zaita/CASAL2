@@ -91,7 +91,7 @@ bool ParameterList::Add(const string& label, const string& value, const string& 
 /**
  *
  */
-void ParameterList::Populate(Model* model) {
+void ParameterList::Populate(shared_ptr<Model> model) {
   LOG_TRACE();
   if (already_populated_) {
     LOG_CODE_ERROR() << "  if (already_populated_): " << parent_block_type_;

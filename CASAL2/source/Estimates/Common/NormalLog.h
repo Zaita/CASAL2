@@ -30,7 +30,7 @@ class NormalLog : public niwa::Estimate {
 public:
   // Methods
   NormalLog() = delete;
-  explicit NormalLog(Model* model);
+  explicit NormalLog(shared_ptr<Model> model);
   virtual                     ~NormalLog() = default;
   void                        DoValidate() override final { };
   Double                      GetScore() override final;

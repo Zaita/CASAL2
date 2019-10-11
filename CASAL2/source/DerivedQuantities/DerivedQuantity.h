@@ -32,7 +32,7 @@ class DerivedQuantity : public niwa::base::Executor {
 public:
   // methods
   DerivedQuantity() = delete;
-  explicit DerivedQuantity(Model* model);
+  explicit DerivedQuantity(shared_ptr<Model> model);
   virtual                     ~DerivedQuantity() = default;
   void                        Validate();
   void                        Build();
@@ -52,7 +52,7 @@ public:
 
 protected:
   // Members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   string                      time_step_label_ = "";
   unsigned                    current_initialisation_phase_ = 0;
   vector<vector<Double>>      initialisation_values_;

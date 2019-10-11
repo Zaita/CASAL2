@@ -39,7 +39,7 @@ class Abundance : public niwa::Observation {
 public:
   // Methods
   //Abundance() = delete;
-  Abundance(Model* model);
+  Abundance(shared_ptr<Model> model);
   virtual                     ~Abundance() = default;
   void                        DoValidate() override final;
   virtual void                DoBuild() override;

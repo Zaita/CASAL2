@@ -52,14 +52,14 @@ bool Multivariate::Start(RunMode::Type run_mode) {
 
 	RegisterAsAddressable(PARAM_A, &objective_score_);
 
-	managers_->mcmc()->Validate(this);
+	managers_->mcmc()->Validate(pointer());
 	managers_->report()->Validate(pointer());
 	managers_->selectivity()->Validate();
-	managers_->estimate()->Validate(this);
+	managers_->estimate()->Validate(pointer());
 
 	managers_->report()->Build(pointer());
 	managers_->selectivity()->Build();
-	managers_->estimate()->Build(this);
+	managers_->estimate()->Build(pointer());
 
 	if (run_mode == RunMode::kBasic)
 		FullIteration();

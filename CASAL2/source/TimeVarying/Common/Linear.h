@@ -27,7 +27,7 @@ namespace timevarying {
  */
 class Linear : public TimeVarying {
 public:
-  explicit Linear(Model* model);
+  explicit Linear(shared_ptr<Model> model);
   virtual                     ~Linear() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

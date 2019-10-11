@@ -28,7 +28,7 @@ namespace age {
 /**
  * Default constructor
  */
-ProportionsAtLength::ProportionsAtLength(Model* model) : Observation(model) {
+ProportionsAtLength::ProportionsAtLength(shared_ptr<Model> model) : Observation(model) {
   obs_table_ = new parameters::Table(PARAM_OBS);
   error_values_table_ = new parameters::Table(PARAM_ERROR_VALUES);
 

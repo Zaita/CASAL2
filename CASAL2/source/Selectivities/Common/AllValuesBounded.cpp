@@ -25,7 +25,7 @@ namespace selectivities {
 /**
  * Explicit Constructor
  */
-AllValuesBounded::AllValuesBounded(Model* model)
+AllValuesBounded::AllValuesBounded(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<unsigned>(PARAM_L, &low_, "L", "");

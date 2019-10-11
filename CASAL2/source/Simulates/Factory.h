@@ -28,7 +28,7 @@ namespace simulates {
 class Factory {
 public:
   // methods
-  static Simulate* Create(Model* model, const string& object_type, const string& sub_type);
+  static Simulate* Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

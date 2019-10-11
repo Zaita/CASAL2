@@ -30,7 +30,7 @@ class UniformLog : public niwa::Estimate {
 public:
   // Methods
   UniformLog() = delete;
-  explicit UniformLog(Model* model);
+  explicit UniformLog(shared_ptr<Model> model);
   virtual                     ~UniformLog() = default;
   void                        DoValidate() override final { };
   Double                      GetScore() override final;

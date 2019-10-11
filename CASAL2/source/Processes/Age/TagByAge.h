@@ -33,7 +33,7 @@ namespace accessor = niwa::partition::accessors;
 class TagByAge : public niwa::Process {
 public:
   // methods
-  explicit TagByAge(Model* model);
+  explicit TagByAge(shared_ptr<Model> model);
   virtual                     ~TagByAge();
   void                        DoValidate() override final;
   void                        DoBuild() override final;

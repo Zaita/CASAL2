@@ -31,7 +31,7 @@ namespace derivedquantities {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-DerivedQuantity* Factory::Create(Model* model, const string& object_type, const string& sub_type, PartitionType partition_type) {
+DerivedQuantity* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type, PartitionType partition_type) {
   DerivedQuantity* result = nullptr;
 
   if (partition_type == PartitionType::kAge || model->partition_type() == PartitionType::kAge) {

@@ -42,7 +42,7 @@ class Process : public niwa::base::Object {
 public:
   // methods
   Process() = delete;
-  explicit Process(Model* model);
+  explicit Process(shared_ptr<Model> model);
   virtual                     ~Process() = default;
   void                        Validate();
   void                        Build();
@@ -63,7 +63,7 @@ public:
 
 protected:
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   ProcessType                 process_type_ = ProcessType::kUnknown;
   PartitionType               partition_structure_ = PartitionType::kInvalid;
   map<unsigned, map<string, vector<Executor*>>> executors_;

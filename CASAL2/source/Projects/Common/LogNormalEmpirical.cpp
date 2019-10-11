@@ -21,7 +21,7 @@ namespace projects {
  * Default constructor
  */
 
-LogNormalEmpirical::LogNormalEmpirical(Model* model) : Project(model) {
+LogNormalEmpirical::LogNormalEmpirical(shared_ptr<Model> model) : Project(model) {
   parameters_.Bind<Double>(PARAM_MEAN, &mean_, "Mean of gaussian process", "",0.0);
   parameters_.Bind<unsigned>(PARAM_START_YEAR, &start_year_, "Start year of sampling", "", false);
   parameters_.Bind<unsigned>(PARAM_FINAL_YEAR, &final_year_, "Last year of sampling", "", false);

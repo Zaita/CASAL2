@@ -25,7 +25,7 @@ namespace selectivities {
 /**
  * Explicit constructor
  */
-Increasing::Increasing(Model* model)
+Increasing::Increasing(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<unsigned>(PARAM_L, &low_, "Low", "");

@@ -27,7 +27,7 @@ namespace agelengths {
 class Data : public AgeLength {
 public:
   // methods
-  explicit Data(Model* model);
+  explicit Data(shared_ptr<Model> model);
   virtual                     ~Data();
   void                        DoValidate() override final {};
   void                        DoBuild() override final;

@@ -31,7 +31,7 @@ namespace agelengths {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Data::Data(Model* model) : AgeLength(model) {
+Data::Data(shared_ptr<Model> model) : AgeLength(model) {
   data_table_ = new parameters::Table(PARAM_DATA);
 
   parameters_.BindTable(PARAM_DATA, data_table_, "", "");

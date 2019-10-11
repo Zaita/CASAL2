@@ -28,7 +28,7 @@ namespace ageingerrors {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-None::None(Model* model) : AgeingError(model) {
+None::None(shared_ptr<Model> model) : AgeingError(model) {
 
 }
 

@@ -26,7 +26,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-Estimate::Estimate(Model* model) : model_(model) {
+Estimate::Estimate(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label of the estimate", "", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The prior type for the estimate", "");
   parameters_.Bind<string>(PARAM_PARAMETER, &parameter_, "The name of the parameter to estimate in the model", "");

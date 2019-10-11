@@ -26,7 +26,7 @@ namespace agelengths {
 class Schnute : public niwa::AgeLength {
 public:
   // methods
-  explicit Schnute(Model* model);
+  explicit Schnute(shared_ptr<Model> model);
   virtual                     ~Schnute() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final;

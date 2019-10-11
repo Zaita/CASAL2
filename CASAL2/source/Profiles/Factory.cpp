@@ -28,7 +28,7 @@ namespace profiles {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return pointer to the object we've created
  */
-Profile* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+Profile* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   Profile* object = nullptr;
 
   if (object_type == PARAM_PROFILE) {

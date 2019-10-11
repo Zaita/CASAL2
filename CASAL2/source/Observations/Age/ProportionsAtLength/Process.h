@@ -27,7 +27,7 @@ namespace age {
  */
 class ProcessProportionsAtLength : public observations::age::ProportionsAtLength {
 public:
-  ProcessProportionsAtLength(Model* model);
+  ProcessProportionsAtLength(shared_ptr<Model> model);
   virtual                     ~ProcessProportionsAtLength() = default;
   void                        DoBuild() override final;
 

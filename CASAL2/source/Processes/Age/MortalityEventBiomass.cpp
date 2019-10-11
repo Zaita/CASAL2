@@ -27,7 +27,7 @@ namespace math = niwa::utilities::math;
 /**
  * default constructor
  */
-MortalityEventBiomass::MortalityEventBiomass(Model* model)
+MortalityEventBiomass::MortalityEventBiomass(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
 

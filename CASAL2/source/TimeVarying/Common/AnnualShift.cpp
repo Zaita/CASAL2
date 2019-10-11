@@ -20,7 +20,7 @@ namespace timevarying {
 /**
  * Default constructor
  */
-AnnualShift::AnnualShift(Model* model) : TimeVarying(model) {
+AnnualShift::AnnualShift(shared_ptr<Model> model) : TimeVarying(model) {
   parameters_.Bind<Double>(PARAM_VALUES, &values_, "", "");
   parameters_.Bind<Double>(PARAM_A, &a_, "", "");
   parameters_.Bind<Double>(PARAM_B, &b_, "", "");

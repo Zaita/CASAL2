@@ -24,7 +24,7 @@ namespace accessors {
 /**
  * Default constructor
  */
-CategoriesWithAge::CategoriesWithAge(Model* model, const vector<string>& category_names, const unsigned& age)
+CategoriesWithAge::CategoriesWithAge(shared_ptr<Model> model, const vector<string>& category_names, const unsigned& age)
   : model_(model) {
   LOG_TRACE();
 

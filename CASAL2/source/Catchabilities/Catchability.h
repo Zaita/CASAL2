@@ -27,7 +27,7 @@ class Catchability : public niwa::base::Object {
 public:
   // Methods
   Catchability() = delete;
-  explicit                    Catchability(Model* model);
+  explicit                    Catchability(shared_ptr<Model> model);
   virtual                     ~Catchability() = default;
   void                        Validate();
   void                        Build() { DoBuild(); };
@@ -40,7 +40,7 @@ public:
 
 protected:
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   Double                      q_ = 0.0;
 };
 

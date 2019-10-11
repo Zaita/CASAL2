@@ -32,7 +32,7 @@ namespace creators {
  * @param object_type The major object type (@estimate)
  * @param sub_type The sub type of the object (e.g beta)
  */
-Creator* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+Creator* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   Creator* object = nullptr;
 
   if (sub_type == PARAM_BETA)

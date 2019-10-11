@@ -26,7 +26,7 @@ namespace selectivities {
 /**
  * Explicit Constructor
  */
-KnifeEdge::KnifeEdge(Model* model)
+KnifeEdge::KnifeEdge(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_E, &edge_, "Edge", "");

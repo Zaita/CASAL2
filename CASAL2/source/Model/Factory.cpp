@@ -54,7 +54,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-Factory::Factory(Model* model) : model_(model) { }
+Factory::Factory(shared_ptr<Model> model) : model_(model) { }
 
 /**
  * Create an ObjectPtr for a specific class type in our system. This method
@@ -106,7 +106,7 @@ base::Object* Factory::CreateObject(const string& object_type, const string& sub
   else if (lwr_object_type == PARAM_MCMC)
     return mcmcs::Factory::Create(model_, lwr_object_type, lwr_sub_type);
   else if (lwr_object_type == PARAM_MODEL)
-    return model_;
+    return model_.get();
   else if (lwr_object_type == PARAM_OBSERVATION)
     return observations::Factory::Create(model_, lwr_object_type, lwr_sub_type);
   else if (lwr_object_type == PARAM_PENALTY)

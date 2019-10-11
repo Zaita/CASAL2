@@ -44,7 +44,7 @@ namespace math = niwa::utilities::math;
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-MortalityInstantaneous::MortalityInstantaneous(Model* model)
+MortalityInstantaneous::MortalityInstantaneous(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   process_type_ = ProcessType::kMortality;

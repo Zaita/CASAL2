@@ -27,7 +27,7 @@ namespace length {
 /**
  * Default Constructor
  */
-MortalityConstantRate::MortalityConstantRate(Model* model)
+MortalityConstantRate::MortalityConstantRate(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   LOG_TRACE();

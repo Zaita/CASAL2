@@ -35,7 +35,7 @@ namespace accessor = partition::accessors;
 /**
  * Default constructor
  */
-Iterative::Iterative(Model* model)
+Iterative::Iterative(shared_ptr<Model> model)
   : InitialisationPhase(model),
     cached_partition_(model),
     partition_(model) {

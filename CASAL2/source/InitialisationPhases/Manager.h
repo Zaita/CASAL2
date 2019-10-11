@@ -30,7 +30,7 @@ public:
   virtual                     ~Manager() noexcept(true);
   void                        Validate() override final;
   void                        Build() override final;
-  void                        Build(Model* model);
+  void                        Build(shared_ptr<Model> model);
   void                        Execute();
   InitialisationPhase*        GetInitPhase(const string& label);
   bool                        IsPhaseDefined(const string& label) const;

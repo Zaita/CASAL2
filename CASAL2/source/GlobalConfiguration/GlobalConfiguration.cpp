@@ -41,7 +41,7 @@ void GlobalConfiguration::Clear() {
  *
  * We'll also parse some of the extra options here and create objects we may need to create
  */
-void GlobalConfiguration::ParseOptions(Model* model) {
+void GlobalConfiguration::ParseOptions(shared_ptr<Model> model) {
   LOG_TRACE();
 
   if (options_.override_random_number_seed_)

@@ -22,7 +22,7 @@ namespace age {
 /**
  *
  */
-TimeStepAbundance::TimeStepAbundance(Model* model)
+TimeStepAbundance::TimeStepAbundance(shared_ptr<Model> model)
    : observations::age::Abundance(model) {
   parameters_.Bind<string>(PARAM_CATCHABILITY, &catchability_label_, "The label of the catchability coefficient (q) assumed", "");
   parameters_.Bind<string>(PARAM_OBS, &obs_, "The observed values", "");

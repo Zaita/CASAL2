@@ -19,7 +19,7 @@ namespace creators {
 /**
  * Default constructor
  */
-Beta::Beta(Model* model) : Creator(model) {
+Beta::Beta(shared_ptr<Model> model) : Creator(model) {
   parameters_.Bind<Double>(PARAM_MU, &mu_, "Beta prior  mean (mu) parameter", "");
   parameters_.Bind<Double>(PARAM_SIGMA, &sigma_, "Beta prior variance (sigma) parameter", "");
   parameters_.Bind<Double>(PARAM_A, &a_, "Beta prior lower bound of the range (A) parameter", "");

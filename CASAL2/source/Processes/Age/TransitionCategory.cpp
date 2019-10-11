@@ -24,7 +24,7 @@ namespace age {
 /**
  * Default Constructor
  */
-TransitionCategory::TransitionCategory(Model* model)
+TransitionCategory::TransitionCategory(shared_ptr<Model> model)
   : Process(model),
     from_partition_(model),
     to_partition_(model) {

@@ -24,7 +24,7 @@ namespace asserts {
 class ObjectiveFunction : public niwa::Assert {
 public:
   // methods
-  ObjectiveFunction(Model* model);
+  ObjectiveFunction(shared_ptr<Model> model);
   virtual                     ~ObjectiveFunction() = default;
   void                        Execute() override final;
 

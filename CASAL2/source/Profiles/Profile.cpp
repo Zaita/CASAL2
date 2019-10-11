@@ -24,7 +24,7 @@ namespace util = niwa::utilities;
 /**
  * default constructor
  */
-Profile::Profile(Model* model) : model_(model) {
+Profile::Profile(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "Label", "", "");
   parameters_.Bind<unsigned>(PARAM_STEPS, &steps_, "The number of steps to take between the lower and upper bound", "");
   parameters_.Bind<Double>(PARAM_LOWER_BOUND, &lower_bound_, "The lower bounds", "");

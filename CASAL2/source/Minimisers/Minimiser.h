@@ -48,7 +48,7 @@ class Minimiser : public niwa::base::Object {
 public:
   // Methods
   Minimiser() = delete;
-  explicit Minimiser(Model* model);
+  explicit Minimiser(shared_ptr<Model> model);
   virtual                     ~Minimiser();
   void                        Validate();
   void                        Build();
@@ -72,7 +72,7 @@ public:
 
 protected:
   // Members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   bool                        active_;
   double**                    hessian_ = nullptr;
   unsigned                    hessian_size_;

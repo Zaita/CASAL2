@@ -27,7 +27,7 @@ class SquareRoot : public EstimateTransformation {
 public:
   // methods
   SquareRoot() = delete;
-  explicit SquareRoot(Model* model);
+  explicit SquareRoot(shared_ptr<Model> model);
   virtual ~SquareRoot() = default;
   void                        TransformForObjectiveFunction() override final;
   void                        RestoreFromObjectiveFunction() override final;

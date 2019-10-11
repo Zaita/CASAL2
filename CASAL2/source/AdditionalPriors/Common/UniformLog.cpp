@@ -29,7 +29,7 @@ namespace additionalpriors {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-UniformLog::UniformLog(Model* model) : AdditionalPrior(model) { }
+UniformLog::UniformLog(shared_ptr<Model> model) : AdditionalPrior(model) { }
 
 /**
  * Build our Uniform LOg

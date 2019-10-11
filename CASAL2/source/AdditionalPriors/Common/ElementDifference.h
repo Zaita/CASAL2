@@ -28,7 +28,7 @@ namespace additionalpriors {
 class ElementDifference : public niwa::AdditionalPrior {
 public:
   // methods
-  ElementDifference(Model* model);
+  ElementDifference(shared_ptr<Model> model);
   virtual                     ~ElementDifference() = default;
   Double                      GetScore() final;
 

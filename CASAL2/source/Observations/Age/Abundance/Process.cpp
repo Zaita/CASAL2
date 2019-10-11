@@ -22,7 +22,7 @@ namespace age {
 /**
  *
  */
-ProcessAbundance::ProcessAbundance(Model* model)
+ProcessAbundance::ProcessAbundance(shared_ptr<Model> model)
    : observations::age::Abundance(model) {
 
   parameters_.Bind<string>(PARAM_CATCHABILITY, &catchability_label_, "The label of the catchability (q) block assumed for this observation", "");

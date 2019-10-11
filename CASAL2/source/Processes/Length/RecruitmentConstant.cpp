@@ -24,7 +24,7 @@ namespace length {
 /**
  * Default Constructor
  */
-RecruitmentConstant::RecruitmentConstant(Model* model)
+RecruitmentConstant::RecruitmentConstant(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   parameters_.Bind<string>(PARAM_CATEGORIES, &category_labels_, "Categories", "");

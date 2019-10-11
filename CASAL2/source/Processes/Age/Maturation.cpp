@@ -23,7 +23,7 @@ namespace age {
 /**
  * default constructor
  */
-Maturation::Maturation(Model* model)
+Maturation::Maturation(shared_ptr<Model> model)
   : Process(model),
     from_partition_(model),
     to_partition_(model) {

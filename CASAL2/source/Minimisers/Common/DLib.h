@@ -32,7 +32,7 @@ typedef ::dlib::matrix<double,0,1> column_vector;
 class DLib : public niwa::Minimiser {
 public:
   // methods
-  DLib(Model* model);
+  DLib(shared_ptr<Model> model);
   virtual                     ~DLib() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

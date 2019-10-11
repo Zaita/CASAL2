@@ -25,7 +25,7 @@ namespace niwa {
 /**
  * Default Constructor
  */
-TimeStep::TimeStep(Model* model) : model_(model) {
+TimeStep::TimeStep(shared_ptr<Model> model) : model_(model) {
   LOG_TRACE();
 
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label of the timestep", "");

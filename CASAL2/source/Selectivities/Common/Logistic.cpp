@@ -26,7 +26,7 @@ namespace selectivities {
 /**
  * Explicit Constructor
  */
-Logistic::Logistic(Model* model)
+Logistic::Logistic(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_A50, &a50_, "A50", "");

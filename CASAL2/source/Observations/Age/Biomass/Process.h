@@ -27,7 +27,7 @@ namespace age {
  */
 class ProcessBiomass : public observations::age::Biomass {
 public:
-  explicit ProcessBiomass(Model* model);
+  explicit ProcessBiomass(shared_ptr<Model> model);
   virtual                     ~ProcessBiomass() = default;
   void                        DoBuild() override final;
 

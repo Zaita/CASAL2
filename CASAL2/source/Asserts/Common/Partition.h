@@ -20,7 +20,7 @@ namespace asserts {
 class Partition : public niwa::Assert {
 public:
   // methods
-  Partition(Model* model);
+  Partition(shared_ptr<Model> model);
   virtual                     ~Partition() = default;
   void                        Execute() override final;
 

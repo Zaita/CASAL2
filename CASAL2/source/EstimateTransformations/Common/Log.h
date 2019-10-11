@@ -28,7 +28,7 @@ namespace estimatetransformations {
 class Log : public EstimateTransformation {
 public:
   Log() = delete;
-  explicit Log(Model* model);
+  explicit Log(shared_ptr<Model> model);
   virtual ~Log() = default;
   void                        TransformForObjectiveFunction() override final;
   void                        RestoreFromObjectiveFunction() override final;

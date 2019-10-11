@@ -61,7 +61,7 @@ Report::Report() {
  * when the report is not running in the execute phase.
  */
 void Report::Validate(shared_ptr<Model> model) {
-  parameters_.Populate(model.get());
+  parameters_.Populate(model);
   DoValidate(model);
 }
 

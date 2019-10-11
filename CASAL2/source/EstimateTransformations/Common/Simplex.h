@@ -28,7 +28,7 @@ namespace estimatetransformations {
 class Simplex : public EstimateTransformation {
 public:
   Simplex() = delete;
-  explicit                    Simplex(Model* model);
+  explicit                    Simplex(shared_ptr<Model> model);
   virtual                     ~Simplex() = default;
   void                        TransformForObjectiveFunction() override final { };
   void                        RestoreFromObjectiveFunction() override final { };

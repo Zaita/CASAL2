@@ -21,7 +21,7 @@ namespace timevarying {
 /**
  * Default constructor
  */
-Exogenous::Exogenous(Model* model) : TimeVarying(model) {
+Exogenous::Exogenous(shared_ptr<Model> model) : TimeVarying(model) {
   parameters_.Bind<Double>(PARAM_A, &a_, "Shift parameter", "");
   parameters_.Bind<Double>(PARAM_EXOGENOUS_VARIABLE, &exogenous_, "Values of exogeneous variable for each year", "");
 

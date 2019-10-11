@@ -33,7 +33,7 @@ namespace minimisers {
 class DESolver : public niwa::Minimiser {
 public:
   // Methods
-  DESolver(Model* model);
+  DESolver(shared_ptr<Model> model);
   virtual                     ~DESolver() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final { };

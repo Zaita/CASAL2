@@ -126,7 +126,7 @@ int Runner::Go() {
 //		model_list.push_back(&master_model_);
 //		for (unsigned i = 0; i < 2; ++i) {
 //			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
-//			Model* model =  master_model_.factory().Create(PARAM_MODEL, model_type);
+//			shared_ptr<Model> model =  master_model_.factory().Create(PARAM_MODEL, model_type);
 //			model->set_id(i+1);
 //			model_list.push_back(model);
 //			cout << "Appended model with id " << model->id() << endl;
@@ -143,7 +143,7 @@ int Runner::Go() {
 		}
 
 		// override any config file values from our command line
-		model->global_configuration().ParseOptions(model.get());
+		model->global_configuration().ParseOptions(model);
 		model->global_configuration().set_run_parameters(run_parameters_); // TODO: Set global_configuration for models too from Runner
 		utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 

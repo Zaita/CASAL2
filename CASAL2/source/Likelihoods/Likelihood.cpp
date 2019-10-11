@@ -20,7 +20,7 @@ namespace niwa {
 /**
  *
  */
-Likelihood::Likelihood(Model* model) : model_(model) {
+Likelihood::Likelihood(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

@@ -22,7 +22,7 @@ namespace age {
 /**
  * Default constructor
  */
-ProcessProportionsByCategory::ProcessProportionsByCategory(Model* model)
+ProcessProportionsByCategory::ProcessProportionsByCategory(shared_ptr<Model> model)
    : observations::age::ProportionsByCategory(model) {
   parameters_.Bind<string>(PARAM_PROCESS, &process_label_, "The label of the process for the observation", "");
   parameters_.Bind<Double>(PARAM_PROCESS_PROPORTION, &process_proportion_, "Proportion through the mortality block of the time step when the observation is evaluated", "", Double(0.5));

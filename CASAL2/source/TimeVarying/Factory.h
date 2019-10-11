@@ -29,7 +29,7 @@ namespace timevarying {
 class Factory {
 public:
   // methods
-  static TimeVarying* Create(Model* model, const string& object_type, const string& sub_type);
+  static TimeVarying* Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

@@ -28,7 +28,7 @@ namespace mcmcs {
 class Factory {
 public:
   // methods
-  static MCMC* Create(Model* model, const string& object_type, const string& sub_type);
+  static MCMC* Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

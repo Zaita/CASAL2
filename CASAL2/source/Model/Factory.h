@@ -43,11 +43,11 @@ public:
 
 private:
 	// methods
-	Factory(Model *model);
+	Factory(shared_ptr<Model> model);
 	virtual ~Factory() = default;
 
 	// members
-	Model *model_;
+	shared_ptr<Model> model_;
 };
 
 } /* namespace niwa */

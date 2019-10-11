@@ -33,7 +33,7 @@ namespace math = niwa::utilities::math;
  * Default Constructor
  */
 
-Observation::Observation(Model* model) : model_(model) {
+Observation::Observation(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "Label", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "Type of observation", "");
   parameters_.Bind<string>(PARAM_LIKELIHOOD, &likelihood_type_, "Type of likelihood to use", "");

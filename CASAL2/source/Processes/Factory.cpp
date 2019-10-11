@@ -52,7 +52,7 @@ namespace processes {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-Process* Factory::Create(Model* model, const string& object_type, const string& sub_type, PartitionType partition_type) {
+Process* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type, PartitionType partition_type) {
   Process* result = nullptr;
 
   string object = object_type;

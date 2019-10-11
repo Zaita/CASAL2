@@ -49,7 +49,7 @@ using std::vector;
 /**
  * Default constructor
  */
-Managers::Managers(Model* model) {
+Managers::Managers(shared_ptr<Model> model) {
   LOG_TRACE();
 
   model_ = model;
@@ -134,12 +134,15 @@ void Managers::Validate() {
   penalty_->Validate();
   profile_->Validate();
   project_->Validate();
+  LOG_FINE() << "About to Validate the Reports Manager";
   report_->Validate(model_->pointer());
+  LOG_FINE() << "Finished Validate of Reports Manager";
   selectivity_->Validate();
   simulate_->Validate();
   time_varying_->Validate();
 
   estimate_->Validate(model_);
+  LOG_TRACE();
 }
 
 void Managers::Build() {

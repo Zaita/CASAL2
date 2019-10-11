@@ -69,7 +69,9 @@ void Logging::Flush(niwa::logger::Record& record) {
 
   if (record.severity() == logger::Severity::kWarning || record.severity() == logger::Severity::kError ||
       record.severity() == logger::Severity::kFatal || record.severity() == logger::Severity::kCodeError) {
-    cout << record.message();
+  	cout << "Unit Test has encountered a problem that will cause test failure, unless it's expected\n";
+  	cout << "record.severity(): " << (int)record.severity() << "\n";
+    cout << "failure because of: " << record.message();
     cout.flush();
     throw std::string(record.message());
   }

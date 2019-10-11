@@ -24,14 +24,13 @@ namespace testfixtures {
  *
  */
 void Base::SetUp() {
-  model_ = new model::Age();
+  model_.reset(new model::Age());
 }
 
 /**
  *
  */
 void Base::TearDown() {
-  delete model_;
 }
 
 } /* namespace testfixtures */

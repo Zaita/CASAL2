@@ -30,7 +30,7 @@ namespace age {
 /**
  * Default constructor
  */
-TransitionCategoryByAge::TransitionCategoryByAge(Model* model)
+TransitionCategoryByAge::TransitionCategoryByAge(shared_ptr<Model> model)
   : Process(model),
     to_partition_(model),
     from_partition_(model) {

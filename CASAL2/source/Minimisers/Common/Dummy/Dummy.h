@@ -29,7 +29,7 @@ namespace minimisers {
 
 class Dummy : public Minimiser {
 public:
-  Dummy(Model* model);
+  Dummy(shared_ptr<Model> model);
   virtual                     ~Dummy() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

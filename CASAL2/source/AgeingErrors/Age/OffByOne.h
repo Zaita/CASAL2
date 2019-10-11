@@ -25,7 +25,7 @@ namespace ageingerrors {
 class OffByOne : public niwa::AgeingError {
 public:
   // methods
-  OffByOne(Model* model);
+  OffByOne(shared_ptr<Model> model);
   virtual                   ~OffByOne() = default;
 
 protected:

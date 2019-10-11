@@ -24,7 +24,7 @@ namespace estimatetransformations {
 /**
  * Default constructor
  */
-Orthogonal::Orthogonal(Model* model) : EstimateTransformation(model) {
+Orthogonal::Orthogonal(shared_ptr<Model> model) : EstimateTransformation(model) {
   parameters_.Bind<string>(PARAM_THETA_TWO, &second_estimate_label_, "The label of the @estimate block relating to the $\theta_2$ parameter in the transformation see, see the documentation for more information", "");
   parameters_.Bind<string>(PARAM_THETA_ONE, &estimate_label_, "Label of @estimate block relating to the $\theta_1$ parameter in the transformation see, see the documentation for more information", "");
 

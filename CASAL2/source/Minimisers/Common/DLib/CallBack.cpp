@@ -26,7 +26,7 @@ namespace dlib {
 /**
  *
  */
-Callback::Callback(Model* model) : model_(model) {
+Callback::Callback(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

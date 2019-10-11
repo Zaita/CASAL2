@@ -42,7 +42,7 @@ using std::ios_base;
 /**
  *
  */
-MCMCSample::MCMCSample(Model* model) : model_(model) {
+MCMCSample::MCMCSample(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

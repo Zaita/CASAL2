@@ -38,7 +38,7 @@ namespace util = niwa::utilities;
 /**
  * Default constructor
  */
-Objects::Objects(Model* model) : model_(model) {
+Objects::Objects(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

@@ -46,7 +46,7 @@ void Manager::Validate() {
 /**
  *
  */
-void Manager::Validate(Model* model) {
+void Manager::Validate(shared_ptr<Model> model) {
   LOG_TRACE();
   /**
    * Run over our creators and get them to build the actual
@@ -124,7 +124,7 @@ void Manager::Build() {
 /**
  * Build our estimates
  */
-void Manager::Build(Model* model) {
+void Manager::Build(shared_ptr<Model> model) {
   for (auto estimate : objects_) {
     estimate->Build();
   }

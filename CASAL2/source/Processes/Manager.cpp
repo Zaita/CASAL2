@@ -27,7 +27,7 @@ void Manager::Validate() {
   LOG_CODE_ERROR() << "This method is not supported";
 }
 
-void Manager::Validate(Model* model) {
+void Manager::Validate(shared_ptr<Model> model) {
   LOG_TRACE();
   base::Manager<niwa::processes::Manager, niwa::Process>::Validate();
 

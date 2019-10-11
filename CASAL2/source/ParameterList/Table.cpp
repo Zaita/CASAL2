@@ -91,7 +91,7 @@ string Table::location() const {
 /**
  * The populate method works as a validate method and a data container
  */
-void Table::Populate(Model* model) {
+void Table::Populate(shared_ptr<Model> model) {
   if (model == nullptr)
     LOG_CODE_ERROR() << "model == nullptr";
 

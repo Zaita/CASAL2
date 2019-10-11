@@ -25,7 +25,7 @@ namespace catchabilities {
 class Free : public Catchability {
 public:
   Free() = delete;
-  explicit                    Free(Model* model);
+  explicit                    Free(shared_ptr<Model> model);
   virtual                     ~Free() = default;
   void                        DoValidate() final {};
   void                        DoBuild() final {};

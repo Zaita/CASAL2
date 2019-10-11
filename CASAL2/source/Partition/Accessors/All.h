@@ -50,7 +50,7 @@ public:
 
   // Methods
   All() = delete;
-  explicit All(Model* model);
+  explicit All(shared_ptr<Model> model);
   virtual                     ~All() = default;
   DataType::iterator          begin();
   DataType::iterator          end();
@@ -60,7 +60,7 @@ public:
 
 private:
   // Members
-  Model*                      model_;
+  shared_ptr<Model>                      model_;
   All::DataType               data_;
 };
 

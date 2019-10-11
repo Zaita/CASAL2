@@ -21,7 +21,7 @@ namespace projects {
  * Default constructor
  */
 
-LogNormal::LogNormal(Model* model) : Project(model) {
+LogNormal::LogNormal(shared_ptr<Model> model) : Project(model) {
   parameters_.Bind<Double>(PARAM_SIGMA, &sigma_, "Standard deviation of gaussian process on the log scale", "");
   parameters_.Bind<Double>(PARAM_MEAN, &mean_, "Mean of gaussian process", "",0.0);
   //parameters_.Bind<Double>(PARAM_RHO, &rho_, "an autocorrelation parameter on the log scale", "", 0.0);

@@ -26,7 +26,7 @@ namespace ageweights {
 class None : public niwa::AgeWeight {
 public:
   // methods
-  explicit None(Model* model) : AgeWeight(model) { };
+  explicit None(shared_ptr<Model> model) : AgeWeight(model) { };
   virtual                     ~None() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

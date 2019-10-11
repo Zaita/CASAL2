@@ -26,7 +26,7 @@ class AgeWeight : public niwa::base::Object {
 public:
   // methods
   AgeWeight() = delete;
-  explicit AgeWeight(Model* model);
+  explicit AgeWeight(shared_ptr<Model> model);
   virtual                     ~AgeWeight() { };
   void                        Validate();
   void                        Build();
@@ -45,7 +45,7 @@ protected:
   virtual void                DoReset() = 0;
   virtual void                DoRebuildCache() = 0;
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
 };
 
 } /* namespace niwa */

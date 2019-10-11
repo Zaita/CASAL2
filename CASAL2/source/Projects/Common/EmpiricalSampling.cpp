@@ -20,7 +20,7 @@ namespace projects {
 /**
  * Default constructor
  */
-EmpiricalSampling::EmpiricalSampling(Model* model) : Project(model) {
+EmpiricalSampling::EmpiricalSampling(shared_ptr<Model> model) : Project(model) {
   parameters_.Bind<unsigned>(PARAM_START_YEAR, &start_year_, "Start year of sampling", "", false);
   parameters_.Bind<unsigned>(PARAM_FINAL_YEAR, &final_year_, "Last year of sampling", "", false);
 }

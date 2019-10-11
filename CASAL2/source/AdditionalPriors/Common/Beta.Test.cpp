@@ -30,7 +30,7 @@ using::testing::Return;
  */
 class MockBeta : public Beta {
 public:
-  MockBeta(Model* model, double mu, double sigma, double a, double b, double* parameter) : Beta(model) {
+  MockBeta(shared_ptr<Model> model, double mu, double sigma, double a, double b, double* parameter) : Beta(model) {
     mu_ = mu;
     sigma_ = sigma;
     a_ = a;
@@ -49,9 +49,9 @@ TEST(AdditionalPriors, Beta) {
       { 4, 2, 2, 7, 6, 1.1090354888959124}
   };
 
-  Model model;
+  shared_ptr<Model> model = shared_ptr<Model>(new Model());
   for (auto line : values) {
-    MockBeta beta(&model, line[0], line[1], line[2], line[3], &line[4]);
+    MockBeta beta(model, line[0], line[1], line[2], line[3], &line[4]);
     EXPECT_DOUBLE_EQ(line[5], beta.GetScore());
   }
 }

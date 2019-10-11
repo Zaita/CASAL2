@@ -24,7 +24,7 @@ namespace timevarying {
 /**
  * Default constructor
  */
-RandomWalk::RandomWalk(Model* model) : TimeVarying(model) {
+RandomWalk::RandomWalk(shared_ptr<Model> model) : TimeVarying(model) {
   parameters_.Bind<Double>(PARAM_MEAN, &mu_, "Mean", "", 0);
   parameters_.Bind<Double>(PARAM_SIGMA, &sigma_, "Standard deviation", "", 1);
   parameters_.Bind<Double>(PARAM_UPPER_BOUND, &upper_bound_, "Upper bound for the random walk", "", 1);

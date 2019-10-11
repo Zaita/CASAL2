@@ -26,7 +26,7 @@ namespace projects {
  */
 class EmpiricalSampling : public niwa::Project {
 public:
-  explicit EmpiricalSampling(Model* model);
+  explicit EmpiricalSampling(shared_ptr<Model> model);
   virtual                     ~EmpiricalSampling() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

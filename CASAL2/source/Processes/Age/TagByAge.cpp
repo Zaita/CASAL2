@@ -27,7 +27,7 @@ namespace math = niwa::utilities::math;
 /**
  * Default constructor
  */
-TagByAge::TagByAge(Model* model)
+TagByAge::TagByAge(shared_ptr<Model> model)
   : Process(model),
     to_partition_(model),
     from_partition_(model) {

@@ -34,7 +34,7 @@ class Project : public niwa::base::Object {
 public:
   // methods
   Project() = delete;
-  explicit Project(Model* model);
+  explicit Project(shared_ptr<Model> model);
   virtual                     ~Project() = default;
   void                        Validate();
   void                        Build();
@@ -63,7 +63,7 @@ protected:
   UpdateFunction              DoUpdateFunc_ = nullptr;
 
   // members
-  Model*                      model_;
+  shared_ptr<Model>                      model_;
   Double                      multiplier_;
   string                      type_ = "";
   vector<unsigned>            years_;

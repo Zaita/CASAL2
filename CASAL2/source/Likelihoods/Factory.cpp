@@ -35,7 +35,7 @@ namespace likelihoods {
  * @param likelihood_type The type of likelihood to create
  * @return shared_ptr to the likelihood
  */
-Likelihood* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+Likelihood* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   Likelihood* result = nullptr;
 
   if (sub_type == PARAM_BINOMIAL)

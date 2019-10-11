@@ -21,7 +21,7 @@ namespace additionalpriors {
 class Beta : public AdditionalPrior {
 public:
   // methods
-  Beta(Model* model);
+  Beta(shared_ptr<Model> model);
   virtual                     ~Beta() = default;
   void                        DoValidate() final;
   void                        DoBuild() final;

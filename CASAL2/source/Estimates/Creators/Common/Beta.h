@@ -28,7 +28,7 @@ class Beta : public estimates::Creator {
 public:
   // methods
   Beta() = delete;
-  explicit Beta(Model* model);
+  explicit Beta(shared_ptr<Model> model);
   virtual                     ~Beta() = default;
   void                        DoCopyParameters(niwa::Estimate* estimate, unsigned index) override final;
 

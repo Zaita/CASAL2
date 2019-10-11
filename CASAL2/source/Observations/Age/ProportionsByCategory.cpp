@@ -31,7 +31,7 @@ namespace age {
 /**
  * Default constructor
  */
-ProportionsByCategory::ProportionsByCategory(Model* model) : Observation(model) {
+ProportionsByCategory::ProportionsByCategory(shared_ptr<Model> model) : Observation(model) {
   obs_table_ = new parameters::Table(PARAM_OBS);
   error_values_table_ = new parameters::Table(PARAM_ERROR_VALUES);
 

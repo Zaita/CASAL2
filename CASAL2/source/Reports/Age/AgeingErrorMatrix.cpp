@@ -25,7 +25,7 @@ AgeingErrorMatrix::AgeingErrorMatrix() {
 
 /**
  * Build our report
- * @param model Any Model* from the threaded list that can be queried
+ * @param model Any shared_ptr<Model> from the threaded list that can be queried
  */
 void AgeingErrorMatrix::DoBuild(shared_ptr<Model> model) {
 	auto ageingerror = model->managers().ageing_error()->GetAgeingError(ageingerror_label_);

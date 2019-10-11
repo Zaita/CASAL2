@@ -36,7 +36,7 @@ class TimeStep : public niwa::base::Object {
 public:
   // Methods
   TimeStep() = delete;
-  explicit TimeStep(Model* model);
+  explicit TimeStep(shared_ptr<Model> model);
   virtual                     ~TimeStep() = default;
   void                        Validate();
   void                        Build();
@@ -60,7 +60,7 @@ public:
 
 private:
   // Members
-  Model*                              model_ = nullptr;
+  shared_ptr<Model>                              model_ = nullptr;
   vector<string>                      process_names_;
   vector<Process*>                    processes_;
   map<unsigned, vector<Executor*> >   executors_;

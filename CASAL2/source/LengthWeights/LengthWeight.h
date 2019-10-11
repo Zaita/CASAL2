@@ -28,7 +28,7 @@ class LengthWeight : public niwa::base::Object {
 public:
   // methods
   LengthWeight() = delete;
-  explicit                    LengthWeight(Model* model);
+  explicit                    LengthWeight(shared_ptr<Model> model);
   virtual                     ~LengthWeight() { };
   void                        Validate();
   void                        Build() { DoBuild(); };
@@ -41,7 +41,7 @@ public:
   // accessors
   virtual Double              mean_weight(Double size, Distribution distribution, Double cv) const = 0;
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
 };
 } /* namespace niwa */
 #endif /* LENGTHWEIGHT_H_ */

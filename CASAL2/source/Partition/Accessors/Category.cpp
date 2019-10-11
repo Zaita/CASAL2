@@ -36,7 +36,7 @@ namespace util = niwa::utilities;
  *
  * Construction of this object involves building the category map
  */
-Category::Category(Model* model, const string& category_name)
+Category::Category(shared_ptr<Model> model, const string& category_name)
   : model_(model) {
   LOG_TRACE();
 

@@ -34,7 +34,7 @@ public:
   // Methods
   virtual                     ~Manager() noexcept(true);
   void                        Validate() override final;
-  void                        Validate(Model* model);
+  void                        Validate(shared_ptr<Model> model);
 
   // Accessors
   Minimiser*                  active_minimiser() { return active_minimiser_; }

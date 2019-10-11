@@ -38,7 +38,7 @@ class Observation : public niwa::base::Executor {
 public:
   // methods
   Observation() = delete;
-  explicit Observation(Model* model);
+  explicit Observation(shared_ptr<Model> model);
   virtual                     ~Observation() = default;
   void                        Validate();
   void                        Build();
@@ -66,7 +66,7 @@ protected:
       Double process_error, Double error_value, Double adjusted_error, Double delta, Double score);
 
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   map<unsigned, Double>       scores_;
   Double                      proportion_of_time_ = 0;
   bool                        mean_proportion_method_ = false;

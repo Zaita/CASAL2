@@ -25,7 +25,7 @@ namespace projects {
  */
 class UserDefined : public niwa::Project {
 public:
-  explicit UserDefined(Model* model);
+  explicit UserDefined(shared_ptr<Model> model);
   virtual                     ~UserDefined() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final;

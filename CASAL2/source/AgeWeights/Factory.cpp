@@ -31,7 +31,7 @@ namespace ageweights {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-AgeWeight* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+AgeWeight* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   AgeWeight* result = nullptr;
 
   if (object_type == PARAM_AGE_WEIGHT) {

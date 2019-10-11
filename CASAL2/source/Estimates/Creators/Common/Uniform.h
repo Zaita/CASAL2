@@ -28,7 +28,7 @@ class Uniform : public estimates::Creator {
 public:
   // methods
   Uniform() = delete;
-  explicit Uniform(Model* model);
+  explicit Uniform(shared_ptr<Model> model);
   virtual                     ~Uniform() = default;
   void                        DoCopyParameters(niwa::Estimate* estimate, unsigned index) override final { };
 };

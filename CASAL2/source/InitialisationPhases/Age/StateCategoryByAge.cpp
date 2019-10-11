@@ -26,7 +26,7 @@ namespace age {
  *
  * @param model A pointer to our core model object
  */
-StateCategoryByAge::StateCategoryByAge(Model* model)
+StateCategoryByAge::StateCategoryByAge(shared_ptr<Model> model)
   : InitialisationPhase(model),
     partition_(model),
     cached_partition_(model){

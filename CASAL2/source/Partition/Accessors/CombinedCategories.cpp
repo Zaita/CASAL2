@@ -27,7 +27,7 @@ namespace accessors {
  *
  * @param category_labels List of category labels to parse
  */
-CombinedCategories::CombinedCategories(Model* model, const vector<string>& category_labels)
+CombinedCategories::CombinedCategories(shared_ptr<Model> model, const vector<string>& category_labels)
   : model_(model) {
   LOG_TRACE();
 

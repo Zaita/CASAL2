@@ -26,7 +26,7 @@ namespace selectivities {
 /**
  * Explicit constructor
  */
-DoubleNormal::DoubleNormal(Model* model)
+DoubleNormal::DoubleNormal(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_MU, &mu_, "Mu", "");

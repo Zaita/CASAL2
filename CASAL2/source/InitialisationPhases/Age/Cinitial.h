@@ -35,7 +35,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class Cinitial : public niwa::InitialisationPhase {
 public:
   // methods
-  explicit Cinitial(Model* model);
+  explicit Cinitial(shared_ptr<Model> model);
   virtual                     ~Cinitial();
   virtual void                Execute() override final;
 

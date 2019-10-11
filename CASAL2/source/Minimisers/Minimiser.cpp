@@ -36,7 +36,7 @@ namespace ublas = boost::numeric::ublas;
 /**
  * Default constructor
  */
-Minimiser::Minimiser(Model* model) : model_(model) {
+Minimiser::Minimiser(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The minimiser label", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The type of minimiser to use", "");
   parameters_.Bind<bool>(PARAM_ACTIVE, &active_, "Indicates if this minimiser is active", "", false);

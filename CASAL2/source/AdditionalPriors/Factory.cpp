@@ -33,7 +33,7 @@ namespace additionalpriors {
  * @param sub_type The sub type (e.g beta)
  * @return smart_ptr of an additional prior
  */
-AdditionalPrior* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+AdditionalPrior* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   AdditionalPrior* object = nullptr;
 
   if (object_type == PARAM_ADDITIONAL_PRIOR) {

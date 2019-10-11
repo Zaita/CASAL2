@@ -35,7 +35,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class TagRecaptureByAge : public niwa::Observation {
 public:
   // methods
-  TagRecaptureByAge(Model* model);
+  TagRecaptureByAge(shared_ptr<Model> model);
   virtual                     ~TagRecaptureByAge() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

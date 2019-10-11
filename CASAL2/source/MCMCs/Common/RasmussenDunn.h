@@ -21,7 +21,7 @@ namespace mcmcs {
 class RasmussenDunn : public MCMC {
 public:
 	RasmussenDunn() = delete;
-	explicit RasmussenDunn(Model* model);
+	explicit RasmussenDunn(shared_ptr<Model> model);
 	virtual ~RasmussenDunn() = default;
   void                        DoExecute() override final;
 

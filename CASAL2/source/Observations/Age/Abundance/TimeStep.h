@@ -28,7 +28,7 @@ namespace age {
 class TimeStepAbundance : public observations::age::Abundance {
 public:
   // methods
-  TimeStepAbundance(Model* model);
+  TimeStepAbundance(shared_ptr<Model> model);
   virtual                     ~TimeStepAbundance() = default;
   void                        DoBuild() override final;
 

@@ -68,13 +68,6 @@ Model::Model() {
 		{ PARAM_GRAMS, PARAM_TONNES, PARAM_KGS });
 
 	global_configuration_ = new GlobalConfiguration();
-	managers_ = new Managers(this);
-	objects_ = new Objects(this);
-	categories_ = new Categories(this);
-	factory_ = new Factory(this);
-	partition_ = new Partition(this);
-	objective_function_ = new ObjectiveFunction(this);
-	equation_parser_ = new EquationParser(this);
 }
 
 /**
@@ -130,27 +123,53 @@ unsigned Model::year_spread() const {
  *
  */
 Managers& Model::managers() {
+	LOG_TRACE();
+	if (managers_ == nullptr)
+		managers_ = new Managers(pointer());
+
 	return *managers_;
 }
 
 Objects& Model::objects() {
+	LOG_TRACE();
+	if (objects_ == nullptr)
+		objects_ = new Objects(pointer());
 	return *objects_;
 }
 
 Factory& Model::factory() {
+	LOG_TRACE();
+	if (factory_ == nullptr)
+		factory_ = new Factory(pointer());
 	return *factory_;
 }
 
 Partition& Model::partition() {
+	if (partition_ == nullptr)
+		partition_ = new Partition(pointer());
+
 	return *partition_;
 }
 
 ObjectiveFunction& Model::objective_function() {
+	if (objective_function_ == nullptr)
+		objective_function_ = new ObjectiveFunction(pointer());
+
 	return *objective_function_;
 }
 
 EquationParser& Model::equation_parser() {
+	if (equation_parser_ == nullptr)
+		equation_parser_ = new EquationParser(pointer());
+
 	return *equation_parser_;
+}
+
+Categories* Model::categories() {
+	if (categories_ == nullptr)
+		categories_ = new Categories(pointer());
+
+	return categories_;
 }
 
 /**
@@ -168,22 +187,28 @@ bool Model::Start(RunMode::Type run_mode) {
 		return false;
 	}
 
+	// Make sure we've instantiated our pointers to sub objects
+  managers();
+  objects();
+  categories();
+  factory();
+  partition();
+  objective_function();
+  equation_parser();
+
+  LOG_FINEST() << "Going into startup";
 	run_mode_ = run_mode;
 
 	if (state_ != State::kStartUp)
 	LOG_CODE_ERROR()
-	<< "Model state should always be startup when entering the start method";
+	<< "Model state should always be startup when entering the start method, not " << state_;
 	if (global_configuration_->estimable_value_file() != "") {
 		LOG_MEDIUM() << "estimable_value_file(): " << global_configuration_->estimable_value_file();
-		configuration::EstimableValuesLoader loader(this);
+		configuration::EstimableValuesLoader loader(pointer());
 		loader.LoadValues(global_configuration_->estimable_value_file());
 	}
 
-	LOG_FINE() << "A";
-	pointer();
-	LOG_FINE() << "B";
 	managers_->report()->Execute(pointer(), State::kStartUp);
-	LOG_FINE() << "B";
 
 	LOG_FINE() << "Model: State Change to Validate";
 	state_ = State::kValidate;
@@ -273,7 +298,7 @@ void Model::PopulateParameters() {
 	/**
 	 * Validate the parameters
 	 */
-	parameters_.Populate(this);
+	parameters_.Populate(pointer());
 	if (partition_type_ == PartitionType::kAge) {
 
 
@@ -297,7 +322,7 @@ void Model::Validate() {
 	if (block_type_ == "")
 	LOG_ERROR() << "The @model block is missing from configuration file. This block is required.";
 
-	if (!parameters_.has_been_populated()) parameters_.Populate(this);
+	if (!parameters_.has_been_populated()) parameters_.Populate(pointer());
 
 	DoValidate();
 
@@ -305,7 +330,9 @@ void Model::Validate() {
 	categories_->Validate();
 	partition_->Validate();
 
+	LOG_FINEST() << "Validating our managers now";
 	managers_->Validate();
+	LOG_FINEST() << "Finished validating managers";
 
 	/**
 	 * Do some more sanity checks
@@ -332,9 +359,9 @@ void Model::Validate() {
  */
 void Model::Build() {
 	LOG_TRACE();
-	categories_->Build();
-	partition_->Build();
-	managers_->Build();
+	categories()->Build();
+	partition().Build();
+	managers().Build();
 
 	Estimables &estimables = *managers_->estimables();
 	if (estimables.GetValueCount() > 0) {
@@ -348,6 +375,7 @@ void Model::Build() {
 	}
 
 	managers_->Reset();
+	LOG_TRACE();
 }
 
 /**
@@ -380,7 +408,7 @@ void Model::RunBasic() {
 	vector<string> single_step_addressables;
 	vector<Double*> estimable_targets;
 	// Create an instance of all categories
-	niwa::partition::accessors::All all_view(this);
+	niwa::partition::accessors::All all_view(pointer());
 
 	// Model is about to run
 	for (unsigned i = 0; i < adressable_values_count_; ++i) {
@@ -543,10 +571,10 @@ bool Model::RunMCMC() {
 	}
 
 	if (global_configuration_->resume()) {
-		configuration::MCMCObjective objective_loader(this);
+		configuration::MCMCObjective objective_loader(pointer());
 		if (!objective_loader.LoadFile(global_configuration_->mcmc_objective_file())) return false;
 
-		configuration::MCMCSample sample_loader(this);
+		configuration::MCMCSample sample_loader(pointer());
 		if (!sample_loader.LoadFile(global_configuration_->mcmc_sample_file())) return false;
 
 		// reset RNG seed for resume
@@ -643,7 +671,7 @@ void Model::RunSimulation() {
 		estimables->LoadValues(0);
 		Reset();
 	}
-	niwa::partition::accessors::All all_view(this);
+	niwa::partition::accessors::All all_view(pointer());
 
 	int simulation_candidates = global_configuration_->simulation_candidates();
 	if (simulation_candidates < 1) {
@@ -711,7 +739,7 @@ void Model::RunProjection() {
 	Estimables &estimables = *managers_->estimables();
 	vector<Double*> estimable_targets;
 	// Create an instance of all categories
-	niwa::partition::accessors::All all_view(this);
+	niwa::partition::accessors::All all_view(pointer());
 
 	// Model is about to run
 	for (unsigned i = 0; i < adressable_values_count_; ++i) {
@@ -799,7 +827,7 @@ void Model::RunProjection() {
 void Model::Iterate() {
 	LOG_TRACE();
 	// Create an instance of all categories
-	niwa::partition::accessors::All all_view(this);
+	niwa::partition::accessors::All all_view(pointer());
 
 	state_ = State::kInitialise;
 	current_year_ = start_year_; // TODO: Fix this

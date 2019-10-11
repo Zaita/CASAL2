@@ -37,9 +37,9 @@ public:
   // methods
   virtual                     ~Manager();
   void                        Validate() override final;
-  void                        Validate(Model* model);
+  void                        Validate(shared_ptr<Model> model);
   void                        Build() override final;
-  void                        Build(Model* model);
+  void                        Build(shared_ptr<Model> model);
   unsigned                    GetIsEstimatedCount();
   vector<Estimate*>           GetIsEstimated();
   vector<Estimate*>           GetInObjectiveFunction();

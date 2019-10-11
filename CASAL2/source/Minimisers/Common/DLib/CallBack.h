@@ -30,13 +30,13 @@ namespace dlib {
 class Callback {
 public:
   // methods
-  Callback(Model* model);
+  Callback(shared_ptr<Model> model);
   virtual                     ~Callback() = default;
   Double                      operator()(const ::dlib::matrix<double, 0, 1>& Parameters) const;
 
 private:
   // members
-  Model*                    model_;
+  shared_ptr<Model>                    model_;
 };
 
 } /* namespace dlib */

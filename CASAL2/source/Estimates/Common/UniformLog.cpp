@@ -20,7 +20,7 @@ namespace estimates {
 /**
  * Default Constructor
  */
-UniformLog::UniformLog(Model* model) : Estimate(model) {
+UniformLog::UniformLog(shared_ptr<Model> model) : Estimate(model) {
 }
 
 /**

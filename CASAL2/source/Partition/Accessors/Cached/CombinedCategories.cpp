@@ -26,7 +26,7 @@ namespace cached {
 /**
  * Default constructor
  */
-CombinedCategories::CombinedCategories(Model* model, const vector<string>& category_labels)
+CombinedCategories::CombinedCategories(shared_ptr<Model> model, const vector<string>& category_labels)
   : model_(model) {
   LOG_FINEST() << "Categories: " << category_labels.size();
 

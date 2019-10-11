@@ -26,7 +26,7 @@ using std::string;
 class Factory {
 public:
   // methods
-  static Assert*              Create(Model* model, const string& object_type, const string& sub_type);
+  static Assert*              Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   // methods

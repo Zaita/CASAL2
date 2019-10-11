@@ -23,7 +23,7 @@ namespace additionalpriors {
 /**
  * Default constructor
  */
-VectorSmoothing::VectorSmoothing(Model* model) : AdditionalPrior(model) {
+VectorSmoothing::VectorSmoothing(shared_ptr<Model> model) : AdditionalPrior(model) {
   parameters_.Bind<bool>(PARAM_LOG_SCALE, &log_scale_, "Should sums of squares be calculated on the log scale?", "", false);
   parameters_.Bind<Double>(PARAM_MULTIPLIER, &multiplier_, "Multiply the penalty by this factor", "", 1);
   parameters_.Bind<unsigned>(PARAM_LOWER_BOUND, &lower_, "First element to apply the penalty to in the vector", "", 0u);

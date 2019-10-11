@@ -27,7 +27,7 @@ namespace processes {
 class Nop : public Process{
 public:
   // methods
-  explicit Nop(Model* model);
+  explicit Nop(shared_ptr<Model> model);
   virtual                     ~Nop() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

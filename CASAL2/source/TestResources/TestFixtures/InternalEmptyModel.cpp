@@ -89,7 +89,7 @@ void InternalEmptyModel::LoadConfiguration() {
 
   loader.LoadConfigFile(model_->global_configuration());
   loader.ParseFileLines();
-  vector<Model*> model_list;
+  vector<shared_ptr<Model>> model_list;
   model_list.push_back(model_);
   loader.Build(model_list);
 }

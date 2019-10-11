@@ -27,7 +27,7 @@ namespace timevarying {
  */
 class RandomWalk : public TimeVarying {
 public:
-  explicit RandomWalk(Model* model);
+  explicit RandomWalk(shared_ptr<Model> model);
   virtual                     ~RandomWalk() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

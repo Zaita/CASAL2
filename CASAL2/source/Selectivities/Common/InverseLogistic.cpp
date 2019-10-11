@@ -26,7 +26,7 @@ namespace selectivities {
 /**
  * Explicit constructor
  */
-InverseLogistic::InverseLogistic(Model* model)
+InverseLogistic::InverseLogistic(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_A50, &a50_, "A50", "");

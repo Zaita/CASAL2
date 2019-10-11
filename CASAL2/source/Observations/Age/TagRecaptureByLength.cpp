@@ -35,7 +35,7 @@ namespace age {
 /**
  * Default constructor
  */
-TagRecaptureByLength::TagRecaptureByLength(Model* model) : Observation(model) {
+TagRecaptureByLength::TagRecaptureByLength(shared_ptr<Model> model) : Observation(model) {
   recaptures_table_ = new parameters::Table(PARAM_RECAPTURED);
   scanned_table_ = new parameters::Table(PARAM_SCANNED);
 

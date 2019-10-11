@@ -25,7 +25,7 @@ namespace selectivities {
 /**
  * Explicit Constructor
  */
-AllValues::AllValues(Model* model)
+AllValues::AllValues(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_V, &v_, "V", "")->set_partition_type(PartitionType::kAge | PartitionType::kLength);

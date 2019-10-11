@@ -29,7 +29,7 @@ namespace estimatetransformations {
 class SumToOne : public EstimateTransformation {
 public:
   SumToOne() = delete;
-  explicit                    SumToOne(Model* model);
+  explicit                    SumToOne(shared_ptr<Model> model);
   virtual                     ~SumToOne() = default;
   void                        TransformForObjectiveFunction() override final { };
   void                        RestoreFromObjectiveFunction() override final { };

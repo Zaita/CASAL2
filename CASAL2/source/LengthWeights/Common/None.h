@@ -26,7 +26,7 @@ namespace lengthweights {
 class None : public niwa::LengthWeight {
 public:
   // methods
-  explicit None(Model* model) : LengthWeight(model) { };
+  explicit None(shared_ptr<Model> model) : LengthWeight(model) { };
   virtual                     ~None() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

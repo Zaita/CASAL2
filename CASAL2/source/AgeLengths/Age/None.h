@@ -26,7 +26,7 @@ namespace agelengths {
 class None : public niwa::AgeLength {
 public:
   // methods
-  explicit None(Model* model) : AgeLength(model) { };
+  explicit None(shared_ptr<Model> model) : AgeLength(model) { };
   virtual                     ~None() = default;
   void                        DoValidate() override final { };
   void                        DoBuild() override final { };

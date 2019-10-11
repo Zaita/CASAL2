@@ -29,7 +29,7 @@ namespace math = niwa::utilities::math;
 /**
  * Default constructor
  */
-IndependenceMetropolis::IndependenceMetropolis(Model* model) : MCMC(model) {
+IndependenceMetropolis::IndependenceMetropolis(shared_ptr<Model> model) : MCMC(model) {
   parameters_.Bind<Double>(PARAM_START, &start_, "Covariance multiplier for the starting point of the MCMC", "", 0.0);
   parameters_.Bind<unsigned>(PARAM_KEEP, &keep_, "Spacing between recorded values in the MCMC", "", 1u);
   parameters_.Bind<Double>(PARAM_MAX_CORRELATION, &max_correlation_, "Maximum absolute correlation in the covariance matrix of the proposal distribution", "", 0.8);

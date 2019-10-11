@@ -29,7 +29,7 @@ namespace age {
 /**
  *
  */
-TagByLength::TagByLength(Model* model)
+TagByLength::TagByLength(shared_ptr<Model> model)
   : Process(model),
     to_partition_(model),
     from_partition_(model) {

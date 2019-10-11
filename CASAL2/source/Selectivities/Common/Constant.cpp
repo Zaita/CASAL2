@@ -18,7 +18,7 @@ namespace selectivities {
 /**
  * Default Constructor
  */
-Constant::Constant(Model* model)
+Constant::Constant(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_C, &c_, "C", "");

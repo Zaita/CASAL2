@@ -35,7 +35,7 @@ using std::pow;
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Schnute::Schnute(Model* model) : AgeLength(model) {
+Schnute::Schnute(shared_ptr<Model> model) : AgeLength(model) {
   parameters_.Bind<Double>(PARAM_Y1, &y1_, "Define the y1 parameter of the Schnute relationship", "");
   parameters_.Bind<Double>(PARAM_Y2, &y2_, "Define the y2 parameter of the Schnute relationship", "");
   parameters_.Bind<Double>(PARAM_TAU1, &tau1_, "Define the $\tau_1$ parameter of the Schnute relationship", "");

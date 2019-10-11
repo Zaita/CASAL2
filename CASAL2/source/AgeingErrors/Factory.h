@@ -22,7 +22,7 @@ namespace ageingerrors {
 // classes
 class Factory {
 public:
-  static AgeingError*         Create(Model* model, const string& object_type, const string& sub_type);
+  static AgeingError*         Create(shared_ptr<Model> model, const string& object_type, const string& sub_type);
 
 private:
   Factory() = delete;

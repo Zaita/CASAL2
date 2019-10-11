@@ -19,7 +19,7 @@ namespace timevarying {
 class MockConstant : public timevarying::Constant {
 public:
   // methods
-  MockConstant(Model* model) : Constant(model) { };
+  MockConstant(shared_ptr<Model> model) : Constant(model) { };
   virtual ~MockConstant() = default;
 
   // setters

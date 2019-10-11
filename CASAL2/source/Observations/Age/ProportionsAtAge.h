@@ -40,7 +40,7 @@ using processes::age::MortalityInstantaneous;
 class ProportionsAtAge : public niwa::Observation {
 public:
   // Methods
-  explicit ProportionsAtAge(Model* model);
+  explicit ProportionsAtAge(shared_ptr<Model> model);
   virtual                     ~ProportionsAtAge();
   void                        DoValidate() override final;
   virtual void                DoBuild() override;

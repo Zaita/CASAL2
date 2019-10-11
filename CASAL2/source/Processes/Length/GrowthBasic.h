@@ -33,7 +33,7 @@ namespace accessor = niwa::partition::accessors;
 class GrowthBasic : public niwa::Process {
 public:
   // Methods
-  explicit GrowthBasic(Model* model);
+  explicit GrowthBasic(shared_ptr<Model> model);
   virtual                     ~GrowthBasic() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

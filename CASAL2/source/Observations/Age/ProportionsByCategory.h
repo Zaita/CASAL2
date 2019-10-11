@@ -35,7 +35,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class ProportionsByCategory : public niwa::Observation {
 public:
   // methods
-  ProportionsByCategory(Model* model);
+  ProportionsByCategory(shared_ptr<Model> model);
   virtual                     ~ProportionsByCategory();
   void                        DoValidate() override final;
   virtual void                DoBuild() override;

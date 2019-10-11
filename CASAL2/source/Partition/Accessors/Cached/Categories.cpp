@@ -25,7 +25,7 @@ namespace cached {
 /**
  * Default Constructor
  */
-Categories::Categories(Model* model) : model_(model) { }
+Categories::Categories(shared_ptr<Model> model) : model_(model) { }
 
 /**
  * Init

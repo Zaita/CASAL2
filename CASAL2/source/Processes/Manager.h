@@ -35,7 +35,7 @@ public:
   // methods
   virtual                     ~Manager() noexcept(true);
   void                        Validate() override final;
-  void                        Validate(Model* model);
+  void                        Validate(shared_ptr<Model> model);
   Process*                    GetProcess(const string& label);
 
 protected:

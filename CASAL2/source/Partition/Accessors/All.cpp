@@ -24,7 +24,7 @@ namespace accessors {
 /**
  * Default constructor
  */
-All::All(Model* model) : model_(model) {
+All::All(shared_ptr<Model> model) : model_(model) {
 
   vector<string> category_names = model_->categories()->category_names();
   for (string category_name : category_names) {

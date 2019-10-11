@@ -32,7 +32,7 @@ namespace accessor = niwa::partition::accessors;
 class StateCategoryByAge : public niwa::InitialisationPhase {
 public:
   // methods
-  explicit StateCategoryByAge(Model* model);
+  explicit StateCategoryByAge(shared_ptr<Model> model);
   virtual                     ~StateCategoryByAge();
   virtual void                Execute() override final;
 

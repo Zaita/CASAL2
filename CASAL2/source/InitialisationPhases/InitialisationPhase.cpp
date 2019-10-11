@@ -22,7 +22,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-InitialisationPhase::InitialisationPhase(Model* model) : model_(model) {
+InitialisationPhase::InitialisationPhase(shared_ptr<Model> model) : model_(model) {
   LOG_TRACE();
 
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label of the initialisation phase", "");

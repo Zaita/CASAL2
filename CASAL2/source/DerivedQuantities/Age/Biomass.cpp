@@ -19,7 +19,7 @@ namespace niwa {
 namespace derivedquantities {
 namespace age {
 
-Biomass::Biomass(Model* model) : DerivedQuantity(model) {
+Biomass::Biomass(shared_ptr<Model> model) : DerivedQuantity(model) {
   parameters_.Bind<string>(PARAM_AGE_WEIGHT_LABELS, &age_weight_labels_, "The labels for the @age_weight block which corresponds to each category, if you want to use that weight calculation method for biomass calculations", "", "");
 
 }

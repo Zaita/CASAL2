@@ -38,7 +38,7 @@ class Estimate : public niwa::base::Object {
 public:
   // Methods
   Estimate() = delete;
-  explicit Estimate(Model* model);
+  explicit Estimate(shared_ptr<Model> model);
   virtual                     ~Estimate() = default;
   void                        Validate();
   void                        Build() ;
@@ -75,7 +75,7 @@ public:
 
 protected:
   // Members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   Double*                     target_ = nullptr;
   string                      parameter_;
   string                      creator_parameter_;

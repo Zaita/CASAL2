@@ -25,7 +25,7 @@ namespace ageweights {
 class Data : public AgeWeight {
 public:
   // methods
-  explicit Data(Model* model);
+  explicit Data(shared_ptr<Model> model);
   virtual                     ~Data();
   void                        DoValidate() override final {};
   void                        DoBuild() override final;

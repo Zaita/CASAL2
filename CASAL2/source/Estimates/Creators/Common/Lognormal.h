@@ -28,7 +28,7 @@ class Lognormal : public estimates::Creator {
 public:
   // methods
   Lognormal() = delete;
-  explicit Lognormal(Model* model);
+  explicit Lognormal(shared_ptr<Model> model);
   virtual                     ~Lognormal() = default;
   void                        DoCopyParameters(niwa::Estimate* estimate, unsigned index) override final;
 

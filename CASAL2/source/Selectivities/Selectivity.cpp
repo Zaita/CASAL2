@@ -25,7 +25,7 @@ namespace niwa {
 /**
  * Explicit Constructor
  */
-Selectivity::Selectivity(Model* model)
+Selectivity::Selectivity(shared_ptr<Model> model)
 : model_(model) {
 
   parameters_.Bind<string>(PARAM_LABEL, &label_, "The label for this selectivity", "");

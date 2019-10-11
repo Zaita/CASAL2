@@ -25,7 +25,7 @@ namespace minimisers {
 /**
  * Default constructor
  */
-DESolver::DESolver(Model* model) : Minimiser(model) {
+DESolver::DESolver(shared_ptr<Model> model) : Minimiser(model) {
   parameters_.Bind<unsigned>(PARAM_POPULATION_SIZE, &population_size_, "The number of candidate solutions to have in the population", "");
   parameters_.Bind<Double>(PARAM_CROSSOVER_PROBABILITY, &crossover_probability_, "Define the minimisers crossover probability", "", 0.9);
   parameters_.Bind<Double>(PARAM_DIFFERENCE_SCALE, &difference_scale_, "The scale to apply to new solutions when comparing candidates", "", 0.02);

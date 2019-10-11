@@ -28,7 +28,7 @@ namespace timesteps {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return pointer to the object we've created
  */
-TimeStep* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+TimeStep* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   TimeStep* object = nullptr;
 
   if (object_type == PARAM_TIME_STEP || object_type == PARAM_TIME_STEPS) {

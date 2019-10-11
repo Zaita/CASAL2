@@ -110,7 +110,7 @@ const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_or
 /**
  * default constructor
  */
-DLib::DLib(Model* model) : Minimiser(model) {
+DLib::DLib(shared_ptr<Model> model) : Minimiser(model) {
 
   parameters_.Bind<string>(PARAM_MINIMISATION_TYPE, &minimisation_type_, "The type of minimisation to use", "", PARAM_MIN_USING_APPROX_DERIVATIVES)
       ->set_allowed_values({ PARAM_MIN_USING_APPROX_DERIVATIVES, PARAM_MINIMISATION, PARAM_MIN_BOX_CONSTRAINED, PARAM_MIN_TRUST_REGION, PARAM_MIN_BOBYQA, PARAM_MIN_GLOBAL });

@@ -27,7 +27,7 @@ namespace desolver {
 /**
  * Default constructor
  */
-CallBack::CallBack(Model* model, unsigned vector_size, unsigned population_size, double tolerance)
+CallBack::CallBack(shared_ptr<Model> model, unsigned vector_size, unsigned population_size, double tolerance)
   : niwa::minimisers::desolver::Engine(vector_size, population_size, tolerance),
   model_(model) {
 }

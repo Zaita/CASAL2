@@ -28,7 +28,7 @@ namespace age {
 class TimeStepProportionsAtLength : public observations::age::ProportionsAtLength {
 public:
   // methods
-  TimeStepProportionsAtLength(Model* model);
+  TimeStepProportionsAtLength(shared_ptr<Model> model);
   virtual                     ~TimeStepProportionsAtLength() = default;
   void                        DoBuild() override final;
 

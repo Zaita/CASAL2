@@ -29,7 +29,7 @@ namespace likelihoods {
 class BinomialApprox : public niwa::Likelihood {
 public:
   // Methods
-  BinomialApprox(Model* model) : Likelihood(model) { };
+  BinomialApprox(shared_ptr<Model> model) : Likelihood(model) { };
   virtual                     ~BinomialApprox() = default;
   void                        DoValidate() override final { };
   Double                      AdjustErrorValue(const Double process_error, const Double error_value) override final;

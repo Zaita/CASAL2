@@ -37,7 +37,7 @@ using CppAD::AD;
  */
 class MyObjective {
 public:
-  MyObjective(Model* model) : model_(model) { }
+  MyObjective(shared_ptr<Model> model) : model_(model) { }
 
   typedef CPPAD_TESTVECTOR( AD<double> ) ADvector;
 
@@ -61,13 +61,13 @@ public:
   }
 
 private:
-  Model* model_;
+  shared_ptr<Model> model_;
 };
 
 /**
  * * For information about what these options do see here https://www.coin-or.org/CppAD/Doc/ipopt_solve.htm
  */
-CPPAD::CPPAD(Model* model) : Minimiser(model) {
+CPPAD::CPPAD(shared_ptr<Model> model) : Minimiser(model) {
   parameters_.Bind<string>(PARAM_RETAPE, &retape_, "Retape? yes or no", "", "true")->set_allowed_values({"true", "false"});
   parameters_.Bind<unsigned>(PARAM_PRINT_LEVEL, &print_level_, "Level of debug to stdout", "", 5u)->set_range(0u, 12u);
   parameters_.Bind<string>(PARAM_SB, &sb_, "String buffer output?", "", "yes")->set_allowed_values({"yes", "no"});

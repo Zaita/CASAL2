@@ -34,7 +34,7 @@ namespace age {
  *
  * @param model Pointer to our core model object
  */
-Cinitial::Cinitial(Model* model)
+Cinitial::Cinitial(shared_ptr<Model> model)
   : InitialisationPhase(model) {
 
   n_table_ = new parameters::Table(PARAM_N);

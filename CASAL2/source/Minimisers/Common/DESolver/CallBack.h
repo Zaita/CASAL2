@@ -33,13 +33,13 @@ namespace desolver {
 class CallBack : public niwa::minimisers::desolver::Engine {
 public:
   // Methods
-  CallBack(Model* model, unsigned vector_size, unsigned population_size, double tolerance);
+  CallBack(shared_ptr<Model> model, unsigned vector_size, unsigned population_size, double tolerance);
   virtual                     ~CallBack();
   double                      EnergyFunction(vector<double> test_solution) override final;
 
 private:
   // Members
-  Model*                    model_;
+  shared_ptr<Model>                    model_;
 };
 
 } /* namespace desolver */

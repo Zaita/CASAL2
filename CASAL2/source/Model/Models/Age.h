@@ -20,7 +20,7 @@ namespace niwa {
 namespace model {
 
 // class declaration
-class Age: public Model {
+class Age : public Model {
 public:
 	// methods
 	Age();

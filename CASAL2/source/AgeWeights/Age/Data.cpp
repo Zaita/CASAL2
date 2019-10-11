@@ -29,7 +29,7 @@ namespace ageweights {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Data::Data(Model* model) : AgeWeight(model) {
+Data::Data(shared_ptr<Model> model) : AgeWeight(model) {
   data_table_ = new parameters::Table(PARAM_DATA);
 
   parameters_.BindTable(PARAM_DATA, data_table_, "", "");

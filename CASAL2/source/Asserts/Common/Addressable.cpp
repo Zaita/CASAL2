@@ -29,7 +29,7 @@ namespace asserts {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Addressable::Addressable(Model* model) : Assert(model) {
+Addressable::Addressable(shared_ptr<Model> model) : Assert(model) {
   parameters_.Bind<string>(PARAM_PARAMETER, &parameter_, "Addressable to check", "", "");
   parameters_.Bind<unsigned>(PARAM_YEARS, &years_, "Years to check addressable", "");
   parameters_.Bind<string>(PARAM_TIME_STEP, &time_step_label_, "Time step to execute after", "");

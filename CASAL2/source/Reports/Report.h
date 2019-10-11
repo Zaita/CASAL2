@@ -86,7 +86,7 @@ protected:
   virtual void                DoFinaliseTabular(shared_ptr<Model> model) { };
 
   // Members
-//  Model*                      model_ = nullptr;
+//  shared_ptr<Model>                      model_ = nullptr;
   RunMode::Type               run_mode_    = RunMode::kInvalid;
   State::Type                 model_state_ = State::kInitialise;
   std::mutex           				lock_;

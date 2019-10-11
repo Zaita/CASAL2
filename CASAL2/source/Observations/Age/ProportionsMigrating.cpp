@@ -31,7 +31,7 @@ namespace age {
 /**
  * Default constructor
  */
-ProportionsMigrating::ProportionsMigrating(Model* model) : Observation(model) {
+ProportionsMigrating::ProportionsMigrating(shared_ptr<Model> model) : Observation(model) {
   obs_table_ = new parameters::Table(PARAM_OBS);
   error_values_table_ = new parameters::Table(PARAM_ERROR_VALUES);
 

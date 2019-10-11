@@ -27,7 +27,7 @@ namespace niwa {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-AgeingError::AgeingError(Model* model) : model_(model) {
+AgeingError::AgeingError(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "Label of the ageing error", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "Type of ageing error", "");
 }

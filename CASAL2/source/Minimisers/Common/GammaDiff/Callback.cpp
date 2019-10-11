@@ -26,7 +26,7 @@ namespace gammadiff {
 /**
  * Default Constructor
  */
-CallBack::CallBack(Model* model) : model_(model) {
+CallBack::CallBack(shared_ptr<Model> model) : model_(model) {
 }
 
 //**********************************************************************

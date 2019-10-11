@@ -34,7 +34,7 @@ namespace age {
 /**
  * Default constructor
  */
-ProcessRemovalsByLength::ProcessRemovalsByLength(Model* model) :
+ProcessRemovalsByLength::ProcessRemovalsByLength(shared_ptr<Model> model) :
     Observation(model) {
 
   obs_table_ = new parameters::Table(PARAM_OBS);

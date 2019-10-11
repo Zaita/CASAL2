@@ -24,7 +24,7 @@ namespace age {
 /**
  *
  */
-ProcessProportionsAtAge::ProcessProportionsAtAge(Model* model)
+ProcessProportionsAtAge::ProcessProportionsAtAge(shared_ptr<Model> model)
    : observations::age::ProportionsAtAge(model) {
 
   parameters_.Bind<string>(PARAM_PROCESS, &process_label_, "The label of the process for the observation", "");

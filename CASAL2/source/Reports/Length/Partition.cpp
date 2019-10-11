@@ -48,7 +48,7 @@ void Partition::DoValidate(shared_ptr<Model> model) {
  */
 void Partition::DoExecute(shared_ptr<Model> model) {
 
-  niwa::partition::accessors::All all_view(model.get());
+  niwa::partition::accessors::All all_view(model);
   vector<unsigned> length_bins = model->length_bins();
   // Print the header
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

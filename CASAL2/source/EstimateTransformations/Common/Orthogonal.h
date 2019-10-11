@@ -27,7 +27,7 @@ namespace estimatetransformations {
 class Orthogonal : public EstimateTransformation {
 public:
   Orthogonal() = delete;
-  explicit Orthogonal(Model* model);
+  explicit Orthogonal(shared_ptr<Model> model);
   virtual ~Orthogonal() = default;
   void                        TransformForObjectiveFunction() override final { };
   void                        RestoreFromObjectiveFunction() override final { };

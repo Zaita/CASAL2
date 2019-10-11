@@ -30,7 +30,7 @@ class Normal : public niwa::Estimate {
 public:
   // Methods
   Normal() = delete;
-  explicit Normal(Model* model);
+  explicit Normal(shared_ptr<Model> model);
   virtual                     ~Normal() = default;
   void                        DoValidate() override final { };
   Double                      GetScore() override final;

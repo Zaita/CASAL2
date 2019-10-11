@@ -32,7 +32,7 @@ namespace asserts {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Partition::Partition(Model* model) : Assert(model) {
+Partition::Partition(shared_ptr<Model> model) : Assert(model) {
   parameters_.Bind<string>(PARAM_CATEGORY, &category_label_, "Category to check population values for", "", "");
   parameters_.Bind<double>(PARAM_VALUES, &values_, "Values expected in the partition", "");
 }

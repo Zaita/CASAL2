@@ -29,7 +29,7 @@ namespace additionalpriors {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-LogNormal::LogNormal(Model* model) : AdditionalPrior(model) {
+LogNormal::LogNormal(shared_ptr<Model> model) : AdditionalPrior(model) {
   parameters_.Bind<Double>(PARAM_MU, &mu_, "The lognormal prior mean (mu) parameter", "")->set_lower_bound(0.0, false);
   parameters_.Bind<Double>(PARAM_CV, &cv_, "The Lognormal variance (CV) parameter", "")->set_lower_bound(0.0, false);
 }

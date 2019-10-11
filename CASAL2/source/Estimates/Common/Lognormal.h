@@ -30,7 +30,7 @@ class Lognormal : public niwa::Estimate {
 public:
   // Methods
   Lognormal() = delete;
-  explicit Lognormal(Model* model);
+  explicit Lognormal(shared_ptr<Model> model);
   virtual                     ~Lognormal() = default;
   void                        DoValidate() override final { };
   Double                      GetScore() override final;

@@ -26,7 +26,7 @@ namespace ageingerrors {
 class Data : public niwa::AgeingError {
 public:
   // methods
-  Data(Model* model);
+  Data(shared_ptr<Model> model);
   virtual                   ~Data();
 
 protected:

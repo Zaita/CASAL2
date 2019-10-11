@@ -27,7 +27,7 @@ namespace timevarying {
  */
 class RandomDraw : public TimeVarying {
 public:
-  explicit RandomDraw(Model* model);
+  explicit RandomDraw(shared_ptr<Model> model);
   virtual                     ~RandomDraw() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

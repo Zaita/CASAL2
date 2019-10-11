@@ -32,7 +32,7 @@ namespace math = niwa::utilities::math;
 /**
  * default constructor
  */
-RecruitmentBevertonHoltWithDeviations::RecruitmentBevertonHoltWithDeviations(Model* model)
+RecruitmentBevertonHoltWithDeviations::RecruitmentBevertonHoltWithDeviations(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   LOG_TRACE();

@@ -15,7 +15,7 @@
 namespace niwa {
 namespace mcmcs {
 
-RasmussenDunn::RasmussenDunn(Model* model) : MCMC(model) {
+RasmussenDunn::RasmussenDunn(shared_ptr<Model> model) : MCMC(model) {
 //	parameters_.Bind<unsigned>(PARAM_LENGTH, &length_, "Length of chain", "");
 
 }

@@ -36,7 +36,7 @@ using processes::age::RecruitmentBevertonHoltWithDeviations;
 class Iterative : public niwa::InitialisationPhase {
 public:
   // methods
-  explicit Iterative(Model* model);
+  explicit Iterative(shared_ptr<Model> model);
   virtual                     ~Iterative() = default;
   void                        Execute() override final;
 

@@ -32,7 +32,7 @@ namespace additionalpriors {
 class VectorSmoothing : public niwa::AdditionalPrior {
 public:
   // methods
-  VectorSmoothing(Model* model);
+  VectorSmoothing(shared_ptr<Model> model);
   virtual                     ~VectorSmoothing() = default;
   Double                      GetScore() final;
 

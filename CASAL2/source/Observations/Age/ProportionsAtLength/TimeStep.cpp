@@ -22,7 +22,7 @@ namespace age {
 /**
  *
  */
-TimeStepProportionsAtLength::TimeStepProportionsAtLength(Model* model)
+TimeStepProportionsAtLength::TimeStepProportionsAtLength(shared_ptr<Model> model)
    : observations::age::ProportionsAtLength(model) {
   parameters_.Bind<Double>(PARAM_TIME_STEP_PROPORTION, &time_step_proportion_, "Proportion through the mortality block of the time step when the observation is evaluated", "", Double(0.5));
 

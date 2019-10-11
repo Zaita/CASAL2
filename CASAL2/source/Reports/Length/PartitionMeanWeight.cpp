@@ -51,7 +51,7 @@ void PartitionMeanWeight::DoExecute(shared_ptr<Model> model) {
   unsigned time_step_index = model->managers().time_step()->current_time_step();
 
 //  auto categories = Categories::Instance();
-  niwa::partition::accessors::All all_view(model.get());
+  niwa::partition::accessors::All all_view(model);
   vector<unsigned> length_bins = model->length_bins();
   unsigned year = model->current_year();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

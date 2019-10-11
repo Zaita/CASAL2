@@ -22,7 +22,7 @@ namespace age {
 /**
  *
  */
-TimeStepProportionsByCategory::TimeStepProportionsByCategory(Model* model)
+TimeStepProportionsByCategory::TimeStepProportionsByCategory(shared_ptr<Model> model)
    : observations::age::ProportionsByCategory(model) {
   parameters_.Bind<Double>(PARAM_TIME_STEP_PROPORTION, &time_step_proportion_, "Proportion through the time step to analyse the partition from", "", Double(0.5));
 

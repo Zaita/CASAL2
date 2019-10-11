@@ -26,7 +26,7 @@ namespace selectivities {
 /**
  * Explicit Constructor
  */
-DoubleExponential::DoubleExponential(Model* model)
+DoubleExponential::DoubleExponential(shared_ptr<Model> model)
 : Selectivity(model) {
 
   parameters_.Bind<Double>(PARAM_X0, &x0_, "X0", "");

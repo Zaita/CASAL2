@@ -47,7 +47,7 @@ public:
 
   // Methods
   Categories() = delete;
-  explicit Categories(Model* model);
+  explicit Categories(shared_ptr<Model> model);
   virtual                     ~Categories() = default;
   void                        Init(const vector<string>& category_labels);
   void                        BuildCache();
@@ -57,7 +57,7 @@ public:
 
 private:
   // Members
-  Model*                      model_;
+  shared_ptr<Model>                      model_;
   vector<string>              category_labels_;
   DataType                    data_;
 };

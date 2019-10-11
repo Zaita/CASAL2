@@ -18,7 +18,7 @@ namespace lengthweights {
 /**
  * default constructor
  */
-Basic::Basic(Model* model) : LengthWeight(model) {
+Basic::Basic(shared_ptr<Model> model) : LengthWeight(model) {
   parameters_.Bind<Double>(PARAM_A, &a_, "The $a$ parameter in the basic length-weight relationship", "");
   parameters_.Bind<Double>(PARAM_B, &b_, "The $b$ parameter in the basic length-weight relationship", "");
   parameters_.Bind<string>(PARAM_UNITS, &units_, "Units of measure (tonnes, kgs, grams)", "")->set_allowed_values({PARAM_TONNES,PARAM_KGS,PARAM_GRAMS});

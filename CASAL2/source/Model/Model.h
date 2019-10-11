@@ -110,7 +110,7 @@ public:
   virtual Managers&           managers();
   virtual Objects&            objects();
   GlobalConfiguration&        global_configuration() { return *global_configuration_; }
-  virtual Categories*         categories() { return categories_; }
+  virtual Categories*         categories();
   virtual Factory&            factory();
   virtual Partition&          partition();
   virtual ObjectiveFunction&  objective_function();

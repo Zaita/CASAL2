@@ -27,7 +27,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-ObjectiveFunction::ObjectiveFunction(Model* model) : model_(model) {
+ObjectiveFunction::ObjectiveFunction(shared_ptr<Model> model) : model_(model) {
 }
 
 /**

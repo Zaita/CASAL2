@@ -34,7 +34,7 @@ using ::testing::DoDefault;
 /**
  * Class Definition
  */
-class MockModel : public niwa::model::Age {
+class MockModel : public niwa::model::Age, public std::enable_shared_from_this<MockModel>  {
 public:
   // Constructor
   MockModel() {

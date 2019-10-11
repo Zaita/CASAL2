@@ -35,7 +35,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class TagRecaptureByLength : public niwa::Observation {
 public:
   // methods
-  TagRecaptureByLength(Model* model);
+  TagRecaptureByLength(shared_ptr<Model> model);
   virtual                     ~TagRecaptureByLength() = default;
   void                        DoValidate() override final;
   virtual void                DoBuild() override;

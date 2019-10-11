@@ -30,7 +30,7 @@ namespace additionalpriors {
 class VectorAverage : public niwa::AdditionalPrior {
 public:
   // methods
-  VectorAverage(Model* model);
+  VectorAverage(shared_ptr<Model> model);
   virtual                     ~VectorAverage() = default;
   Double                      GetScore() final;
 

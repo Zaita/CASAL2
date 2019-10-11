@@ -26,7 +26,7 @@ namespace age {
 /**
  * Default Constructor
  */
-MortalityInitialisationEvent::MortalityInitialisationEvent(Model* model)
+MortalityInitialisationEvent::MortalityInitialisationEvent(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   parameters_.Bind<string>(PARAM_CATEGORIES, &category_labels_, "Categories", "");

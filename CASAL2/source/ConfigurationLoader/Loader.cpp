@@ -183,7 +183,7 @@ void Loader::ParseFileLines() {
 void Loader::Build(vector<shared_ptr<Model>>& model_list) {
 	for (auto model : model_list) {
 		for (auto& block : blocks_) {
-			ParseBlock(model.get(), block);
+			ParseBlock(model, block);
 		}
 	}
 }
@@ -195,7 +195,7 @@ void Loader::Build(vector<shared_ptr<Model>>& model_list) {
  *
  * @param block Vector of block's line definitions
  */
-void Loader::ParseBlock(Model* model, vector<FileLine> &block) {
+void Loader::ParseBlock(shared_ptr<Model> model, vector<FileLine> &block) {
 	LOG_TRACE();
 	if (block.size() == 0)
 		LOG_CODE_ERROR()
@@ -439,7 +439,7 @@ void Loader::ParseBlock(Model* model, vector<FileLine> &block) {
  *
  * All labels created will be prefixed with <parent>.
  */
-void Loader::HandleInlineDefinitions(Model* model, FileLine &file_line, const string &parent_label) {
+void Loader::HandleInlineDefinitions(shared_ptr<Model> model, FileLine &file_line, const string &parent_label) {
 	vector<string> replacements = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
 	/**

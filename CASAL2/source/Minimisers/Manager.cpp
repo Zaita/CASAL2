@@ -41,7 +41,7 @@ void Manager::Validate() {
 /**
  *
  */
-void Manager::Validate(Model* model) {
+void Manager::Validate(shared_ptr<Model> model) {
 	if (model->partition_type() == PartitionType::kPiApprox)
 		return;
 

@@ -25,7 +25,7 @@ namespace estimatetransformations {
 /**
  * Default constructor
  */
-Log::Log(Model* model) : EstimateTransformation(model) {
+Log::Log(shared_ptr<Model> model) : EstimateTransformation(model) {
   parameters_.Bind<string>(PARAM_ESTIMATE_LABEL, &estimate_label_, "Label of estimate block to apply transformation. Defined as $\theta_1$ in the documentation", "");
 }
 

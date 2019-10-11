@@ -33,7 +33,7 @@ namespace initialisationphases {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-InitialisationPhase* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+InitialisationPhase* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   InitialisationPhase* result = nullptr;
 
 

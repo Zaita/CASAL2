@@ -34,7 +34,7 @@ using processes::age::RecruitmentBevertonHoltWithDeviations;
 class Derived : public niwa::InitialisationPhase {
 public:
   // methods
-  explicit Derived(Model* model);
+  explicit Derived(shared_ptr<Model> model);
   virtual                     ~Derived() = default;
   void                        Execute() override final;
 

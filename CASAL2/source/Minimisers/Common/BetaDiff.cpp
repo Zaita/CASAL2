@@ -24,7 +24,7 @@ namespace minimisers {
 class MyModel {};
 class MyObjective {
 public:
-  MyObjective(Model* model) : model_(model) { }
+  MyObjective(shared_ptr<Model> model) : model_(model) { }
 
   Double operator()(const MyModel& model, const dvv& x_unbounded) {
     auto estimates = model_->managers().estimate()->GetIsEstimated();
@@ -47,14 +47,14 @@ public:
   }
 
 private:
-  Model* model_;
+  shared_ptr<Model> model_;
 };
 
 
 /**
  * Default constructor
  */
-BetaDiff::BetaDiff(Model* model) : Minimiser(model) {
+BetaDiff::BetaDiff(shared_ptr<Model> model) : Minimiser(model) {
   parameters_.Bind<int>(PARAM_MAX_ITERATIONS, &max_iterations_, "Maximum number of iterations", "", 1000);
   parameters_.Bind<int>(PARAM_MAX_EVALUATIONS, &max_evaluations_, "Maximum number of evaluations", "", 4000);
   parameters_.Bind<double>(PARAM_TOLERANCE, &gradient_tolerance_, "Tolerance of the gradient for convergence", "", 2e-3);

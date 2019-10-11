@@ -33,7 +33,7 @@ namespace accessor = niwa::partition::accessors;
 class TagByLength : public Process {
 public:
   // method
-  explicit TagByLength(Model* model);
+  explicit TagByLength(shared_ptr<Model> model);
   virtual                     ~TagByLength();
   void                        DoValidate() override final;
   void                        DoBuild() override final;

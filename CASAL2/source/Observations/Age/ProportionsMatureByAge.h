@@ -37,7 +37,7 @@ using partition::accessors::cached::CachedCombinedCategoriesPtr;
 class ProportionsMatureByAge : public niwa::Observation {
 public:
   // Methods
-  explicit ProportionsMatureByAge(Model* model);
+  explicit ProportionsMatureByAge(shared_ptr<Model> model);
   virtual                     ~ProportionsMatureByAge();
   void                        DoValidate() override final;
   void                        DoBuild() override final;

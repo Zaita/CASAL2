@@ -34,7 +34,7 @@ using utilities::OrderedMap;
 class SurvivalConstantRate : public niwa::Process {
 public:
   // Methods
-  SurvivalConstantRate(Model* model);
+  SurvivalConstantRate(shared_ptr<Model> model);
   virtual                     ~SurvivalConstantRate() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

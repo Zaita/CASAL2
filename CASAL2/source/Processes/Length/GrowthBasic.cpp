@@ -26,7 +26,7 @@ namespace math = niwa::utilities::math;
 /**
  * Default constructor
  */
-GrowthBasic::GrowthBasic(Model* model)
+GrowthBasic::GrowthBasic(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   process_type_ = ProcessType::kTransition;

@@ -43,7 +43,7 @@ namespace math = niwa::utilities::math;
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-MortalityPreySuitability::MortalityPreySuitability(Model* model)
+MortalityPreySuitability::MortalityPreySuitability(shared_ptr<Model> model)
   : Process(model) {
   process_type_ = ProcessType::kMortality;
   partition_structure_ = PartitionType::kAge;

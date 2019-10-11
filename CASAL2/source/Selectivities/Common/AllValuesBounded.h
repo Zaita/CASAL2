@@ -29,7 +29,7 @@ namespace selectivities {
 class AllValuesBounded : public niwa::Selectivity {
 public:
   // Methods
-  explicit AllValuesBounded(Model* model);
+  explicit AllValuesBounded(shared_ptr<Model> model);
   virtual                     ~AllValuesBounded() = default;
   void                        DoValidate() override final;
   void                        RebuildCache() override final;

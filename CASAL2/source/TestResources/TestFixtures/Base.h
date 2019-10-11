@@ -18,11 +18,15 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <string>
+#include <memory>
+
+#include "Model/Model.h"
 
 // namespaces
 namespace niwa {
-namespace model { class Age; }
 namespace testfixtures {
+
+using std::shared_ptr;
 
 /**
  * Class definition
@@ -36,7 +40,7 @@ public:
 
 protected:
   // members
-  model::Age*                      model_ = nullptr;
+  shared_ptr<Model>      			model_ = nullptr;
 };
 
 } /* namespace testfixtures */

@@ -32,7 +32,7 @@ class Creator : public niwa::base::Object {
 public:
   // methods
   Creator() = delete;
-  explicit Creator(Model* model);
+  explicit Creator(shared_ptr<Model> model);
   virtual                     ~Creator() = default;
   void                        CreateEstimates();
   void                        Reset() override final { };
@@ -48,7 +48,7 @@ protected:
   virtual void                DoCopyParameters(niwa::Estimate* estimate, unsigned index) = 0;
 
   // members
-  Model*                      model_ = nullptr;
+  shared_ptr<Model>                      model_ = nullptr;
   string                      parameter_;
   vector<Double>              lower_bounds_;
   vector<Double>              upper_bounds_;

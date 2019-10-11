@@ -28,7 +28,7 @@ namespace age {
 /**
  * Default Constructor
  */
-TagLoss::TagLoss(Model* model)
+TagLoss::TagLoss(shared_ptr<Model> model)
   : Process(model),
     partition_(model) {
   LOG_TRACE();

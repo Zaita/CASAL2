@@ -37,7 +37,7 @@ using processes::age::MortalityInstantaneous;
 class ProcessRemovalsByLength : public niwa::Observation {
 public:
   // Methods
-  explicit ProcessRemovalsByLength(Model* model);
+  explicit ProcessRemovalsByLength(shared_ptr<Model> model);
   virtual                     ~ProcessRemovalsByLength();
   void                        DoValidate() override final;
   void                        DoBuild() override final;

@@ -30,7 +30,7 @@ class Beta : public niwa::Estimate {
 public:
   // Methods
   Beta() = delete;
-  explicit Beta(Model* model);
+  explicit Beta(shared_ptr<Model> model);
   virtual                     ~Beta() = default;
   void                        DoValidate() override final;
   Double                      GetScore() override final;

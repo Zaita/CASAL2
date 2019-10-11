@@ -21,7 +21,7 @@ namespace niwa {
 /**
  * Default constructor
  */
-EquationParser::EquationParser(Model* model) : model_(model) {
+EquationParser::EquationParser(shared_ptr<Model> model) : model_(model) {
 #ifdef USE_ADOLC
   parser_ = new Parser<adouble, adub, const badouble&>(this);
 

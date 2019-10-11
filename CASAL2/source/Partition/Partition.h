@@ -55,11 +55,11 @@ public:
 
 protected:
   // Methods
-  Partition(Model* model) : model_(model) { };
+  Partition(shared_ptr<Model> model) : model_(model) { };
 
 
   // Members
-  Model*                            model_ = nullptr;
+  shared_ptr<Model>                            model_ = nullptr;
   map<string, partition::Category*> partition_; // map<category label, partition::Category Struct>
   map<string, utilities::Vector4*>  age_length_proportions_; // map<category, vector<year, time_step, age, length, proportion>>;
 };

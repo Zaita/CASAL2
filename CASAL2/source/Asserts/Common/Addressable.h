@@ -24,7 +24,7 @@ namespace asserts {
 class Addressable : public niwa::Assert {
 public:
   // methods
-  Addressable(Model* model);
+  Addressable(shared_ptr<Model> model);
   virtual                     ~Addressable() = default;
   void                        Execute() override final;
 

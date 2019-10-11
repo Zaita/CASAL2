@@ -32,7 +32,7 @@ namespace utils = niwa::utilities;
 /**
  *
  */
-Creator::Creator(Model* model) : model_(model) {
+Creator::Creator(shared_ptr<Model> model) : model_(model) {
   parameters_.Bind<string>(PARAM_LABEL, &label_, "TThe label of the estimate", "", "");
   parameters_.Bind<string>(PARAM_TYPE, &type_, "The prior type for the estimate", "");
   parameters_.Bind<string>(PARAM_PARAMETER, &parameter_, "The name of the variable to estimate in the model", "");

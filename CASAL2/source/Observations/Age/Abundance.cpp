@@ -28,7 +28,7 @@ namespace utils = niwa::utilities;
 /**
  * Default constructor
  */
-Abundance::Abundance(Model* model) : Observation(model) {
+Abundance::Abundance(shared_ptr<Model> model) : Observation(model) {
   parameters_.Bind<string>(PARAM_SELECTIVITIES, &selectivity_labels_, "Labels of the selectivities", "", true);
   parameters_.Bind<string>(PARAM_TIME_STEP, &time_step_label_, "The label of time-step that the observation occurs in", "");
 

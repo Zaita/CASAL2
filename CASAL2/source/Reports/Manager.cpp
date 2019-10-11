@@ -33,7 +33,7 @@ void Manager::Build() {
 
 void Manager::Validate(shared_ptr<Model> model) {
   if (objects_.size() == 0)
-    LOG_WARNING() << "No reports have been specified for this model run";
+  	return;
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
   for (auto report : objects_) {
@@ -49,7 +49,7 @@ void Manager::Validate(shared_ptr<Model> model) {
  */
 void Manager::Build(shared_ptr<Model> model) {
   if (objects_.size() == 0)
-    LOG_WARNING() << "No reports have been specified for this model run";
+  	return;
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
   for (auto report : objects_) {

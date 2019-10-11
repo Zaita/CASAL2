@@ -35,7 +35,7 @@ namespace estimatetransformations {
  * @param sub_type The child type of the object to create (e.g ageing, schnute)
  * @return shared_ptr to the object we've created
  */
-EstimateTransformation* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+EstimateTransformation* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   EstimateTransformation* result = nullptr;
 
   if (object_type == PARAM_ESTIMATE_TRANSFORMATION) {

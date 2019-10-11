@@ -27,7 +27,7 @@ namespace creators {
 class UniformLog : public estimates::Creator {
 public:
   UniformLog() = delete;
-  explicit UniformLog(Model* model);
+  explicit UniformLog(shared_ptr<Model> model);
   virtual                     ~UniformLog() = default;
   void                        DoCopyParameters(niwa::Estimate* estimate, unsigned index) override final { };
 };

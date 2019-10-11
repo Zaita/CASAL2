@@ -23,7 +23,7 @@ namespace penalties {
 /**
  * Default Constructor
  */
-Process::Process(Model* model) : Penalty(model) {
+Process::Process(shared_ptr<Model> model) : Penalty(model) {
   parameters_.Bind<Double>(PARAM_MULTIPLIER, &multiplier_, "The penalty multiplier", "", 1.0);
   parameters_.Bind<bool>(PARAM_LOG_SCALE, &log_scale_, "Indicates if the sums of squares is calculated on the log scale", "", false);
 

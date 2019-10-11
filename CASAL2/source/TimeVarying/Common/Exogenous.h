@@ -26,7 +26,7 @@ namespace timevarying {
  */
 class Exogenous : public TimeVarying {
 public:
-  explicit Exogenous(Model* model);
+  explicit Exogenous(shared_ptr<Model> model);
   virtual                     ~Exogenous() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

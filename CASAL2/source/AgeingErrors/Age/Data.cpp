@@ -28,7 +28,7 @@ namespace ageingerrors {
  *
  * Note: The constructor is parsed to generate Latex for the documentation.
  */
-Data::Data(Model* model) : AgeingError(model) {
+Data::Data(shared_ptr<Model> model) : AgeingError(model) {
   data_table_ = new parameters::Table(PARAM_TABLE);
   parameters_.BindTable(PARAM_TABLE, data_table_, "Table of data specifying the ageing misclassification matrix", "", false);
 }

@@ -34,7 +34,7 @@ using utilities::OrderedMap;
 class TagLoss : public niwa::Process {
 public:
   // Methods
-  TagLoss(Model* model);
+  TagLoss(shared_ptr<Model> model);
   virtual                     ~TagLoss() = default;
   void                        DoValidate() override final;
   void                        DoBuild() override final;

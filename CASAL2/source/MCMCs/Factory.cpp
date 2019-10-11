@@ -25,7 +25,7 @@ namespace mcmcs {
 /**
  * Factory method
  */
-MCMC* Factory::Create(Model* model, const string& object_type, const string& sub_type) {
+MCMC* Factory::Create(shared_ptr<Model> model, const string& object_type, const string& sub_type) {
   MCMC* object = nullptr;
 
   if (object_type == PARAM_MCMC) {
