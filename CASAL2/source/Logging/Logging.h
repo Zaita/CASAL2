@@ -19,6 +19,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <mutex>
 
 #include "Logging/Record.h"
 
@@ -48,6 +49,7 @@ public:
 
   // static members
   static logger::Severity     current_log_level_;
+  static std::mutex						lock_;
 
 private:
   // methods

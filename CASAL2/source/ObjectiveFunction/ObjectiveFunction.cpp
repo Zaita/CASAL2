@@ -13,6 +13,8 @@
 // Headers
 #include "ObjectiveFunction.h"
 
+#include <thread>
+
 #include "AdditionalPriors/Manager.h"
 #include "Estimates/Manager.h"
 #include "EstimateTransformations/Manager.h"
@@ -158,11 +160,11 @@ void ObjectiveFunction::CalculateScore() {
     jacobians_ += AS_DOUBLE(new_score.score_);
   }
 
-  LOG_MEDIUM() << "objective.likelihoods_: " << likelihoods_;
-  LOG_MEDIUM() << "objective.penalties_: " << penalties_;
-  LOG_MEDIUM() << "objective.priors_: " << priors_;
-  LOG_MEDIUM() << "objective.additional_priors_: " << additional_priors_;
-  LOG_MEDIUM() << "objective.score: " << score_;
+  LOG_FINE() << "objective.likelihoods_: " << likelihoods_;
+  LOG_FINE() << "objective.penalties_: " << penalties_;
+  LOG_FINE() << "objective.priors_: " << priors_;
+  LOG_FINE() << "objective.additional_priors_: " << additional_priors_;
+  LOG_MEDIUM() << "objective.score[thread# " << std::this_thread::get_id() << "]: " << score_;
 }
 
 } /* namespace niwa */

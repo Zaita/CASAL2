@@ -32,7 +32,7 @@ using std::cout;
 using std::endl;
 using std::ios_base;
 
-//std::mutex Report::lock_;
+std::mutex Report::lock_;
 
 inline bool DoesFileExist(const string& file_name) {
   LOG_FINEST() << "Checking if file exists: " << file_name;
@@ -187,6 +187,15 @@ void Report::SetUpInternalStates() {
 }
 
 /**
+ *
+ */
+void Report::set_suffix(string_view suffix) {
+	Report::lock_.lock();
+	suffix_ = suffix;
+	Report::lock_.unlock();
+}
+
+/**
  * Flush the contents of the cache to the file or stdout/stderr
  */
 void Report::FlushCache() {
@@ -196,16 +205,12 @@ void Report::FlushCache() {
    * Are we writing to a file?
    */
   if (file_name_ != "") {
-    string suffix = ".fixme"; // model_->managers().report()->report_suffix();
-    LOG_CODE_ERROR() << "fix me now";
-    // TODO: Should store this as part of build process
-
     bool overwrite = false;
-    if (first_write_ || suffix != last_suffix_)
+    if (first_write_ || suffix_ != last_suffix_)
       overwrite = overwrite_;
 
-    last_suffix_ = suffix;
-    string file_name = file_name_ + suffix;
+    last_suffix_ = suffix_;
+    string file_name = file_name_ + suffix_;
 
     ios_base::openmode mode = ios_base::out;
     if (!overwrite)

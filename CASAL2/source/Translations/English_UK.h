@@ -612,6 +612,7 @@
 #define PARAM_TARGET_CATEGORIES                   "categories2"
 #define PARAM_TARGET_SELECTIVITIES                "selectivities2"
 #define PARAM_TERMINAL_YEAR                       "terminal_year"
+#define PARAM_THREADS															"threads"
 #define PARAM_THRESHOLD                           "threshold"
 #define PARAM_THRESHOLD_BIOMASS                   "threshold_biomass"
 #define PARAM_THETA_ONE                           "theta1"

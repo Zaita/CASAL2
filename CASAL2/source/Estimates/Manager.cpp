@@ -129,7 +129,7 @@ void Manager::Build(shared_ptr<Model> model) {
     estimate->Build();
   }
 
-  if (model->global_configuration().create_mpd_file()) {
+  if (model->is_primary_thread_model() && model->global_configuration().create_mpd_file()) {
     model->managers().report()->Pause();
 
     reports::MPD* report = new reports::MPD();

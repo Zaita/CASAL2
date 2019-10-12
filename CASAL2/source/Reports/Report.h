@@ -71,6 +71,7 @@ public:
   const string&               time_step() const { return time_step_; }
   bool                        ready_for_writing() const { return ready_for_writing_; }
   void                        set_skip_tags(bool value) { skip_tags_ = value; }
+  void												set_suffix(string_view suffix);
 
 protected:
   // methods
@@ -89,7 +90,7 @@ protected:
 //  shared_ptr<Model>                      model_ = nullptr;
   RunMode::Type               run_mode_    = RunMode::kInvalid;
   State::Type                 model_state_ = State::kInitialise;
-  std::mutex           				lock_;
+  static std::mutex    				lock_;
   string                      time_step_   = "";
   string                      file_name_   = "";
   bool                        first_write_ = true;
@@ -100,6 +101,7 @@ protected:
   ostringstream               cache_;
   bool                        ready_for_writing_ = false;
   bool                        skip_tags_ = false;
+  string											suffix_ = "";
 };
 
 // Typedef

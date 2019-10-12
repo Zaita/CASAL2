@@ -105,6 +105,9 @@ public:
   virtual unsigned            length_plus_group() const { return length_plus_group_; }
   void												set_id(unsigned id) { id_ = id; }
   unsigned										id() const { return id_; }
+  void												flag_primary_thread_model() { is_primary_thread_model_ = true; }
+  bool												is_primary_thread_model() const { return is_primary_thread_model_; }
+  unsigned										threads() const { return threads_; }
 
   // manager accessors
   virtual Managers&           managers();
@@ -135,6 +138,8 @@ protected:
 
   // Members
   unsigned										id_ = 0;
+  bool												is_primary_thread_model_ = false;
+  unsigned										threads_;
   RunMode::Type               run_mode_ = RunMode::kInvalid;
   State::Type                 state_    = State::kStartUp;
   unsigned                    start_year_ = 0;

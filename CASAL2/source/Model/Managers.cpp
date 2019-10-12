@@ -74,7 +74,6 @@ Managers::Managers(shared_ptr<Model> model) {
   process_                = new processes::Manager();
   profile_                = new profiles::Manager();
   project_                = new projects::Manager();
-  report_                 = new reports::Manager();
   selectivity_            = new selectivities::Manager();
   simulate_               = new simulates::Manager();
   time_step_              = new timesteps::Manager();
@@ -105,12 +104,22 @@ Managers::~Managers() {
   delete process_;
   delete profile_;
   delete project_;
-  delete report_;
   delete selectivity_;
   delete simulate_;
   delete time_step_;
   delete time_varying_;
 }
+
+/**
+ *
+ */
+shared_ptr<reports::Manager> Managers::report() {
+	if (!report_)
+		LOG_CODE_ERROR() << "(!report_)";
+
+	return report_;
+}
+
 
 void Managers::Validate() {
   LOG_TRACE();

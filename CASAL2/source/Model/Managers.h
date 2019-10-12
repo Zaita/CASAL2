@@ -78,11 +78,13 @@ public:
   virtual processes::Manager*             process() { return process_; }
   virtual profiles::Manager*              profile() { return profile_; }
   virtual projects::Manager*              project() { return project_; }
-  virtual reports::Manager*               report() { return report_; }
+  virtual shared_ptr<reports::Manager>    report();
   virtual selectivities::Manager*         selectivity() { return selectivity_; }
   virtual simulates::Manager*             simulate() { return simulate_; }
   virtual timesteps::Manager*             time_step() { return time_step_; }
   virtual timevarying::Manager*           time_varying() { return time_varying_; }
+
+  void set_reports(shared_ptr<reports::Manager> manager) { report_ = manager; }
 
 protected:
   // methods
@@ -114,7 +116,7 @@ protected:
   processes::Manager*                 process_;
   profiles::Manager*                  profile_;
   projects::Manager*                  project_;
-  reports::Manager*                   report_;
+  shared_ptr<reports::Manager>        report_;
   selectivities::Manager*             selectivity_;
   simulates::Manager*                 simulate_;
   timesteps::Manager*                 time_step_;

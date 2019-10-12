@@ -186,8 +186,8 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
       utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 
       // Thread off the reports
-      reports::Manager* report_manager = model->managers().report();
-      std::thread report_thread([&report_manager]() { report_manager->FlushReports(); });
+      auto report_manager = model->managers().report();
+      std::thread report_thread([report_manager]() { report_manager->FlushReports(); });
 
       // Run the model
       model_start_return_success = model->Start(run_mode);

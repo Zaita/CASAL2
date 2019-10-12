@@ -66,6 +66,7 @@ Model::Model() {
 	parameters_.Bind<string>(PARAM_BASE_UNITS, &base_weight_units_,
 		"Define the units for the base weight. This will be the default unit of any weight input parameters ", "grams, kgs or tonnes", PARAM_TONNES)->set_allowed_values(
 		{ PARAM_GRAMS, PARAM_TONNES, PARAM_KGS });
+	parameters_.Bind<unsigned>(PARAM_THREADS, &threads_, "The number of threads to use for this model", "", 1u)->set_lower_bound(1);
 
 	global_configuration_ = new GlobalConfiguration();
 }
@@ -186,6 +187,8 @@ bool Model::Start(RunMode::Type run_mode) {
 		logging.FlushErrors();
 		return false;
 	}
+
+	LOG_MEDIUM() << "Model::Start() on thread " << std::this_thread::get_id();
 
 	// Make sure we've instantiated our pointers to sub objects
   managers();

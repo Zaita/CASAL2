@@ -20,6 +20,8 @@ namespace niwa {
 using std::vector;
 using std::string;
 
+std::mutex Logging::lock_;
+
 #ifdef TESTMODE
 logger::Severity  Logging::current_log_level_ = logger::Severity::kWarning;
 #else
@@ -38,7 +40,9 @@ Logging::Logging() {
  * @return static instance of the logging class
  */
 Logging& Logging::Instance() {
+	Logging::lock_.lock();
   static Logging logging;
+  Logging::lock_.unlock();
   return logging;
 }
 
@@ -46,6 +50,8 @@ Logging& Logging::Instance() {
  *
  */
 void Logging::SetLogLevel(const std::string& log_level) {
+	Logging::lock_.lock();
+
   if (log_level == PARAM_TRACE)
     Logging::current_log_level_ = logger::Severity::kTrace;
   else if (log_level == PARAM_FINEST)
@@ -56,8 +62,11 @@ void Logging::SetLogLevel(const std::string& log_level) {
     Logging::current_log_level_ = logger::Severity::kMedium;
   else if (log_level != PARAM_NONE) {
     cout << "The log level provided is an invalid log level. " << log_level << " is not supported" << endl;
+    Logging::lock_.unlock();
     exit(-1);
   }
+
+  Logging::lock_.unlock();
 }
 
 #ifdef TESTMODE
@@ -83,6 +92,8 @@ void Logging::Flush(niwa::logger::Record& record) {
 }
 #else
 void Logging::Flush(niwa::logger::Record& record) {
+	Logging::lock_.lock();
+
   record.BuildMessage();
 
   if (record.severity() == logger::Severity::kWarning)
@@ -95,6 +106,7 @@ void Logging::Flush(niwa::logger::Record& record) {
       cerr << "NOTE: " << errors_.size() << " other errors have been logged above\n";
 
     cerr.flush();
+    Logging::lock_.unlock();
     exit(-1);
   }
 
@@ -102,6 +114,8 @@ void Logging::Flush(niwa::logger::Record& record) {
     cerr << record.message();
     cerr.flush();
   }
+
+  Logging::lock_.unlock();
 }
 #endif
 
@@ -109,8 +123,11 @@ void Logging::Flush(niwa::logger::Record& record) {
  *
  */
 void Logging::FlushErrors() {
-  if (errors_.size() == 0)
+	Logging::lock_.lock();
+  if (errors_.size() == 0) {
+  	Logging::lock_.unlock();
     return;
+  }
 
   unsigned to_print = errors_.size() > 10 ? 10 : errors_.size();
 
@@ -129,6 +146,7 @@ void Logging::FlushErrors() {
   cout.flush();
 
   errors_.clear();
+  Logging::lock_.unlock();
 }
 
 /**
@@ -136,8 +154,11 @@ void Logging::FlushErrors() {
  *
  */
 void Logging::FlushWarnings() {
-  if (warnings_.size() == 0)
+	Logging::lock_.lock();
+  if (warnings_.size() == 0) {
+  	Logging::lock_.unlock();
     return;
+  }
 
   //unsigned to_print = warnings_.size() > 10 ? 10 : warnings_.size();
 
@@ -153,6 +174,7 @@ void Logging::FlushWarnings() {
   cout.flush();
 
   warnings_.clear();
+  Logging::lock_.unlock();
 }
 
 } /* namespace niwa */

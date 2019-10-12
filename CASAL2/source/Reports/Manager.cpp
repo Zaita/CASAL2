@@ -9,10 +9,20 @@
  */
 #include "Manager.h"
 
+#include <thread>
+
 #include "Model/Model.h"
 
 namespace niwa {
 namespace reports {
+
+using std::scoped_lock;
+
+#define LOCK_WAIT() static std::mutex io_mutex; \
+{ \
+    std::lock_guard<std::mutex> lk(io_mutex);\
+    std::cout << "Model [thread#" << model->id() << "] is waiting for a " << __FUNCTION__ << " lock" << std::endl;\
+}
 
 /**
  * Default Constructor
@@ -27,18 +37,32 @@ Manager::Manager() {
 /**
  *
  */
+void Manager::Validate() {
+	LOG_CODE_ERROR() << "Method not allowed";
+}
+
+/**
+ *
+ */
 void Manager::Build() {
 	LOG_CODE_ERROR() << "Method not allowed";
 }
 
+/**
+ *
+ */
 void Manager::Validate(shared_ptr<Model> model) {
-  if (objects_.size() == 0)
-  	return;
+	std::scoped_lock l(lock_);
+  if (objects_.size() == 0 || has_validated_) {
+		return;
+	}
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
   for (auto report : objects_) {
     report->Validate(model);
   }
+
+  has_validated_ = true;
 }
 
 /**
@@ -48,8 +72,9 @@ void Manager::Validate(shared_ptr<Model> model) {
  * based on their type.
  */
 void Manager::Build(shared_ptr<Model> model) {
-  if (objects_.size() == 0)
-  	return;
+	std::scoped_lock l(lock_);
+  if (objects_.size() == 0 || has_built_)
+		return;
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
   for (auto report : objects_) {
@@ -66,6 +91,8 @@ void Manager::Build(shared_ptr<Model> model) {
       time_step_reports_[report->time_step()].push_back(report);
     }
   }
+
+  has_built_ = true;
 }
 
 /**
@@ -75,7 +102,12 @@ void Manager::Build(shared_ptr<Model> model) {
  * @param model_state The state the model has just finished
  */
 void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
-  LOG_TRACE();
+	std::scoped_lock l(lock_);
+
+	LOG_TRACE();
+  if (model_state == State::kFinalise && !model->is_primary_thread_model())
+  	return;
+
   RunMode::Type run_mode = model->run_mode();
   bool tabular = model->global_configuration().print_tabular();
   LOG_FINE() << "Checking " << state_reports_[model_state].size() << " reports";
@@ -100,6 +132,8 @@ void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
  * @param time_step_label The last time step to be completed
  */
 void Manager::Execute(shared_ptr<Model> model, unsigned year, const string& time_step_label) {
+	std::scoped_lock l(lock_);
+
   LOG_TRACE();
   LOG_FINEST() << "year: " << year << "; time_step_label: " << time_step_label << "; reports: " << time_step_reports_[time_step_label].size();
 
@@ -128,7 +162,12 @@ void Manager::Execute(shared_ptr<Model> model, unsigned year, const string& time
  *
  */
 void Manager::Prepare(shared_ptr<Model> model) {
+	std::scoped_lock l(lock_);
+
   LOG_TRACE();
+  if (has_prepared_)
+		return;
+
   RunMode::Type run_mode = model->run_mode();
   bool tabular = model->global_configuration().print_tabular();
   for (auto report : objects_) {
@@ -142,13 +181,27 @@ void Manager::Prepare(shared_ptr<Model> model) {
     else
       report->Prepare(model);
   }
+
+  has_prepared_ = true;
 }
 
 /**
  *
  */
 void Manager::Finalise(shared_ptr<Model> model) {
-  LOG_TRACE();
+	LOG_TRACE();
+	std::scoped_lock l(lock_);
+
+	if (has_finalised_) {
+		return;
+	}
+
+  LOG_MEDIUM() << "finalise called from thread " << std::this_thread::get_id();
+  LOG_MEDIUM() << "reports.manager.size(): " << objects_.size();
+  for (auto report : objects_) {
+  	LOG_MEDIUM() << "report: " << report->label() << "." << report->type();
+  }
+
   RunMode::Type run_mode = model->run_mode();
   bool tabular = model->global_configuration().print_tabular();
   for (auto report : objects_) {
@@ -164,6 +217,7 @@ void Manager::Finalise(shared_ptr<Model> model) {
   }
 
   LOG_TRACE();
+  has_finalised_ = true;
 }
 
 /**
@@ -172,6 +226,7 @@ void Manager::Finalise(shared_ptr<Model> model) {
  */
 void Manager::WaitForReportsToFinish() {
 #ifndef TESTMODE
+	std::scoped_lock l(lock_);
   waiting_ = true;
   LOG_FINE() << "Waiting for reports";
   while(waiting_);
@@ -203,9 +258,12 @@ void Manager::FlushReports() {
       record_waiting = true;
 
     do_break = !run_.test_and_set();
-    for (auto report : objects_) {
-      if (report->ready_for_writing())
-        report->FlushCache();
+    {
+    	std::scoped_lock l(lock_);
+			for (auto report : objects_) {
+				if (report->ready_for_writing())
+					report->FlushCache();
+			}
     }
 
     if (record_waiting) {
@@ -226,6 +284,16 @@ void Manager::Pause() {
   pause_ = true;
   while(!is_paused_) continue;
 #endif
+}
+
+/**
+ *
+ */
+void Manager::set_report_suffix(const string& suffix) {
+	std::scoped_lock l(lock_);
+	report_suffix_ = suffix;
+	for (auto report : objects_)
+		report->set_suffix(suffix);
 }
 
 } /* namespace reports */

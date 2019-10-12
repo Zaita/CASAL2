@@ -25,6 +25,7 @@
 #include "BaseClasses/Object.h"
 #include "ConfigurationLoader/Loader.h"
 #include "Model/Factory.h"
+#include "Model/Models/Age.h"
 #include "Reports/Manager.h"
 #include "Utilities/RandomNumberGenerator.h"
 #include "Utilities/StandardHeader.h"
@@ -39,7 +40,8 @@ using std::endl;
  * Default constructor
  */
 Runner::Runner() {
-	master_model_.reset(new Model());
+	master_model_.reset(new model::Age());
+	master_model_->flag_primary_thread_model();
 }
 
 /**
@@ -56,6 +58,10 @@ int Runner::Go() {
 	RunMode::Type run_mode = run_parameters_.run_mode_;
 
 	int return_code = 0;
+
+	// Create our Reports::Manager so it's available for the models
+	auto reports_manager = shared_ptr<reports::Manager>(new reports::Manager());
+	master_model_->managers().set_reports(reports_manager);
 
 	/**
 	 * Check the run mode and call the handler.
@@ -121,43 +127,61 @@ int Runner::Go() {
 
 		string model_type = config_loader.model_type();
 
-		// TODO: REMOVE MASTER MODEL
 		vector<shared_ptr<Model>> model_list;
-//		model_list.push_back(&master_model_);
-//		for (unsigned i = 0; i < 2; ++i) {
-//			cout << "Loading model " << (i+1) << " into model_list on Runner" << endl;
-//			shared_ptr<Model> model =  master_model_.factory().Create(PARAM_MODEL, model_type);
-//			model->set_id(i+1);
-//			model_list.push_back(model);
-//			cout << "Appended model with id " << model->id() << endl;
-//		}
-		shared_ptr<Model> model = master_model_->factory().Create(PARAM_MODEL, model_type);
-
-		model_list.push_back(model);
-
+		model_list.push_back(master_model_);
+		master_model_->set_id(1);
 		config_loader.Build(model_list);
+		model_list.clear();
+
+		LOG_MEDIUM() << "number of threads specified for model: " << master_model_->threads();
+		for (unsigned i = 1; i < master_model_->threads(); ++i) {
+			LOG_MEDIUM() << "Spawning model for thread with id " << (i+1);
+			shared_ptr<Model> model =  master_model_->factory().Create(PARAM_MODEL, model_type);
+			model->set_id(i+1);
+			model->managers().set_reports(reports_manager);
+			model_list.push_back(model);
+		}
+
+		if (model_list.size() > 0)
+			config_loader.Build(model_list);
 		if (logging.errors().size() > 0) {
 			logging.FlushErrors();
 			return_code = -1;
 			break;
 		}
 
+		model_list.insert(model_list.begin(), master_model_);
+
 		// override any config file values from our command line
-		model->global_configuration().ParseOptions(model);
-		model->global_configuration().set_run_parameters(run_parameters_); // TODO: Set global_configuration for models too from Runner
-		utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
+		master_model_->global_configuration().ParseOptions(master_model_);
+		master_model_->global_configuration().set_run_parameters(run_parameters_); // TODO: Set global_configuration for models too from Runner
+		utilities::RandomNumberGenerator::Instance().Reset(master_model_->global_configuration().random_seed());
 
 		// Thread off the reports
-		reports::Manager *report_manager = model->managers().report();
-		std::thread report_thread([&report_manager]() {
-			report_manager->FlushReports();
+		std::thread report_thread([reports_manager]() {
+			reports_manager->FlushReports();
 		});
 
-		// Run the model
-		return_code = model->Start(run_mode) ? 0 : -1;
+		// Thread run the model
+		vector<std::thread> threads;
+
+		for (unsigned i = 0; i < model_list[0]->threads(); ++i) {
+			std::function<void()> model_thread([i, run_mode, model_list]() {
+				LOG_MEDIUM() << "Starting model on thread " << i;
+				model_list[i]->Start(run_mode) ? 0 : -1;
+			});
+
+			threads.push_back(std::thread(model_thread));
+		}
+
+		for (auto& thread : threads) {
+			LOG_MEDIUM() << "Joining thread " << thread.get_id();
+			thread.join();
+			LOG_MEDIUM() << "Finished thread";
+		}
 
 		// finish report thread
-		report_manager->StopThread();
+		reports_manager->StopThread();
 		report_thread.join();
 
 		if (logging.errors().size() > 0) {

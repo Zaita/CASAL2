@@ -27,6 +27,7 @@
 // Namespaces
 namespace niwa {
 class Model;
+class Runner;
 namespace reports {
 
 /**
@@ -35,11 +36,13 @@ namespace reports {
 class Manager : public niwa::base::Manager<reports::Manager, niwa::Report> {
   friend class niwa::base::Manager<reports::Manager, niwa::Report>;
   friend class niwa::Managers;
+  friend class niwa::Runner;
 public:
   // methods
   virtual                     ~Manager() noexcept(true) = default;
+  void												Validate() final;
   void                        Validate(shared_ptr<Model> model);
-  void												Build() override final;
+  void												Build() final;
   void                        Build(shared_ptr<Model> model);
   void                        Execute(shared_ptr<Model> model, State::Type model_state);
   void                        Execute(shared_ptr<Model> model, unsigned year, const string& time_step_label);
@@ -52,7 +55,7 @@ public:
   void                        WaitForReportsToFinish();
 
   // accessors
-  void                        set_report_suffix(const string& suffix) { report_suffix_ = suffix; }
+  void                        set_report_suffix(const string& suffix);
   const string&               report_suffix() const { return report_suffix_; }
 
 protected:
@@ -70,6 +73,10 @@ private:
   std::atomic<bool>                 waiting_;
   std::string                       std_header_ = "";
   std::mutex           							lock_;
+  bool															has_validated_ = false;
+  bool															has_built_ = false;
+  bool															has_prepared_ = false;
+  bool															has_finalised_ = false;
 };
 
 } /* namespace reports */

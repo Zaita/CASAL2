@@ -58,7 +58,7 @@ void Manager::RestoreEstimates() {
  * Transform the objects for the objective function
  */
 void Manager::TransformEstimatesForObjectiveFunction() {
-  LOG_MEDIUM() << "Transforming estimates for the objective function";
+  LOG_FINE() << "Transforming estimates for the objective function";
   for (auto obj : objects_)
     obj->TransformForObjectiveFunction();
 }
@@ -67,9 +67,9 @@ void Manager::TransformEstimatesForObjectiveFunction() {
  * Transform the objects for the objective function
  */
 void Manager::RestoreEstimatesFromObjectiveFunction() {
-LOG_MEDIUM() << "Transforming estimates for the objective function";
-for (auto obj : objects_)
-  obj->RestoreFromObjectiveFunction();
+	LOG_FINE() << "Transforming estimates for the objective function";
+	for (auto obj : objects_)
+		obj->RestoreFromObjectiveFunction();
 }
 
 } /* namespace estimatetransformations */

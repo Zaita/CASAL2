@@ -24,13 +24,18 @@ namespace reports {
  */
 ObjectiveFunction::ObjectiveFunction() {
   model_state_ = State::kIterationComplete;
-  run_mode_    = (RunMode::Type)(RunMode::kEstimation | RunMode::kBasic | RunMode::kProjection| RunMode::kProfiling);
+  run_mode_    = (RunMode::Type)(RunMode::kEstimation | RunMode::kBasic | RunMode::kProjection | RunMode::kProfiling);
 }
 
 /**
  * Execute the report
  */
 void ObjectiveFunction::DoExecute(shared_ptr<Model> model) {
+	if (!model->is_primary_thread_model() && model->run_mode() == RunMode::kBasic)
+		return;
+	if (!model->is_primary_thread_model() && model->run_mode() == RunMode::kEstimation)
+		return;
+
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
   cache_ <<"values " << REPORT_R_VECTOR <<"\n";
 

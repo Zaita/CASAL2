@@ -151,7 +151,6 @@ Report* Factory::Create(shared_ptr<Model> model, const string& object_type, cons
         result = new age::Partition();
     }
 
-
     if (result)
       model->managers().report()->AddObject(result);
   }
