@@ -17,7 +17,7 @@
 #include <math.h>
 #include <iomanip>
 
-#include "Minimisers/Common/GammaDiff/FMM.h"
+#include "../../../Minimisers/Common/GammaDiff/FMM.h"
 
 // namespaces
 namespace niwa {

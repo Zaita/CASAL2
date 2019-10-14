@@ -21,8 +21,8 @@
 #include <vector>
 #include <string>
 
-#include "Utilities/Types.h"
-#include "Selectivities/Selectivity.h"
+#include "../Utilities/Types.h"
+#include "../Selectivities/Selectivity.h"
 
 // namespaces
 namespace niwa {

@@ -11,14 +11,14 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "AgeingErrors/Manager.h"
-#include "AgeingErrors/AgeingError.h"
-#include "AgeingErrors/Age/Data.h"
-#include "AgeingErrors/Age/Normal.h"
-#include "AgeingErrors/Age/OffByOne.h"
-#include "AgeingErrors/Age/None.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../AgeingErrors/Manager.h"
+#include "../AgeingErrors/AgeingError.h"
+#include "../AgeingErrors/Age/Data.h"
+#include "../AgeingErrors/Age/Normal.h"
+#include "../AgeingErrors/Age/OffByOne.h"
+#include "../AgeingErrors/Age/None.h"
 
 // namespaces
 namespace niwa {

@@ -15,10 +15,10 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/split.hpp>
 
-#include "InitialisationPhases/Manager.h"
-#include "Model/Model.h"
-#include "Observations/Manager.h"
-#include "Processes/Manager.h"
+#include "../InitialisationPhases/Manager.h"
+#include "../Model/Model.h"
+#include "../Observations/Manager.h"
+#include "../Processes/Manager.h"
 
 namespace niwa {
 

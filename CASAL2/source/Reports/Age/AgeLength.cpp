@@ -6,12 +6,12 @@
  */
 #include "AgeLength.h"
 
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "AgeLengths/Manager.h"
-#include "AgeLengths/AgeLength.h"
-#include "Partition/Category.h"
-#include "Partition/Partition.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Model.h"
+#include "../../AgeLengths/Manager.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../Partition/Category.h"
+#include "../../Partition/Partition.h"
 
 namespace niwa {
 namespace reports {

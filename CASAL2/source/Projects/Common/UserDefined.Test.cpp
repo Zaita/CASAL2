@@ -9,15 +9,15 @@
 #ifdef TESTMODE
 
 // Headers
-#include "UserDefined.h"
+#include "../../UserDefined.h"
 
 #include <iostream>
 
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Projects/Manager.h"
-#include "DerivedQuantities/Manager.h"
-#include "Model/Models/Age.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Projects/Manager.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../Model/Models/Age.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
 
 // Namespaces
 namespace niwa {

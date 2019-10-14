@@ -15,7 +15,7 @@
 #define TIMEVARYING_RANDOMWALK_H_
 
 // headers
-#include "TimeVarying/TimeVarying.h"
+#include "../../TimeVarying/TimeVarying.h"
 
 // namespaces
 namespace niwa {

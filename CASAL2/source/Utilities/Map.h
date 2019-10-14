@@ -19,7 +19,7 @@
 #include <set>
 #include <string>
 
-#include "Utilities/Types.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {
@@ -51,7 +51,8 @@ public:
 			if (key == search_key)
 				return value;
 
-		storage_.push_back({ .first = search_key, .second = _Tp() });
+		std::pair<_Key, _Tp> new_value = std::pair<_Key, _Tp>(search_key, _Tp());
+		storage_.push_back(new_value);
 		return storage_[storage_.size() - 1].second;
 	}
 

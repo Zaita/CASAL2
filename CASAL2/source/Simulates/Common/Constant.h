@@ -14,7 +14,7 @@
 #define SIMULATES_CONSTANT_H_
 
 // headers
-#include "Simulates/Simulate.h"
+#include "../../Simulates/Simulate.h"
 
 // namespaces
 namespace niwa {

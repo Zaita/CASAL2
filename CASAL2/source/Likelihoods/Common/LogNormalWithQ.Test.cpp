@@ -10,15 +10,15 @@
 #ifdef TESTMODE
 
 // headers
-#include "LogNormalWithQ.h"
+#include "../../LogNormalWithQ.h"
 
 #include <iostream>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "Likelihoods/Factory.h"
-#include "Observations/Comparison.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Likelihoods/Factory.h"
+#include "../../Observations/Comparison.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // namespaces
 namespace niwa {

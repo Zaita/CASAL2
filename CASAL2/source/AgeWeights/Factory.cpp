@@ -12,12 +12,12 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "AgeWeights/Manager.h"
-#include "AgeWeights/AgeWeight.h"
-#include "AgeWeights/Age/Data.h"
-#include "AgeWeights/Age/None.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../AgeWeights/Manager.h"
+#include "../AgeWeights/AgeWeight.h"
+#include "../AgeWeights/Age/Data.h"
+#include "../AgeWeights/Age/None.h"
 
 // namespaces
 namespace niwa {

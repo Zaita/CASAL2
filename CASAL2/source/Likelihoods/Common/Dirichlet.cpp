@@ -7,15 +7,15 @@
 //============================================================================
 
 // Global headers
-#include <Likelihoods/Common/Dirichlet.h>
+#include "Dirichlet.h"
 #include <cmath>
 
 // Local headers
 #include <cmath>
 #include <set>
 
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 
 // Namespaces

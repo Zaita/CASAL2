@@ -11,12 +11,13 @@
  */
 
 // Headers
-#include <Likelihoods/Common/Multinomial.h>
+#include "Multinomial.h"
+
 #include <cmath>
 #include <set>
 
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {
@@ -52,6 +53,9 @@ void Multinomial::GetScores(map<unsigned, vector<observations::Comparison> >& co
 
       comparison.adjusted_error_ = error_value;
       comparison.score_ = score * multiplier_;
+			if (isnan(comparison.score_)) {
+				LOG_CODE_ERROR() << "One of the comparison scores came back as NaN... memory bug somewhere";
+			}
     }
   }
 }

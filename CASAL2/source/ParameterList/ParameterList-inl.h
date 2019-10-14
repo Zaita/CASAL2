@@ -17,9 +17,9 @@
 #include <iostream>
 #include <exception>
 
-#include "ParameterList/Parameters/Bindable.h"
-#include "ParameterList/Parameters/BindableVector.h"
-#include "Utilities/Exception.h"
+#include "../ParameterList/Parameters/Bindable.h"
+#include "../ParameterList/Parameters/BindableVector.h"
+#include "../Utilities/Exception.h"
 
 // Using
 using std::cout;

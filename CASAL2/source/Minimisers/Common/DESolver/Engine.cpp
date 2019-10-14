@@ -18,9 +18,9 @@
 #include <iostream>
 #include <cmath>
 
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
-#include "Logging/Logging.h"
+#include "../../../Utilities/Math.h"
+#include "../../../Utilities/RandomNumberGenerator.h"
+#include "../../../Logging/Logging.h"
 
 // Namespaces
 namespace niwa {

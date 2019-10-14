@@ -16,22 +16,22 @@
 #include <boost/algorithm/string/trim_all.hpp>
 #include <boost/algorithm/string/split.hpp>
 
-#include "AgeLengths/AgeLength.h"
-#include "AgeLengths/Factory.h"
-#include "AgeLengths/Manager.h"
-#include "AgeLengths/Age/None.h"
-#include "AgeWeights/AgeWeight.h"
-#include "AgeWeights/Factory.h"
-#include "AgeWeights/Manager.h"
-#include "AgeWeights/Age/None.h"
-#include "LengthWeights/LengthWeight.h"
-#include "LengthWeights/Factory.h"
-#include "LengthWeights/Manager.h"
-#include "LengthWeights/Common/None.h"
-#include "Model/Model.h"
-#include "Logging/Logging.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
+#include "../AgeLengths/AgeLength.h"
+#include "../AgeLengths/Factory.h"
+#include "../AgeLengths/Manager.h"
+#include "../AgeLengths/Age/None.h"
+#include "../AgeWeights/AgeWeight.h"
+#include "../AgeWeights/Factory.h"
+#include "../AgeWeights/Manager.h"
+#include "../AgeWeights/Age/None.h"
+#include "../LengthWeights/LengthWeight.h"
+#include "../LengthWeights/Factory.h"
+#include "../LengthWeights/Manager.h"
+#include "../LengthWeights/Common/None.h"
+#include "../Model/Model.h"
+#include "../Logging/Logging.h"
+#include "../Utilities/String.h"
+#include "../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

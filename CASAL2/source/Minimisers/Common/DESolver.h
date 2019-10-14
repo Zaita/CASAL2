@@ -21,7 +21,7 @@
 #define MINIMISERS_DESOLVER_H_
 
 // Headers
-#include "Minimisers/Minimiser.h"
+#include "../../Minimisers/Minimiser.h"
 
 // Namespaces
 namespace niwa {

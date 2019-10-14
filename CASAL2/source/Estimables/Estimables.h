@@ -21,9 +21,9 @@
 #include <string>
 #include <memory>
 
-#include "Model/Managers.h"
-#include "Utilities/Map.h"
-#include "Utilities/Types.h"
+#include "../Model/Managers.h"
+#include "../Utilities/Map.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

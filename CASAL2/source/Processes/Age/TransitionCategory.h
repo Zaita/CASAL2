@@ -19,9 +19,9 @@
 #define TRANSITIONCATEGORY_H_
 
 // Headers
-#include "Processes/Process.h"
-#include "Partition/Accessors/Categories.h"
-#include "Selectivities/Selectivity.h"
+#include "../../Processes/Process.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Selectivities/Selectivity.h"
 
 // Namespaces
 namespace niwa {

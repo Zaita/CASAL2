@@ -10,16 +10,16 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Estimates/Manager.h"
-#include "Estimates/Creators/Common/Beta.h"
-#include "Estimates/Creators/Common/Lognormal.h"
-#include "Estimates/Creators/Common/Normal.h"
-#include "Estimates/Creators/Common/NormalByStdev.h"
-#include "Estimates/Creators/Common/NormalLog.h"
-#include "Estimates/Creators/Common/Uniform.h"
-#include "Estimates/Creators/Common/UniformLog.h"
+#include "../../Model/Model.h"
+#include "../../Model/Managers.h"
+#include "../../Estimates/Manager.h"
+#include "../../Estimates/Creators/Common/Beta.h"
+#include "../../Estimates/Creators/Common/Lognormal.h"
+#include "../../Estimates/Creators/Common/Normal.h"
+#include "../../Estimates/Creators/Common/NormalByStdev.h"
+#include "../../Estimates/Creators/Common/NormalLog.h"
+#include "../../Estimates/Creators/Common/Uniform.h"
+#include "../../Estimates/Creators/Common/UniformLog.h"
 
 // namespaces
 namespace niwa {

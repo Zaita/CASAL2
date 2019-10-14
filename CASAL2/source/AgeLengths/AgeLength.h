@@ -15,9 +15,9 @@
 #define AGELENGTH_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Partition/Category.h"
-#include "Utilities/Distribution.h"
+#include "../BaseClasses/Object.h"
+#include "../Partition/Category.h"
+#include "../Utilities/Distribution.h"
 
 // namespaces
 namespace niwa {

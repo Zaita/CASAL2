@@ -14,7 +14,7 @@
 #define ASSERT_ADDRESSABLE_H_
 
 // headers
-#include "Asserts/Assert.h"
+#include "../../Asserts/Assert.h"
 
 // namespaces
 namespace niwa {

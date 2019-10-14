@@ -12,7 +12,7 @@
 #define CATCHABILITIES_FACTORY_H_
 
 // Headers
-#include "Catchabilities/Manager.h"
+#include "../Catchabilities/Manager.h"
 
 // Namespaces
 namespace niwa {

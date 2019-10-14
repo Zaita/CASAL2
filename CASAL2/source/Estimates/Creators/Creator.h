@@ -15,8 +15,8 @@
 #define ESTIMATES_CREATOR_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Estimates/Estimate.h"
+#include "../../BaseClasses/Object.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

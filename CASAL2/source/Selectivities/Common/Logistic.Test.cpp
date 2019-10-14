@@ -12,16 +12,16 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Logistic.h"
+#include "../../Logistic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 
-#include "TestResources/MockClasses/Model.h"
-#include "TimeSteps/Manager.h"
-#include "AgeLengths/AgeLength.h"
-#include "AgeLengths/Manager.h"
+#include "../../TestResources/MockClasses/Model.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../AgeLengths/Manager.h"
 
 // Namespaces
 namespace niwa {

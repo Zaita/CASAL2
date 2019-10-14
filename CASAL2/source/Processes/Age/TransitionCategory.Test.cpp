@@ -13,18 +13,18 @@
 #ifdef TESTMODE
 
 // Headers
-#include "TransitionCategory.h"
+#include "../../TransitionCategory.h"
 
 #include <iostream>
 
-#include "Model/Factory.h"
-#include "Model/Models/Age.h"
-#include "Processes/Factory.h"
-#include "TimeSteps/Factory.h"
-#include "TimeSteps/Manager.h"
-#include "Partition/Partition.h"
-#include "Selectivities/Factory.h"
-#include "TestResources/TestFixtures/BasicModel.h"
+#include "../../Model/Factory.h"
+#include "../../Model/Models/Age.h"
+#include "../../Processes/Factory.h"
+#include "../../TimeSteps/Factory.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Partition/Partition.h"
+#include "../../Selectivities/Factory.h"
+#include "../../TestResources/TestFixtures/BasicModel.h"
 
 // Namespaces
 namespace niwa {

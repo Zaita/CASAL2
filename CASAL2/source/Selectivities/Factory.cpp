@@ -17,19 +17,19 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Selectivities/Manager.h"
-#include "Selectivities/Common/AllValues.h"
-#include "Selectivities/Common/AllValuesBounded.h"
-#include "Selectivities/Common/Constant.h"
-#include "Selectivities/Common/DoubleExponential.h"
-#include "Selectivities/Common/DoubleNormal.h"
-#include "Selectivities/Common/Increasing.h"
-#include "Selectivities/Common/InverseLogistic.h"
-#include "Selectivities/Common/KnifeEdge.h"
-#include "Selectivities/Common/Logistic.h"
-#include "Selectivities/Common/LogisticProducing.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Selectivities/Manager.h"
+#include "../Selectivities/Common/AllValues.h"
+#include "../Selectivities/Common/AllValuesBounded.h"
+#include "../Selectivities/Common/Constant.h"
+#include "../Selectivities/Common/DoubleExponential.h"
+#include "../Selectivities/Common/DoubleNormal.h"
+#include "../Selectivities/Common/Increasing.h"
+#include "../Selectivities/Common/InverseLogistic.h"
+#include "../Selectivities/Common/KnifeEdge.h"
+#include "../Selectivities/Common/Logistic.h"
+#include "../Selectivities/Common/LogisticProducing.h"
 
 // Namespaces
 namespace niwa {

@@ -19,8 +19,8 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Utilities/To.h"
-#include "Logging/Logging.h"
+#include "../Utilities/To.h"
+#include "../Logging/Logging.h"
 
 // Namespaces
 namespace niwa {

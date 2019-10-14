@@ -20,7 +20,7 @@
 #include <vector>
 #include <string>
 
-#include "ThreadPool/Thread.h"
+#include "../ThreadPool/Thread.h"
 
 // namespaces
 namespace niwa {

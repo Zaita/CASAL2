@@ -14,13 +14,13 @@
 #include <numeric>
 #include <limits>
 
-#include "Categories/Categories.h"
-#include "DerivedQuantities/Manager.h"
-#include "InitialisationPhases/Manager.h"
-#include "Estimates/Manager.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../InitialisationPhases/Manager.h"
+#include "../../Estimates/Manager.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

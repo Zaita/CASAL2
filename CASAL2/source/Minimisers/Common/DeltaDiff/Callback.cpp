@@ -14,11 +14,11 @@
 // headers
 #include "Callback.h"
 
-#include "Estimates/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "EstimateTransformations/Manager.h"
-#include "ThreadPool/Thread.h"
-#include "ThreadPool/ThreadPool.h"
+#include "../../../Estimates/Manager.h"
+#include "../../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../../EstimateTransformations/Manager.h"
+#include "../../../ThreadPool/Thread.h"
+#include "../../../ThreadPool/ThreadPool.h"
 
 // namespaces
 namespace niwa {

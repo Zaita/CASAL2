@@ -12,11 +12,11 @@
 // headers
 #include "LogSum.h"
 
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Model/Managers.h"
-#include "Estimates/Manager.h"
-#include "Estimates/Estimate.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Model/Managers.h"
+#include "../../Estimates/Manager.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

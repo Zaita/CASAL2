@@ -11,11 +11,11 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "LengthWeights/Manager.h"
-#include "LengthWeights/Common/Basic.h"
-#include "LengthWeights/Common/None.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../LengthWeights/Manager.h"
+#include "../LengthWeights/Common/Basic.h"
+#include "../LengthWeights/Common/None.h"
 
 // namespaces
 namespace niwa {

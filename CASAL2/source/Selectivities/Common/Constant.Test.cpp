@@ -12,12 +12,12 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Constant.h"
+#include "../../Constant.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "TestResources/MockClasses/Model.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 namespace niwa {
 using ::testing::Return;

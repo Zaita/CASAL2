@@ -9,7 +9,7 @@
 #define REPORTS_HESSIANMATRIX_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 #include <boost/numeric/ublas/matrix.hpp>
 

@@ -11,15 +11,15 @@
 // headers
 #include "Category.h"
 
-#include "AgeLengths/AgeLength.h"
-#include "LengthWeights/LengthWeight.h"
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Partition/Partition.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/To.h"
-#include "Utilities/Types.h"
-#include "Utilities/Math.h"
+#include "../AgeLengths/AgeLength.h"
+#include "../LengthWeights/LengthWeight.h"
+#include "../Categories/Categories.h"
+#include "../Model/Model.h"
+#include "../Partition/Partition.h"
+#include "../TimeSteps/Manager.h"
+#include "../Utilities/To.h"
+#include "../Utilities/Types.h"
+#include "../Utilities/Math.h"
 #include <functional>
 
 // namespaces

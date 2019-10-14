@@ -17,8 +17,8 @@
 #define PROCESSES_MANAGER_H_
 
 // Headers
-#include "BaseClasses/Manager.h"
-#include "Processes/Process.h"
+#include "../BaseClasses/Manager.h"
+#include "../Processes/Process.h"
 
 // Namespaces
 namespace niwa {

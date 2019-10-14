@@ -14,7 +14,7 @@
 #define ESTIMATES_CREATOR_BETA_H_
 
 // headers
-#include "Estimates/Creators/Creator.h"
+#include "../../../Estimates/Creators/Creator.h"
 
 // namespaces
 namespace niwa {

@@ -8,7 +8,7 @@
 #ifndef SOURCE_TIMEVARYING_COMMON_CONSTANT_MOCK_H_
 #define SOURCE_TIMEVARYING_COMMON_CONSTANT_MOCK_H_
 
-#include "Constant.h"
+#include "../../Constant.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>

@@ -19,7 +19,7 @@
 #define REPORTS_CATEGORYINFO_H_
 
 // Headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // Namespaces
 namespace niwa {

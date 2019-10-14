@@ -17,9 +17,9 @@
 #define LIKELIHOOD_H_
 
 // Headers
-#include "BaseClasses/Object.h"
-#include "Observations/Comparison.h"
-#include "Utilities/Types.h"
+#include "../BaseClasses/Object.h"
+#include "../Observations/Comparison.h"
+#include "../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

@@ -21,8 +21,8 @@
 #include <string>
 #include <memory>
 
-#include "Utilities/NoCopy.h"
-#include "Utilities/Types.h"
+#include "../Utilities/NoCopy.h"
+#include "../Utilities/Types.h"
 
 #include <parser.h>
 

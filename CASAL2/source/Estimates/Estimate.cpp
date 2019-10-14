@@ -13,12 +13,12 @@
 // Headers
 #include "Estimate.h"
 
-#include "EstimateTransformations/EstimateTransformation.h"
-#include "EstimateTransformations/Factory.h"
-#include "Model/Factory.h"
-#include "Model/Model.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../EstimateTransformations/EstimateTransformation.h"
+#include "../EstimateTransformations/Factory.h"
+#include "../Model/Factory.h"
+#include "../Model/Model.h"
+#include "../Utilities/Math.h"
+#include "../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

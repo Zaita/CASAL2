@@ -9,9 +9,9 @@
  */
 
 // headers
-#include <Projects/Common/EmpiricalSampling.h>
-#include "Utilities/RandomNumberGenerator.h"
-#include "Utilities/To.h"
+#include "EmpiricalSampling.h"
+#include "../../Utilities/RandomNumberGenerator.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

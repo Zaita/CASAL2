@@ -9,9 +9,10 @@
  */
 
 // headers
-#include <Projects/Common/LogNormalEmpirical.h>
-#include "Utilities/RandomNumberGenerator.h"
-#include "Model/Objects.h"
+#include "LogNormalEmpirical.h"
+
+#include "../../Utilities/RandomNumberGenerator.h"
+#include "../../Model/Objects.h"
 
 // namespaces
 namespace niwa {

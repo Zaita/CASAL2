@@ -17,7 +17,7 @@
 #define OUTPUT_PARAMETERS_H_
 
 // Headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // Namespaces
 namespace niwa {

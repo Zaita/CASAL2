@@ -12,14 +12,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "ProportionsMatureByAge.h"
+#include "../../ProportionsMatureByAge.h"
 
 #include <iostream>
 
-#include "Model/Models/Age.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Observations/Manager.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../Model/Models/Age.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Observations/Manager.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
 
 // Namespaces
 namespace niwa {

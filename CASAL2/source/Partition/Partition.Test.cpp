@@ -10,18 +10,18 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Partition.h"
+#include "../Partition.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 
-#include "AgeLengths/Age/VonBertalanffy.h"
-#include "Categories/Categories.h"
-#include "Selectivities/Common/Logistic.h"
-#include "TimeSteps/Manager.h"
-#include "TestResources/MockClasses/Managers.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../AgeLengths/Age/VonBertalanffy.h"
+#include "../Categories/Categories.h"
+#include "../Selectivities/Common/Logistic.h"
+#include "../TimeSteps/Manager.h"
+#include "../TestResources/MockClasses/Managers.h"
+#include "../TestResources/MockClasses/Model.h"
 
 // namespaces
 namespace niwa {

@@ -20,7 +20,7 @@
 // Headers
 #include <vector>
 
-#include "ThreadPool/ThreadPool.h"
+#include "../../../ThreadPool/ThreadPool.h"
 
 // namespaces
 namespace niwa {

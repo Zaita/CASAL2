@@ -11,12 +11,12 @@
 // headers
 #include "MortalityEventBiomass.h"
 
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Penalties/Manager.h"
-#include "Selectivities/Manager.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Math.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Model.h"
+#include "../../Penalties/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

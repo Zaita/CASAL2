@@ -10,8 +10,8 @@
  */
 #include "Selectivity.h"
 
-#include "Model/Model.h"
-#include "Selectivities/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Selectivities/Manager.h"
 
 namespace niwa {
 namespace reports {

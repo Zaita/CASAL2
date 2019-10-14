@@ -12,11 +12,11 @@
 // headers
 #include "MCMCSample.h"
 
-#include "Estimates/Manager.h"
-#include "MCMCs/Manager.h"
-#include "MCMCs/MCMC.h"
-#include "Model/Managers.h"
-#include "Utilities/String.h"
+#include "../../Estimates/Manager.h"
+#include "../../MCMCs/Manager.h"
+#include "../../MCMCs/MCMC.h"
+#include "../../Model/Managers.h"
+#include "../../Utilities/String.h"
 
 // namespaces
 namespace niwa {

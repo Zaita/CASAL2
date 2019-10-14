@@ -15,7 +15,7 @@
 #define ADDITIONALPRIORS_LOGNORMAL_H_
 
 // headers
-#include "AdditionalPriors/AdditionalPrior.h"
+#include "../../AdditionalPriors/AdditionalPrior.h"
 
 
 // namespaces

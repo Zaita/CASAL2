@@ -15,13 +15,13 @@
 
 #include <thread>
 
-#include "AdditionalPriors/Manager.h"
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "Model/Model.h"
-#include "Observations/Manager.h"
-#include "Penalties/Manager.h"
-#include "Utilities/To.h"
+#include "../AdditionalPriors/Manager.h"
+#include "../Estimates/Manager.h"
+#include "../EstimateTransformations/Manager.h"
+#include "../Model/Model.h"
+#include "../Observations/Manager.h"
+#include "../Penalties/Manager.h"
+#include "../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

@@ -14,10 +14,10 @@
 
 #include <cmath>
 
-#include "LengthWeights/Manager.h"
-#include "Model/Managers.h"
-#include "TimeSteps/Manager.h"
-#include "Estimates/Manager.h"
+#include "../../LengthWeights/Manager.h"
+#include "../../Model/Managers.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Estimates/Manager.h"
 
 // namespaces
 namespace niwa {

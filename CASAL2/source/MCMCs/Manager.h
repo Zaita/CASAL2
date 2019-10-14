@@ -15,8 +15,8 @@
 #define SOURCE_MCMCS_MANAGER_H_
 
 // headers
-#include "BaseClasses/Manager.h"
-#include "MCMCs/MCMC.h"
+#include "../BaseClasses/Manager.h"
+#include "../MCMCs/MCMC.h"
 
 // namespaces
 namespace niwa {

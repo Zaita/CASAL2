@@ -13,7 +13,7 @@
 
 // headers
 #include "LengthWeight.h"
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

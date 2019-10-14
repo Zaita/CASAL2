@@ -17,7 +17,7 @@
 // headers
 #include <string>
 
-#include "EstimateTransformations/EstimateTransformation.h"
+#include "../EstimateTransformations/EstimateTransformation.h"
 
 // namespaces
 namespace niwa {

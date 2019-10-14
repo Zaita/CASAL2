@@ -11,10 +11,10 @@
 // Headers
 #include <map>
 
-#include "BaseClasses/Object.h"
-#include "Model/Model.h"
-#include "Utilities/PartitionType.h"
-#include "Utilities/Types.h"
+#include "../BaseClasses/Object.h"
+#include "../Model/Model.h"
+#include "../Utilities/PartitionType.h"
+#include "../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

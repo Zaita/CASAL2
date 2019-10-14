@@ -11,9 +11,9 @@
 // headers
 #include "Data.h"
 
-#include "Model/Managers.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/To.h"
+#include "../../Model/Managers.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

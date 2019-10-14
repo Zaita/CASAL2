@@ -9,12 +9,13 @@
  */
 
 // headers
-#include <Asserts/Common/ObjectiveFunction.h>
+#include "ObjectiveFunction.h"
+
 #include <iostream>     // std::cout, std::fixed
 #include <iomanip>      // std::setprecision
 
-#include "Model/Model.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Model/Model.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
 
 // namespaces
 namespace niwa {

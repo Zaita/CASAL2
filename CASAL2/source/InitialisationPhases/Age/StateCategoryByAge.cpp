@@ -11,10 +11,10 @@
 
 #include "StateCategoryByAge.h"
 
-#include "Categories/Categories.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Model.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

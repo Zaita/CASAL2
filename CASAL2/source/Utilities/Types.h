@@ -19,7 +19,7 @@
 
 #include <cstdlib>
 #include <memory>
-#include <cxxabi.h>
+//#include <cxxabi.h>
 #include <string>
 #include <vector>
 
@@ -102,7 +102,7 @@ inline void allocate_vector3(Vector3* target, unsigned x_size, unsigned y_size, 
  * This code is used to demangle the typeid(x).name information
  */
 inline std::string demangle(const char* name) {
-  int status = -1; // some arbitrary value to eliminate the compiler warning
+ /* int status = -1; // some arbitrary value to eliminate the compiler warning
 
   char   *realname;
   std::string val = "";
@@ -114,7 +114,8 @@ inline std::string demangle(const char* name) {
   val = val.length() > 38 && val.substr(0, 38) == "std::vector<std::__cxx11::basic_string" ? "vector<string>" : val;
   val = val == "std::vector<double, std::allocator<double> >" ? "vector<double>" : val;
   val = val == "std::vector<unsigned int, std::allocator<unsigned int> >" ? "vector<unsigned int>" : val;
-  return (status==0) ? val : name ;
+  return (status==0) ? val : name ;*/
+	return name;
 }
 
 

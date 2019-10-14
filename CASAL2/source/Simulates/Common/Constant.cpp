@@ -9,7 +9,7 @@
  */
 
 // headers
-#include <Simulates/Common/Constant.h>
+#include "Constant.h"
 
 // namespaces
 namespace niwa {

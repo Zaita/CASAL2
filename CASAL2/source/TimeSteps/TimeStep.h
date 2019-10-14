@@ -17,10 +17,10 @@
 #define TIMESTEP_H_
 
 // Headers
-#include "BaseClasses/Object.h"
-#include "BaseClasses/Executor.h"
-#include "Processes/Process.h"
-#include "Utilities/Map.h"
+#include "../BaseClasses/Object.h"
+#include "../BaseClasses/Executor.h"
+#include "../Processes/Process.h"
+#include "../Utilities/Map.h"
 
 // Namespaces
 namespace niwa {

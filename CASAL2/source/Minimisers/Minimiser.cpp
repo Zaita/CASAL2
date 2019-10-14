@@ -22,10 +22,10 @@
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/lu.hpp>
 
-#include "Estimates/Manager.h"
-#include "Logging/Logging.h"
-#include "Model/Model.h"
-#include "Utilities/Math.h"
+#include "../Estimates/Manager.h"
+#include "../Logging/Logging.h"
+#include "../Model/Model.h"
+#include "../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

@@ -14,11 +14,11 @@
 #define INITIALISATIONPHASES_DERIVED_H_
 
 // headers
-#include "Processes/Age/RecruitmentBevertonHolt.h"
-#include "Processes/Age/RecruitmentBevertonHoltWithDeviations.h"
-#include "InitialisationPhases/InitialisationPhase.h"
-#include "Partition/Accessors/Cached/Categories.h"
-#include "Partition/Accessors/Categories.h"
+#include "../../Processes/Age/RecruitmentBevertonHolt.h"
+#include "../../Processes/Age/RecruitmentBevertonHoltWithDeviations.h"
+#include "../../InitialisationPhases/InitialisationPhase.h"
+#include "../../Partition/Accessors/Cached/Categories.h"
+#include "../../Partition/Accessors/Categories.h"
 
 // namespaces
 namespace niwa {

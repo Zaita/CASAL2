@@ -9,9 +9,9 @@
 #define INITIALISATIONPHASES_MANAGER_H_
 
 // Headers
-#include "BaseClasses/Manager.h"
-#include "InitialisationPhases/InitialisationPhase.h"
-#include "Model/Managers.h"
+#include "../BaseClasses/Manager.h"
+#include "../InitialisationPhases/InitialisationPhase.h"
+#include "../Model/Managers.h"
 
 // Namespaces
 namespace niwa {

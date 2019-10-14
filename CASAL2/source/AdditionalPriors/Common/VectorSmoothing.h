@@ -19,8 +19,8 @@
 #define PENALTIES_VECTORSMOOTHING_H_
 
 // headers
-#include "AdditionalPriors/AdditionalPrior.h"
-#include "Estimates/Estimate.h"
+#include "../../AdditionalPriors/AdditionalPrior.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

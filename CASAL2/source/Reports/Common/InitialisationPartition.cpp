@@ -15,8 +15,8 @@
 #include <iostream>
 #include <iomanip>
 
-#include "Model/Model.h"
-#include "Partition/Accessors/All.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/All.h"
 
 // namespaces
 namespace niwa {

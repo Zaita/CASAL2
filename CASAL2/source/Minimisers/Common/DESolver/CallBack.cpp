@@ -12,12 +12,12 @@
  */
 #ifndef USE_AUTODIFF
 // Headers
-#include <Minimisers/Common/DESolver/CallBack.h>
+#include "CallBack.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Logging/Logging.h"
+#include "../../../Estimates/Manager.h"
+#include "../../../EstimateTransformations/Manager.h"
+#include "../../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../../Logging/Logging.h"
 
 // Namespaces
 namespace niwa {

@@ -11,13 +11,13 @@
 // headers
 #include "PartitionMeanWeight.h"
 
-#include "AgeLengths/Manager.h"
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Partition/Partition.h"
-#include "Partition/Accessors/All.h"
-#include "LengthWeights/Manager.h"
-#include "TimeSteps/Manager.h"
+#include "../../AgeLengths/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Partition.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../LengthWeights/Manager.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

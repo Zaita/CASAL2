@@ -17,7 +17,7 @@
 #define CATEGORIES_H_
 
 // Headers
-#include "BaseClasses/Object.h"
+#include "../BaseClasses/Object.h"
 
 // Namespaces
 namespace niwa {

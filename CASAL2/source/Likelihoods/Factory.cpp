@@ -13,17 +13,17 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Likelihoods/Manager.h"
-#include "Likelihoods/Common/Binomial.h"
-#include "Likelihoods/Common/BinomialApprox.h"
-#include "Likelihoods/Common/Dirichlet.h"
-#include "Likelihoods/Common/LogNormal.h"
-#include "Likelihoods/Common/LogNormalWithQ.h"
-#include "Likelihoods/Common/Multinomial.h"
-#include "Likelihoods/Common/Normal.h"
-#include "Likelihoods/Common/Pseudo.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Likelihoods/Manager.h"
+#include "../Likelihoods/Common/Binomial.h"
+#include "../Likelihoods/Common/BinomialApprox.h"
+#include "../Likelihoods/Common/Dirichlet.h"
+#include "../Likelihoods/Common/LogNormal.h"
+#include "../Likelihoods/Common/LogNormalWithQ.h"
+#include "../Likelihoods/Common/Multinomial.h"
+#include "../Likelihoods/Common/Normal.h"
+#include "../Likelihoods/Common/Pseudo.h"
 
 // Namespaces
 namespace niwa {

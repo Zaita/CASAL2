@@ -12,7 +12,7 @@
 // headers
 #include "RandomNumberSeed.h"
 
-#include "GlobalConfiguration/GlobalConfiguration.h"
+#include "../../GlobalConfiguration/GlobalConfiguration.h"
 
 // namespaces
 namespace niwa {

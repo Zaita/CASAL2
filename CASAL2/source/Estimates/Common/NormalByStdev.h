@@ -17,7 +17,7 @@
 #define ESTIMATES_NORMALBYSTDEV_H_
 
 // Headers
-#include "Estimates/Estimate.h"
+#include "../../Estimates/Estimate.h"
 
 // Namespaces
 namespace niwa {

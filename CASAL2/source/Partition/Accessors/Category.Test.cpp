@@ -11,14 +11,14 @@
  */
 #ifdef TESTMODE
 
-#include "Category.h"
+#include "../../Category.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "Categories/Categories.h"
-#include "Partition/Partition.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../../Categories/Categories.h"
+#include "../../Partition/Partition.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

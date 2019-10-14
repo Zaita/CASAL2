@@ -15,10 +15,10 @@
 #define AGE_OBSERVATIONS_PROPORTIONSBYCATEGORY_H_
 
 // Headers
-#include "Observations/Observation.h"
+#include "../../Observations/Observation.h"
 
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Partition/Accessors/Cached/CombinedCategories.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Partition/Accessors/Cached/CombinedCategories.h"
 
 // Namespace
 namespace niwa {

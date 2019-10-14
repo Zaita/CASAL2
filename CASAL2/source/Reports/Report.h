@@ -28,8 +28,8 @@
 #include <thread>
 #include <mutex>
 
-#include "BaseClasses/Object.h"
-#include "Model/Model.h"
+#include "../BaseClasses/Object.h"
+#include "../Model/Model.h"
 
 // Namespaces
 namespace niwa {

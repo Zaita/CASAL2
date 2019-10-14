@@ -15,13 +15,13 @@
 
 #include <algorithm>
 
-#include "Estimables/Estimables.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Reports/Manager.h"
-#include "Reports/Common/MPD.h"
-#include "Utilities/Math.h"
+#include "../Estimables/Estimables.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Reports/Manager.h"
+#include "../Reports/Common/MPD.h"
+#include "../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

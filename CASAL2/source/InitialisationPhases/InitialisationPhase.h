@@ -17,7 +17,7 @@
 #define INITIALISATIONPHASE_H_
 
 // Headers
-#include "BaseClasses/Object.h"
+#include "../BaseClasses/Object.h"
 
 namespace niwa {
 class Model;

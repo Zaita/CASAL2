@@ -10,15 +10,16 @@
  */
 
 // headers
-#include <MCMCs/Common/IndependenceMetropolis.h>
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "Model/Model.h"
-#include "Minimisers/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Reports/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "IndependenceMetropolis.h"
+
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Minimisers/Manager.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Reports/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // namespaces
 namespace niwa {

@@ -15,14 +15,14 @@
 #include <boost/algorithm/string/trim_all.hpp>
 #include <boost/algorithm/string/split.hpp>
 
-#include "Processes/Age/RecruitmentBevertonHolt.h"
-#include "Processes/Age/RecruitmentBevertonHoltWithDeviations.h"
-#include "Categories/Categories.h"
-#include "DerivedQuantities/Manager.h"
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Manager.h"
-#include "TimeSteps/Factory.h"
-#include "TimeSteps/Manager.h"
+#include "../../Processes/Age/RecruitmentBevertonHolt.h"
+#include "../../Processes/Age/RecruitmentBevertonHoltWithDeviations.h"
+#include "../../Categories/Categories.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Manager.h"
+#include "../../TimeSteps/Factory.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

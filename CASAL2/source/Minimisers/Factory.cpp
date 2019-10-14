@@ -13,27 +13,27 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Minimisers/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Minimisers/Manager.h"
 
 #ifdef USE_AUTODIFF
 #ifdef USE_ADOLC
-#include "Minimisers/Common/ADOLC.h"
+#include "../Minimisers/Common/ADOLC.h"
 #elif defined(USE_BETADIFF)
-#include "Minimisers/Common/BetaDiff.h"
+#include "../Minimisers/Common/BetaDiff.h"
 #elif defined(USE_CPPAD)
-#include "Minimisers/Common/CPPAD.h"
+#include "../Minimisers/Common/CPPAD.h"
 #endif
 #endif
 
-#include "Minimisers/Common/Dummy/Dummy.h"
+#include "../Minimisers/Common/Dummy/Dummy.h"
 
 #ifndef USE_AUTODIFF
-#include "Minimisers/Common/DeltaDiff.h"
-#include "Minimisers/Common/DESolver.h"
-#include "Minimisers/Common/DLib.h"
-#include "Minimisers/Common/GammaDiff.h"
+#include "../Minimisers/Common/DeltaDiff.h"
+#include "../Minimisers/Common/DESolver.h"
+#include "../Minimisers/Common/DLib.h"
+#include "../Minimisers/Common/GammaDiff.h"
 //#include "Minimisers/Common/STANBFGS.h"
 #endif
 
@@ -76,8 +76,10 @@ Minimiser* Factory::Create(shared_ptr<Model> model, const string& object_type, c
     	result = new DeltaDiff(model);
     else if (sub_type == PARAM_DE_SOLVER)
       result = new DESolver(model);
+#ifndef _MSC_VER
     else if (sub_type == PARAM_DLIB)
       result = new DLib(model);
+#endif
     else if (sub_type == PARAM_GAMMADIFF)
       result = new GammaDiff(model);
 //    else if (sub_type == PARAM_STAN_BFGS)

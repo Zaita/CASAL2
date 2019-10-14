@@ -14,10 +14,10 @@
 #define LENGTHWEIGHT_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Model/Model.h"
-#include "AgeLengths/AgeLength.h" // Check if we need this now that we have moved DIstribution out of AgeLenght
-#include "Utilities/Distribution.h"
+#include "../BaseClasses/Object.h"
+#include "../Model/Model.h"
+#include "../AgeLengths/AgeLength.h" // Check if we need this now that we have moved DIstribution out of AgeLenght
+#include "../Utilities/Distribution.h"
 
 // namespaces
 namespace niwa {

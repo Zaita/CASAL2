@@ -11,14 +11,14 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Projects/Common/Constant.h"
-#include "Projects/Common/EmpiricalSampling.h"
-#include "Projects/Common/LogNormal.h"
-#include "Projects/Common/LogNormalEmpirical.h"
-#include "Projects/Common/UserDefined.h"
-#include "Projects/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Projects/Common/Constant.h"
+#include "../Projects/Common/EmpiricalSampling.h"
+#include "../Projects/Common/LogNormal.h"
+#include "../Projects/Common/LogNormalEmpirical.h"
+#include "../Projects/Common/UserDefined.h"
+#include "../Projects/Manager.h"
 
 // namespaces
 namespace niwa {

@@ -23,9 +23,9 @@
 #include <vector>
 #include <string>
 
-#include "Model/Model.h"
-#include "Partition/Partition.h"
-#include "Utilities/Types.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Partition.h"
+#include "../../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

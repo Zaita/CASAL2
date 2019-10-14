@@ -19,8 +19,8 @@
 // Headers
 #include <mutex>
 
-#include "BaseClasses/Manager.h"
-#include "Minimisers/Minimiser.h"
+#include "../BaseClasses/Manager.h"
+#include "../Minimisers/Minimiser.h"
 
 // Namespaces
 namespace niwa {

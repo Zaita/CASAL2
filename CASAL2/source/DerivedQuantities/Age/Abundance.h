@@ -16,7 +16,7 @@
 #define DERIVEDQUANTITIES_AGE_ABUNDANCE_H_
 
 // headers
-#include "DerivedQuantities/DerivedQuantity.h"
+#include "../../DerivedQuantities/DerivedQuantity.h"
 
 // namespaces
 namespace niwa {

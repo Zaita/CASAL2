@@ -7,7 +7,7 @@
 
 #include "HessianMatrix.h"
 
-#include "Minimisers/Manager.h"
+#include "../../Minimisers/Manager.h"
 
 namespace niwa {
 namespace reports {

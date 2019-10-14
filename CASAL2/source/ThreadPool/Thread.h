@@ -16,7 +16,7 @@
 #include <memory>
 #include <atomic>
 
-#include "Utilities/NoCopy.h"
+#include "../Utilities/NoCopy.h"
 
 // namespaces
 namespace niwa {

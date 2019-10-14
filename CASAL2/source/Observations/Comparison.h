@@ -16,7 +16,7 @@
 // headers
 #include <string>
 
-#include "Utilities/Types.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

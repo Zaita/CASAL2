@@ -22,9 +22,9 @@
 #include <map>
 #include <vector>
 
-#include "Logging/Logging.h"
-#include "Utilities/Types.h"
-#include "Utilities/Distribution.h"
+#include "../Logging/Logging.h"
+#include "../Utilities/Types.h"
+#include "../Utilities/Distribution.h"
 
 // Namespaces
 namespace niwa {

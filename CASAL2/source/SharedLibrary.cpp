@@ -7,6 +7,7 @@
  *
  * Copyright NIWA Science �2016 - www.niwa.co.nz
  */
+#ifdef DISABLED
 #include "SharedLibrary.h"
 
 #include <iostream>
@@ -242,3 +243,4 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
 }
 
 #endif
+#endif /* #ifdef DISABLED */

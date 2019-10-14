@@ -15,7 +15,7 @@
 #define SOURCE_REPORTS_CHILDREN_MCMCSAMPLE_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // namespaces
 namespace niwa {

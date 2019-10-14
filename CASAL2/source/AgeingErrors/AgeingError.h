@@ -19,8 +19,8 @@
 #define AGEINGERROR_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Utilities/Types.h"
+#include "../BaseClasses/Object.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

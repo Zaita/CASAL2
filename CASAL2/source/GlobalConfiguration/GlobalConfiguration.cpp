@@ -13,11 +13,11 @@
 // Headers
 #include "GlobalConfiguration.h"
 
-#include "BaseClasses/Object.h"
-#include "Logging/Logging.h"
-#include "Model/Model.h"
-#include "Reports/Factory.h"
-#include "Utilities/To.h"
+#include "../BaseClasses/Object.h"
+#include "../Logging/Logging.h"
+#include "../Model/Model.h"
+#include "../Reports/Factory.h"
+#include "../Utilities/To.h"
 
 namespace niwa {
 namespace util = niwa::utilities;

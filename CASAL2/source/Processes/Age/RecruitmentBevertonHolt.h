@@ -14,9 +14,9 @@
 #define PROCESSES_RECRUITMENTBEVERTONHOLT_H_
 
 // headers
-#include "DerivedQuantities/DerivedQuantity.h"
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Process.h"
+#include "../../DerivedQuantities/DerivedQuantity.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
 
 // namespaces
 namespace niwa {

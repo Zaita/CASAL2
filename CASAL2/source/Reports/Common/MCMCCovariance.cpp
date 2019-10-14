@@ -11,8 +11,8 @@
 // headers
 #include "MCMCCovariance.h"
 
-#include "MCMCs/MCMC.h"
-#include "MCMCs/Manager.h"
+#include "../../MCMCs/MCMC.h"
+#include "../../MCMCs/Manager.h"
 
 // namespaces
 namespace niwa {

@@ -22,10 +22,10 @@
 #include <vector>
 #include <string>
 
-#include "BaseClasses/Object.h"
-#include "Translations/Translations.h"
-#include "Utilities/RunParameters.h"
-#include "Utilities/To.h"
+#include "../BaseClasses/Object.h"
+#include "../Translations/Translations.h"
+#include "../Utilities/RunParameters.h"
+#include "../Utilities/To.h"
 
 // Namespaces
 using std::map;

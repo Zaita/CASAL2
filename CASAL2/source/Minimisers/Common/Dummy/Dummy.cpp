@@ -12,7 +12,7 @@
  */
 
 // headers
-#include <Minimisers/Common/Dummy/Dummy.h>
+#include "Dummy.h"
 
 // namespaces
 namespace niwa {

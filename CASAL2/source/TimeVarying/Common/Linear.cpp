@@ -10,11 +10,12 @@
  */
 
 // headers
-#include <TimeVarying/Common/Linear.h>
-#include "Utilities/Map.h"
-#include "Utilities/RandomNumberGenerator.h"
-#include "Model/Objects.h"
-#include "Estimates/Manager.h"
+#include "Linear.h"
+
+#include "../../Utilities/Map.h"
+#include "../../Utilities/RandomNumberGenerator.h"
+#include "../../Model/Objects.h"
+#include "../../Estimates/Manager.h"
 
 
 // namespaces

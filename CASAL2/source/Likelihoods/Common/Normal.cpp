@@ -11,9 +11,10 @@
  */
 
 // Headers
-#include <Likelihoods/Common/Normal.h>
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "Normal.h"
+
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {

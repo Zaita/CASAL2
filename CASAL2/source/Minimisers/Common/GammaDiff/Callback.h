@@ -20,7 +20,7 @@
 // Headers
 #include <vector>
 
-#include "Model/Model.h"
+#include "../../../Model/Model.h"
 
 // namespaces
 namespace niwa {

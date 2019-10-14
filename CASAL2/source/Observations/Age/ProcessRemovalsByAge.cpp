@@ -17,14 +17,14 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
-#include "AgeingErrors/Manager.h"
-#include "Categories/Categories.h"
-#include "Partition/Accessors/All.h"
-#include "Utilities/Map.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Model/Model.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../AgeingErrors/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

@@ -11,7 +11,7 @@
 #define AGEWEIGHTS_FACTORY_H_
 
 // headers
-#include "AgeWeights/AgeWeight.h"
+#include "../AgeWeights/AgeWeight.h"
 
 // namespaces
 namespace niwa {

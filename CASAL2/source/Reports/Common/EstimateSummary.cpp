@@ -13,7 +13,7 @@
 // Headers
 #include "EstimateSummary.h"
 
-#include "Estimates/Manager.h"
+#include "../../Estimates/Manager.h"
 
 // Namespaces
 namespace niwa {

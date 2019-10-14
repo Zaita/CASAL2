@@ -25,8 +25,8 @@
 #include <vector>
 #include <string>
 
-#include "Partition/Partition.h"
-#include "Utilities/Types.h"
+#include "../../Partition/Partition.h"
+#include "../../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

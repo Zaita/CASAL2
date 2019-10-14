@@ -11,13 +11,13 @@
 #ifdef TESTMODE
 
 // Headers
-#include "MortalityInstantaneous.h"
+#include "../../MortalityInstantaneous.h"
 
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Processes/Manager.h"
-#include "Model/Models/Age.h"
-#include "Partition/Partition.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Processes/Manager.h"
+#include "../../Model/Models/Age.h"
+#include "../../Partition/Partition.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
 
 
 // Namespaces

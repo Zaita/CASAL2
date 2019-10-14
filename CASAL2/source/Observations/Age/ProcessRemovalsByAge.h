@@ -18,11 +18,11 @@
 #define AGE_OBSERVATIONS_REMOVEALS_BY_AGE_H_
 
 // Headers
-#include "Observations/Observation.h"
+#include "../../Observations/Observation.h"
 
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Processes/Age/MortalityInstantaneous.h"
-#include "AgeingErrors/AgeingError.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Processes/Age/MortalityInstantaneous.h"
+#include "../../AgeingErrors/AgeingError.h"
 
 // Namespace
 namespace niwa {

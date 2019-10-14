@@ -11,9 +11,9 @@
 // headers
 #include <set>
 
-#include "BaseClasses/Object.h"
+#include "../BaseClasses/Object.h"
 
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

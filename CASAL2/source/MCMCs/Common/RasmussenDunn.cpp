@@ -8,8 +8,9 @@
  */
 
 // headers
-#include <MCMCs/Common/RasmussenDunn.h>
-#include "Model/Model.h"
+#include "RasmussenDunn.h"
+
+#include "../../Model/Model.h"
 
 // namespaces
 namespace niwa {

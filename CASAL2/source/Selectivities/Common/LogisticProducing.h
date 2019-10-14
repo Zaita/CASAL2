@@ -17,7 +17,7 @@
 #define LOGISTICPRODUCING_H_
 
 // Headers
-#include "Selectivities/Selectivity.h"
+#include "../../Selectivities/Selectivity.h"
 
 // namespaces
 namespace niwa {

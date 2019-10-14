@@ -17,14 +17,14 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Categories/Categories.h"
-#include "Model/Managers.h"
-#include "Penalties/Manager.h"
-#include "Selectivities/Manager.h"
-#include "TimeSteps/TimeStep.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Managers.h"
+#include "../../Penalties/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../TimeSteps/TimeStep.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 
 // namespaces

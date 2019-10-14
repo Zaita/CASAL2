@@ -10,7 +10,7 @@
 // headers
 #include "CategoryList.h"
 
-#include "Categories/Categories.h"
+#include "../../Categories/Categories.h"
 
 // namespaces
 namespace niwa {

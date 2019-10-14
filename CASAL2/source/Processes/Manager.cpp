@@ -7,8 +7,8 @@
 
 #include "Manager.h"
 
-#include "Model/Model.h"
-#include "Logging/Logging.h"
+#include "../Model/Model.h"
+#include "../Logging/Logging.h"
 
 namespace niwa {
 namespace processes {

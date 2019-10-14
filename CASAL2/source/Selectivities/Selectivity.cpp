@@ -15,9 +15,9 @@
 
 #include <boost/math/distributions/normal.hpp>
 
-#include "AgeLengths/AgeLength.h"
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
+#include "../AgeLengths/AgeLength.h"
+#include "../Model/Model.h"
+#include "../TimeSteps/Manager.h"
 
 // Namesapces
 namespace niwa {

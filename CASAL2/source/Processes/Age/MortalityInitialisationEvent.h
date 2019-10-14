@@ -18,11 +18,11 @@
 #define INITIALISATIONMORTALITYEVENT_H_
 
 // Headers
-#include "Model/Model.h"
-#include "Partition/Accessors/Categories.h"
-#include "Penalties/Common/Process.h"
-#include "Processes/Process.h"
-#include "Selectivities/Selectivity.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Penalties/Common/Process.h"
+#include "../../Processes/Process.h"
+#include "../../Selectivities/Selectivity.h"
 
 // Namespaces
 namespace niwa {

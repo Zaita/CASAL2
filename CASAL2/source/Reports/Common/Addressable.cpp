@@ -13,10 +13,10 @@
 
 #include <iomanip>
 
-#include "Estimates/Common/Uniform.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Utilities/To.h"
+#include "../../Estimates/Common/Uniform.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

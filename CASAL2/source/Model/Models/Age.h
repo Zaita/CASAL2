@@ -13,7 +13,7 @@
 #define SOURCE_MODEL_MODELS_AGE_H_
 
 // headers
-#include "Model/Model.h"
+#include "../../Model/Model.h"
 
 // namespaces
 namespace niwa {

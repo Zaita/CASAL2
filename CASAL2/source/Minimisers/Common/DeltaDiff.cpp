@@ -11,11 +11,11 @@
 // Local Headers
 #include "DeltaDiff.h"
 
-#include <Minimisers/Common/DeltaDiff/Callback.h>
-#include <Minimisers/Common/DeltaDiff/Engine.h>
+#include "../../Minimisers/Common/DeltaDiff/Callback.h"
+#include "../../Minimisers/Common/DeltaDiff/Engine.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
 
 // namespaces
 namespace niwa {

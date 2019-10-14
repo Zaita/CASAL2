@@ -11,13 +11,13 @@
 // headers
 #include "MCMC.h"
 
-#include "ConfigurationLoader/MPD.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Reports/Manager.h"
-#include "Reports/Common/MCMCObjective.h"
-#include "Reports/Common/MCMCSample.h"
+#include "../ConfigurationLoader/MPD.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Model/Managers.h"
+#include "../Model/Model.h"
+#include "../Reports/Manager.h"
+#include "../Reports/Common/MCMCObjective.h"
+#include "../Reports/Common/MCMCSample.h"
 
 
 // namespaces

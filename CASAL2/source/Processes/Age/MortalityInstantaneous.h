@@ -16,13 +16,13 @@
 #define SOURCE_PROCESSES_CHILDREN_MORTALITYINSTANTANEOUS_H_
 
 // headers
-#include "Model/Model.h"
-#include "Partition/Accessors/Categories.h"
-#include "Penalties/Common/Process.h"
-#include "Processes/Process.h"
-#include "Selectivities/Selectivity.h"
-#include "Utilities/Map.h"
-#include "AgeWeights/AgeWeight.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Penalties/Common/Process.h"
+#include "../../Processes/Process.h"
+#include "../../Selectivities/Selectivity.h"
+#include "../../Utilities/Map.h"
+#include "../../AgeWeights/AgeWeight.h"
 
 // namespaces
 namespace niwa {

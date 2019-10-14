@@ -19,11 +19,11 @@
 // Headers
 #include <gmock/gmock.h>
 
-#include "Model/Model.h"
-#include "Model/Models/Age.h"
-#include "Model/Managers.h"
-#include "Model/Objects.h"
-#include "Utilities/PartitionType.h"
+#include "../../Model/Model.h"
+#include "../../Model/Models/Age.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Objects.h"
+#include "../../Utilities/PartitionType.h"
 
 // Namespaces
 namespace niwa {

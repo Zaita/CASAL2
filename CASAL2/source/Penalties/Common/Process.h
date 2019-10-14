@@ -16,7 +16,7 @@
 #define PENALTIES_PROCESS_H_
 
 // headers
-#include "Penalties/Penalty.h"
+#include "../../Penalties/Penalty.h"
 
 // namespaces
 namespace niwa {

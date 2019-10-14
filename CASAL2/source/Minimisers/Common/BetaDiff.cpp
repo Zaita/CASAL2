@@ -10,10 +10,10 @@
 
 #include <betadiff.h>
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "Model/Model.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
+#include "../../Model/Model.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
 
 namespace niwa {
 namespace minimisers {

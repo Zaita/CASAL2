@@ -18,7 +18,7 @@
 #define MINIMISERS_GAMMADIFF_H_
 
 // headers
-#include "Minimisers/Minimiser.h"
+#include "../../Minimisers/Minimiser.h"
 
 // namespaces
 namespace niwa {

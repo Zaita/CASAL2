@@ -13,8 +13,8 @@
 // Headers
 #include "CategoriesWithAge.h"
 
-#include "Categories/Categories.h"
-#include "Partition/Partition.h"
+#include "../../Categories/Categories.h"
+#include "../../Partition/Partition.h"
 
 // Namespaces
 namespace niwa {

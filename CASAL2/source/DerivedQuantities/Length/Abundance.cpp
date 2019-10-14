@@ -9,8 +9,8 @@
  */
 
 // headers
-#include "DerivedQuantities/Length/Abundance.h"
-#include "InitialisationPhases/Manager.h"
+#include "../../DerivedQuantities/Length/Abundance.h"
+#include "../../InitialisationPhases/Manager.h"
 
 // namespaces
 namespace niwa {

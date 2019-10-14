@@ -17,10 +17,10 @@
 #define OBSERVATION_H_
 
 // Headers
-#include "BaseClasses/Executor.h"
-#include "Likelihoods/Likelihood.h"
-#include "Observations/Comparison.h"
-#include "Utilities/Types.h"
+#include "../BaseClasses/Executor.h"
+#include "../Likelihoods/Likelihood.h"
+#include "../Observations/Comparison.h"
+#include "../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

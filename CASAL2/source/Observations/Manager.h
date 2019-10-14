@@ -13,8 +13,8 @@
 #define OBSERVATIONS_MANAGER_H_
 
 // Headers
-#include "BaseClasses/Manager.h"
-#include "Observations/Observation.h"
+#include "../BaseClasses/Manager.h"
+#include "../Observations/Observation.h"
 
 // Namespaces
 namespace niwa {

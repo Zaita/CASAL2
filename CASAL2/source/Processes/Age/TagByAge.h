@@ -15,10 +15,10 @@
 #define PROCESSES_TAGBYAGE_H_
 
 // headers
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Process.h"
-#include "Selectivities/Selectivity.h"
-#include "Penalties/Penalty.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
+#include "../../Selectivities/Selectivity.h"
+#include "../../Penalties/Penalty.h"
 
 // namespaces
 namespace niwa {

@@ -7,7 +7,7 @@
 
 #include "Catchability.h"
 
-#include "Catchabilities/Manager.h"
+#include "../../Catchabilities/Manager.h"
 
 namespace niwa {
 namespace reports {

@@ -12,10 +12,10 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Penalties/Manager.h"
-#include "Penalties/Common/Process.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Penalties/Manager.h"
+#include "../Penalties/Common/Process.h"
 
 // Namespaces
 namespace niwa {

@@ -20,11 +20,11 @@
 #include <limits>
 #include <cppad/ipopt/solve.hpp>
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "Model/Model.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Utilities/To.h"
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
+#include "../../Model/Model.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

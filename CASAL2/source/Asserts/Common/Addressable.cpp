@@ -11,9 +11,9 @@
 // headers
 #include "Addressable.h"
 
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "TimeSteps/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

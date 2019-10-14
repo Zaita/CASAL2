@@ -15,9 +15,9 @@
 #define LENGTH_INITIALISATIONPHASES_ITERATIVE_H_
 
 // headers
-#include "InitialisationPhases/InitialisationPhase.h"
-#include "Partition/Accessors/Categories.h"
-#include "Partition/Accessors/Cached/Categories.h"
+#include "../../InitialisationPhases/InitialisationPhase.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Partition/Accessors/Cached/Categories.h"
 
 // namespaces
 namespace niwa {

@@ -21,7 +21,7 @@
 #include <string>
 #include <mutex>
 
-#include "Logging/Record.h"
+#include "../Logging/Record.h"
 
 // namespaces
 namespace niwa {

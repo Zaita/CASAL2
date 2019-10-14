@@ -11,13 +11,13 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "DerivedQuantities/Manager.h"
-#include "DerivedQuantities/Age/Abundance.h"
-#include "DerivedQuantities/Age/Biomass.h"
-#include "DerivedQuantities/Length/Abundance.h"
-#include "DerivedQuantities/Length/Biomass.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../DerivedQuantities/Manager.h"
+#include "../DerivedQuantities/Age/Abundance.h"
+#include "../DerivedQuantities/Age/Biomass.h"
+#include "../DerivedQuantities/Length/Abundance.h"
+#include "../DerivedQuantities/Length/Biomass.h"
 
 // namespaces
 namespace niwa {

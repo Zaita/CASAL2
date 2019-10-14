@@ -9,14 +9,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "VectorSmoothing.h"
+#include "../../VectorSmoothing.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 
-#include "Model/Model.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../../Model/Model.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

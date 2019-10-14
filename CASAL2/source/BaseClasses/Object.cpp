@@ -15,8 +15,8 @@
 
 #include <iostream>
 
-#include "Logging/Logging.h"
-#include "Utilities/To.h"
+#include "../Logging/Logging.h"
+#include "../Utilities/To.h"
 
 namespace niwa {
 namespace base {

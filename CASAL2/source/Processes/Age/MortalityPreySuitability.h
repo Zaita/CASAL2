@@ -16,12 +16,12 @@
 #define SOURCE_PROCESSES_CHILDREN_MORTALITYPREYSUITABILITY_H_
 
 // headers
-#include "Model/Model.h"
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Penalties/Common/Process.h"
-#include "Processes/Process.h"
-#include "Selectivities/Selectivity.h"
-#include "Utilities/Map.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Penalties/Common/Process.h"
+#include "../../Processes/Process.h"
+#include "../../Selectivities/Selectivity.h"
+#include "../../Utilities/Map.h"
 
 // namespaces
 namespace niwa {

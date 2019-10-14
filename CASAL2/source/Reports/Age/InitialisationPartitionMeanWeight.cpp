@@ -14,9 +14,9 @@
 #include <iostream>
 #include <iomanip>
 
-#include "Model/Model.h"
-#include "Partition/Accessors/All.h"
-#include "TimeSteps/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

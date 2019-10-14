@@ -10,14 +10,14 @@
 // headers
 #include "Thread.h"
 
-#include "Logging/Logging.h"
-#include "Model/Model.h"
+#include "../Logging/Logging.h"
+#include "../Model/Model.h"
 
 // TODO: Move this to the model
-#include "Estimates/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "EstimateTransformations/Manager.h"
-#include "Utilities/To.h"
+#include "../Estimates/Manager.h"
+#include "../ObjectiveFunction/ObjectiveFunction.h"
+#include "../EstimateTransformations/Manager.h"
+#include "../Utilities/To.h"
 
 // namespaces
 namespace niwa {
@@ -63,37 +63,42 @@ void Thread::Loop() {
 		// Check to see if we have any candidates available for running
 		{
 			std::scoped_lock l(lock_);
-			if (new_candidates_.size() > 0) {
-				is_finished_ = false;
-				candidates_ = new_candidates_;
-				new_candidates_.clear();
-				objective_score_ = 0.0;
+			try {
+				if (new_candidates_.size() > 0) {
+					is_finished_ = false;
+					candidates_ = new_candidates_;
+					new_candidates_.clear();
+					objective_score_ = 0.0;
 
-				string cl = "";
-				for (auto candidate : candidates_)
-					cl += utilities::ToInline<double, string>(candidate) + ", ";
-				LOG_MEDIUM() << "[Thread# " << thread_.get_id() << "] Running candidates: " << cl;
+					string cl = "";
+					for (auto candidate : candidates_)
+						cl += utilities::ToInline<double, string>(candidate) + ", ";
+					LOG_MEDIUM() << "[Thread# " << thread_.get_id() << "] Running candidates: " << cl;
 
-				// TODO: Move this to the model
-			  auto estimates = model_->managers().estimate()->GetIsEstimated();
-			  if (candidates_.size() != estimates.size()) {
-			    LOG_CODE_ERROR() << "The number of enabled estimates does not match the number of test solution values";
-			  }
+					// TODO: Move this to the model
+					auto estimates = model_->managers().estimate()->GetIsEstimated();
+					if (candidates_.size() != estimates.size()) {
+						LOG_CODE_ERROR() << "The number of enabled estimates does not match the number of test solution values";
+					}
 
-			  for (unsigned i = 0; i < candidates_.size(); ++i)
-			    estimates[i]->set_value(candidates_[i]);
+					for (unsigned i = 0; i < candidates_.size(); ++i)
+						estimates[i]->set_value(candidates_[i]);
 
-			  model_->managers().estimate_transformation()->RestoreEstimates();
-			  model_->FullIteration();
+					model_->managers().estimate_transformation()->RestoreEstimates();
+					model_->FullIteration();
 
-			  ObjectiveFunction& objective = model_->objective_function();
-			  objective.CalculateScore();
-			  objective_score_ = objective.score();
+					ObjectiveFunction& objective = model_->objective_function();
+					objective.CalculateScore();
+					objective_score_ = objective.score();
 
-			  model_->managers().estimate_transformation()->TransformEstimates();
+					model_->managers().estimate_transformation()->TransformEstimates();
 
-				is_finished_ = true;
-				continue;
+					is_finished_ = true;
+					continue;
+				}
+			}
+			catch (...) {
+				cout << "Some shit went wrong" << endl;
 			}
 
 			is_finished_ = true;

@@ -19,11 +19,11 @@
 #define AGE_OBSERVATIONS_PROPORTIONSMIGRATING_H_
 
 // Headers
-#include "Observations/Observation.h"
+#include "../../Observations/Observation.h"
 
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Partition/Accessors/Cached/CombinedCategories.h"
-#include "AgeingErrors/AgeingError.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Partition/Accessors/Cached/CombinedCategories.h"
+#include "../../AgeingErrors/AgeingError.h"
 
 // Namespace
 namespace niwa {

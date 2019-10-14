@@ -21,7 +21,7 @@
   #include <unistd.h>
 #endif
 
-#include "GlobalConfiguration/GlobalConfiguration.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
 
 // namespaces
 namespace niwa {

@@ -11,7 +11,7 @@
 #define AGELENGTHS_FACTORY_H_
 
 // headers
-#include "AgeLengths/AgeLength.h"
+#include "../AgeLengths/AgeLength.h"
 
 // namespaces
 namespace niwa {

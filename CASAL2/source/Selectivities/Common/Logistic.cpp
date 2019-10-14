@@ -11,13 +11,14 @@
  */
 
 // Headers
+#include "Logistic.h"
+
 #include <boost/math/distributions/lognormal.hpp>
-#include <Selectivities/Common/Logistic.h>
 #include <cmath>
 
-#include "AgeLengths/AgeLength.h"
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../Model/Model.h"
+#include "../../TimeSteps/Manager.h"
 
 // Namespaces
 namespace niwa {

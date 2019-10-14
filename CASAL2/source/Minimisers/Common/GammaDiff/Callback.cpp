@@ -12,11 +12,11 @@
  */
 #ifndef USE_AUTODIFF
 // headers
-#include <Minimisers/Common/GammaDiff/Callback.h>
+#include "Callback.h"
 
-#include "Estimates/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "EstimateTransformations/Manager.h"
+#include "../../../Estimates/Manager.h"
+#include "../../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../../EstimateTransformations/Manager.h"
 
 // namespaces
 namespace niwa {

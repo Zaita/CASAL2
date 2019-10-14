@@ -9,11 +9,11 @@
  */
 #ifdef TESTMODE
 
-#include "CasalComplex3.h"
+#include "../../CasalComplex3.h"
 
-#include "Model/Models/Age.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../Model/Models/Age.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
 
 // Namespaces
 namespace niwa {

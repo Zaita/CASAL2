@@ -10,13 +10,13 @@
  */
 
 // headers
-#include <MCMCs/Common/RasmussenDunn.h>
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "MCMCs/Manager.h"
-#include "MCMCs/Common/IndependenceMetropolis.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../MCMCs/Manager.h"
+#include "../MCMCs/Common/IndependenceMetropolis.h"
+#include "../MCMCs/Common/RasmussenDunn.h"
 
 // namespaces
 namespace niwa {

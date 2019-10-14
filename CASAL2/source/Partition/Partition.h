@@ -23,8 +23,8 @@
 #include <string>
 #include <memory>
 
-#include "Partition/Category.h"
-#include "Utilities/Types.h"
+#include "../Partition/Category.h"
+#include "../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

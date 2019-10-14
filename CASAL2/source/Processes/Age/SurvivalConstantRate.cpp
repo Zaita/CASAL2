@@ -13,10 +13,10 @@
 
 #include <numeric>
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
-#include "Selectivities/Selectivity.h"
-#include "TimeSteps/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Selectivities/Selectivity.h"
+#include "../../TimeSteps/Manager.h"
 
 // Namespaces
 namespace niwa {

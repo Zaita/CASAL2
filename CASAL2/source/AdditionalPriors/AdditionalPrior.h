@@ -17,7 +17,7 @@
 #define ADDITIONALPRIOR_H_
 
 // headers
-#include "BaseClasses/Executor.h"
+#include "../BaseClasses/Executor.h"
 
 // namespaces
 namespace niwa {

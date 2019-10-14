@@ -11,14 +11,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Basic.h"
+#include "../../Basic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
-#include "AgeLengths/AgeLength.h"
+#include "../../AgeLengths/AgeLength.h"
 
-#include "TestResources/MockClasses/Model.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

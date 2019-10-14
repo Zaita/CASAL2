@@ -12,10 +12,10 @@
 // headers
 #include "MPD.h"
 
-#include "Model/Managers.h"
-#include "Estimates/Manager.h"
-#include "Minimisers/Manager.h"
-#include "Utilities/To.h"
+#include "../../Model/Managers.h"
+#include "../../Estimates/Manager.h"
+#include "../../Minimisers/Manager.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

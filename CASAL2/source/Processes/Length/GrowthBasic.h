@@ -17,8 +17,8 @@
 #define LENGTH_GROWTH_BASIC_H_
 
 // Headers
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Process.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
 
 // Namespaces
 namespace niwa {

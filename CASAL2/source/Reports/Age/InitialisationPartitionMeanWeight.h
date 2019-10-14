@@ -14,7 +14,7 @@
 #define AGE_REPORTS_CHILDREN_INITIALISATIONPARTITION_MEANWEIGHT_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // namespaces
 namespace niwa {

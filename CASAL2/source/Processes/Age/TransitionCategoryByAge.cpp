@@ -15,12 +15,12 @@
 #include <numeric>
 #include <limits>
 
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Penalties/Manager.h"
-#include "Selectivities/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Model.h"
+#include "../../Penalties/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

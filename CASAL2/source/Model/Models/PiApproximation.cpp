@@ -10,16 +10,16 @@
 // headers
 #include "PiApproximation.h"
 
-#include "Estimates/Manager.h"
-#include "Model/Managers.h"
-#include "MCMCs/Manager.h"
-#include "MCMCs/MCMC.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Penalties/Manager.h"
-#include "Reports/Manager.h"
-#include "Selectivities/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Estimates/Manager.h"
+#include "../../Model/Managers.h"
+#include "../../MCMCs/Manager.h"
+#include "../../MCMCs/MCMC.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Penalties/Manager.h"
+#include "../../Reports/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // namespaces
 namespace niwa {

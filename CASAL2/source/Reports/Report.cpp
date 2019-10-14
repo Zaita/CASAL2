@@ -17,10 +17,10 @@
 #include <iostream>
 #include <fstream>
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Reports/Manager.h"
-#include "TimeSteps/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Reports/Manager.h"
+#include "../TimeSteps/Manager.h"
 
 // Namespaces
 namespace niwa {

@@ -8,7 +8,7 @@
 #ifndef REPORTS_SELECTIVITY_H_
 #define REPORTS_SELECTIVITY_H_
 
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 namespace niwa {
 class Selectivity;

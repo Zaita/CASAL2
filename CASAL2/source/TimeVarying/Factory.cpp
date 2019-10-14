@@ -12,15 +12,15 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "TimeVarying/Common/AnnualShift.h"
-#include "TimeVarying/Common/Constant.h"
-#include "TimeVarying/Common/Exogenous.h"
-#include "TimeVarying/Common/Linear.h"
-#include "TimeVarying/Common/RandomDraw.h"
-#include "TimeVarying/Common/RandomWalk.h"
-#include "TimeVarying/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../TimeVarying/Common/AnnualShift.h"
+#include "../TimeVarying/Common/Constant.h"
+#include "../TimeVarying/Common/Exogenous.h"
+#include "../TimeVarying/Common/Linear.h"
+#include "../TimeVarying/Common/RandomDraw.h"
+#include "../TimeVarying/Common/RandomWalk.h"
+#include "../TimeVarying/Manager.h"
 
 // namespaces
 namespace niwa {

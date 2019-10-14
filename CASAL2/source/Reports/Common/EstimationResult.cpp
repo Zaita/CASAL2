@@ -9,11 +9,12 @@
  */
 
 // headers
-#include <Reports/Common/EstimationResult.h>
-#include "Minimisers/Manager.h"
-#include "Minimisers/Minimiser.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
+#include "EstimationResult.h"
+
+#include "../../Minimisers/Manager.h"
+#include "../../Minimisers/Minimiser.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Model.h"
 
 // Namespaces
 namespace niwa {

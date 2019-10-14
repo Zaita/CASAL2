@@ -13,7 +13,7 @@
 // headers
 #include <string>
 
-#include "Asserts/Assert.h"
+#include "../Asserts/Assert.h"
 
 // namespaces
 namespace niwa {

@@ -12,9 +12,9 @@
 // headers
 #include "TagByLength.h"
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
-#include "Penalties/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Penalties/Manager.h"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim_all.hpp>

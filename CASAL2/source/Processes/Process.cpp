@@ -11,9 +11,9 @@
 // headers
 #include "Process.h"
 
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Reports/Manager.h"
+#include "../Model/Managers.h"
+#include "../Model/Model.h"
+#include "../Reports/Manager.h"
 
 // namespaces
 namespace niwa {

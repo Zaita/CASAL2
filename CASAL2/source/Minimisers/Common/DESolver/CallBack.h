@@ -18,9 +18,9 @@
 #define MINIMISERS_DESOLVER_CALLBACK_H_
 
 // Headers
-#include "Minimisers/Common/DESolver/Engine.h"
-#include "Model/Model.h"
-#include "Utilities/Types.h"
+#include "../../../Minimisers/Common/DESolver/Engine.h"
+#include "../../../Model/Model.h"
+#include "../../../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

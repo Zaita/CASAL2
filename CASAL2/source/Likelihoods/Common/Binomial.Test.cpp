@@ -10,16 +10,16 @@
 #ifdef TESTMODE
 
 // headers
-#include "Binomial.h"
+#include "../../Binomial.h"
 
 #include <iostream>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "Likelihoods/Common/Binomial.h"
-#include "Likelihoods/Factory.h"
-#include "Observations/Comparison.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Likelihoods/Common/Binomial.h"
+#include "../../Likelihoods/Factory.h"
+#include "../../Observations/Comparison.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // namespaces
 namespace niwa {

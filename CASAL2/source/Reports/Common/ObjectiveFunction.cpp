@@ -13,7 +13,7 @@
 // Headers
 #include "ObjectiveFunction.h"
 
-#include "ObjectiveFunction/ObjectiveFunction.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
 
 // Namespaces
 namespace niwa {

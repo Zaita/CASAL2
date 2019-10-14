@@ -14,8 +14,8 @@
 #define AGEWEIGHT_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Partition/Category.h"
+#include "../BaseClasses/Object.h"
+#include "../Partition/Category.h"
 
 // namespaces
 namespace niwa {

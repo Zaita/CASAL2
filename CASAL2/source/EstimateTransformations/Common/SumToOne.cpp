@@ -12,13 +12,13 @@
 // headers
 #include "SumToOne.h"
 
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Model/Managers.h"
-#include "Model/Factory.h"
-#include "Estimates/Manager.h"
-#include "Estimates/Estimate.h"
-#include "Estimates/Common/Uniform.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Factory.h"
+#include "../../Estimates/Manager.h"
+#include "../../Estimates/Estimate.h"
+#include "../../Estimates/Common/Uniform.h"
 
 // namespaces
 namespace niwa {

@@ -11,19 +11,19 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Objects.h"
-#include "Objects.Mock.h"
+#include "../Objects.h"
+#include "../Objects.Mock.h"
 
 #include <iostream>
 #include <string>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "Model/Managers.h"
-#include "Processes/Manager.h"
-#include "Processes/Common/UnitTester.h"
-#include "Selectivities/Common/Constant.Mock.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../Model/Managers.h"
+#include "../Processes/Manager.h"
+#include "../Processes/Common/UnitTester.h"
+#include "../Selectivities/Common/Constant.Mock.h"
+#include "../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

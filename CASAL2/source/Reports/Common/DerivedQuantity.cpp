@@ -7,7 +7,7 @@
 
 #include "DerivedQuantity.h"
 
-#include "DerivedQuantities/Manager.h"
+#include "../../DerivedQuantities/Manager.h"
 
 namespace niwa {
 namespace reports {

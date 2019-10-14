@@ -17,7 +17,7 @@
 #define ESTIMATES_UNIFORM_H_
 
 // Headers
-#include "Estimates/Estimate.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

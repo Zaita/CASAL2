@@ -17,7 +17,7 @@
 // headers
 #include <boost/numeric/ublas/matrix.hpp>
 
-#include "BaseClasses/Object.h"
+#include "../BaseClasses/Object.h"
 
 // namespaces
 namespace niwa {

@@ -11,8 +11,8 @@
 // headers
 #include "Simulate.h"
 
-#include "Model/Objects.h"
-#include "Utilities/To.h"
+#include "../Model/Objects.h"
+#include "../Utilities/To.h"
 
 // namespaces
 namespace niwa {

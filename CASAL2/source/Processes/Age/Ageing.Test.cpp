@@ -12,15 +12,15 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Ageing.h"
+#include "../../Ageing.h"
 
 #include <iostream>
 
-#include "Model/Models/Age.h"
-#include "Model/Factory.h"
-#include "TimeSteps/Manager.h"
-#include "Partition/Partition.h"
-#include "TestResources/TestFixtures/BasicModel.h"
+#include "../../Model/Models/Age.h"
+#include "../../Model/Factory.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Partition/Partition.h"
+#include "../../TestResources/TestFixtures/BasicModel.h"
 
 // Namespaces
 namespace niwa {

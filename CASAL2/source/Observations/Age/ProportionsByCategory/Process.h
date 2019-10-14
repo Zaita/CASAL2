@@ -15,7 +15,7 @@
 #define AGE_OBSERVATIONS_PROCESSPROPORTIONSBYCATEGORY_H_
 
 // headers
-#include "Observations/Age/ProportionsByCategory.h"
+#include "../../../Observations/Age/ProportionsByCategory.h"
 
 // namespaces
 namespace niwa {

@@ -14,7 +14,7 @@
 #define LENGTHWEIGHTS_NONE_H_
 
 // headers
-#include "LengthWeights/LengthWeight.h"
+#include "../../LengthWeights/LengthWeight.h"
 
 // namespaces
 namespace niwa {

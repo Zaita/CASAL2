@@ -12,14 +12,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Loader.h"
+#include "../Loader.h"
 
 #include <iostream>
 
-#include "Model/Model.h"
-#include "Processes/Manager.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
-#include "Utilities/String.h"
+#include "../Model/Model.h"
+#include "../Processes/Manager.h"
+#include "../TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../Utilities/String.h"
 
 // Namespaces
 namespace niwa {

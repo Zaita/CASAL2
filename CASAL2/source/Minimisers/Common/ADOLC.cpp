@@ -14,11 +14,11 @@
 // headers
 #include "ADOLC.h"
 
-#include "ADOLC/Engine.h"
-#include "ADOLC/Callback.h"
+#include "../../ADOLC/Engine.h"
+#include "../../ADOLC/Callback.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
 
 namespace niwa {
 namespace minimisers {

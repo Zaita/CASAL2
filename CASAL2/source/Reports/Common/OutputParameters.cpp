@@ -11,9 +11,9 @@
 // headers
 #include "OutputParameters.h"
 
-#include "Estimates/Manager.h"
-#include "Model/Model.h"
-#include "Profiles/Manager.h"
+#include "../../Estimates/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Profiles/Manager.h"
 
 // namespaces
 namespace niwa {

@@ -18,11 +18,11 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Categories/Categories.h"
-#include "Likelihoods/Manager.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Utilities/Math.h"
+#include "../Categories/Categories.h"
+#include "../Likelihoods/Manager.h"
+#include "../Model/Managers.h"
+#include "../Model/Model.h"
+#include "../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

@@ -10,8 +10,8 @@
 #define SOURCE_MCMCS_COMMON_RASMUSSENDUNN_H_
 
 // headers
-#include "MCMCs/MCMC.h"
-#include "Estimates/Estimate.h"
+#include "../../MCMCs/MCMC.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

@@ -27,7 +27,7 @@
 #include <iostream>
 #include <memory>
 
-#include "Utilities/Types.h"
+#include "../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

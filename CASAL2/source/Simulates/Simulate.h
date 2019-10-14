@@ -14,8 +14,8 @@
 #define SIMULATE_H_
 
 // headers
-#include "BaseClasses/Object.h"
-#include "Model/Model.h"
+#include "../BaseClasses/Object.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

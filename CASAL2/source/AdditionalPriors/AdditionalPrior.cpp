@@ -12,7 +12,7 @@
 // headers
 #include "AdditionalPrior.h"
 
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

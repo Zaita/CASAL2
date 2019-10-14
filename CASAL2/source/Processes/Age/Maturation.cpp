@@ -11,9 +11,9 @@
 // headers
 #include "Maturation.h"
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
-#include "Selectivities/Selectivity.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Selectivities/Selectivity.h"
 
 // namespaces
 namespace niwa {

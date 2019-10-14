@@ -14,15 +14,15 @@
 
 #include <algorithm>
 
-#include "Model/Model.h"
-#include "AgeingErrors/AgeingError.h"
-#include "AgeingErrors/Manager.h"
-#include "Partition/Accessors/All.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Map.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
-#include "Categories/Categories.h"
+#include "../../Model/Model.h"
+#include "../../AgeingErrors/AgeingError.h"
+#include "../../AgeingErrors/Manager.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
+#include "../../Categories/Categories.h"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim_all.hpp>

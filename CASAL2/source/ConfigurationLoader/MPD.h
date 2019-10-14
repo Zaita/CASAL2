@@ -19,7 +19,7 @@
 #include <map>
 #include <memory>
 
-#include "Utilities/Types.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

@@ -12,13 +12,13 @@
 #ifdef TESTMODE
 
 // Headers
-#include "StateCategoryByAge.h"
+#include "../../StateCategoryByAge.h"
 
 #include <iostream>
 
-#include "Model/Models/Age.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
-#include "DerivedQuantities/Manager.h"
+#include "../../Model/Models/Age.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../DerivedQuantities/Manager.h"
 
 // Namespaces
 namespace niwa {

@@ -17,7 +17,7 @@
 #define LIKELIHOODS_NORMAL_H_
 
 // Headers
-#include "Likelihoods/Likelihood.h"
+#include "../../Likelihoods/Likelihood.h"
 
 // Namespaces
 namespace niwa {

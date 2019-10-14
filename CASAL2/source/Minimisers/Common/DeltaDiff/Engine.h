@@ -12,7 +12,7 @@
 #define MINIMISERS_DELTADIFF_ENGINE_H_
 
 // Global Headers
-#include <Minimisers/Common/DeltaDiff/Callback.h>
+#include "Callback.h"
 
 #include <vector>
 

@@ -13,10 +13,10 @@
 // Headers
 #include "MortalityInitialisationEvent.h"
 
-#include "Categories/Categories.h"
-#include "Penalties/Manager.h"
-#include "Selectivities/Manager.h"
-#include "Utilities/Math.h"
+#include "../../Categories/Categories.h"
+#include "../../Penalties/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

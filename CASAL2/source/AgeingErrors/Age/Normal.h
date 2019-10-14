@@ -16,7 +16,7 @@
 #define AGEINGERRORS_NORMAL_H_
 
 // headers
-#include "AgeingErrors/AgeingError.h"
+#include "../../AgeingErrors/AgeingError.h"
 
 // mamespaces
 namespace niwa {

@@ -15,7 +15,7 @@
 #define DERIVEDQUANTITIES_LENGTH_BIOMASS_H_
 
 // headers
-#include "DerivedQuantities/DerivedQuantity.h"
+#include "../../DerivedQuantities/DerivedQuantity.h"
 
 // namespaces
 namespace niwa {

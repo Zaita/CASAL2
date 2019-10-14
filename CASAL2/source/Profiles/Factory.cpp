@@ -12,9 +12,9 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Profiles/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Profiles/Manager.h"
 
 // Namespaces
 namespace niwa {

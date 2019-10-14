@@ -23,12 +23,12 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Translations/Translations.h"
-#include "Logging/Logging.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
+#include "../Categories/Categories.h"
+#include "../Model/Model.h"
+#include "../Translations/Translations.h"
+#include "../Logging/Logging.h"
+#include "../Utilities/String.h"
+#include "../Utilities/To.h"
 
 // Using
 namespace util = niwa::utilities;

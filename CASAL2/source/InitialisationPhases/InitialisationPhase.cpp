@@ -13,8 +13,8 @@
 // Headers
 #include "InitialisationPhase.h"
 
-#include "TimeSteps/Manager.h"
-#include "TimeSteps/TimeStep.h"
+#include "../TimeSteps/Manager.h"
+#include "../TimeSteps/TimeStep.h"
 
 // Namespaces
 namespace niwa {

@@ -17,9 +17,9 @@
 #define TAGLOSS_H_
 
 // Headers
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Process.h"
-#include "Utilities/Types.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
+#include "../../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

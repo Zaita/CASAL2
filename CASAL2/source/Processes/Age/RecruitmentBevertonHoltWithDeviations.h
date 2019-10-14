@@ -14,10 +14,10 @@
 #define PROCESSES_RECRUITMENTBEVERTONHOLT_WITHDEVIATIONS_H_
 
 // headers
-#include "DerivedQuantities/DerivedQuantity.h"
-#include "Partition/Accessors/Categories.h"
-#include "Processes/Process.h"
-#include "Estimates/Estimate.h"
+#include "../../DerivedQuantities/DerivedQuantity.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
+#include "../../Estimates/Estimate.h"
 
 // namespaces
 namespace niwa {

@@ -12,11 +12,11 @@
 
 // Headers
 #include <boost/math/distributions/lognormal.hpp>
-#include <Selectivities/Common/LogisticProducing.h>
+#include "LogisticProducing.h"
 #include <cmath>
 
-#include "AgeLengths/AgeLength.h"
-#include "Model/Model.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../Model/Model.h"
 
 // namespaces
 namespace niwa {

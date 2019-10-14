@@ -15,8 +15,8 @@
 #define LIKELIHOODS_MANAGER_H_
 
 // headers
-#include "BaseClasses/Manager.h"
-#include "Likelihoods/Likelihood.h"
+#include "../BaseClasses/Manager.h"
+#include "../Likelihoods/Likelihood.h"
 
 // namespaces
 namespace niwa {

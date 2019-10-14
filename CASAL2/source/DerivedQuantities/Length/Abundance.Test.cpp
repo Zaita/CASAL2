@@ -10,23 +10,23 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Abundance.h"
+#include "../../Abundance.h"
 
 #include <iostream>
 
-#include "DerivedQuantities/Manager.h"
-#include "Model/Factory.h"
-#include "TimeSteps/Manager.h"
-#include "Partition/Partition.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
-#include "TestResources/ConfigurationFiles/AgeSizes.h"
-#include "TestResources/ConfigurationFiles/Categories.h"
-#include "TestResources/ConfigurationFiles/Model.h"
-#include "TestResources/ConfigurationFiles/SizeWeights.h"
-#include "TestResources/ConfigurationFiles/Processes/Ageing.h"
-#include "TestResources/ConfigurationFiles/Processes/MortalityConstantRate.h"
-#include "TestResources/ConfigurationFiles/Processes/RecruitmentConstant.h"
-#include "TestResources/ConfigurationFiles/Selectivities/Constant.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../Model/Factory.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Partition/Partition.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../TestResources/ConfigurationFiles/AgeSizes.h"
+#include "../../TestResources/ConfigurationFiles/Categories.h"
+#include "../../TestResources/ConfigurationFiles/Model.h"
+#include "../../TestResources/ConfigurationFiles/SizeWeights.h"
+#include "../../TestResources/ConfigurationFiles/Processes/Ageing.h"
+#include "../../TestResources/ConfigurationFiles/Processes/MortalityConstantRate.h"
+#include "../../TestResources/ConfigurationFiles/Processes/RecruitmentConstant.h"
+#include "../../TestResources/ConfigurationFiles/Selectivities/Constant.h"
 
 // Namespaces
 namespace niwa {

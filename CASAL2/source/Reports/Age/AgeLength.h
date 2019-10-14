@@ -16,7 +16,7 @@
 #define SOURCE_AGE_REPORTS_AGE_AGELENGTH_H_
 
 // Headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 namespace niwa {
 namespace reports {

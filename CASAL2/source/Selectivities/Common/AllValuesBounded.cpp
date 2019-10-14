@@ -11,12 +11,13 @@
  */
 
 // Headers
+#include "AllValuesBounded.h"
+
 #include <boost/math/distributions/lognormal.hpp>
-#include <Selectivities/Common/AllValuesBounded.h>
 #include <cmath>
 
-#include "AgeLengths/AgeLength.h"
-#include "Model/Model.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../Model/Model.h"
 
 // Namespaces
 namespace niwa {

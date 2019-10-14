@@ -12,10 +12,10 @@
 // headers
 #include "TagByAge.h"
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
-#include "Penalties/Manager.h"
-#include "Utilities/Math.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Penalties/Manager.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

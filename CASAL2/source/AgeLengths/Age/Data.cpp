@@ -12,10 +12,10 @@
 // headers
 #include "Data.h"
 
-#include "LengthWeights/Manager.h"
-#include "Model/Managers.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/To.h"
+#include "../../LengthWeights/Manager.h"
+#include "../../Model/Managers.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

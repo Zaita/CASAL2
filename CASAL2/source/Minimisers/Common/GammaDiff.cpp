@@ -9,13 +9,13 @@
 //============================================================================
 #ifndef USE_AUTODIFF
 // Local Headers
-#include <Minimisers/Common/GammaDiff.h>
+#include "GammaDiff.h"
 
-#include <Minimisers/Common/GammaDiff/Callback.h>
-#include <Minimisers/Common/GammaDiff/Engine.h>
+#include "../../Minimisers/Common/GammaDiff/Callback.h"
+#include "../../Minimisers/Common/GammaDiff/Engine.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
+#include "../../Estimates/Manager.h"
+#include "../../EstimateTransformations/Manager.h"
 
 // namespaces
 namespace niwa {

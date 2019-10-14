@@ -13,7 +13,7 @@
 // Headers
 #include "RandomNumberGenerator.h"
 
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 // Namespaces
 namespace niwa {

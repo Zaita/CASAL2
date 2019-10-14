@@ -14,10 +14,10 @@
 #include <boost/algorithm/string/join.hpp>
 #include <vector>
 
-#include "Utilities/String.h"
-#include "Utilities/To.h"
-#include "Logging/Logging.h"
-#include "Utilities/Types.h"
+#include "../../Utilities/String.h"
+#include "../../Utilities/To.h"
+#include "../../Logging/Logging.h"
+#include "../../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

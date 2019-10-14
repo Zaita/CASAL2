@@ -4,13 +4,13 @@
  *  Created on: 9/01/2013
  *      Author: Admin
  */
+#include "Constant.h"
 
 #include <boost/math/distributions/lognormal.hpp>
-#include <Selectivities/Common/Constant.h>
 #include <cmath>
 
-#include "AgeLengths/AgeLength.h"
-#include "Model/Model.h"
+#include "../../AgeLengths/AgeLength.h"
+#include "../../Model/Model.h"
 
 namespace niwa {
 namespace selectivities {

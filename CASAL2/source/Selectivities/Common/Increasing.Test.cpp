@@ -12,14 +12,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Increasing.h"
+#include "../../Increasing.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 #include <string>
 
-#include "TestResources/MockClasses/Model.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

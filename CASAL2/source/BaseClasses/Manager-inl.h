@@ -9,8 +9,8 @@
  *
  */
 
-#include "Logging/Logging.h"
-#include "Model/Model.h"
+#include "../Logging/Logging.h"
+#include "../Model/Model.h"
 
 // Namespaces
 namespace niwa {

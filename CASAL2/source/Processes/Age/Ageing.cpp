@@ -13,10 +13,10 @@
 // Headers
 #include "Ageing.h"
 
-#include "Utilities/To.h"
-#include "Categories/Categories.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Map.h"
+#include "../../Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Map.h"
 
 // Namespaces
 namespace niwa {

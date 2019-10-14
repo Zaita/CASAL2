@@ -11,13 +11,13 @@
 // headers
 #include "Biomass.h"
 
-#include "Catchabilities/Manager.h"
-#include "Selectivities/Manager.h"
-#include "Utilities/Map.h"
-#include "Utilities/To.h"
-#include "Catchabilities/Common/Nuisance.h"
-#include "TimeSteps/Manager.h"
-#include "AgeWeights/Manager.h"
+#include "../../Catchabilities/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/To.h"
+#include "../../Catchabilities/Common/Nuisance.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../AgeWeights/Manager.h"
 
 // namespaces
 namespace niwa {

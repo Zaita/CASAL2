@@ -19,12 +19,12 @@
 // Headers
 #include <memory>
 
-#include "BaseClasses/Executor.h"
-#include "BaseClasses/Object.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Utilities/Math.h"
-#include "Utilities/PartitionType.h"
-#include "Utilities/RunMode.h"
+#include "../BaseClasses/Executor.h"
+#include "../BaseClasses/Object.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Utilities/Math.h"
+#include "../Utilities/PartitionType.h"
+#include "../Utilities/RunMode.h"
 
 // Namespaces
 namespace niwa {

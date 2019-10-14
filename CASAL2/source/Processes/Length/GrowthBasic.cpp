@@ -12,10 +12,10 @@
 // Headers
 #include "GrowthBasic.h"
 
-#include "Utilities/To.h"
-#include "Categories/Categories.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Math.h"
+#include "../../Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

@@ -9,10 +9,10 @@
  */
 
 // headers
-#include "DerivedQuantities/Age/Biomass.h"
-#include "InitialisationPhases/Manager.h"
-#include "TimeSteps/Manager.h"
-#include "AgeWeights/Manager.h"
+#include "../../DerivedQuantities/Age/Biomass.h"
+#include "../../InitialisationPhases/Manager.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../AgeWeights/Manager.h"
 
 // namespaces
 namespace niwa {

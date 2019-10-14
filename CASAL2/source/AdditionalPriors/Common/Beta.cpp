@@ -12,9 +12,9 @@
 // headers
 #include "Beta.h"
 
-#include "Estimates/Manager.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
+#include "../../Estimates/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
 
 // namespaces
 namespace niwa {

@@ -11,12 +11,12 @@
 // headers
 #include "Partition.h"
 
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Categories/Categories.h"
-#include "Partition/Category.h"
-#include "Partition/Partition.h"
-#include "Utilities/Math.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Categories/Categories.h"
+#include "../../Partition/Category.h"
+#include "../../Partition/Partition.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

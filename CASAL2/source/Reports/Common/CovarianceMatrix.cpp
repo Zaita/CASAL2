@@ -7,8 +7,8 @@
 
 #include "CovarianceMatrix.h"
 
-#include "Minimisers/Manager.h"
-#include "MCMCs/Manager.h"
+#include "../../Minimisers/Manager.h"
+#include "../../MCMCs/Manager.h"
 
 namespace niwa {
 namespace reports {

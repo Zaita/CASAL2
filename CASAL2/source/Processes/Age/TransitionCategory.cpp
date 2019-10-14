@@ -13,8 +13,8 @@
 // Headers
 #include "TransitionCategory.h"
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
 
 // Namespaces
 namespace niwa {

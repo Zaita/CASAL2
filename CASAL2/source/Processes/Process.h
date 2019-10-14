@@ -19,9 +19,9 @@
 #define PROCESS_H_
 
 // Headers
-#include "BaseClasses/Object.h"
-#include "BaseClasses/Executor.h"
-#include "Model/Model.h"
+#include "../BaseClasses/Object.h"
+#include "../BaseClasses/Executor.h"
+#include "../Model/Model.h"
 
 namespace niwa {
 

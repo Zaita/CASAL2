@@ -11,11 +11,12 @@
  */
 
 // Headers
-#include <Likelihoods/Common/LogNormalWithQ.h>
+#include "LogNormalWithQ.h"
+
 #include <cmath>
 
-#include "Utilities/Math.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {

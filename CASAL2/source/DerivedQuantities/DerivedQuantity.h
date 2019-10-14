@@ -17,8 +17,8 @@
 #define DERIVEDQUANTITY_H_
 
 // headers
-#include "BaseClasses/Executor.h"
-#include "Partition/Accessors/Categories.h"
+#include "../BaseClasses/Executor.h"
+#include "../Partition/Accessors/Categories.h"
 
 // namespaces
 namespace niwa {

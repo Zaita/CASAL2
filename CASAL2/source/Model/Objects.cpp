@@ -15,20 +15,20 @@
 #include <boost/tokenizer.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "AgeLengths/Manager.h"
-#include "Catchabilities/Manager.h"
-#include "DerivedQuantities/Manager.h"
-#include "Estimates/Manager.h"
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Processes/Manager.h"
-#include "Selectivities/Manager.h"
-#include "LengthWeights/Manager.h"
-#include "InitialisationPhases/Manager.h"
-#include "TimeVarying/Manager.h"
-#include "Observations/Manager.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
+#include "../AgeLengths/Manager.h"
+#include "../Catchabilities/Manager.h"
+#include "../DerivedQuantities/Manager.h"
+#include "../Estimates/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Processes/Manager.h"
+#include "../Selectivities/Manager.h"
+#include "../LengthWeights/Manager.h"
+#include "../InitialisationPhases/Manager.h"
+#include "../TimeVarying/Manager.h"
+#include "../Observations/Manager.h"
+#include "../Utilities/String.h"
+#include "../Utilities/To.h"
 
 // namespaces
 namespace niwa {

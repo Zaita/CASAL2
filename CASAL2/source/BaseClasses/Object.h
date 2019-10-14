@@ -24,12 +24,12 @@
 #include <string_view>
 #include <memory>
 
-#include "Logging/Logging.h"
-#include "ParameterList/ParameterList.h"
-#include "Translations/Translations.h"
-#include "Utilities/Map.h"
-#include "Utilities/NoCopy.h"
-#include "Utilities/Types.h"
+#include "../Logging/Logging.h"
+#include "../ParameterList/ParameterList.h"
+#include "../Translations/Translations.h"
+#include "../Utilities/Map.h"
+#include "../Utilities/NoCopy.h"
+#include "../Utilities/Types.h"
 
 using niwa::utilities::Double;
 

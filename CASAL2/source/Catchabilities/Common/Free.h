@@ -15,7 +15,7 @@
 #define CATCHABILITIES_FREE_H_
 
 // headers
-#include "Catchabilities/Catchability.h"
+#include "../../Catchabilities/Catchability.h"
 
 // namespaces
 namespace niwa {

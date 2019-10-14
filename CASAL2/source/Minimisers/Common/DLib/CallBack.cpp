@@ -9,14 +9,15 @@
  *
  */
 #ifndef USE_AUTODIFF
+#ifndef _MSC_VER
 
 // headers
-#include <Minimisers/Common/DLib/CallBack.h>
+#include "CallBack.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Utilities/Math.h"
+#include "../../../Estimates/Manager.h"
+#include "../../../EstimateTransformations/Manager.h"
+#include "../../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {
@@ -62,4 +63,5 @@ Double Callback::operator()(const ::dlib::matrix<double, 0, 1>& Parameters) cons
 } /* namespace dlib */
 } /* namespace minimisers */
 } /* namespace niwa */
+#endif
 #endif /* USE_AUTODIFF */

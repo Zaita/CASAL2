@@ -13,7 +13,7 @@
 #define TIMESTEPS_FACTORY_H_
 
 // Headers
-#include "TimeSteps/TimeStep.h"
+#include "../TimeSteps/TimeStep.h"
 
 namespace niwa {
 namespace timesteps {

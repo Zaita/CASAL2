@@ -17,7 +17,7 @@
 #define SOURCE_REPORTS_COMMON_ESTIMATIONRESULT_H_
 
 // Headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // Namespaces
 namespace niwa {

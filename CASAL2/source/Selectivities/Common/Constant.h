@@ -17,7 +17,7 @@
 #define CONSTANT_H_
 
 // Headers
-#include "Selectivities/Selectivity.h"
+#include "../../Selectivities/Selectivity.h"
 
 // Namespacaes
 namespace niwa {

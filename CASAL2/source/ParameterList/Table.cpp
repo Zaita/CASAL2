@@ -15,11 +15,11 @@
 
 #include <algorithm>
 
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
-#include "Translations/Translations.h"
+#include "../Categories/Categories.h"
+#include "../Model/Model.h"
+#include "../Utilities/String.h"
+#include "../Utilities/To.h"
+#include "../Translations/Translations.h"
 
 // Namespaces
 namespace niwa {

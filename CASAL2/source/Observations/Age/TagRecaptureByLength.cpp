@@ -17,15 +17,15 @@
 #include <boost/algorithm/string/trim_all.hpp>
 #include <boost/algorithm/string/split.hpp>
 
-#include "Categories/Categories.h"
-#include "Selectivities/Manager.h"
-#include "Model/Model.h"
-#include "Partition/Accessors/All.h"
-#include "Selectivities/Manager.h"
-#include "TimeSteps/Manager.h"
-#include "Utilities/Map.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../Selectivities/Manager.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

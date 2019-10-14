@@ -11,12 +11,12 @@
 #ifdef TESTMODE
 
 // headers
-#include "Partition/Partition.h"
-#include "Model/Models/Age.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
-#include "DerivedQuantities/Manager.h"
+#include "../Partition/Partition.h"
+#include "../Model/Models/Age.h"
+#include "../TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../DerivedQuantities/Manager.h"
 
-#include "Utilities/RandomNumberGenerator.h"
+#include "../Utilities/RandomNumberGenerator.h"
 
 namespace niwa {
 namespace projects {

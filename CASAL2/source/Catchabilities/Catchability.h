@@ -16,8 +16,8 @@
 #define CATCHABILITY_H_
 
 // Headers
-#include "BaseClasses/Object.h"
-#include "Model/Model.h"
+#include "../BaseClasses/Object.h"
+#include "../Model/Model.h"
 
 // Namespaces
 namespace niwa {

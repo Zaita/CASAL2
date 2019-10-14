@@ -13,7 +13,7 @@
 // Headers
 #include "CategoryInfo.h"
 
-#include "Categories/Categories.h"
+#include "../../Categories/Categories.h"
 
 // Namespaces
 namespace niwa {

@@ -18,12 +18,12 @@
 
 #include <cmath>
 
-#include "AgeLengths/AgeLength.h"
-#include "Categories/Categories.h"
-#include "Model/Model.h"
-#include "Logging/Logging.h"
+#include "../AgeLengths/AgeLength.h"
+#include "../Categories/Categories.h"
+#include "../Model/Model.h"
+#include "../Logging/Logging.h"
 
-#include "Utilities/Math.h"
+#include "../Utilities/Math.h"
 // Namespaces
 namespace niwa {
 

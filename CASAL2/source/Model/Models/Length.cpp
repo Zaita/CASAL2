@@ -8,7 +8,7 @@
  */
 
 // headers
-#include <Model/Models/Length.h>
+#include "Length.h"
 
 // namespaces
 namespace niwa {

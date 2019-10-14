@@ -15,7 +15,7 @@
 #define AGE_OBSERVATIONS_TIMESTEPBIOMASS_H_
 
 // headers
-#include "Observations/Age/Biomass.h"
+#include "../../../Observations/Age/Biomass.h"
 
 // namespaces
 namespace niwa {

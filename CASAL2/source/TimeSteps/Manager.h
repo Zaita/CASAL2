@@ -9,8 +9,8 @@
 #define TIMESTEPS_MANAGER_H_
 
 // Headers
-#include "BaseClasses/Manager.h"
-#include "TimeSteps/TimeStep.h"
+#include "../BaseClasses/Manager.h"
+#include "../TimeSteps/TimeStep.h"
 
 // Namespaces
 namespace niwa {

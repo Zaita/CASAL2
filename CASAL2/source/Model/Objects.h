@@ -19,11 +19,11 @@
 #include <string>
 #include <memory>
 
-#include "BaseClasses/Object.h"
-#include "Translations/Translations.h"
-#include "Utilities/Map.h"
-#include "Utilities/NoCopy.h"
-#include "Utilities/Types.h"
+#include "../BaseClasses/Object.h"
+#include "../Translations/Translations.h"
+#include "../Utilities/Map.h"
+#include "../Utilities/NoCopy.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

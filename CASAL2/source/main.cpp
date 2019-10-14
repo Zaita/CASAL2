@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
 #include <boost/algorithm/string/trim_all.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
+#include <fenv.h>
 
 #include "Runner.h"
 
@@ -43,6 +44,7 @@ using std::endl;
  */
 int main(int argc, char *argv[]) {
 	int return_code = 0;
+	//feenableexcept(FE_INVALID | FE_OVERFLOW);
 
 	try {
 		Runner runner;

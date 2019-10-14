@@ -9,7 +9,7 @@
 #define SOURCE_ASSERTS_COMMON_PARTITION_H_
 
 // headers
-#include "Asserts/Assert.h"
+#include "../../Asserts/Assert.h"
 
 // namespaces
 namespace niwa {

@@ -4,7 +4,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "RandomNumberGenerator.h"
+#include "../RandomNumberGenerator.h"
 
 #include <iostream>
 #include <gmock/gmock.h>

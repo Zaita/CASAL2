@@ -13,10 +13,10 @@
 // Headers
 #include "Abundance.h"
 
-#include "Catchabilities/Manager.h"
-#include "Selectivities/Manager.h"
-#include "Utilities/Map.h"
-#include "Utilities/To.h"
+#include "../../Catchabilities/Manager.h"
+#include "../../Selectivities/Manager.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

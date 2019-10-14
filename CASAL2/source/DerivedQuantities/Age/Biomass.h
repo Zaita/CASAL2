@@ -15,8 +15,8 @@
 #define DERIVEDQUANTITIES_AGE_BIOMASS_H_
 
 // headers
-#include "DerivedQuantities/DerivedQuantity.h"
-#include "AgeWeights/AgeWeight.h"
+#include "../../DerivedQuantities/DerivedQuantity.h"
+#include "../../AgeWeights/AgeWeight.h"
 
 // namespaces
 namespace niwa {

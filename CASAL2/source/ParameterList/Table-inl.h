@@ -13,8 +13,8 @@
 
 #include <vector>
 
-#include "Utilities/To.h"
-#include "Utilities/Types.h"
+#include "../Utilities/To.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

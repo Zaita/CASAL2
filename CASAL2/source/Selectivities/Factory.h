@@ -13,8 +13,8 @@
 #define SELECTIVITIES_FACTORY_H_
 
 // Headers
-#include "Selectivities/Selectivity.h"
-#include "Selectivities/Manager.h"
+#include "../Selectivities/Selectivity.h"
+#include "../Selectivities/Manager.h"
 
 // Namespaces
 namespace niwa {

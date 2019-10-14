@@ -20,13 +20,13 @@
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/lu.hpp>
 
-#include "Estimates/Manager.h"
-#include "MCMCs/Manager.h"
-#include "Minimisers/Manager.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Utilities/To.h"
+#include "../Estimates/Manager.h"
+#include "../MCMCs/Manager.h"
+#include "../Minimisers/Manager.h"
+#include "../Model/Managers.h"
+#include "../Model/Model.h"
+#include "../Model/Objects.h"
+#include "../Utilities/To.h"
 
 // namespaces
 namespace niwa {

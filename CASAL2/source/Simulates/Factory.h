@@ -14,7 +14,7 @@
 #define SIMULATES_FACTORY_H_
 
 // headers
-#include "Simulates/Simulate.h"
+#include "../Simulates/Simulate.h"
 
 // namespaces
 namespace niwa {

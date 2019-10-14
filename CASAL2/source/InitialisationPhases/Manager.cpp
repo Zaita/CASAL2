@@ -13,8 +13,8 @@
 // Headers
 #include "Manager.h"
 
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
+#include "../Model/Model.h"
+#include "../TimeSteps/Manager.h"
 
 // Namespaces
 namespace niwa {

@@ -11,7 +11,7 @@
 
 #include <thread>
 
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 namespace niwa {
 namespace reports {

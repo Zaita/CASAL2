@@ -17,12 +17,12 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Categories/Categories.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "TimeSteps/Manager.h"
-#include "DerivedQuantities/Manager.h"
-#include "InitialisationPhases/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Model.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../InitialisationPhases/Manager.h"
 
 // namesapces
 namespace niwa {

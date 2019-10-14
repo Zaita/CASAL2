@@ -19,12 +19,12 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "ConfigurationLoader/File.h"
-#include "Model/Factory.h"
-#include "Translations/Translations.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
-#include "Logging/Logging.h"
+#include "../ConfigurationLoader/File.h"
+#include "../Model/Factory.h"
+#include "../Translations/Translations.h"
+#include "../Utilities/String.h"
+#include "../Utilities/To.h"
+#include "../Logging/Logging.h"
 
 // Namespaces
 namespace niwa {

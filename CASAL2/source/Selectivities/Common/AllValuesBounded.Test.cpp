@@ -12,13 +12,13 @@
 #ifdef TESTMODE
 
 // Headers
-#include "AllValuesBounded.h"
+#include "../../AllValuesBounded.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 
-#include "TestResources/MockClasses/Model.h"
+#include "../../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

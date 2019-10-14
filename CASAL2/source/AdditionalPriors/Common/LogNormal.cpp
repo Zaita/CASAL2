@@ -12,8 +12,8 @@
 // headers
 #include "LogNormal.h"
 
-#include "Model/Model.h"
-#include "Model/Objects.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
 
 // namespaces
 namespace niwa {

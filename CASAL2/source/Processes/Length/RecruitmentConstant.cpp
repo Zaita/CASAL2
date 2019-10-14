@@ -12,9 +12,9 @@
 // Headers
 #include "RecruitmentConstant.h"
 
-#include "Categories/Categories.h"
-#include "Logging/Logging.h"
-#include "Utilities/Math.h"
+#include "../../Categories/Categories.h"
+#include "../../Logging/Logging.h"
+#include "../../Utilities/Math.h"
 
 // Namespaces
 namespace niwa {

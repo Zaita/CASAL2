@@ -18,9 +18,9 @@
 #include <ctime>
 #include <sstream>
 
-#include "Version.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Model.h"
+#include "../Version.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Model/Model.h"
 
 // Namespaces
 using std::endl;
@@ -57,7 +57,7 @@ void StandardHeader::PrintTop(GlobalConfiguration &global_config) {
 	header << endl;
 
 	// Build Date
-	header << "Date: " << ctime(&time_start_);
+	//header << "Date: " << ctime(&time_start_);
 
 	/**
 	 * Version information

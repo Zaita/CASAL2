@@ -10,13 +10,13 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Categories.h"
+#include "../Categories.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "TestResources/MockClasses/Model.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../TestResources/MockClasses/Model.h"
+#include "../TestResources/TestFixtures/InternalEmptyModel.h"
 
 // Namespaces
 namespace niwa {

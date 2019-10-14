@@ -15,7 +15,7 @@
 #define LOGNORMAL_EMPIRICAL_H_
 
 // headers
-#include "Projects/Project.h"
+#include "../../Projects/Project.h"
 
 // namespaces
 namespace niwa {

@@ -7,7 +7,7 @@
 
 #include "CorrelationMatrix.h"
 
-#include "Minimisers/Manager.h"
+#include "../../Minimisers/Manager.h"
 
 namespace niwa {
 namespace reports {

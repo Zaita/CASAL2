@@ -12,7 +12,7 @@
 #define ADDITIONAL_PRIORSFACTORY_H_
 
 // headers
-#include "AdditionalPriors/AdditionalPrior.h"
+#include "../AdditionalPriors/AdditionalPrior.h"
 
 // namespaces
 namespace niwa {

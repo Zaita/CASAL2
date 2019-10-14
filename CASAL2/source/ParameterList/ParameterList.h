@@ -62,10 +62,10 @@
 #include <set>
 #include <memory>
 
-#include "Parameter.h"
-#include "Table.h"
-#include "Parameters/Bindable.h"
-#include "Parameters/BindableVector.h"
+#include "../ParameterList/Parameter.h"
+#include "../ParameterList/Table.h"
+#include "../ParameterList/Parameters/Bindable.h"
+#include "../ParameterList/Parameters/BindableVector.h"
 
 // Namespaces
 namespace niwa {

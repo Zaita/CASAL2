@@ -21,8 +21,8 @@
 #include <thread>
 #include <mutex>
 
-#include "BaseClasses/Manager.h"
-#include "Reports/Report.h"
+#include "../BaseClasses/Manager.h"
+#include "../Reports/Report.h"
 
 // Namespaces
 namespace niwa {

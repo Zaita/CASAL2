@@ -12,12 +12,12 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Asserts/Manager.h"
-#include "Asserts/Common/Addressable.h"
-#include "Asserts/Common/ObjectiveFunction.h"
-#include "Asserts/Common/Partition.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Asserts/Manager.h"
+#include "../Asserts/Common/Addressable.h"
+#include "../Asserts/Common/ObjectiveFunction.h"
+#include "../Asserts/Common/Partition.h"
 
 // namespaces
 namespace niwa {

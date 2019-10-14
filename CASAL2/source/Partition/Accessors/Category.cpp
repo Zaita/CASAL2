@@ -16,11 +16,11 @@
 #include <iostream>
 #include <iomanip>
 
-#include "Categories/Categories.h"
-#include "Partition/Partition.h"
-#include "Model/Model.h"
-#include "Logging/Logging.h"
-#include "Utilities/To.h"
+#include "../../Categories/Categories.h"
+#include "../../Partition/Partition.h"
+#include "../../Model/Model.h"
+#include "../../Logging/Logging.h"
+#include "../../Utilities/To.h"
 
 // Namespaces
 namespace niwa {

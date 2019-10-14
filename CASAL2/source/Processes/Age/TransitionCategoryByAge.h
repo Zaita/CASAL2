@@ -15,10 +15,10 @@
 #define PROCESSES_TRANSITIONCATEGORYBYAGE_H_
 
 // headers
-#include "Partition/Accessors/Categories.h"
-#include "Penalties/Penalty.h"
-#include "Processes/Process.h"
-#include "Selectivities/Selectivity.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Penalties/Penalty.h"
+#include "../../Processes/Process.h"
+#include "../../Selectivities/Selectivity.h"
 
 // namespaces
 namespace niwa {

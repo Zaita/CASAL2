@@ -17,7 +17,7 @@
 #define MINIMISERS_ADOLC_H_
 
 // headers
-#include "Minimisers/Minimiser.h"
+#include "../../Minimisers/Minimiser.h"
 
 // namespaces
 namespace niwa {

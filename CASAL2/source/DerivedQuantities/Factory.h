@@ -14,8 +14,8 @@
 #define DERIVEDQUANTITIES_FACTORY_H_
 
 // namespaces
-#include "DerivedQuantities/DerivedQuantity.h"
-#include "Utilities/PartitionType.h"
+#include "../DerivedQuantities/DerivedQuantity.h"
+#include "../Utilities/PartitionType.h"
 
 // namespaces
 namespace niwa {

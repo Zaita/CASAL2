@@ -10,7 +10,7 @@
 #define SOURCE_MODEL_MODELS_PIAPPROXIMATION_H_
 
 // headers
-#include "Model/Model.h"
+#include "../../Model/Model.h"
 
 // namespaces
 namespace niwa {

@@ -13,8 +13,8 @@
 #define PENALTIES_FACTORY_H_
 
 // Headers
-#include "Penalties/Manager.h"
-#include "Penalties/Penalty.h"
+#include "../Penalties/Manager.h"
+#include "../Penalties/Penalty.h"
 
 // Namespaces
 namespace niwa {

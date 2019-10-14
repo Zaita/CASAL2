@@ -12,9 +12,9 @@
 #define ADDITIONAL_PRIORS_MANAGER_H_
 
 // headers
-#include "AdditionalPriors/AdditionalPrior.h"
-#include "BaseClasses/Manager.h"
-#include "Model/Managers.h"
+#include "../AdditionalPriors/AdditionalPrior.h"
+#include "../BaseClasses/Manager.h"
+#include "../Model/Managers.h"
 
 // namespaces
 namespace niwa {

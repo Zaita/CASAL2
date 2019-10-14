@@ -14,8 +14,8 @@
 #define PROJECTS_MANAGER_H_
 
 // headers
-#include "BaseClasses/Manager.h"
-#include "Projects/Project.h"
+#include "../BaseClasses/Manager.h"
+#include "../Projects/Project.h"
 
 
 // namespaces

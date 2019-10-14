@@ -15,7 +15,7 @@
 #define PROJECTS_LOGNORMAL_H_
 
 // headers
-#include "Projects/Project.h"
+#include "../../Projects/Project.h"
 
 // namespaces
 namespace niwa {

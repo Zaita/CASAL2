@@ -9,19 +9,20 @@
  *
  */
 #ifndef USE_AUTODIFF
+#ifndef _MSC_VER
 
 // headers
 #include "DLib.h"
 
 #include <functional>
 
-#include "Estimates/Manager.h"
-#include "Minimisers/Common/DLib/CallBack.h"
-#include "Utilities/Math.h"
-#include "EstimateTransformations/Manager.h"
-#include "Model/Model.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Utilities/Math.h"
+#include "../../Estimates/Manager.h"
+#include "../../Minimisers/Common/DLib/CallBack.h"
+#include "../../Utilities/Math.h"
+#include "../../EstimateTransformations/Manager.h"
+#include "../../Model/Model.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {
@@ -235,4 +236,5 @@ void DLib::Execute() {
 } /* namespace minimisers */
 } /* namespace niwa */
 
+#endif /* MSVS */
 #endif /* NOT USE_AUTODIFF */

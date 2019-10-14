@@ -19,11 +19,11 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Estimables/Estimables.h"
-#include "Logging/Logging.h"
-#include "Model/Managers.h"
-#include "Utilities/To.h"
-#include "Utilities/Types.h"
+#include "../Estimables/Estimables.h"
+#include "../Logging/Logging.h"
+#include "../Model/Managers.h"
+#include "../Utilities/To.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

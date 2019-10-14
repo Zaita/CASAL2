@@ -10,11 +10,11 @@
  */
 
 // headers
-#include <Penalties/Common/Process.h>
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Penalties/Manager.h"
-#include "Utilities/Math.h"
+#include "Process.h"
+#include "../../Model/Model.h"
+#include "../../Model/Managers.h"
+#include "../../Penalties/Manager.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

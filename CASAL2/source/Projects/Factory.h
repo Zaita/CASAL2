@@ -14,7 +14,7 @@
 #define PROJECTS_FACTORY_H_
 
 // headers
-#include "Projects/Project.h"
+#include "../Projects/Project.h"
 
 // namespaces
 namespace niwa {

@@ -10,8 +10,8 @@
  */
 
 // headers
-#include <TimeVarying/Common/AnnualShift.h>
-#include "Utilities/Map.h"
+#include "AnnualShift.h"
+#include "../../Utilities/Map.h"
 
 // namespaces
 namespace niwa {

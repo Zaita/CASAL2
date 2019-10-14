@@ -18,7 +18,7 @@
 #define ESTIMATE_FACTORY_H_
 
 // Headers
-#include "Estimates/Manager.h"
+#include "../Estimates/Manager.h"
 
 namespace niwa {
 class Model;

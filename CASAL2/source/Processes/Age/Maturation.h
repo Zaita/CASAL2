@@ -14,8 +14,8 @@
 #define PROCESSES_MATURATION_H_
 
 // headers
-#include "Processes/Process.h"
-#include "Partition/Accessors/Categories.h"
+#include "../../Processes/Process.h"
+#include "../../Partition/Accessors/Categories.h"
 
 // namespaces
 namespace niwa {

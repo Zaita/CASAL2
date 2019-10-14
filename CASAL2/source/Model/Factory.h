@@ -18,7 +18,7 @@
 #include <string>
 #include <memory>
 
-#include "Utilities/PartitionType.h"
+#include "../Utilities/PartitionType.h"
 
 using std::shared_ptr;
 

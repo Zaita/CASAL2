@@ -7,8 +7,8 @@
 
 #include "EstimateTransformation.h"
 
-#include "Estimates/Manager.h"
-#include "Model/Managers.h"
+#include "../Estimates/Manager.h"
+#include "../Model/Managers.h"
 
 namespace niwa {
 

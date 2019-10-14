@@ -14,7 +14,7 @@
 #define REPORTS_SIMULATEDOBSERVATION_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // namespace
 namespace niwa {

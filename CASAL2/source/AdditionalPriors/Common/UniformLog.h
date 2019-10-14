@@ -11,7 +11,7 @@
 #define ADDITIONALPRIORS_UNIFORM_LOG_H_
 
 // headers
-#include "AdditionalPriors/AdditionalPrior.h"
+#include "../../AdditionalPriors/AdditionalPrior.h"
 
 
 // namespaces

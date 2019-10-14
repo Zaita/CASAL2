@@ -14,7 +14,7 @@
 #define AGEWEIGHT_DATA_H_
 
 // headers
-#include "AgeWeights/AgeWeight.h"
+#include "../../AgeWeights/AgeWeight.h"
 
 // namespaces
 namespace niwa {

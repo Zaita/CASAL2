@@ -12,7 +12,7 @@
 // headers
 #include "Process.h"
 
-#include "TimeSteps/Manager.h"
+#include "../../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

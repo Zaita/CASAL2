@@ -15,7 +15,7 @@
 #define AGE_OBSERVASTIONS_TIMESTEPABUNDANCE_H_
 
 // headers
-#include "Observations/Age/Abundance.h"
+#include "../../../Observations/Age/Abundance.h"
 
 // namespaces
 namespace niwa {

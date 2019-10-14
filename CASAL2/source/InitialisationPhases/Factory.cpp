@@ -12,14 +12,14 @@
 // Headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "InitialisationPhases/Manager.h"
-#include "InitialisationPhases/Age/Cinitial.h"
-#include "InitialisationPhases/Age/Derived.h"
-#include "InitialisationPhases/Age/Iterative.h"
-#include "InitialisationPhases/Age/StateCategoryByAge.h"
-#include "InitialisationPhases/Length/Iterative.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../InitialisationPhases/Manager.h"
+#include "../InitialisationPhases/Age/Cinitial.h"
+#include "../InitialisationPhases/Age/Derived.h"
+#include "../InitialisationPhases/Age/Iterative.h"
+#include "../InitialisationPhases/Age/StateCategoryByAge.h"
+#include "../InitialisationPhases/Length/Iterative.h"
 
 // Namespaces
 namespace niwa {

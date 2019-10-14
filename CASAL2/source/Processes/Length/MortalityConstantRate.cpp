@@ -16,8 +16,8 @@
 
 #include <numeric>
 
-#include "Categories/Categories.h"
-#include "TimeSteps/Manager.h"
+#include "../../Categories/Categories.h"
+#include "../../TimeSteps/Manager.h"
 
 // Namespaces
 namespace niwa {

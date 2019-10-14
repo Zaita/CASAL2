@@ -14,11 +14,11 @@
 #define MORTALITYEVENTBIOMASS_H_
 
 // headers
-#include "Model/Model.h"
-#include "Partition/Accessors/Categories.h"
-#include "Penalties/Common/Process.h"
-#include "Processes/Process.h"
-#include "Utilities/Math.h"
+#include "../../Model/Model.h"
+#include "../../Partition/Accessors/Categories.h"
+#include "../../Penalties/Common/Process.h"
+#include "../../Processes/Process.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

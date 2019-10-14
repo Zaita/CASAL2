@@ -21,7 +21,7 @@
 #define SOURCE_MINIMISERS_CHILDREN_DUMMY_H_
 
 // headers
-#include "../../Minimiser.h"
+#include "../../../Minimisers/Minimiser.h"
 
 // namespaces
 namespace niwa {

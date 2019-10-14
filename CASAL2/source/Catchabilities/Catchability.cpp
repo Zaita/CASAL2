@@ -12,7 +12,7 @@
 // headers
 #include "Catchability.h"
 
-#include "Model/Model.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

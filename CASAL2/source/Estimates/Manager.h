@@ -15,10 +15,10 @@
 #define ESTIMATE_MANAGER_H_
 
 // headers
-#include "BaseClasses/Manager.h"
-#include "Estimates/Estimate.h"
-#include "Estimates/Creators/Creator.h"
-#include "Utilities/Map.h"
+#include "../BaseClasses/Manager.h"
+#include "../Estimates/Estimate.h"
+#include "../Estimates/Creators/Creator.h"
+#include "../Utilities/Map.h"
 
 // namespaces
 namespace niwa {

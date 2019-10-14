@@ -11,10 +11,10 @@
 // headers
 #include "Manager.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Processes/Manager.h"
-#include "Model/Objects.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Processes/Manager.h"
+#include "../Model/Objects.h"
 
 // namespaces
 namespace niwa {

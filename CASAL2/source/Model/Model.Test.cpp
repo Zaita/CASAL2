@@ -11,13 +11,13 @@
 #ifdef TESTMODE
 
 // Headers
-#include "model.h"
+#include "../model.h"
 
 #include <iostream>
 
-#include "TestResources/TestFixtures/BasicModel.h"
-#include "TestResources/MockClasses/Managers.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../TestResources/TestFixtures/BasicModel.h"
+#include "../TestResources/MockClasses/Managers.h"
+#include "../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

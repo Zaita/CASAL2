@@ -15,7 +15,7 @@
 // Headers
 #include <string>
 
-#include "Reports/Report.h"
+#include "../Reports/Report.h"
 
 // Namespaces
 namespace niwa {

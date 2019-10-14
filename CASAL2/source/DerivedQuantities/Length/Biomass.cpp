@@ -9,9 +9,9 @@
  */
 
 // headers
-#include "DerivedQuantities/Length/Biomass.h"
-#include "InitialisationPhases/Manager.h"
-#include "TimeSteps/Manager.h"
+#include "../../DerivedQuantities/Length/Biomass.h"
+#include "../../InitialisationPhases/Manager.h"
+#include "../../TimeSteps/Manager.h"
 
 // namespaces
 namespace niwa {

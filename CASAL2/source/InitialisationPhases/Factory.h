@@ -14,7 +14,7 @@
 // Headers
 #include <string>
 
-#include "InitialisationPhases/InitialisationPhase.h"
+#include "../InitialisationPhases/InitialisationPhase.h"
 
 // Namespaces
 namespace niwa {

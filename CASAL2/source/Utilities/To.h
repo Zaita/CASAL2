@@ -22,10 +22,10 @@
 #include <vector>
 #include <boost/lexical_cast.hpp>
 
-#include "Logging/Logging.h"
-#include "Utilities/Exception.h"
-#include "Utilities/PartitionType.h"
-#include "Translations/Translations.h"
+#include "../Logging/Logging.h"
+#include "../Utilities/Exception.h"
+#include "../Utilities/PartitionType.h"
+#include "../Translations/Translations.h"
 
 // Namespaces
 namespace niwa {
@@ -69,7 +69,6 @@ bool To(const ::std::string arg, Target &result) {
   try {
     result = boost::lexical_cast<Target>(arg);
   } catch (...) {
-  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
   return true;
@@ -107,7 +106,6 @@ inline bool To(const ::std::string arg, unsigned &result) {
 
     result = (unsigned)temp;
   } catch (...) {
-  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
 
@@ -123,12 +121,6 @@ inline bool To(const ::std::string arg, unsigned &result) {
  */
 template<>
 inline bool To(const ::std::string arg, bool &result) {
-
-  try {
-    result = boost::lexical_cast<bool>(arg);
-    return true;
-
-  } catch (...) {
     vector<string> true_values  = { "t", "true", "yes", "y" };
     vector<string> false_values = { "f", "false", "no", "n" };
 
@@ -143,8 +135,7 @@ inline bool To(const ::std::string arg, bool &result) {
       result = false;
       return true;
     }
-  }
-
+  
   return false;
 }
 
@@ -187,7 +178,6 @@ bool To(const Source& arg, Target& result) {
   try {
     result = boost::lexical_cast<Target>(arg);
   } catch (...) {
-  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
   return true;

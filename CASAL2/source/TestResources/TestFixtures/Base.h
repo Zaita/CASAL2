@@ -20,7 +20,7 @@
 #include <string>
 #include <memory>
 
-#include "Model/Model.h"
+#include "../../Model/Model.h"
 
 // namespaces
 namespace niwa {

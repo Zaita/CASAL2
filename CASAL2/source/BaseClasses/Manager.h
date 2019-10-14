@@ -23,8 +23,8 @@
 #include <string_view>
 #include <vector>
 
-#include "Utilities/NoCopy.h"
-#include "Model/Managers.h"
+#include "../Utilities/NoCopy.h"
+#include "../Model/Managers.h"
 
 // Namespaces
 namespace niwa {

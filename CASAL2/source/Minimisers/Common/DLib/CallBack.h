@@ -11,13 +11,14 @@
  * << Add Description >>
  */
 #ifndef USE_AUTODIFF
+#ifndef _MSC_VER
 #ifndef CALLBACK_H_
 #define CALLBACK_H_
 
 // headers
 #include <dlib/optimization.h>
 
-#include "Model/Model.h"
+#include "../../../Model/Model.h"
 
 // namespaces
 namespace niwa {
@@ -43,4 +44,5 @@ private:
 } /* namespace minimisers */
 } /* namespace niwa */
 #endif /* CALLBACK_H_ */
+#endif
 #endif /* USE_AUTODIFF */

@@ -12,8 +12,8 @@
 // headers
 #include "Manager.h"
 
-#include "Likelihoods/Factory.h"
-#include "Model/Model.h"
+#include "../Likelihoods/Factory.h"
+#include "../Model/Model.h"
 
 // namespaces
 namespace niwa {

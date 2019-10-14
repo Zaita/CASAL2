@@ -5,14 +5,14 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Dirichlet.h"
+#include "../../Dirichlet.h"
 
 #include <iostream>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "Observations/Comparison.h"
-#include "Utilities/RandomNumberGenerator.h"
+#include "../../Observations/Comparison.h"
+#include "../../Utilities/RandomNumberGenerator.h"
 
 // Namespaces
 namespace niwa {

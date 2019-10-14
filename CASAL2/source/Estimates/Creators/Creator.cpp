@@ -16,12 +16,12 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Estimates/Manager.h"
-#include "Estimates/Factory.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Utilities/String.h"
-#include "Utilities/To.h"
+#include "../../Estimates/Manager.h"
+#include "../../Estimates/Factory.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Utilities/String.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

@@ -21,8 +21,8 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "License.h"
-#include "Version.h"
+#include "../../License.h"
+#include "../../Version.h"
 
 // Namespaces
 namespace niwa {

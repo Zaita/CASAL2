@@ -12,11 +12,11 @@
 // headers
 #include "Estimables.h"
 
-#include "Estimates/Manager.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Logging/Logging.h"
+#include "../Estimates/Manager.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Model/Model.h"
+#include "../Model/Objects.h"
+#include "../Logging/Logging.h"
 
 // namespaces
 namespace niwa {

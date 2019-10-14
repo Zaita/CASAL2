@@ -12,11 +12,11 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Catchabilities/Manager.h"
-#include "Catchabilities/Common/Free.h"
-#include "Catchabilities/Common/Nuisance.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Catchabilities/Manager.h"
+#include "../Catchabilities/Common/Free.h"
+#include "../Catchabilities/Common/Nuisance.h"
 
 // namespaces
 namespace niwa {

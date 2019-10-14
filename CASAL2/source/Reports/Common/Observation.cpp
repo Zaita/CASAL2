@@ -11,9 +11,9 @@
 // headers
 #include "Observation.h"
 
-#include "Observations/Manager.h"
-#include "Observations/Observation.h"
-#include "Utilities/Math.h"
+#include "../../Observations/Manager.h"
+#include "../../Observations/Observation.h"
+#include "../../Utilities/Math.h"
 
 // namespaces
 namespace niwa {

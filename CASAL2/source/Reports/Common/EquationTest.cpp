@@ -14,10 +14,10 @@
 
 #include <boost/algorithm/string/join.hpp>
 
-#include "EquationParser/EquationParser.h"
-#include "Model/Model.h"
-#include "Model/Objects.h"
-#include "Utilities/To.h"
+#include "../../EquationParser/EquationParser.h"
+#include "../../Model/Model.h"
+#include "../../Model/Objects.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

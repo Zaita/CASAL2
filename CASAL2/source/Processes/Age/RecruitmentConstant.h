@@ -19,9 +19,9 @@
 #define CONSTANTRECRUITMENT_H_
 
 // Headers
-#include "Partition/Accessors/CategoriesWithAge.h"
-#include "Processes/Process.h"
-#include "Utilities/Types.h"
+#include "../../Partition/Accessors/CategoriesWithAge.h"
+#include "../../Processes/Process.h"
+#include "../../Utilities/Types.h"
 
 // Namespaces
 namespace niwa {

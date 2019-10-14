@@ -17,8 +17,8 @@
 #define CATCHABILITIES_NUISANCE_H_
 
 // headers
-#include "Catchabilities/Catchability.h"
-#include "Observations/Comparison.h"
+#include "../../Catchabilities/Catchability.h"
+#include "../../Observations/Comparison.h"
 
 // namespaces
 namespace niwa {

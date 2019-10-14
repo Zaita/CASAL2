@@ -17,11 +17,11 @@
 
 #include <cmath>
 
-#include "Model/Managers.h"
-#include "LengthWeights/LengthWeight.h"
-#include "LengthWeights/Manager.h"
-#include "TimeSteps/Manager.h"
-#include "Estimates/Manager.h"
+#include "../../Model/Managers.h"
+#include "../../LengthWeights/LengthWeight.h"
+#include "../../LengthWeights/Manager.h"
+#include "../../TimeSteps/Manager.h"
+#include "../../Estimates/Manager.h"
 
 // namespaces
 namespace niwa {

@@ -12,11 +12,11 @@
 // Headers
 #include <iostream>
 
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "Estimates/Manager.h"
-#include "Model/Models/Age.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
-#include "TestResources/Models/TwoSexNoEstimates.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../Estimates/Manager.h"
+#include "../../Model/Models/Age.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../TestResources/Models/TwoSexNoEstimates.h"
 
 // Namespaces
 namespace niwa {

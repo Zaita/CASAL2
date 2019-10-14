@@ -13,7 +13,7 @@
 // Headers
 #include "Penalty.h"
 
-#include "Penalties/Manager.h"
+#include "../Penalties/Manager.h"
 
 // Namespaces
 namespace niwa {

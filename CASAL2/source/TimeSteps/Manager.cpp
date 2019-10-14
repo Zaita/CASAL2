@@ -13,9 +13,9 @@
 // Headers
 #include "Manager.h"
 
-#include "DerivedQuantities/Manager.h"
-#include "Model/Model.h"
-#include "Reports/Manager.h"
+#include "../DerivedQuantities/Manager.h"
+#include "../Model/Model.h"
+#include "../Reports/Manager.h"
 
 // Namespaces
 namespace niwa {

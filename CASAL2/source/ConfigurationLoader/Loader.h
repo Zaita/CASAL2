@@ -23,10 +23,10 @@
 #include <vector>
 #include <string>
 
-#include "BaseClasses/Object.h"
-#include "GlobalConfiguration/GlobalConfiguration.h"
-#include "Model/Model.h"
-#include "ParameterList/Table.h"
+#include "../BaseClasses/Object.h"
+#include "../GlobalConfiguration/GlobalConfiguration.h"
+#include "../Model/Model.h"
+#include "../ParameterList/Table.h"
 
 // Namespaces
 namespace niwa {

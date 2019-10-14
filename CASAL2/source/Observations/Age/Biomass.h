@@ -14,13 +14,13 @@
 #define AGE_OBSERVATIONS_BIOMASS_H_
 
 // headers
-#include "Observations/Observation.h"
+#include "../../Observations/Observation.h"
 
-#include "Catchabilities/Catchability.h"
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Partition/Accessors/Cached/CombinedCategories.h"
-#include "Catchabilities/Common/Nuisance.h"
-#include "AgeWeights/AgeWeight.h"
+#include "../../Catchabilities/Catchability.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Partition/Accessors/Cached/CombinedCategories.h"
+#include "../../Catchabilities/Common/Nuisance.h"
+#include "../../AgeWeights/AgeWeight.h"
 
 // namespaces
 namespace niwa {

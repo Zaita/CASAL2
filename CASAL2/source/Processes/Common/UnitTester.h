@@ -16,8 +16,8 @@
 #ifdef TESTMODE
 
 // headers
-#include "Processes/Process.h"
-#include "Utilities/Map.h"
+#include "../../Processes/Process.h"
+#include "../../Utilities/Map.h"
 
 // namespaces
 namespace niwa {

@@ -17,7 +17,7 @@
 #define INVERSELOGISTIC_H_
 
 // Headers
-#include "Selectivities/Selectivity.h"
+#include "../../Selectivities/Selectivity.h"
 
 // Namespaces
 namespace niwa {

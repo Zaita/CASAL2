@@ -12,9 +12,9 @@
 // headers
 #include "Nuisance.h"
 
-#include "AdditionalPriors/Manager.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../AdditionalPriors/Manager.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // namespaces
 namespace niwa {

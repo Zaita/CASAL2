@@ -12,12 +12,12 @@
  */
 #ifdef TESTMODE
 
-#include "TwoSexModel.h"
+#include "../../TwoSexModel.h"
 
-#include "DerivedQuantities/Manager.h"
-#include "Model/Models/Age.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
-#include "TestResources/TestFixtures/InternalEmptyModel.h"
+#include "../../DerivedQuantities/Manager.h"
+#include "../../Model/Models/Age.h"
+#include "../../ObjectiveFunction/ObjectiveFunction.h"
+#include "../../TestResources/TestFixtures/InternalEmptyModel.h"
 
 // Namespaces
 namespace niwa {

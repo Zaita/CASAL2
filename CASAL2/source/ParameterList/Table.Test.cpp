@@ -11,17 +11,17 @@
 #ifdef TESTMODE
 
 // Headers
-#include "Table.h"
+#include "../Table.h"
 
 #include <iostream>
 
-#include "Categories/Categories.h"
-#include "Model/Factory.h"
-#include "TimeSteps/Manager.h"
-#include "Partition/Partition.h"
-#include "TestResources/TestFixtures/BasicModel.h"
-#include "TestResources/MockClasses/Managers.h"
-#include "TestResources/MockClasses/Model.h"
+#include "../Categories/Categories.h"
+#include "../Model/Factory.h"
+#include "../TimeSteps/Manager.h"
+#include "../Partition/Partition.h"
+#include "../TestResources/TestFixtures/BasicModel.h"
+#include "../TestResources/MockClasses/Managers.h"
+#include "../TestResources/MockClasses/Model.h"
 
 // Namespaces
 namespace niwa {

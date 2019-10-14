@@ -10,9 +10,10 @@
  */
 
 // headers
-#include <TimeVarying/Common/Exogenous.h>
-#include "Utilities/Map.h"
-#include "Model/Objects.h"
+#include "Exogenous.h"
+
+#include "../../Utilities/Map.h"
+#include "../../Model/Objects.h"
 
 // namespaces
 namespace niwa {

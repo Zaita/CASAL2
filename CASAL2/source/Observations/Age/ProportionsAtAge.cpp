@@ -15,14 +15,14 @@
 
 #include <algorithm>
 
-#include "Model/Model.h"
-#include "Selectivities/Manager.h"
-#include "AgeingErrors/AgeingError.h"
-#include "AgeingErrors/Manager.h"
-#include "Partition/Accessors/All.h"
-#include "Utilities/Map.h"
-#include "Utilities/Math.h"
-#include "Utilities/To.h"
+#include "../../Model/Model.h"
+#include "../../Selectivities/Manager.h"
+#include "../../AgeingErrors/AgeingError.h"
+#include "../../AgeingErrors/Manager.h"
+#include "../../Partition/Accessors/All.h"
+#include "../../Utilities/Map.h"
+#include "../../Utilities/Math.h"
+#include "../../Utilities/To.h"
 
 // Namespaces
 namespace niwa {
@@ -176,8 +176,9 @@ void ProportionsAtAge::DoValidate() {
 
       error_values_by_year[year].push_back(value);
     }
+	double x = error_values_by_year[year][0];
     if (error_values_by_year[year].size() == 1) {
-      error_values_by_year[year].assign(obs_expected - 1, error_values_by_year[year][0]);
+      error_values_by_year[year].assign(obs_expected - 1, x);
     }
     if (error_values_by_year[year].size() != obs_expected - 1)
       LOG_FATAL_P(PARAM_ERROR_VALUES) << "We counted " << error_values_by_year[year].size() << " error values by year but expected " << obs_expected -1 << " based on the obs table";
@@ -372,9 +373,12 @@ void ProportionsAtAge::Execute() {
     for (unsigned i = 0; i < expected_values.size(); ++i) {
       LOG_FINEST() << "-----";
       LOG_FINEST() << "Numbers at age for all categories in age " << min_age_ + i << " = " << expected_values[i];
+	  double error_value_temp = error_values_[model_->current_year()][category_labels_[category_offset]][i];
+	  auto x = error_values_[model_->current_year()];
+	  auto y = error_values_[model_->current_year()][category_labels_[category_offset]];	  
 
       SaveComparison(category_labels_[category_offset], min_age_ + i ,0.0 ,expected_values[i], proportions_[model_->current_year()][category_labels_[category_offset]][i],
-          process_errors_by_year_[model_->current_year()], error_values_[model_->current_year()][category_labels_[category_offset]][i], 0.0, delta_, 0.0);
+          process_errors_by_year_[model_->current_year()], error_value_temp, 0.0, delta_, 0.0);
     }
   }
 }

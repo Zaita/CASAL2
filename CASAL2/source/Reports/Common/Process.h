@@ -16,7 +16,7 @@
 #define SOURCE_REPORTS_CHILDREN_PROCESS_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // namespaces
 namespace niwa {

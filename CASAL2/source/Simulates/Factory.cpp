@@ -11,10 +11,10 @@
 // headers
 #include "Factory.h"
 
-#include "Model/Model.h"
-#include "Model/Managers.h"
-#include "Simulates/Common/Constant.h"
-#include "Simulates/Manager.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
+#include "../Simulates/Common/Constant.h"
+#include "../Simulates/Manager.h"
 
 // namespaces
 namespace niwa {

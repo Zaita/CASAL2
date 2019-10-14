@@ -14,9 +14,9 @@
 // headers
 #include "Callback.h"
 
-#include "Estimates/Manager.h"
-#include "EstimateTransformations/Manager.h"
-#include "ObjectiveFunction/ObjectiveFunction.h"
+#include "../../../Estimates/Manager.h"
+#include "../../../EstimateTransformations/Manager.h"
+#include "../../../ObjectiveFunction/ObjectiveFunction.h"
 
 // namespaces
 namespace niwa {

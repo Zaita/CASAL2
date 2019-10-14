@@ -14,10 +14,10 @@
 
 #include <boost/algorithm/string/join.hpp>
 
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Processes/Manager.h"
-#include "Processes/Process.h"
+#include "../../Model/Managers.h"
+#include "../../Model/Model.h"
+#include "../../Processes/Manager.h"
+#include "../../Processes/Process.h"
 
 // namespaces
 namespace niwa {

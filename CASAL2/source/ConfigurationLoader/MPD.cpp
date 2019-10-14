@@ -20,14 +20,14 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/join.hpp>
 
-#include "Estimables/Estimables.h"
-#include "Estimates/Manager.h"
-#include "Logging/Logging.h"
-#include "MCMCs/Manager.h"
-#include "Model/Managers.h"
-#include "Model/Model.h"
-#include "Utilities/To.h"
-#include "Utilities/Types.h"
+#include "../Estimables/Estimables.h"
+#include "../Estimates/Manager.h"
+#include "../Logging/Logging.h"
+#include "../MCMCs/Manager.h"
+#include "../Model/Managers.h"
+#include "../Model/Model.h"
+#include "../Utilities/To.h"
+#include "../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

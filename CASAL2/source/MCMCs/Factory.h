@@ -14,7 +14,7 @@
 // headers
 #include <string>
 
-#include "MCMCs/MCMC.h"
+#include "../MCMCs/MCMC.h"
 
 // namespaces
 namespace niwa {

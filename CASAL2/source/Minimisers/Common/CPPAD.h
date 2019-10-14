@@ -18,8 +18,8 @@
 #define MNINIMISERS_CPPAD_H_
 
 // headers
-#include "Minimisers/Minimiser.h"
-#include "Utilities/Types.h"
+#include "../../Minimisers/Minimiser.h"
+#include "../../Utilities/Types.h"
 
 // namespaces
 namespace niwa {

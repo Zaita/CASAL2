@@ -17,10 +17,10 @@
 #define AGE_OBSERVATIONS_PROCESS_REMOVALS_BY_LENGTH_H_
 
 // Headers
-#include "Observations/Observation.h"
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Partition/Accessors/Cached/CombinedCategories.h"
-#include "Processes/Age/MortalityInstantaneous.h"
+#include "../../Observations/Observation.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Partition/Accessors/Cached/CombinedCategories.h"
+#include "../../Processes/Age/MortalityInstantaneous.h"
 
 // Namespace
 namespace niwa {

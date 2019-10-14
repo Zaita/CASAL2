@@ -12,15 +12,15 @@
 #ifdef TESTMODE
 
 // Headers
-#include "AllValues.h"
+#include "../../AllValues.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
 #include <string>
 
-#include "TestResources/MockClasses/Model.h"
-#include "Utilities/PartitionType.h"
+#include "../../TestResources/MockClasses/Model.h"
+#include "../../Utilities/PartitionType.h"
 
 // Namespaces
 namespace niwa {

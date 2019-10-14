@@ -15,7 +15,7 @@
 // Headers
 #include <string>
 
-#include "Processes/Process.h"
+#include "../Processes/Process.h"
 
 // Namespaces
 namespace niwa {

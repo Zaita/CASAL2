@@ -13,7 +13,7 @@
 #define OBSERVATIONS_FACTORY_H_
 
 // Headers
-#include "Observations/Observation.h"
+#include "../Observations/Observation.h"
 
 // Namespaces
 namespace niwa {

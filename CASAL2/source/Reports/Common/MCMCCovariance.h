@@ -15,7 +15,7 @@
 #define MCMCCOVARIANCE_H_
 
 // headers
-#include "Reports/Report.h"
+#include "../../Reports/Report.h"
 
 // namespaces
 namespace niwa {

@@ -10,7 +10,7 @@
 
 #include "TimeVarying.h"
 
-#include "TimeVarying/Manager.h"
+#include "../../TimeVarying/Manager.h"
 
 namespace niwa {
 namespace reports {

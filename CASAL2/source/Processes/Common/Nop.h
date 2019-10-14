@@ -15,7 +15,7 @@
 #define SOURCE_PROCESSES_CHILDREN_NOP_H_
 
 // headers
-#include "Processes/Process.h"
+#include "../../Processes/Process.h"
 
 // namespaces
 namespace niwa {

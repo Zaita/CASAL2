@@ -17,9 +17,9 @@
 #include <math.h>
 #include <iomanip>
 
-#include "Minimisers/Common/DeltaDiff/FMM.h"
-#include "Utilities/Math.h"
-#include "Translations/Translations.h"
+#include "../../../Minimisers/Common/DeltaDiff/FMM.h"
+#include "../../../Utilities/Math.h"
+#include "../../../Translations/Translations.h"
 
 // namespaces
 namespace niwa {

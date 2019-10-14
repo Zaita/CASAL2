@@ -13,7 +13,7 @@
 // headers
 #include <string>
 
-#include "Profiles/Profile.h"
+#include "../Profiles/Profile.h"
 
 // namespaces
 namespace niwa {

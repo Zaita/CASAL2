@@ -15,12 +15,12 @@
 #define AGE_OBSERVATIONS_ABUNDANCE_H_
 
 // Headers
-#include "Observations/Observation.h"
+#include "../../Observations/Observation.h"
 
-#include "Catchabilities/Catchability.h"
-#include "Partition/Accessors/CombinedCategories.h"
-#include "Partition/Accessors/Cached/CombinedCategories.h"
-#include "Catchabilities/Common/Nuisance.h"
+#include "../../Catchabilities/Catchability.h"
+#include "../../Partition/Accessors/CombinedCategories.h"
+#include "../../Partition/Accessors/Cached/CombinedCategories.h"
+#include "../../Catchabilities/Common/Nuisance.h"
 
 // Namespaces
 namespace niwa {
