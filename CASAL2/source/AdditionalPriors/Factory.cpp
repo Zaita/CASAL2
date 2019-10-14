@@ -52,7 +52,7 @@ AdditionalPrior* Factory::Create(shared_ptr<Model> model, const string& object_t
   }
 
   if (object)
-    model->managers().additional_prior()->AddObject(object);
+    model->managers()->additional_prior()->AddObject(object);
 
   return object;
 }

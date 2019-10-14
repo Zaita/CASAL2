@@ -60,7 +60,7 @@ public:
 
 private:
   // Members
-  shared_ptr<Model>                      model_;
+  shared_ptr<Model>           model_;
   All::DataType               data_;
 };
 

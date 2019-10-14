@@ -42,7 +42,7 @@ AgeWeight* Factory::Create(shared_ptr<Model> model, const string& object_type, c
 
 
     if (result)
-      model->managers().age_weight()->AddObject(result);
+      model->managers()->age_weight()->AddObject(result);
 
   }
   return result;

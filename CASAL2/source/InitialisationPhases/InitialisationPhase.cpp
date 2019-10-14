@@ -47,7 +47,7 @@ void InitialisationPhase::Validate() {
  */
 void InitialisationPhase::Build() {
   // Set the default process labels for the time step for this phase
-  auto time_steps = model_->managers().time_step()->ordered_time_steps();
+  auto time_steps = model_->managers()->time_step()->ordered_time_steps();
   for (auto time_step : time_steps)
     time_step->SetInitialisationProcessLabels(label_, time_step->process_labels());
 

@@ -34,7 +34,7 @@ SquareRoot::SquareRoot(shared_ptr<Model> model) : EstimateTransformation(model) 
  */
 void SquareRoot::DoBuild() {
   LOG_TRACE();
-  estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
+  estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
   if (estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_ESTIMATE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;

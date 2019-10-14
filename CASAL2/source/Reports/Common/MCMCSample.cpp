@@ -35,9 +35,9 @@ MCMCSample::MCMCSample() {
  *
  */
 void MCMCSample::DoBuild(shared_ptr<Model> model) {
-  mcmc_ = model->managers().mcmc()->active_mcmc();
+  mcmc_ = model->managers()->mcmc()->active_mcmc();
   if (!mcmc_)
-    LOG_CODE_ERROR() << "mcmc_ = model_->managers().mcmc()->active_mcmc();";
+    LOG_CODE_ERROR() << "mcmc_ = model_->managers()->mcmc()->active_mcmc();";
 }
 
 /**
@@ -46,7 +46,7 @@ void MCMCSample::DoBuild(shared_ptr<Model> model) {
 void MCMCSample::DoPrepare(shared_ptr<Model> model) {
   if (!model->global_configuration().resume()) {
     cache_ << "*mcmc_sample[mcmc]\n";
-    auto estimates = model->managers().estimate()->GetIsEstimated();
+    auto estimates = model->managers()->estimate()->GetIsEstimated();
     for (unsigned i = 0; i < estimates.size() - 1; ++i)
       cache_ << estimates[i]->parameter() << " ";
     cache_ << estimates[estimates.size() - 1]->parameter() << "\n";

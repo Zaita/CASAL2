@@ -114,7 +114,7 @@ public:
   void												set_run_mode(RunMode::Type run_mode) { run_mode_ = run_mode; }
 
   // manager accessors
-  virtual Managers&           managers();
+  virtual shared_ptr<Managers>	managers();
   virtual Objects&            objects();
   GlobalConfiguration&        global_configuration() { return *global_configuration_; }
   virtual Categories*         categories();
@@ -165,7 +165,7 @@ protected:
   bool                        addressable_values_file_ = false;
   unsigned                    adressable_values_count_ = 1;
   PartitionType               partition_type_ = PartitionType::kInvalid;
-  Managers*                   managers_ = nullptr;
+  shared_ptr<Managers>        managers_;
   Objects*                    objects_ = nullptr;
   GlobalConfiguration*        global_configuration_ = nullptr;
   Categories*                 categories_ = nullptr;

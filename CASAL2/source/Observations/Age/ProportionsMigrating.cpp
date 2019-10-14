@@ -204,14 +204,14 @@ void ProportionsMigrating::DoBuild() {
 
 // Create a pointer to misclassification matrix
   if( ageing_error_label_ != "") {
-  ageing_error_ = model_->managers().ageing_error()->GetAgeingError(ageing_error_label_);
+  ageing_error_ = model_->managers()->ageing_error()->GetAgeingError(ageing_error_label_);
   if (!ageing_error_)
     LOG_ERROR_P(PARAM_AGEING_ERROR) << "(" << ageing_error_label_ << ") could not be found. Have you defined it?";
   }
 
   age_results_.resize(age_spread_ * category_labels_.size(), 0.0);
 
-  TimeStep* time_step = model_->managers().time_step()->GetTimeStep(time_step_label_);
+  TimeStep* time_step = model_->managers()->time_step()->GetTimeStep(time_step_label_);
   if (!time_step) {
     LOG_FATAL_P(PARAM_TIME_STEP) << time_step_label_ << " could not be found. Have you defined it?";
   } else
@@ -278,7 +278,7 @@ void ProportionsMigrating::Execute() {
         // for ages older than max_age_ that could be classified as an individual within the observation range
         unsigned age = ( (*category_iter)->min_age_ + data_offset);
 
-        start_value   = (*cached_category_iter).data_[data_offset];
+        start_value   = (*cached_category_iter)->data_[data_offset];
         end_value     = (*category_iter)->data_[data_offset];
 
         numbers_age_before[data_offset] += start_value;

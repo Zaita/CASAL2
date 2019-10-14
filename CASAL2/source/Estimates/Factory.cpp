@@ -59,7 +59,7 @@ Estimate* Factory::Create(shared_ptr<Model> model, const string& object_type, co
       result = new UniformLog(model);
 
     if (result)
-      model->managers().estimate()->AddObject(result);
+      model->managers()->estimate()->AddObject(result);
   }
 
   return result;

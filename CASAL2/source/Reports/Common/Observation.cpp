@@ -42,9 +42,9 @@ void Observation::DoBuild(shared_ptr<Model> model) {
   vector<string> pearson_likelihoods = {PARAM_BINOMIAL, PARAM_MULTINOMIAL,PARAM_LOGNORMAL,PARAM_NORMAL,PARAM_BINOMIAL_APPROX};
   vector<string> normalised_likelihoods = {PARAM_LOGNORMAL,PARAM_NORMAL};
 
-  observation_ = model->managers().observation()->GetObservation(observation_label_);
+  observation_ = model->managers()->observation()->GetObservation(observation_label_);
   if (!observation_) {
-    auto observations = model->managers().observation()->objects();
+    auto observations = model->managers()->observation()->objects();
     for (auto observation : observations)
       cout << observation->label() << endl;
     LOG_ERROR_P(PARAM_OBSERVATION) << " (" << observation_label_ << ") could not be found. Have you defined it?";

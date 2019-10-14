@@ -69,7 +69,7 @@ Selectivity* Factory::Create(shared_ptr<Model> model, const string& object_type,
       result = new LogisticProducing(model);
 
     if (result)
-      model->managers().selectivity()->AddObject(result);
+      model->managers()->selectivity()->AddObject(result);
   }
 
   return result;

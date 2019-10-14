@@ -17,6 +17,7 @@
 #define SOURCE_MODEL_MANAGERS_H_
 
 #include <memory>
+#include <mutex>
 
 using std::shared_ptr;
 
@@ -57,6 +58,8 @@ class Managers {
   friend class Model;
   friend class MockManagers;
 public:
+  virtual                     ~Managers();
+
   // accessors
   virtual additionalpriors::Manager*      additional_prior() { return additional_prior_; }
   virtual ageingerrors::Manager*          ageing_error() { return ageing_error_; }
@@ -90,7 +93,6 @@ public:
 protected:
   // methods
   Managers(shared_ptr<Model> model);
-  virtual                     ~Managers();
   void                        Validate();
   void                        Build();
   void                        Reset();
@@ -122,6 +124,7 @@ protected:
   simulates::Manager*                 simulate_;
   timesteps::Manager*                 time_step_;
   timevarying::Manager*               time_varying_;
+  static std::mutex										lock_;
 };
 
 } /* namespace niwa */

@@ -36,9 +36,12 @@ public:
 	ThreadPool() = default;
 	virtual ~ThreadPool() = default;
 	void												CreateThreads(vector<shared_ptr<Model>> models);
-	vector<double>							RunCandidates(const vector<vector<double>>& candidates);
+	void												RunCandidates(const vector<vector<double>>& candidates, vector<double>& scores);
 	void												TerminateAll();
-	auto												Threads() { return threads_; }
+	void												CheckThreads();
+	void												StressTest();
+
+	vector<shared_ptr<Thread>>	Threads() { return threads_; }
 
 private:
 	// methods
@@ -47,6 +50,7 @@ private:
 
 	// members
 	vector<shared_ptr<Thread>>	threads_;
+	double											scores_[100] = {0};
 
 	DISALLOW_COPY_AND_ASSIGN(ThreadPool);
 };

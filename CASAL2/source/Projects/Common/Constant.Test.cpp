@@ -49,11 +49,11 @@ TEST_F(InternalEmptyModel, Projects_Constant_YCS) {
 	LoadConfiguration();
 	model_->Start(RunMode::kProjection);
 
-	Project* project = model_->managers().project()->GetProject("future_ycs");
+	Project* project = model_->managers()->project()->GetProject("future_ycs");
 	if(!project)
 		LOG_FATAL() << "!project";
 
-  DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("ssb");
+  DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("ssb");
 	if(!dq)
 		LOG_FATAL() << "!dq";
 
@@ -102,11 +102,11 @@ TEST_F(InternalEmptyModel, Projects_Constant_Catches) {
 	LoadConfiguration();
 	model_->Start(RunMode::kProjection);
 
-	Project* project = model_->managers().project()->GetProject("future_catch");
+	Project* project = model_->managers()->project()->GetProject("future_catch");
 	if(!project)
 		LOG_FATAL() << "!project";
 
-  DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("ssb");
+  DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("ssb");
 	if(!dq)
 		LOG_FATAL() << "!dq";
 

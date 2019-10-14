@@ -54,7 +54,7 @@ InitialisationPhase* Factory::Create(shared_ptr<Model> model, const string& obje
   }
 
   if (result)
-    model->managers().initialisation_phase()->AddObject(result);
+    model->managers()->initialisation_phase()->AddObject(result);
 
   return result;
 }

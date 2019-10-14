@@ -290,7 +290,7 @@ void MortalityInstantaneous::DoBuild() {
    * apply a different ratio of M so here we want to verify
    * we have enough
    */
-  vector<TimeStep*> time_steps = model_->managers().time_step()->ordered_time_steps();
+  vector<TimeStep*> time_steps = model_->managers()->time_step()->ordered_time_steps();
   vector<unsigned> active_time_steps;
   for (unsigned i = 0; i < time_steps.size(); ++i) {
     if (time_steps[i]->HasProcess(label_))
@@ -318,7 +318,7 @@ void MortalityInstantaneous::DoBuild() {
    * Assign the selectivity, penalty and time step index to each fisher data object
    */
   for (auto& fishery_category : fishery_categories_) {
-    fishery_category.selectivity_ = model_->managers().selectivity()->GetSelectivity(fishery_category.selectivity_label_);
+    fishery_category.selectivity_ = model_->managers()->selectivity()->GetSelectivity(fishery_category.selectivity_label_);
     /**
      * Check the fishery categories are valid
      */
@@ -332,14 +332,14 @@ void MortalityInstantaneous::DoBuild() {
   for (auto& fishery_iter : fisheries_) {
     auto& fishery = fishery_iter.second;
     if (fishery.penalty_label_ != "none") {
-      fishery.penalty_ = model_->managers().penalty()->GetProcessPenalty(fishery.penalty_label_);
+      fishery.penalty_ = model_->managers()->penalty()->GetProcessPenalty(fishery.penalty_label_);
       if (!fishery.penalty_)
         LOG_ERROR_P(PARAM_METHOD) << ": penalty " << fishery.penalty_label_ << " does not exist. Have you defined it?";
     }
-    bool check_time_step = model_->managers().time_step()->CheckTimeStep(fishery.time_step_label_);
+    bool check_time_step = model_->managers()->time_step()->CheckTimeStep(fishery.time_step_label_);
     if (!check_time_step)
       LOG_FATAL_P(PARAM_METHOD) << "The time step " << fishery.time_step_label_ << " could not be found have you defined it in the annual cycle";
-    fishery.time_step_index_ = model_->managers().time_step()->GetTimeStepIndex(fishery.time_step_label_);
+    fishery.time_step_index_ = model_->managers()->time_step()->GetTimeStepIndex(fishery.time_step_label_);
   }
 
   /**
@@ -355,7 +355,7 @@ void MortalityInstantaneous::DoBuild() {
    */
   for (auto& category : categories_) {
     // Selectivity
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(category.selectivity_label_);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(category.selectivity_label_);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << "selectivity " << category.selectivity_label_ << " does not exist. Have you defined it?";
     category.selectivity_ = selectivity;
@@ -369,7 +369,7 @@ void MortalityInstantaneous::DoBuild() {
       use_age_weight_ = false;
     } else {
       LOG_FINE() << "age weight found";
-      AgeWeight* age_weight = model_->managers().age_weight()->FindAgeWeight(category.age_weight_label_);
+      AgeWeight* age_weight = model_->managers()->age_weight()->FindAgeWeight(category.age_weight_label_);
       if (!age_weight)
         LOG_ERROR_P(PARAM_METHOD) << "age weight " << category.age_weight_label_ << " does not exist. Have you defined it?";
       category.age_weight_ = age_weight;
@@ -382,7 +382,7 @@ void MortalityInstantaneous::DoBuild() {
    */
   vector<unsigned> instant_mort_time_step;
   unsigned i = 0;
-  for (auto time_step : model_->managers().time_step()->ordered_time_steps()) {
+  for (auto time_step : model_->managers()->time_step()->ordered_time_steps()) {
     for (auto process : time_step->processes()) {
       if (process->process_type() == ProcessType::kMortality && process->type() == PARAM_MORTALITY_INSTANTANEOUS) {
         LOG_FINEST() << "instant_mortality process in time step " << i;
@@ -450,7 +450,7 @@ void MortalityInstantaneous::RebuildCache() {
 void MortalityInstantaneous::DoExecute() {
   LOG_TRACE();
 
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
   unsigned year =  model_->current_year();
   Double ratio = time_step_ratios_[time_step_index];
   Double selectivity_value = 0.0;

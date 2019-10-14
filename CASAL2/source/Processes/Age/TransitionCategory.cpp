@@ -56,8 +56,9 @@ TransitionCategory::TransitionCategory(shared_ptr<Model> model)
 void TransitionCategory::DoValidate() {
   LOG_TRACE();
 
-  if (selectivity_names_.size() == 1)
+  if (selectivity_names_.size() == 1) {
     selectivity_names_.assign(from_category_names_.size(), selectivity_names_[0]);
+  }
 
 //  // Validate Categories
   auto categories = model_->categories();
@@ -123,7 +124,7 @@ void TransitionCategory::DoBuild() {
   to_partition_.Init(to_category_names_);
 
   for(string label : selectivity_names_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);

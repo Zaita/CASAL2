@@ -43,7 +43,7 @@ Assert* Factory::Create(shared_ptr<Model> model, const string& object_type, cons
       result = new Partition(model);
 
     if (result)
-      model->managers().assertx()->AddObject(result);
+      model->managers()->assertx()->AddObject(result);
   }
 
   return result;

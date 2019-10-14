@@ -37,7 +37,7 @@ MCMC* Factory::Create(shared_ptr<Model> model, const string& object_type, const 
   }
 
   if (object)
-    model->managers().mcmc()->AddObject(object);
+    model->managers()->mcmc()->AddObject(object);
 
   return object;
 }

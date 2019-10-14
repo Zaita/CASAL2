@@ -35,7 +35,7 @@ Callback::Callback(shared_ptr<Model> model) : model_(model) {
  */
 Double Callback::operator()(const ::dlib::matrix<double, 0, 1>& Parameters) const {
   // Update our Components with the New Parameters
-  vector<Estimate*> estimates = model_->managers().estimate()->GetIsEstimated();
+  vector<Estimate*> estimates = model_->managers()->estimate()->GetIsEstimated();
 
   if (Parameters.size() != (int)estimates.size()) {
     LOG_CODE_ERROR() << "The number of enabled estimates does not match the number of test solution values";
@@ -49,13 +49,13 @@ Double Callback::operator()(const ::dlib::matrix<double, 0, 1>& Parameters) cons
     estimates[i]->set_value(value);
   }
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
   model_->FullIteration();
   LOG_MEDIUM() << "Iteration Complete";
   ObjectiveFunction& objective = model_->objective_function();
   objective.CalculateScore();
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   double score = objective.score() + penalty;
   return score;
 }

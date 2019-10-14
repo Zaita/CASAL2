@@ -251,19 +251,19 @@ TEST_F(InternalEmptyModel, Projects_UserDefined_Catches) {
 	LoadConfiguration();
 	model_->Start(RunMode::kProjection);
 
-	Project* project_2015 = model_->managers().project()->GetProject("western_catch_2015");
+	Project* project_2015 = model_->managers()->project()->GetProject("western_catch_2015");
 	if(!project_2015)
 		LOG_FATAL() << "!project_2015";
 
-	Project* project_2014 = model_->managers().project()->GetProject("western_catch_2014");
+	Project* project_2014 = model_->managers()->project()->GetProject("western_catch_2014");
 	if(!project_2014)
 		LOG_FATAL() << "!project_2014";
 
-	Project* project_2013 = model_->managers().project()->GetProject("western_catch_2013");
+	Project* project_2013 = model_->managers()->project()->GetProject("western_catch_2013");
 	if(!project_2013)
 		LOG_FATAL() << "!project_2013";
 
-  DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("biomass_t1");
+  DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("biomass_t1");
 	if(!dq)
 		LOG_FATAL() << "!dq";
 	// test the values have changed

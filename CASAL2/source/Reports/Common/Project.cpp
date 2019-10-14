@@ -38,7 +38,7 @@ Project::Project() {
  * Build our relationships between this object and other objects
  */
 void Project::DoBuild(shared_ptr<Model> model) {
-  project_ = model->managers().project()->GetProject(project_label_);
+  project_ = model->managers()->project()->GetProject(project_label_);
   if (!project_) {
     LOG_ERROR_P(PARAM_PROJECT) << "project " << project_label_ << " could not be found. Have you defined it?";
   }
@@ -49,7 +49,7 @@ void Project::DoBuild(shared_ptr<Model> model) {
  * Execute this report
  */
 void Project::DoExecute(shared_ptr<Model> model) {
-  project_ = model->managers().project()->GetProject(project_label_);
+  project_ = model->managers()->project()->GetProject(project_label_);
   if (!project_) {
     LOG_CODE_ERROR() << "!project: " << project_label_;
   }

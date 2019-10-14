@@ -35,7 +35,7 @@ Profile* Factory::Create(shared_ptr<Model> model, const string& object_type, con
     object = new Profile(model);
 
     if (object)
-      model->managers().profile()->AddObject(object);
+      model->managers()->profile()->AddObject(object);
   }
 
   return object;

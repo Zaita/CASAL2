@@ -45,7 +45,7 @@ void Simplex::DoValidate() {
  */
 void Simplex::DoBuild() {
   LOG_TRACE();
-  estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
+  estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
   if (estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_ESTIMATE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;
@@ -63,7 +63,7 @@ void Simplex::DoBuild() {
     }
   }
   LOG_WARNING() << "Simplex transforamtion works but is version 1.0 may need more work for calculating bounds";
-  estimates_ = model_->managers().estimate()->GetEstimatesByLabel(estimate_label_);
+  estimates_ = model_->managers()->estimate()->GetEstimatesByLabel(estimate_label_);
   if (estimates_.size() < 1) {
     LOG_ERROR_P(PARAM_ESTIMATE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;

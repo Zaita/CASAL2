@@ -128,7 +128,7 @@ bool MCMCSample::LoadFile(const string& file_name) {
   /**
    * Apply the values to our estimates
    */
-  auto estimates     = model_->managers().estimate()->GetIsEstimated();
+  auto estimates     = model_->managers()->estimate()->GetIsEstimated();
   if (estimates.size() != columns.size()) {
     LOG_ERROR() << "Model has " << estimates.size() << " estimates and the MCMC sample file has "
         << columns.size();

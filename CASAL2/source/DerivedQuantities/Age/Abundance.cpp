@@ -53,7 +53,7 @@ void Abundance::Execute() {
       }
     }
 
-    unsigned initialisation_phase = model_->managers().initialisation_phase()->current_initialisation_phase();
+    unsigned initialisation_phase = model_->managers()->initialisation_phase()->current_initialisation_phase();
     if (initialisation_values_.size() <= initialisation_phase)
       initialisation_values_.resize(initialisation_phase + 1);
 

@@ -243,7 +243,7 @@ void ProportionsByCategory::DoBuild() {
   age_results_.resize(age_spread_ * category_labels_.size(), 0.0);
 
   for(string label : selectivity_labels_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
@@ -253,7 +253,7 @@ void ProportionsByCategory::DoBuild() {
     selectivities_.assign(category_labels_.size(), selectivities_[0]);
 
   for(string label : target_selectivity_labels_) {
-    auto selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    auto selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity) {
       LOG_ERROR_P(PARAM_TARGET_SELECTIVITIES) << ": " << label << " does not exist. Have you defined it?";
     } else
@@ -338,7 +338,7 @@ void ProportionsByCategory::Execute() {
         LOG_FINE() << "---------------";
         LOG_FINE() << "age: " << age;
         selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-        start_value   = (*cached_category_iter).data_[data_offset];
+        start_value   = (*cached_category_iter)->data_[data_offset];
         end_value     = (*category_iter)->data_[data_offset];
         final_value   = 0.0;
 
@@ -382,7 +382,7 @@ void ProportionsByCategory::Execute() {
           break;
 
         selectivity_result = target_selectivities_[category_offset]->GetAgeResult(age, (*target_category_iter)->age_length_);
-        start_value   = (*target_cached_category_iter).data_[data_offset];
+        start_value   = (*target_cached_category_iter)->data_[data_offset];
         end_value     = (*target_category_iter)->data_[data_offset];
         final_value   = 0.0;
 

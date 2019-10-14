@@ -98,7 +98,7 @@ void MortalityPreySuitability::DoBuild() {
    */
   unsigned category_offset = 0;
   for (string selectivity : prey_selectivity_labels_) {
-    prey_selectivities_.push_back(model_->managers().selectivity()->GetSelectivity(selectivity));
+    prey_selectivities_.push_back(model_->managers()->selectivity()->GetSelectivity(selectivity));
     if (!prey_selectivities_[category_offset])
       LOG_ERROR_P(PARAM_PREY_SELECTIVITIES) << "selectivity " << selectivity << " does not exist. Have you defined it?";
     ++category_offset;
@@ -106,14 +106,14 @@ void MortalityPreySuitability::DoBuild() {
 
   category_offset = 0;
   for (string selectivity : predator_selectivity_labels_) {
-    predator_selectivities_.push_back(model_->managers().selectivity()->GetSelectivity(selectivity));
+    predator_selectivities_.push_back(model_->managers()->selectivity()->GetSelectivity(selectivity));
     if (!predator_selectivities_[category_offset])
       LOG_ERROR_P(PARAM_PREDATOR_SELECTIVITIES) << "selectivity " << selectivity << " does not exist. Have you defined it?";
     ++category_offset;
   }
 
   if (penalty_label_ != "none") {
-    penalty_ = model_->managers().penalty()->GetProcessPenalty(penalty_label_);
+    penalty_ = model_->managers()->penalty()->GetProcessPenalty(penalty_label_);
     if (!penalty_)
       LOG_ERROR_P(PARAM_PENALTY) << ": penalty " << penalty_label_ << " does not exist. Have you defined it?";
   }

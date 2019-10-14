@@ -41,7 +41,7 @@ void InitialisationPartitionMeanWeight::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
   //  auto categories = Categories::Instance();
   niwa::partition::accessors::All all_view(model);
-  unsigned time_step_index = model->managers().time_step()->current_time_step();
+  unsigned time_step_index = model->managers()->time_step()->current_time_step();
   vector<unsigned> length_bins = model->length_bins();
   cache_ << "*" << type_ << "[" << label_ << "]\n";
   for (auto iterator : all_view) {

@@ -41,7 +41,7 @@ void MPD::DoExecute(shared_ptr<Model> model) {
    * Print our Estimate Values
    */
   cache_ << "estimate_values:\n";
-  auto estimates = model->managers().estimate()->GetIsEstimated();
+  auto estimates = model->managers()->estimate()->GetIsEstimated();
   for (auto estimate : estimates)
     cache_ << estimate->parameter() << " ";
   cache_ << "\n";
@@ -54,7 +54,7 @@ void MPD::DoExecute(shared_ptr<Model> model) {
    * Print our covariance matrix
    */
   cache_ << "covariance_matrix:\n";
-  auto covariance_matrix = model->managers().minimiser()->active_minimiser()->covariance_matrix();
+  auto covariance_matrix = model->managers()->minimiser()->active_minimiser()->covariance_matrix();
   for (unsigned i = 0; i < covariance_matrix.size1(); ++i) {
      for (unsigned j = 0; j < covariance_matrix.size2(); ++j)
        cache_ << covariance_matrix(i,j) << " ";

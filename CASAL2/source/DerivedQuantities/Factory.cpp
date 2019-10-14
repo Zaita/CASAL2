@@ -51,7 +51,7 @@ DerivedQuantity* Factory::Create(shared_ptr<Model> model, const string& object_t
   }
 
   if (result)
-    model->managers().derived_quantity()->AddObject(result);
+    model->managers()->derived_quantity()->AddObject(result);
 
   return result;
 }

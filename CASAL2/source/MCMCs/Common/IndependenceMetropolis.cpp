@@ -63,7 +63,7 @@ void IndependenceMetropolis::BuildCovarianceMatrix() {
     covariance_matrix_ = covariance_matrix_lt;
   }
   	// Remove for the shared library only used for debugging purposes
-  	// Minimiser* minimiser = model_->managers().minimiser()->active_minimiser();
+  	// Minimiser* minimiser = model_->managers()->minimiser()->active_minimiser();
     // covariance_matrix_ = minimiser->covariance_matrix();
     // original_correlation = minimiser->correlation_matrix();
 
@@ -109,7 +109,7 @@ void IndependenceMetropolis::BuildCovarianceMatrix() {
    * Adjust any non-zero variances less than min_diff_ * difference between bounds
    */
   vector<Double> difference_bounds;
-  vector<Estimate*> estimates = model_->managers().estimate()->GetIsEstimated();
+  vector<Estimate*> estimates = model_->managers()->estimate()->GetIsEstimated();
   LOG_MEDIUM() << "upper_bound lower_bound";
   for (Estimate* estimate : estimates) {
     difference_bounds.push_back( estimate->upper_bound() - estimate->lower_bound() );
@@ -208,7 +208,7 @@ bool IndependenceMetropolis::DoCholeskyDecmposition() {
  */
 void IndependenceMetropolis::GenerateRandomStart() {
   vector<Double> original_candidates = candidates_;
-  vector<Estimate*> estimates = model_->managers().estimate()->GetIsEstimated();
+  vector<Estimate*> estimates = model_->managers()->estimate()->GetIsEstimated();
 
   unsigned attempts = 0;
   bool candidates_pass = false;
@@ -478,7 +478,7 @@ void IndependenceMetropolis::DoBuild() {
   LOG_TRACE();
 
   unsigned active_estimates = 0;
-  estimates_ = model_->managers().estimate()->GetIsEstimated();
+  estimates_ = model_->managers()->estimate()->GetIsEstimated();
 
   for(auto estimate : estimates_) {
 		if (!estimate)
@@ -510,7 +510,7 @@ void IndependenceMetropolis::DoExecute() {
 
 
   // Transform any parameters so that candidates are in the same space as the covariance matrix.
-  model_->managers().estimate_transformation()->TransformEstimatesForObjectiveFunction();
+  model_->managers()->estimate_transformation()->TransformEstimatesForObjectiveFunction();
   for (unsigned i = 0; i < estimate_count_; ++i) {
     candidates_[i] = AS_DOUBLE(estimates_[i]->value());
 
@@ -561,7 +561,7 @@ void IndependenceMetropolis::DoExecute() {
    * Get the objective score
    */
   // Do a quick restore so that estimates are in a space the model wants
-  model_->managers().estimate_transformation()->RestoreEstimatesFromObjectiveFunction();
+  model_->managers()->estimate_transformation()->RestoreEstimatesFromObjectiveFunction();
   model_->FullIteration();
   // For reporting purposes
   for (unsigned i = 0; i < estimate_count_; ++i) {
@@ -597,7 +597,7 @@ void IndependenceMetropolis::DoExecute() {
     new_link.values_                        = previous_untransformed_candidates;
     chain_.push_back(new_link);
     // Print first value
-		model_->managers().report()->Execute(model_->pointer(), State::kIterationComplete);
+		model_->managers()->report()->Execute(model_->pointer(), State::kIterationComplete);
 
   }
 
@@ -625,7 +625,7 @@ void IndependenceMetropolis::DoExecute() {
 
     // Generate new candidates
     // Need to make sure estimates are in the correct space.
-    model_->managers().estimate_transformation()->TransformEstimatesForObjectiveFunction();
+    model_->managers()->estimate_transformation()->TransformEstimatesForObjectiveFunction();
     GenerateNewCandidates();
 
     // Count the jump
@@ -639,7 +639,7 @@ void IndependenceMetropolis::DoExecute() {
       	estimates_[i]->set_value(candidates_[i]);
 
       // restore for model run.
-      model_->managers().estimate_transformation()->RestoreEstimatesFromObjectiveFunction();
+      model_->managers()->estimate_transformation()->RestoreEstimatesFromObjectiveFunction();
 
       // Run model with candidate parameters.
       model_->FullIteration();
@@ -707,7 +707,7 @@ void IndependenceMetropolis::DoExecute() {
 			new_link.values_ = previous_untransformed_candidates;
 			chain_.push_back(new_link);
 			//LOG_MEDIUM() << "Storing: Successful Jumps " << successful_jumps_ << " Jumps : " << jumps_;
-			model_->managers().report()->Execute(model_->pointer(), State::kIterationComplete);
+			model_->managers()->report()->Execute(model_->pointer(), State::kIterationComplete);
 		}
   } while (jumps_ < length_);
 }

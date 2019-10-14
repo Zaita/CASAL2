@@ -147,10 +147,10 @@ TEST(Objects, VerifyAddressableForUse) {
 
   // Now, we need to create an object and try to reference a non-existent addressable
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(false, objects.VerfiyAddressableForUse("process[unit_tester].y", addressable::kSimulate, error));
   ASSERT_EQ(true, (error.length() > 16));
@@ -190,10 +190,10 @@ TEST(Objects, GetAddressableType) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kSingle,       objects.GetAddressableType("process[unit_tester].a"));
   EXPECT_EQ(addressable::kVector,       objects.GetAddressableType("process[unit_tester].b"));
@@ -221,10 +221,10 @@ TEST(Objects, GetAddressable) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kSingle,       objects.GetAddressableType("process[unit_tester].a"));
   ASSERT_NE(nullptr, objects.GetAddressable("process[unit_tester].a"));
@@ -261,10 +261,10 @@ TEST(Objects, GetAddressable_Fail) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_THROW(objects.GetAddressable("bad[label].addressable"), std::string);
   EXPECT_THROW(objects.GetAddressable("process[bad_label].addressable"), std::string);
@@ -285,10 +285,10 @@ TEST(Objects, GetAddressables) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kMultiple,     objects.GetAddressableType("process[unit_tester].b{1,2}"));
   ASSERT_NE(nullptr, objects.GetAddressables("process[unit_tester].b{1,2}"));
@@ -320,10 +320,10 @@ TEST(Objects, GetAddressableUMap) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kUnsignedMap,  objects.GetAddressableType("process[unit_tester].c"));
   ASSERT_NE(nullptr, objects.GetAddressableUMap("process[unit_tester].c"));
@@ -348,10 +348,10 @@ TEST(Objects, GetAddressableSMap) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kStringMap,    objects.GetAddressableType("process[unit_tester].d"));
   ASSERT_NE(nullptr, objects.GetAddressableSMap("process[unit_tester].d"));
@@ -376,10 +376,10 @@ TEST(Objects, GetAddressableVector) {
 
   // Now, we need to create an object and try to reference addressables
   processes::UnitTester* unit_tester = new processes::UnitTester(model);
-  model->managers().process()->AddObject(unit_tester);
+  model->managers()->process()->AddObject(unit_tester);
   unit_tester->parameters().Add(PARAM_LABEL, "unit_tester", __FILE__, __LINE__);
   unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   EXPECT_EQ(addressable::kVector,  objects.GetAddressableType("process[unit_tester].b"));
   ASSERT_NE(nullptr, objects.GetAddressableVector("process[unit_tester].b"));
@@ -577,13 +577,13 @@ TEST(Objects, FindObject) {
   vector<processes::UnitTester*> objs;
   for (auto& name : names) {
     processes::UnitTester* unit_tester = new processes::UnitTester(model);
-    model->managers().process()->AddObject(unit_tester);
+    model->managers()->process()->AddObject(unit_tester);
     unit_tester->parameters().Add(PARAM_LABEL, name, __FILE__, __LINE__);
     unit_tester->parameters().Add(PARAM_TYPE, PARAM_NOP, __FILE__, __LINE__);
 
     objs.push_back(unit_tester);
   }
-  model->managers().process()->Validate(model);
+  model->managers()->process()->Validate(model);
 
   ASSERT_EQ(objs[0], objects.FindObject("process[unit0].addressable"));
   ASSERT_EQ(objs[1], objects.FindObject("process[unit01].addressable"));

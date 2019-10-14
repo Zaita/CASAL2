@@ -50,8 +50,8 @@ public:
   explicit Categories(shared_ptr<Model> model);
   virtual                     ~Categories() = default;
   void                        Init(const vector<string>& category_labels);
-  DataType::iterator          begin();
-  DataType::iterator          end();
+  DataType::const_iterator    begin();
+  DataType::const_iterator    end();
   unsigned                    size();
 
 private:

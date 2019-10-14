@@ -41,13 +41,13 @@ void ADOLC::Execute() {
   // Variables
   adolc::CallBack  call_back(model_);
 
-  auto estimate_manager = model_->managers().estimate();
+  auto estimate_manager = model_->managers()->estimate();
 
   vector<Double>  lower_bounds;
   vector<Double>  upper_bounds;
   vector<Double>  start_values;
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   auto estimates = estimate_manager->GetIsEstimated();
   for (auto estimate : estimates) {
 
@@ -71,7 +71,7 @@ void ADOLC::Execute() {
       status, max_iterations_, max_evaluations_, gradient_tolerance_,
       hessian_,1,step_size_);
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
   switch(status) {
     case -1:

@@ -74,7 +74,7 @@ void DerivedQuantity::Build() {
 
   partition_.Init(category_labels_);
 
-  selectivities::Manager& selectivity_manager = *model_->managers().selectivity();
+  selectivities::Manager& selectivity_manager = *model_->managers()->selectivity();
   for (string label : selectivity_labels_) {
     Selectivity* selectivity = selectivity_manager.GetSelectivity(label);
     if (!selectivity)
@@ -86,7 +86,7 @@ void DerivedQuantity::Build() {
   /**
    * ensure the time steps we have are valid
    */
-  TimeStep* time_step = model_->managers().time_step()->GetTimeStep(time_step_label_);
+  TimeStep* time_step = model_->managers()->time_step()->GetTimeStep(time_step_label_);
   if (!time_step)
     LOG_FATAL_P(PARAM_TIME_STEP) << " (" << time_step_label_ << ") could not be found. Have you defined it?";
   time_step->SubscribeToBlock(this);

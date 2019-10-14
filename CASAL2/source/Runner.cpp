@@ -70,9 +70,9 @@ int Runner::Go() {
 
 	// Create the managers that are shared across threads
 	auto reports_manager = shared_ptr<reports::Manager>(new reports::Manager());
-	master_model_->managers().set_reports(reports_manager);
+	master_model_->managers()->set_reports(reports_manager);
 	auto minimiser_manager = shared_ptr<minimisers::Manager>(new minimisers::Manager());
-	master_model_->managers().set_minimiser(minimiser_manager);
+	master_model_->managers()->set_minimiser(minimiser_manager);
 
 	master_model_->set_run_mode(run_mode);
 
@@ -129,17 +129,18 @@ int Runner::Go() {
 	master_model_->set_id(1);
 	config_loader.Build(model_list);
 	model_list.clear(); // so we don't re-parse configuration file into it
+	unsigned thread_count = master_model_->threads();
 
 	/**
 	 * Now we spawn our threads and populate the models
 	 */
 	LOG_MEDIUM() << "number of threads specified for model: " << master_model_->threads();
-	for (unsigned i = 1; i < master_model_->threads(); ++i) {
+	for (unsigned i = 1; i < thread_count; ++i) {
 		LOG_MEDIUM() << "Spawning model for thread with id " << (i+1);
-		shared_ptr<Model> model =  master_model_->factory().Create(PARAM_MODEL, model_type);
+		shared_ptr<Model> model =  Factory::Create(PARAM_MODEL, model_type);
 		model->set_id(i+1);
-		model->managers().set_reports(reports_manager);
-		model->managers().set_minimiser(minimiser_manager);
+		model->managers()->set_reports(reports_manager);
+		model->managers()->set_minimiser(minimiser_manager);
 		model->set_run_mode(run_mode);
 		model_list.push_back(model);
 	}
@@ -154,6 +155,7 @@ int Runner::Go() {
 	}
 
 	// Put the master model back into the list at the start
+//	model_list[0]->flag_primary_thread_model();
 	model_list.insert(model_list.begin(), master_model_);
 
 	// override any config file values from our command line parameters
@@ -182,6 +184,8 @@ int Runner::Go() {
 
 	thread_pool_.reset(new ThreadPool());
 	thread_pool_->CreateThreads(model_list);
+
+//	thread_pool_->CheckThreads();
 
 	/**
 	 * Check the run mode and call the handler.
@@ -286,12 +290,12 @@ bool Runner::RunEstimation() {
 	master_model_->set_run_mode(RunMode::kEstimation);
 	master_model_->FullIteration();
 
-	auto& managers  = master_model_->managers();
-	auto minimiser 	= managers.minimiser()->active_minimiser();
+	auto managers  = master_model_->managers();
+	auto minimiser 	= managers->minimiser()->active_minimiser();
 	if (minimiser == nullptr)
 	LOG_CODE_ERROR() << "if (minimiser == nullptr)";
 
-	auto estimables_manager = managers.estimables();
+	auto estimables_manager = managers->estimables();
 	map<string, Double> estimable_values;
 	bool use_addressable_file = master_model_->addressables_value_file();
 	unsigned iterations_to_do = estimables_manager->GetValueCount() == 0 ? 1 : estimables_manager->GetValueCount();
@@ -304,10 +308,10 @@ bool Runner::RunEstimation() {
 		master_model_->set_run_mode(RunMode::kEstimation);
 		LOG_MEDIUM() << "Calling minimiser to begin the estimation with the " << i + 1 << "st/nd/nth set of values";
 
-		unsigned phases = managers.estimate()->GetNumberOfPhases();
+		unsigned phases = managers->estimate()->GetNumberOfPhases();
 		for (unsigned j = 1; j <= phases; ++j) {
 			LOG_MEDIUM() << "model.estimation_phase: " << j;
-			managers.estimate()->SetActivePhase(j);
+			managers->estimate()->SetActivePhase(j);
 			minimiser->ExecuteThreaded(thread_pool_);
 		}
 
@@ -318,7 +322,7 @@ bool Runner::RunEstimation() {
 
 		master_model_->set_run_mode(RunMode::kEstimation);
 		LOG_MEDIUM() << "Model: State change to Iteration Complete";
-		managers.report()->Execute(master_model_, State::kIterationComplete);
+		managers->report()->Execute(master_model_, State::kIterationComplete);
 	}
 
 	LOG_MEDIUM() << "Model: State change to Finalise";

@@ -46,7 +46,7 @@ void PartitionBiomass::DoExecute(shared_ptr<Model> model) {
   unsigned lowest         = 9999;
   unsigned highest        = 0;
   unsigned longest_length = 0;
-  unsigned time_step_index = model->managers().time_step()->current_time_step();
+  unsigned time_step_index = model->managers()->time_step()->current_time_step();
 
   niwa::partition::accessors::All all_view(model);
   for (auto iterator : all_view) {

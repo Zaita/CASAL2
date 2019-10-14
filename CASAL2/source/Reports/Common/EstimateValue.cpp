@@ -31,8 +31,8 @@ EstimateValue::EstimateValue() {
  * Execute this report.
  */
 void EstimateValue::DoExecute(shared_ptr<Model> model) {
-  vector<Estimate*> estimates = model->managers().estimate()->objects();
-  vector<Profile*> profiles = model->managers().profile()->objects();
+  vector<Estimate*> estimates = model->managers()->estimate()->objects();
+  vector<Profile*> profiles = model->managers()->profile()->objects();
   LOG_TRACE();
   // Check if estiamtes are close to bounds. flag a warning.
   for (Estimate* estimate : estimates) {
@@ -57,7 +57,7 @@ void EstimateValue::DoExecute(shared_ptr<Model> model) {
  *  Execute the report in tabular format
  */
 void EstimateValue::DoExecuteTabular(shared_ptr<Model> model) {
-  vector<Estimate*> estimates = model->managers().estimate()->objects();
+  vector<Estimate*> estimates = model->managers()->estimate()->objects();
   /**
    * if this is the first run we print the report header etc
    */

@@ -43,7 +43,7 @@ using niwa::utilities::Double;
 class Categories {
 public:
   // Typedef
-  typedef vector<partition::Category> DataType;
+  typedef vector<partition::Category*> DataType;
 
   // Methods
   Categories() = delete;
@@ -57,7 +57,7 @@ public:
 
 private:
   // Members
-  shared_ptr<Model>                      model_;
+  shared_ptr<Model>           model_;
   vector<string>              category_labels_;
   DataType                    data_;
 };

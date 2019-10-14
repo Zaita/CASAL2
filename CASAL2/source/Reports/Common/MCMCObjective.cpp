@@ -34,9 +34,9 @@ MCMCObjective::MCMCObjective() {
  *
  */
 void MCMCObjective::DoBuild(shared_ptr<Model> model) {
-  mcmc_ = model->managers().mcmc()->active_mcmc();
+  mcmc_ = model->managers()->mcmc()->active_mcmc();
   if (!mcmc_)
-    LOG_CODE_ERROR() << "mcmc_ = model_->managers().mcmc()->active_mcmc();";
+    LOG_CODE_ERROR() << "mcmc_ = model_->managers()->mcmc()->active_mcmc();";
 }
 
 /**
@@ -57,7 +57,7 @@ void MCMCObjective::DoExecute(shared_ptr<Model> model) {
 
   if (first_write_ && !model->global_configuration().resume()) {
   	/// Up here!!!!!!!!!
-  	vector<Estimate*>  estimates = model->managers().estimate()->GetIsEstimated();
+  	vector<Estimate*>  estimates = model->managers()->estimate()->GetIsEstimated();
     cache_ << "starting_covariance_matrix {m}\n";
     auto covariance = mcmc_->covariance_matrix();
     if (estimates.size() != covariance.size1())

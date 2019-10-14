@@ -48,13 +48,13 @@ void DESolver::DoValidate() {
  * Execute our DE Solver minimiser engine
  */
 void DESolver::Execute() {
-  estimates::Manager& estimate_manager = *model_->managers().estimate();
+  estimates::Manager& estimate_manager = *model_->managers()->estimate();
 
   vector<double>  lower_bounds;
   vector<double>  upper_bounds;
   vector<double>  start_values;
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   vector<Estimate*> estimates = estimate_manager.GetIsEstimated();
   for (Estimate* estimate : estimates) {
     if (!estimate->estimated())
@@ -86,7 +86,7 @@ void DESolver::Execute() {
     LOG_FINE() << "DE Solver has failed to converge";
   }
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
 }
 

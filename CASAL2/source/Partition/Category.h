@@ -80,6 +80,8 @@ public:
 private:
   // members
   shared_ptr<Model>                      model_ = nullptr;
+
+  DISALLOW_COPY_AND_ASSIGN(Category);
 };
 
 } /* namespace partitions */

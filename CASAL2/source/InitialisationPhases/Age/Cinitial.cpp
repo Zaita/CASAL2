@@ -116,7 +116,7 @@ void Cinitial::DoValidate() {
  */
 void Cinitial::DoBuild() {
   LOG_TRACE();
-  time_steps_ = model_->managers().time_step()->ordered_time_steps();
+  time_steps_ = model_->managers()->time_step()->ordered_time_steps();
 
   // Create Category and cached category pointers
   partition_ = CombinedCategoriesPtr(new niwa::partition::accessors::CombinedCategories(model_, category_labels_));
@@ -125,7 +125,7 @@ void Cinitial::DoBuild() {
   unsigned i = 0;
   for (auto derived_quantities : derived_quanitity_) {
     if (derived_quantities != "") {
-      derived_ptr_.push_back(model_->managers().derived_quantity()->GetDerivedQuantity(derived_quantities));
+      derived_ptr_.push_back(model_->managers()->derived_quantity()->GetDerivedQuantity(derived_quantities));
       if (!derived_ptr_[i]) {
         LOG_ERROR() << "Cannot find " << derived_quantities;
       }
@@ -196,14 +196,14 @@ void Cinitial::Execute() {
   LOG_FINEST() << "finished calculating Cinitial";
   cached_partition_->BuildCache();
   // Execute the annual cycle for one year to calculate Cinitial
-  timesteps::Manager* time_step_manager = model_->managers().time_step();
+  timesteps::Manager* time_step_manager = model_->managers()->time_step();
   time_step_manager->ExecuteInitialisation(label_, 1);
 
   // Store that SSB value ssb_offset times in the Cintiial phase GetPhaseIndex
   LOG_FINE() << "derived_ptr_.size(): " << derived_ptr_.size();
   for (auto derived_quantities : derived_ptr_) {
     vector<vector<Double>>& initialisation_values = derived_quantities->initialisation_values();
-    unsigned cinit_phase_index = model_->managers().initialisation_phase()->GetPhaseIndex(label_);
+    unsigned cinit_phase_index = model_->managers()->initialisation_phase()->GetPhaseIndex(label_);
     LOG_FINE() << "initialisation_values size: " << initialisation_values.size();
     LOG_FINE() << "ssb_offset: " << ssb_offset_;
     LOG_FINE() << "cinit_phase_index: " << cinit_phase_index;
@@ -221,7 +221,7 @@ void Cinitial::Execute() {
     auto category_iter = partition_iter->begin();
     auto cached_category_iter = cached_partition_iter->begin();
     for (; category_iter != partition_iter->end(); ++cached_category_iter, ++category_iter) {
-      (*category_iter)->data_ = (*cached_category_iter).data_;
+      (*category_iter)->data_ = (*cached_category_iter)->data_;
     }
   }
 }

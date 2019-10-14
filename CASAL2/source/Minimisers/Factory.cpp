@@ -89,7 +89,7 @@ Minimiser* Factory::Create(shared_ptr<Model> model, const string& object_type, c
 #endif
 
     if (result)
-      model->managers().minimiser()->AddObject(result);
+      model->managers()->minimiser()->AddObject(result);
   }
 
   return result;

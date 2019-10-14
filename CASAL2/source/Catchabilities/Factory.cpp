@@ -39,7 +39,7 @@ Catchability* Factory::Create(shared_ptr<Model> model, const string& object_type
       result = new Nuisance(model);
 
     if (result)
-      model->managers().catchability()->AddObject(result);
+      model->managers()->catchability()->AddObject(result);
   }
 
   return result;

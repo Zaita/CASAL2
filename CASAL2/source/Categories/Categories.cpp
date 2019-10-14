@@ -220,7 +220,7 @@ void Categories::Build() {
      * Get our age length objects if age based partition model
      */
     if (parameters_.Get(PARAM_AGE_LENGTHS)->has_been_defined()) {
-      agelengths::Manager* age_sizes_manager = model_->managers().age_length();
+      agelengths::Manager* age_sizes_manager = model_->managers()->age_length();
       auto iter = category_age_length_labels_.begin();
       for (; iter != category_age_length_labels_.end(); ++iter) {
         AgeLength* age_size = age_sizes_manager->FindAgeLength(iter->second);
@@ -230,7 +230,7 @@ void Categories::Build() {
         categories_[iter->first].age_length_ = age_size;
       }
     } else if (parameters_.Get(PARAM_AGE_WEIGHT)->has_been_defined()) {
-      ageweights::Manager* age_weight_manager = model_->managers().age_weight();
+      ageweights::Manager* age_weight_manager = model_->managers()->age_weight();
       auto iter = category_age_weight_labels_.begin();
       for (; iter != category_age_weight_labels_.end(); ++iter) {
         AgeWeight* age_weight = age_weight_manager->FindAgeWeight(iter->second);
@@ -241,7 +241,7 @@ void Categories::Build() {
       }
     }
   } else if (model_->partition_type() == PartitionType::kLength) {
-    lengthweights::Manager* length_weight_manager = model_->managers().length_weight();
+    lengthweights::Manager* length_weight_manager = model_->managers()->length_weight();
     auto iter = category_length_weight_labels_.begin();
     for (; iter != category_length_weight_labels_.end(); ++iter) {
       LengthWeight* length_weight = length_weight_manager->GetLengthWeight(iter->second);

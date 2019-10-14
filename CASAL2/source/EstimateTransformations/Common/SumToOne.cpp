@@ -56,7 +56,7 @@ void SumToOne::DoValidate() {
 void SumToOne::DoBuild() {
   LOG_TRACE();
   for (auto& estimate_label : estimate_labels_) {
-    Estimate* estimate = model_->managers().estimate()->GetEstimateByLabel(estimate_label);
+    Estimate* estimate = model_->managers()->estimate()->GetEstimateByLabel(estimate_label);
     if (estimate == nullptr) {
       LOG_ERROR_P(PARAM_ESTIMATE_LABELS) << "Estimate " << estimate_label << " could not be found. Have you defined it?";
       return;

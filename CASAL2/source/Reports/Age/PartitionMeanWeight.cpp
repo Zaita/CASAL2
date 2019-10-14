@@ -49,7 +49,7 @@ void PartitionMeanWeight::DoBuild(shared_ptr<Model> model) {
  */
 void PartitionMeanWeight::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  unsigned time_step_index = model->managers().time_step()->current_time_step();
+  unsigned time_step_index = model->managers()->time_step()->current_time_step();
 
   niwa::partition::accessors::All all_view(model);
   unsigned year = model->current_year();

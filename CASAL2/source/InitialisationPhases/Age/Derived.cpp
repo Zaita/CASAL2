@@ -60,7 +60,7 @@ void Derived::DoValidate() {
  */
 
 void Derived::DoBuild() {
-  time_steps_ = model_->managers().time_step()->ordered_time_steps();
+  time_steps_ = model_->managers()->time_step()->ordered_time_steps();
 
   // handle any new processes we want to insert
   for (string insert : insert_processes_) {
@@ -70,7 +70,7 @@ void Derived::DoBuild() {
     string target_process = pieces.size() == 3 ? pieces[1] : "";
     string new_process = pieces.size() == 3 ? pieces[2] : pieces[1];
 
-    auto time_step = model_->managers().time_step()->GetTimeStep(pieces[0]);
+    auto time_step = model_->managers()->time_step()->GetTimeStep(pieces[0]);
     vector < string > process_labels = time_step->initialisation_process_labels(label_);
 
     if (target_process == "")
@@ -112,7 +112,7 @@ void Derived::DoBuild() {
   cached_partition_.Init(categories);
 
   // Find out the recruitment and ageing order
-  vector<ProcessType> process_types = model_->managers().time_step()->GetOrderedProcessTypes();
+  vector<ProcessType> process_types = model_->managers()->time_step()->GetOrderedProcessTypes();
   unsigned ageing_index = std::numeric_limits<unsigned>::max();
   unsigned recruitment_index = std::numeric_limits<unsigned>::max();
   for (unsigned i = 0; i < process_types.size(); ++i) {
@@ -130,7 +130,7 @@ void Derived::DoBuild() {
 
   // Find any BH_recruitment process in the annual cycle
   unsigned i = 0;
-  for (auto time_step : model_->managers().time_step()->ordered_time_steps()) {
+  for (auto time_step : model_->managers()->time_step()->ordered_time_steps()) {
     for (auto process : time_step->processes()) {
       if (process->process_type() == ProcessType::kRecruitment && process->type() == PARAM_RECRUITMENT_BEVERTON_HOLT) {
         LOG_FINEST() << "Found a BH process!!!!";
@@ -163,7 +163,7 @@ void Derived::Execute() {
   vector<string> categories = model_->categories()->category_names();
 
   LOG_FINEST() << "running intialisation for " << year_range << " years";
-  timesteps::Manager* time_step_manager = model_->managers().time_step();
+  timesteps::Manager* time_step_manager = model_->managers()->time_step();
   time_step_manager->ExecuteInitialisation(label_, year_range);
 
   // a shortcut to avoid running the model over more years to get the plus group right
@@ -180,24 +180,24 @@ void Derived::Execute() {
       // We are assuming it is the last element, If categories can have different age ranges, this will have to change.
       unsigned plus_index = (*category)->data_.size() - 1;
 
-      LOG_FINEST() << "Cached plus group " << cached_category->data_[plus_index] << " 1 year plus group " << (*category)->data_[plus_index];
+      LOG_FINEST() << "Cached plus group " << (*cached_category)->data_[plus_index] << " 1 year plus group " << (*category)->data_[plus_index];
       //if (the plus group has been populated)
-      if (cached_category->data_[plus_index] > 0) {
-        c = (*category)->data_[plus_index] / cached_category->data_[plus_index] - 1; //zero fun
+      if ((*cached_category)->data_[plus_index] > 0) {
+        c = (*category)->data_[plus_index] / (*cached_category)->data_[plus_index] - 1; //zero fun
         LOG_FINEST() << "The value of c = " << c;
         if (c > 0.99) {
           c = 0.99;
         } else if (c < 0.0)
           c = 0.0;
         // reset the partition back to the original Cached partition
-        (*category)->data_ = cached_category->data_;
+        (*category)->data_ = (*cached_category)->data_;
         LOG_FINEST() << "plus group pre adjustment = " << (*category)->data_[plus_index];
         // now multiply the approximated change to the plus group
         (*category)->data_[plus_index] *= 1 / (1 - c);
         LOG_FINEST() << "Adjustment based an approximation for the plus group = " << (*category)->data_[plus_index];
       } else {
         // reset the partition back to the original Cached partition
-        (*category)->data_ = cached_category->data_;
+        (*category)->data_ = (*cached_category)->data_;
       }
     }
   }
@@ -269,8 +269,8 @@ void Derived::Execute() {
     auto category = partition_.begin();
     for (; category != partition_.end(); ++category, ++cached_category) {
       for(unsigned n_age = 0; n_age <  (*category)->data_.size(); ++n_age)
-        LOG_FINEST() << "new part = " << (*category)->data_[n_age] << " old part = " << cached_category->data_[n_age];
-      (*category)->data_ = cached_category->data_;
+        LOG_FINEST() << "new part = " << (*category)->data_[n_age] << " old part = " << (*cached_category)->data_[n_age];
+      (*category)->data_ = (*cached_category)->data_;
     }
   }
 }

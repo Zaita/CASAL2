@@ -40,14 +40,14 @@ void DeltaDiff::ExecuteThreaded(shared_ptr<ThreadPool> thread_pool) {
   deltadiff::CallBack  call_back(thread_pool);
 
 	auto model = thread_pool->Threads()[0]->model();
-	estimates::Manager* estimate_manager = model->managers().estimate();
+	estimates::Manager* estimate_manager = model->managers()->estimate();
 	LOG_FINE() << "estimate_manager: " << estimate_manager;
 
 	vector<double>  lower_bounds;
 	vector<double>  upper_bounds;
 	vector<double>  start_values;
 
-	model->managers().estimate_transformation()->TransformEstimates();
+	model->managers()->estimate_transformation()->TransformEstimates();
 	vector<Estimate*> estimates = estimate_manager->GetIsEstimated();
 	LOG_FINE() << "estimates.size(): " << estimates.size();
 	for (Estimate* estimate : estimates) {
@@ -79,7 +79,7 @@ void DeltaDiff::ExecuteThreaded(shared_ptr<ThreadPool> thread_pool) {
       status, max_iterations_, max_evaluations_, gradient_tolerance_,
       hessian_,1,step_size_);
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
   switch(status) {
     case -1:

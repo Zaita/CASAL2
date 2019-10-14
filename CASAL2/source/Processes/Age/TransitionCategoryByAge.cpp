@@ -116,9 +116,9 @@ void TransitionCategoryByAge::DoBuild() {
   to_partition_.Init(to_category_labels_);
 
   if (penalty_label_ != "")
-    penalty_ = model_->managers().penalty()->GetPenalty(penalty_label_);
+    penalty_ = model_->managers()->penalty()->GetPenalty(penalty_label_);
   if (selectivity_label_ != "")
-    selectivity_ = model_->managers().selectivity()->GetSelectivity(selectivity_label_);
+    selectivity_ = model_->managers()->selectivity()->GetSelectivity(selectivity_label_);
 }
 
 /**

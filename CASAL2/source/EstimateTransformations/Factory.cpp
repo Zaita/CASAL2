@@ -57,7 +57,7 @@ EstimateTransformation* Factory::Create(shared_ptr<Model> model, const string& o
       result = new SumToOne(model);
 
     if (result)
-      model->managers().estimate_transformation()->AddObject(result);
+      model->managers()->estimate_transformation()->AddObject(result);
   }
 
   return result;

@@ -125,7 +125,7 @@ Vector3* Selectivity::GetCache(AgeLength* age_length) {
   RebuildCache();
   // size varies for multi-dimensional vector
   unsigned year_count = model_->years().size();
-  unsigned time_step_count = model_->managers().time_step()->size();
+  unsigned time_step_count = model_->managers()->time_step()->size();
   unsigned age_count = model_->age_spread();
 
   if (!length_based_) {

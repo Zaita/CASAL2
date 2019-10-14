@@ -211,11 +211,11 @@ void TagByAge::DoBuild() {
   to_partition_.Init(to_category_labels_);
 
   if (penalty_label_ != "")
-    penalty_ = model_->managers().penalty()->GetPenalty(penalty_label_);
+    penalty_ = model_->managers()->penalty()->GetPenalty(penalty_label_);
   else
     LOG_WARNING() << location() << " no penalty has been specified. Exploitation above u_max will not affect the objective function";
 
-  selectivities::Manager& selectivity_manager = *model_->managers().selectivity();
+  selectivities::Manager& selectivity_manager = *model_->managers()->selectivity();
   for (unsigned i = 0; i < selectivity_labels_.size(); ++i) {
     Selectivity* selectivity = selectivity_manager.GetSelectivity(selectivity_labels_[i]);
     if (!selectivity)

@@ -137,9 +137,9 @@ void RecruitmentBevertonHoltWithDeviations::DoBuild() {
     bo_initialised_ = true;
   }
   if (phase_b0_label_ != "")
-    phase_b0_ = model_->managers().initialisation_phase()->GetPhaseIndex(phase_b0_label_);
+    phase_b0_ = model_->managers()->initialisation_phase()->GetPhaseIndex(phase_b0_label_);
 
-  derived_quantity_ = model_->managers().derived_quantity()->GetDerivedQuantity(ssb_);
+  derived_quantity_ = model_->managers()->derived_quantity()->GetDerivedQuantity(ssb_);
   if (!derived_quantity_)
     LOG_ERROR_P(PARAM_SSB) << "(" << ssb_ << ") could not be found. Have you defined it?";
 
@@ -147,14 +147,14 @@ void RecruitmentBevertonHoltWithDeviations::DoBuild() {
    * Calculate out SSB offset
    */
   unsigned temp_ssb_offset = 0;
-  const vector<TimeStep*> ordered_time_steps = model_->managers().time_step()->ordered_time_steps();
+  const vector<TimeStep*> ordered_time_steps = model_->managers()->time_step()->ordered_time_steps();
   unsigned time_step_index = 0;
   unsigned process_index = 0;
   unsigned ageing_processes = 0;
   unsigned ageing_index = std::numeric_limits<unsigned>::max();
   unsigned recruitment_index = std::numeric_limits<unsigned>::max();
   unsigned derived_quantity_index = std::numeric_limits<unsigned>::max();
-  unsigned derived_quantity_time_step_index = model_->managers().time_step()->GetTimeStepIndex(derived_quantity_->time_step());
+  unsigned derived_quantity_time_step_index = model_->managers()->time_step()->GetTimeStepIndex(derived_quantity_->time_step());
   bool mortailty_block = false;
 
   // loop through time steps
@@ -190,7 +190,7 @@ void RecruitmentBevertonHoltWithDeviations::DoBuild() {
     }
     time_step_index++;
   }
-  recruitment_index = model_->managers().time_step()->GetProcessIndex(label_);
+  recruitment_index = model_->managers()->time_step()->GetProcessIndex(label_);
   if (ageing_processes > 1)
     LOG_ERROR_P(PARAM_SSB_OFFSET) << "BH recruitment year offset has been calculated on the basis of a single ageing process. We have identified "
         << ageing_processes << " ageing processes, we suggest manually setting ssb_offset for this scenerio. Or contacting the development team to discuss a change";
@@ -225,8 +225,8 @@ void RecruitmentBevertonHoltWithDeviations::DoBuild() {
   string b0_param = "process[" + label_ + "].b0";
   string r0_param = "process[" + label_ + "].r0";
 
-  bool B0_estimate = model_->managers().estimate()->HasEstimate(b0_param);
-  bool R0_estimate = model_->managers().estimate()->HasEstimate(r0_param);
+  bool B0_estimate = model_->managers()->estimate()->HasEstimate(b0_param);
+  bool R0_estimate = model_->managers()->estimate()->HasEstimate(r0_param);
 
   LOG_FINEST() << "is b0 estimated = " << B0_estimate << " is R0 estimated " << R0_estimate;
   if(B0_estimate & R0_estimate) {
@@ -240,8 +240,8 @@ void RecruitmentBevertonHoltWithDeviations::DoBuild() {
       LOG_CODE_ERROR() << "Could not convert the value " << year << " to a string";
 
     string recruit_parm = "process[" + label_ + "]." + PARAM_DEVIATION_VALUES + "{" + year_string + "}";
-    if (model_->managers().estimate()->HasEstimate(recruit_parm)) {
-      Estimate* recruit_dev_estimate = model_->managers().estimate()->GetEstimate(recruit_parm);
+    if (model_->managers()->estimate()->HasEstimate(recruit_parm)) {
+      Estimate* recruit_dev_estimate = model_->managers()->estimate()->GetEstimate(recruit_parm);
       if (!recruit_dev_estimate)
         LOG_CODE_ERROR() << "'!sigma_r_estimate_', parameter " << recruit_parm << " has estimate but we cannot get the estimate";
       if (recruit_dev_estimate->type() != PARAM_NORMAL_BY_STDEV)
@@ -316,7 +316,7 @@ void RecruitmentBevertonHoltWithDeviations::DoReset() {
     b0_ = derived_quantity_->GetLastValueFromInitialisation(phase_b0_);
 
   // Only rebuild in the reset if Bmax is estimated, otherwise it remains constant.
-  if (model_->managers().estimate()->HasEstimate("process[" +label_ + "].b_max")) {
+  if (model_->managers()->estimate()->HasEstimate("process[" +label_ + "].b_max")) {
     // Build Bias correction map by year 'bias_by_year_'
     for(auto year : recruit_dev_years_) {
       if (year <= year1_) {
@@ -349,7 +349,7 @@ void RecruitmentBevertonHoltWithDeviations::DoExecute() {
 
   Double amount_per = 0.0;
   if (model_->state() == State::kInitialise) {
-    initialisationphases::Manager& init_phase_manager = *model_->managers().initialisation_phase();
+    initialisationphases::Manager& init_phase_manager = *model_->managers()->initialisation_phase();
     if ((init_phase_manager.last_executed_phase() <= phase_b0_) & (parameters_.Get(PARAM_R0)->has_been_defined())) {
       amount_per = r0_;
     } else if ((init_phase_manager.last_executed_phase() <= phase_b0_) & (parameters_.Get(PARAM_B0)->has_been_defined())) {
@@ -387,7 +387,7 @@ void RecruitmentBevertonHoltWithDeviations::DoExecute() {
     Double SSB;
     if (ssb_year < model_->start_year()) {
       // Model is in normal years but requires an SSB from the initialisation phase
-      initialisationphases::Manager& init_phase_manager = *model_->managers().initialisation_phase();
+      initialisationphases::Manager& init_phase_manager = *model_->managers()->initialisation_phase();
       LOG_FINE() << "Initialisation phase index SSB is being extracted from init phase " << init_phase_manager.last_executed_phase()
           << " SSB year = " << ssb_year;
       SSB = derived_quantity_->GetLastValueFromInitialisation(init_phase_manager.last_executed_phase());

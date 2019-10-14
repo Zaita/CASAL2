@@ -204,7 +204,7 @@ TEST_F(InternalEmptyModel,Projection_Run_lognormal) {
 
   // check the results
   vector<Double> expected = {39020.374395850878,39119.730338979163,39522.039125316616,39899.741050984972,40219.624154617522,40406.927858193463,40738.987611694509,41620.462926768043};
-  niwa::DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("SSB");
+  niwa::DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("SSB");
   for (unsigned i = 0; i < 8; ++i) {
     unsigned year = 2012 + i;
     Double value = expected[i];

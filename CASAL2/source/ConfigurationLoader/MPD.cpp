@@ -91,7 +91,7 @@ bool MPD::LoadFile(const string& file_name) {
     if (!utilities::To<Double>(values[i], numeric))
       LOG_FATAL() << "In estimate_value file could not convert the value " << values[i] << " to a double";
 
-    auto estimate      = model_->managers().estimate()->GetEstimate(parameters[i]);
+    auto estimate      = model_->managers()->estimate()->GetEstimate(parameters[i]);
     if (!estimate)
       LOG_FATAL() << "Estimate " << parameters[i] << " was defined in MPD file but could not be found";
 
@@ -107,8 +107,8 @@ bool MPD::LoadFile(const string& file_name) {
     return false;
   }
 
-  auto estimate_count      = model_->managers().estimate()->GetIsEstimatedCount();
-  auto& covariance_matrix  = model_->managers().mcmc()->active_mcmc()->covariance_matrix();
+  auto estimate_count      = model_->managers()->estimate()->GetIsEstimatedCount();
+  auto& covariance_matrix  = model_->managers()->mcmc()->active_mcmc()->covariance_matrix();
   covariance_matrix.resize(estimate_count, estimate_count);
   for (unsigned i = 0; i < estimate_count; ++i) {
     if (!getline(file, line)) {

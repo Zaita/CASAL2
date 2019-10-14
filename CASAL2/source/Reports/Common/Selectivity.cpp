@@ -30,7 +30,7 @@ void Selectivity::DoValidate(shared_ptr<Model> model) {
 }
 
 void Selectivity::DoBuild(shared_ptr<Model> model) {
-  selectivity_ = model->managers().selectivity()->GetSelectivity(selectivity_label_);
+  selectivity_ = model->managers()->selectivity()->GetSelectivity(selectivity_label_);
   if (!selectivity_)
     LOG_FATAL_P(PARAM_SELECTIVITY) << " " << selectivity_label_ << " does not exist. Have you defined it?";
   if (selectivity_->IsSelectivityLengthBased()) {

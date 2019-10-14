@@ -54,7 +54,7 @@ VonBertalanffy::VonBertalanffy(shared_ptr<Model> model) : AgeLength(model) {
  * Obtain smart_pointers to any objects that will be used by this object.
  */
 void VonBertalanffy::DoBuild() {
-  length_weight_ = model_->managers().length_weight()->GetLengthWeight(length_weight_label_);
+  length_weight_ = model_->managers()->length_weight()->GetLengthWeight(length_weight_label_);
   if (!length_weight_)
     LOG_ERROR_P(PARAM_LENGTH_WEIGHT) << "(" << length_weight_label_ << ") could not be found. Have you defined it?";
 

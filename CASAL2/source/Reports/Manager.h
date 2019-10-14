@@ -72,7 +72,7 @@ private:
   std::atomic_flag                  run_;
   std::atomic<bool>                 waiting_;
   std::string                       std_header_ = "";
-  std::mutex           							lock_;
+  static std::mutex           			lock_;
   bool															has_validated_ = false;
   bool															has_built_ = false;
   bool															has_prepared_ = false;

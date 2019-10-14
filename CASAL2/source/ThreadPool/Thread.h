@@ -15,6 +15,7 @@
 #include <vector>
 #include <memory>
 #include <atomic>
+#include <stack>
 
 #include "../Utilities/NoCopy.h"
 
@@ -41,17 +42,17 @@ public:
 	void												flag_terminate();
 	bool												is_finished();
 	double											objective_score();
-	shared_ptr<Model>						model() { return  model_; }
+	shared_ptr<Model>						model();
 
 private:
 	// members
-	std::thread									thread_;
+	shared_ptr<std::thread>			thread_;
 	shared_ptr<Model>						model_;
 	std::atomic<bool>						is_finished_ = false;
 	std::atomic<bool>						terminate_ = false;
 	vector<double>							new_candidates_;
 	vector<double>							candidates_;
-	double											objective_score_ = 0;
+	std::stack<double>					scores_;
 	std::mutex									lock_;
 
 	DISALLOW_COPY_AND_ASSIGN(Thread);

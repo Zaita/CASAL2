@@ -77,7 +77,7 @@ void AgeLength::Validate() {
  * Obtain smart_pointers to any objects that will be used by this object.
  */
 void AgeLength::Build() {
-  unsigned time_step_count = model_->managers().time_step()->ordered_time_steps().size();
+  unsigned time_step_count = model_->managers()->time_step()->ordered_time_steps().size();
   if (time_step_proportions_.size() == 0) {
     time_step_proportions_.assign(time_step_count, 0.0);
   } else if (time_step_count != time_step_proportions_.size()) {

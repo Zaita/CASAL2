@@ -36,7 +36,7 @@ Simulate* Factory::Create(shared_ptr<Model> model, const string& object_type, co
       result = new Constant(model);
 
     if (result)
-      model->managers().simulate()->AddObject(result);
+      model->managers()->simulate()->AddObject(result);
   }
 
   return result;

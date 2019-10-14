@@ -41,7 +41,7 @@ void Orthogonal::DoValidate() {
  *
  */
 void Orthogonal::DoBuild() {
-  estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
+  estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
   if (estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_THETA_ONE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;
@@ -59,8 +59,8 @@ void Orthogonal::DoBuild() {
     }
   }
   LOG_TRACE();
-  first_estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
-  second_estimate_ = model_->managers().estimate()->GetEstimateByLabel(second_estimate_label_);
+  first_estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
+  second_estimate_ = model_->managers()->estimate()->GetEstimateByLabel(second_estimate_label_);
 
   if (first_estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_THETA_ONE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it in an @estimate block?";

@@ -52,7 +52,7 @@ TimeVarying* Factory::Create(shared_ptr<Model> model, const string& object_type,
       result = new RandomDraw(model);
 
     if (result)
-      model->managers().time_varying()->AddObject(result);
+      model->managers()->time_varying()->AddObject(result);
   }
 
   return result;

@@ -45,7 +45,7 @@ void RandomDraw::DoValidate() {
  *
  */
 void RandomDraw::DoBuild() {
-  Estimate* estimate = model_->managers().estimate()->GetEstimate(parameter_);
+  Estimate* estimate = model_->managers()->estimate()->GetEstimate(parameter_);
   if (estimate) {
     has_at_estimate_ = true;
     LOG_FINEST() << "Found an @estimate block for " << parameter_;

@@ -221,7 +221,7 @@ void ProcessRemovalsByAge::DoBuild() {
 
   // Create a pointer to misclassification matrix
     if( ageing_error_label_ != "") {
-    ageing_error_ = model_->managers().ageing_error()->GetAgeingError(ageing_error_label_);
+    ageing_error_ = model_->managers()->ageing_error()->GetAgeingError(ageing_error_label_);
     if (!ageing_error_)
       LOG_ERROR_P(PARAM_AGEING_ERROR) << "(" << ageing_error_label_ << ") could not be found. Have you defined it?";
     }
@@ -232,7 +232,7 @@ void ProcessRemovalsByAge::DoBuild() {
   age_results_.resize(age_spread_ * category_labels_.size(), 0.0);
 
   for (string time_label : time_step_label_) {
-    auto time_step = model_->managers().time_step()->GetTimeStep(time_label);
+    auto time_step = model_->managers()->time_step()->GetTimeStep(time_label);
     if (!time_step) {
       LOG_FATAL_P(PARAM_TIME_STEP) << time_label << " could not be found. Have you defined it?";
     } else {
@@ -265,7 +265,7 @@ void ProcessRemovalsByAge::DoBuild() {
   // If this observation is made up of multiple methods lets find out the last one, because that is when we execute the process
   vector<unsigned> time_step_index;
   for (string label : time_step_label_)
-    time_step_index.push_back(model_->managers().time_step()->GetTimeStepIndex(label));
+    time_step_index.push_back(model_->managers()->time_step()->GetTimeStepIndex(label));
 
   unsigned last_method_time_step = 9999;
   if (time_step_index.size() > 1) {
@@ -302,7 +302,7 @@ void ProcessRemovalsByAge::Execute() {
   LOG_FINEST() << "Entering observation " << label_;
 
   // Check if we are in the final time_step so we have all the relevent information from the Mortaltiy process
-  unsigned current_time_step = model_->managers().time_step()->current_time_step();
+  unsigned current_time_step = model_->managers()->time_step()->current_time_step();
 	if (time_step_to_execute_ == current_time_step) {
 
 		unsigned year = model_->current_year();

@@ -222,7 +222,7 @@ void TagRecaptureByAge::DoBuild() {
 
   // Build Selectivity pointers
   for(string label : selectivity_labels_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
@@ -232,7 +232,7 @@ void TagRecaptureByAge::DoBuild() {
 
 
   for(string label : target_selectivity_labels_) {
-    auto selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    auto selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity) {
       LOG_ERROR_P(PARAM_TARGET_SELECTIVITIES) << ": " << label << " does not exist. Have you defined it?";
     } else
@@ -246,7 +246,7 @@ void TagRecaptureByAge::DoBuild() {
     LOG_ERROR_P(PARAM_TIME_STEP_PROPORTION) << ": time_step_proportion (" << AS_DOUBLE(time_step_proportion_) << ") must be between 0.0 and 1.0";
   proportion_of_time_ = time_step_proportion_;
 
-  auto time_step = model_->managers().time_step()->GetTimeStep(time_step_label_);
+  auto time_step = model_->managers()->time_step()->GetTimeStep(time_step_label_);
   if (!time_step) {
     LOG_ERROR_P(PARAM_TIME_STEP) << " " << time_step_label_ << " could not be found. Have you defined it?";
   } else {
@@ -331,7 +331,7 @@ void TagRecaptureByAge::Execute() {
         LOG_FINE() << "---------------";
         LOG_FINE() << "age: " << age;
         selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-        start_value   = (*cached_category_iter).data_[data_offset];
+        start_value   = (*cached_category_iter)->data_[data_offset];
         end_value     = (*category_iter)->data_[data_offset];
         final_value   = 0.0;
 
@@ -376,7 +376,7 @@ void TagRecaptureByAge::Execute() {
           break;
 
         selectivity_result = target_selectivities_[category_offset]->GetAgeResult(age, (*target_category_iter)->age_length_);
-        start_value   = (*target_cached_category_iter).data_[data_offset];
+        start_value   = (*target_cached_category_iter)->data_[data_offset];
         end_value     = (*target_category_iter)->data_[data_offset];
         final_value   = 0.0;
 

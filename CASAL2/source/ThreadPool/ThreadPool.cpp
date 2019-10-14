@@ -13,6 +13,8 @@
 #include <chrono>
 
 #include "../Logging/Logging.h"
+#include "../Model/Model.h"
+#include "../Model/Managers.h"
 
 // namespaces
 namespace niwa {
@@ -26,7 +28,8 @@ namespace niwa {
 void ThreadPool::CreateThreads(vector<shared_ptr<Model>> models) {
 	// Create our Thread class objects
 	for(auto model : models) {
-		threads_.push_back(shared_ptr<Thread>(new Thread(model)));
+		auto thread = shared_ptr<Thread>(new Thread(model));
+		threads_.push_back(thread);
 	}
 
 	// Launch our threads
@@ -43,14 +46,13 @@ void ThreadPool::CreateThreads(vector<shared_ptr<Model>> models) {
  * @param candidates A vector of candidates (vector of doubles)
  * @return A vector of objective scores matching the length of the candidates vector
  */
-vector<double> ThreadPool::RunCandidates(const vector<vector<double>>& candidates) {
-	vector<double> scores_(candidates.size(), 0.0);
+void ThreadPool::RunCandidates(const vector<vector<double>>& candidates, vector<double>& scores) {
+
 	vector<int> thread_ids(candidates.size(), -1); // Track which thread is doing the work for each candidate
 	using namespace std::chrono_literals;
 	LOG_MEDIUM() << "Running a collection of " << candidates.size() << " candidates";
 //	std::this_thread::sleep_for(5s);
-	// loop over our candidates, then find a thread for each one
-	// to be run in
+	// loop over our candidates, then find a thread for each one to be run in
 	for (unsigned i = 0; i < candidates.size(); ++i) {
 		bool found_thread = false;
 		LOG_MEDIUM() << "Looking for thread for candidate set " << i+1;
@@ -61,6 +63,7 @@ vector<double> ThreadPool::RunCandidates(const vector<vector<double>>& candidate
 				if (thread->is_finished()) {
 					LOG_MEDIUM() << "Found thread " << thread_idx << " for candidate set " << i;
 					LOG_MEDIUM() << "candidates[i].size(): " << candidates[i].size();
+
 //					std::this_thread::sleep_for(5s);
 					found_thread = true;
 					thread->RunCandidates(candidates[i]);
@@ -69,6 +72,7 @@ vector<double> ThreadPool::RunCandidates(const vector<vector<double>>& candidate
 			}
 		}
 	}
+
 	LOG_MEDIUM() << "All candidates assigned to threads";
 	// We've assigned each candidate to a thread, now we'll wait until they're all finished
 	for (unsigned i = 0; i < candidates.size(); ++i) {
@@ -81,7 +85,7 @@ vector<double> ThreadPool::RunCandidates(const vector<vector<double>>& candidate
 		LOG_MEDIUM() << "Thread " << thread_ids[i] << " has returned score " << scores_[i];
 	}
 
-	return scores_;
+	return;
 }
 
 /**
@@ -111,5 +115,30 @@ void ThreadPool::JoinAll() {
 	for (auto& thread : threads_)
 		thread->Join();
 }
+
+void ThreadPool::CheckThreads() {
+
+	cout << "Checking Model Addresses: " << endl;
+	for (auto& thread : threads_)
+		cout << thread->model().get() << endl;
+
+	cout << "Checking Model Managers: " << endl;
+	for (auto& thread : threads_)
+		cout << thread->model()->managers().get() << endl;
+
+	cout << "Checking Reports Manager" << endl;
+	for (auto& thread : threads_)
+		cout << thread->model()->managers()->report().get() << endl;
+
+	cout << "Checking Process Manager" << endl;
+	for (auto& thread : threads_)
+		cout << thread->model()->managers()->process() << endl;
+
+}
+
+void ThreadPool::StressTest() {
+
+}
+
 
 } /* namespace niwa */

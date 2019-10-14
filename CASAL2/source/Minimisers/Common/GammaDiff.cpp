@@ -40,14 +40,14 @@ void GammaDiff::Execute() {
   LOG_FINE() << "model_: " << model_;
 
   gammadiff::CallBack  call_back(model_);
-  estimates::Manager* estimate_manager = model_->managers().estimate();
+  estimates::Manager* estimate_manager = model_->managers()->estimate();
   LOG_FINE() << "estimate_manager: " << estimate_manager;
 
   vector<double>  lower_bounds;
   vector<double>  upper_bounds;
   vector<double>  start_values;
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   vector<Estimate*> estimates = estimate_manager->GetIsEstimated();
   LOG_FINE() << "estimates.size(): " << estimates.size();
   for (Estimate* estimate : estimates) {
@@ -79,7 +79,7 @@ void GammaDiff::Execute() {
       status, max_iterations_, max_evaluations_, gradient_tolerance_,
       hessian_,1,step_size_);
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
   switch(status) {
     case -1:

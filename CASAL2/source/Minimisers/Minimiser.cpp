@@ -33,6 +33,8 @@ namespace niwa {
 namespace math = niwa::utilities::math;
 namespace ublas = boost::numeric::ublas;
 
+
+
 /**
  * Default constructor
  */
@@ -73,13 +75,14 @@ void Minimiser::Validate() {
 void Minimiser::Build() {
   LOG_TRACE();
 
-  hessian_size_ = model_->managers().estimate()->GetIsEstimatedCount();
-
-  hessian_ = new double*[hessian_size_];
-  for (unsigned i = 0; i < hessian_size_; ++i) {
-    hessian_[i] = new double[hessian_size_];
-    for (unsigned j = 0; j < hessian_size_; ++j)
-      hessian_[i][j] = 0.0;
+  hessian_size_ = model_->managers()->estimate()->GetIsEstimatedCount();
+  if (hessian_size_ > 0) {
+	  hessian_ = new double* [hessian_size_];
+	  for (unsigned i = 0; i < hessian_size_; ++i) {
+		  hessian_[i] = new double[hessian_size_];
+		  for (unsigned j = 0; j < hessian_size_; ++j)
+			  hessian_[i][j] = 0.0;
+	  }
   }
 
   DoBuild();

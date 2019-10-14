@@ -67,7 +67,7 @@ TEST_F(InternalEmptyModel, DerivedQuantities_Abundance) {
 //  model_->Start(RunMode::kBasic);
 //
 //  // check the results
-//  niwa::DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("derived_quantity_biomass");
+//  niwa::DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("derived_quantity_biomass");
 //  for (unsigned i = 0; i < 15; ++i) {
 //    unsigned year = 1994 + i;
 //    double value = (i + 1) * 997386.0;

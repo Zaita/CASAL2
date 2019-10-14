@@ -32,7 +32,8 @@ void Constant::DoValidate() {
   }
 
   if (values_.size() == 1) {
-    values_.assign(years_.size(), values_[0]);
+  	double value = values_[0];
+    values_.assign(years_.size(), value);
     LOG_FINEST() << "number of values converted from 1 to " << values_.size();
   }
   for (unsigned i = 0; i < years_.size(); ++i) {

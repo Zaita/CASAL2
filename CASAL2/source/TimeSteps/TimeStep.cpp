@@ -45,7 +45,7 @@ void TimeStep::Validate() {
 void TimeStep::Build() {
 
   // Get the pointers to our processes
-  processes::Manager& process_manager = *model_->managers().process();
+  processes::Manager& process_manager = *model_->managers()->process();
   for (string process_name : process_names_) {
     Process* process = process_manager.GetProcess(process_name);
     if (!process) {
@@ -208,7 +208,7 @@ void TimeStep::BuildInitialisationProcesses() {
   for (auto iter : initialisation_process_labels_) {
     for (string process_label : iter.second) {
       LOG_FINEST() << "Including " << process_label << " process in initialisation phase";
-      auto process = model_->managers().process()->GetProcess(process_label);
+      auto process = model_->managers()->process()->GetProcess(process_label);
       if (!process)
         return;
       initialisation_processes_[iter.first].push_back(process);

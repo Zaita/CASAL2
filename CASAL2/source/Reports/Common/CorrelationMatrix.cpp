@@ -29,7 +29,7 @@ void CorrelationMatrix::DoExecute(shared_ptr<Model> model) {
   /*
    * This reports the Covariance, Correlation and Hessian matrix
    */
-  auto minimiser_ = model->managers().minimiser()->active_minimiser();
+  auto minimiser_ = model->managers()->minimiser()->active_minimiser();
   if (!minimiser_)
     return;
 

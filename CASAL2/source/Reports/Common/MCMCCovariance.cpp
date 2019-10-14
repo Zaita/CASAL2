@@ -30,7 +30,7 @@ MCMCCovariance::MCMCCovariance() {
  *
  */
 void MCMCCovariance::DoExecute(shared_ptr<Model> model) {
-  MCMC* mcmc = model->managers().mcmc()->active_mcmc();
+  MCMC* mcmc = model->managers()->mcmc()->active_mcmc();
   ublas::matrix<Double>& covariance_matrix = mcmc->covariance_matrix();
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

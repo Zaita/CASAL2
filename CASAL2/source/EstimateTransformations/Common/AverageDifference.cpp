@@ -45,7 +45,7 @@ void AverageDifference::DoValidate() {
  */
 void AverageDifference::DoBuild() {
   LOG_TRACE();
-  estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
+  estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
   if (estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_THETA_ONE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;
@@ -61,7 +61,7 @@ void AverageDifference::DoBuild() {
     if (transform_with_jacobian_ != estimate_->transform_with_jacobian()) {
       LOG_ERROR_P(PARAM_TRANSFORM_WITH_JACOBIAN) << "This parameter is not consistent with the equivalent parameter in the @estimate block " << estimate_label_ << ". please make sure these are both true or both false.";
     }
-  }  difference_estimate_ = model_->managers().estimate()->GetEstimateByLabel(difference_estimate_label_);
+  }  difference_estimate_ = model_->managers()->estimate()->GetEstimateByLabel(difference_estimate_label_);
 
   if (difference_estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_THETA_TWO) << "Estimate " << difference_estimate_label_ << " could not be found. Have you defined it?";

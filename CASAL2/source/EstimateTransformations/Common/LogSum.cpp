@@ -44,8 +44,8 @@ void LogSum::DoValidate() {
  */
 void LogSum::DoBuild() {
   LOG_TRACE();
-  second_estimate_ = model_->managers().estimate()->GetEstimateByLabel(second_estimate_label_);
-  estimate_ = model_->managers().estimate()->GetEstimateByLabel(estimate_label_);
+  second_estimate_ = model_->managers()->estimate()->GetEstimateByLabel(second_estimate_label_);
+  estimate_ = model_->managers()->estimate()->GetEstimateByLabel(estimate_label_);
   if (estimate_ == nullptr) {
     LOG_ERROR_P(PARAM_THETA_ONE) << "Estimate " << estimate_label_ << " could not be found. Have you defined it?";
     return;

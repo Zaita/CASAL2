@@ -36,7 +36,7 @@ const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_or
   ::dlib::matrix<double, 0, 1> gradient_values(estimate_original_values.size());
 
   // Build scaled estimate values
-  vector<Estimate*> estimates = model_->managers().estimate()->GetIsEstimated();
+  vector<Estimate*> estimates = model_->managers()->estimate()->GetIsEstimated();
   vector<Double> estimate_values;
   Double penalty = 0.0;
   for (unsigned i = 0; i < estimates.size(); ++i) {
@@ -55,12 +55,12 @@ const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_or
     estimates[j]->set_value(value);
   }
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
   model_->FullIteration();
 
   objective.CalculateScore();
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   Double original_score = objective.score();
 //  cout << "os + p: " << objective.score() << " + " << penalty << endl;
 
@@ -86,12 +86,12 @@ const column_vector DLib::DLibCalculateGradient(const column_vector& estimate_or
         estimates[j]->set_value(value);
       }
 
-      model_->managers().estimate_transformation()->RestoreEstimates();
+      model_->managers()->estimate_transformation()->RestoreEstimates();
       model_->FullIteration();
 
       objective.CalculateScore();
 
-      model_->managers().estimate_transformation()->TransformEstimates();
+      model_->managers()->estimate_transformation()->TransformEstimates();
       plus_eps = objective.score(); // + penalty;
 
       /**
@@ -136,14 +136,14 @@ void DLib::Execute() {
   // Variables
   dlib::Callback  call_back(model_);
 
-  estimates::Manager& estimate_manager = *model_->managers().estimate();
+  estimates::Manager& estimate_manager = *model_->managers()->estimate();
   vector<Estimate*> estimates = estimate_manager.GetIsEstimated();
 
   ::dlib::matrix<double, 0, 1> start_values(estimates.size());
   ::dlib::matrix<double, 0, 1> lower_bounds(estimates.size());
   ::dlib::matrix<double, 0, 1> upper_bounds(estimates.size());
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   unsigned i = 0;
   for (Estimate* estimate : estimates) {
     if (!estimate->estimated())
@@ -227,7 +227,7 @@ void DLib::Execute() {
     << "DLib Error: " << ex.what();
   }
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
   result_ = MinimiserResult::kSuccess;
 }

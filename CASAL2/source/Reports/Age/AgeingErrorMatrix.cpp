@@ -28,7 +28,7 @@ AgeingErrorMatrix::AgeingErrorMatrix() {
  * @param model Any shared_ptr<Model> from the threaded list that can be queried
  */
 void AgeingErrorMatrix::DoBuild(shared_ptr<Model> model) {
-	auto ageingerror = model->managers().ageing_error()->GetAgeingError(ageingerror_label_);
+	auto ageingerror = model->managers()->ageing_error()->GetAgeingError(ageingerror_label_);
 	  if (!ageingerror)
 	    LOG_ERROR_P(PARAM_AGEING_ERROR) << "(" << ageingerror_label_ << ") could not be found. Have you defined it?";
 }
@@ -38,7 +38,7 @@ void AgeingErrorMatrix::DoBuild(shared_ptr<Model> model) {
  */
 void AgeingErrorMatrix::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  auto ageingerror = model->managers().ageing_error()->GetAgeingError(ageingerror_label_);
+  auto ageingerror = model->managers()->ageing_error()->GetAgeingError(ageingerror_label_);
   if (!ageingerror)
     LOG_CODE_ERROR() << "!ageingerror: " << ageingerror_label_;
   vector<vector<Double>>& mis_matrix = ageingerror->mis_matrix();

@@ -71,7 +71,7 @@ void MortalityInitialisationEventBiomass::DoBuild() {
   partition_.Init(category_labels_);
 
   for (string label : selectivity_names_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": selectivity " << label << " does not exist. Have you defined it?";
 
@@ -79,7 +79,7 @@ void MortalityInitialisationEventBiomass::DoBuild() {
   }
 
   if (penalty_name_ != "") {
-    penalty_ = model_->managers().penalty()->GetProcessPenalty(penalty_name_);
+    penalty_ = model_->managers()->penalty()->GetProcessPenalty(penalty_name_);
     if (!penalty_) {
       LOG_ERROR_P(PARAM_PENALTY) << ": penalty " << penalty_name_ << " does not exist. Have you defined it?";
     }
@@ -92,7 +92,7 @@ void MortalityInitialisationEventBiomass::DoBuild() {
  */
 void MortalityInitialisationEventBiomass::DoExecute() {
   LOG_TRACE();
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
 
   // only apply if initialisation phase
   if (model_->state() == State::kInitialise) {

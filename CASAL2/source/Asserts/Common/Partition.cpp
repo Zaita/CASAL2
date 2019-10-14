@@ -63,9 +63,9 @@ void Partition::DoBuild() {
  * Execute/Run/Process the object.
  */
 void Partition::Execute() {
-  auto category = model_->partition().category(category_label_);
+  auto category = &model_->partition().category(category_label_);
 
-  auto data = category.data_;
+  auto data = category->data_;
   if (data.size() != values_.size())
     LOG_FATAL_P(PARAM_VALUES) << ": number of values provided (" << values_.size() << ") does not match partition size (" << data.size() << ")";
 
@@ -75,7 +75,7 @@ void Partition::Execute() {
       std::cout.precision(9);
 
       LOG_ERROR() << "Assert Failure: Partition.Category: " << category_label_ << " had value " << data[i] << " when we expected " << values_[i] <<
-          " for age " << (category.min_age_ + i);
+          " for age " << (category->min_age_ + i);
 
       std::cout.precision(prec);
     }

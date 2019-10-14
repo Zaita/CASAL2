@@ -74,8 +74,8 @@ bool MCMCObjective::LoadFile(const string& file_name) {
     return false;
   }
 
-  auto estimate_count      = model_->managers().estimate()->GetIsEstimatedCount();
-  auto& covariance_matrix  = model_->managers().mcmc()->active_mcmc()->covariance_matrix();
+  auto estimate_count      = model_->managers()->estimate()->GetIsEstimatedCount();
+  auto& covariance_matrix  = model_->managers()->mcmc()->active_mcmc()->covariance_matrix();
   covariance_matrix.resize(estimate_count, estimate_count);
   for (unsigned i = 0; i < estimate_count; ++i) {
     if (!getline(file, line)) {
@@ -152,10 +152,10 @@ bool MCMCObjective::LoadFile(const string& file_name) {
   }
   LOG_FINE() << "step size = " << step_size;
 
-  model_->managers().mcmc()->active_mcmc()->set_starting_iteration(iteration_number);
-  model_->managers().mcmc()->active_mcmc()->set_succeful_jumps(success_jump);
-  model_->managers().mcmc()->active_mcmc()->set_step_size(step_size);
-  model_->managers().mcmc()->active_mcmc()->set_acceptance_rate_from_last_adapt(AR_since_last_adapt);
+  model_->managers()->mcmc()->active_mcmc()->set_starting_iteration(iteration_number);
+  model_->managers()->mcmc()->active_mcmc()->set_succeful_jumps(success_jump);
+  model_->managers()->mcmc()->active_mcmc()->set_step_size(step_size);
+  model_->managers()->mcmc()->active_mcmc()->set_acceptance_rate_from_last_adapt(AR_since_last_adapt);
 
 
   file.close();

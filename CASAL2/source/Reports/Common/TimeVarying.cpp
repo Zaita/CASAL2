@@ -29,7 +29,7 @@ TimeVarying::TimeVarying() {
  */
 void TimeVarying::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  auto manager = model->managers().time_varying();
+  auto manager = model->managers()->time_varying();
   auto time_varying = manager->objects();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
 

@@ -37,7 +37,7 @@ public:
   CallBack(shared_ptr<ThreadPool> thread_pool);
   virtual                     ~CallBack() = default;
   double                      operator()(const vector<double>& Parameters);
-  vector<double>							operator()(const vector<vector<double>>& Parameters);
+  void												operator()(const vector<vector<double>>& Parameters, vector<double>& scores);
 
 private:
   shared_ptr<ThreadPool>      thread_pool_;

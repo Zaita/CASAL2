@@ -40,7 +40,7 @@ double CallBack::operator()(const vector<double>& Parameters) {
 
 	// Update our Components with the New Parameters
   LOG_FINE() << "model_: " << model_;
-  vector<Estimate*> estimates = model_->managers().estimate()->GetIsEstimated();
+  vector<Estimate*> estimates = model_->managers()->estimate()->GetIsEstimated();
 
   if (Parameters.size() != estimates.size()) {
     LOG_CODE_ERROR() << "The number of enabled estimates does not match the number of test solution values";
@@ -49,22 +49,21 @@ double CallBack::operator()(const vector<double>& Parameters) {
   for (unsigned i = 0; i < Parameters.size(); ++i)
     estimates[i]->set_value(Parameters[i]);
 
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
   model_->FullIteration();
 
   ObjectiveFunction& objective = model_->objective_function();
   objective.CalculateScore();
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   return objective.score();
 }
 
 /**
  *
  */
-vector<double> CallBack::operator()(const vector<vector<double>>& Parameters) {
-	vector<double> scores = thread_pool_->RunCandidates(Parameters);
-	return scores;
+void CallBack::operator()(const vector<vector<double>>& Parameters, vector<double>& scores) {
+	thread_pool_->RunCandidates(Parameters, scores);
 }
 
 } /* namespace deltadiff */

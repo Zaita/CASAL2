@@ -128,7 +128,7 @@ Process* Factory::Create(shared_ptr<Model> model, const string& object_type, con
   }
 
   if (result)
-    model->managers().process()->AddObject(result);
+    model->managers()->process()->AddObject(result);
 
   return result;
 }

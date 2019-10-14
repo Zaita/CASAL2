@@ -51,7 +51,7 @@ Creator* Factory::Create(shared_ptr<Model> model, const string& object_type, con
     object = new UniformLog(model);
 
   if (object)
-    model->managers().estimate()->AddCreator(object);
+    model->managers()->estimate()->AddCreator(object);
 
   return object;
 }

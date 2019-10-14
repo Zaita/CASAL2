@@ -39,7 +39,7 @@ Process::Process() {
  * Build our relationships between this object and other objects
  */
 void Process::DoBuild(shared_ptr<Model> model) {
-  process_ = model->managers().process()->GetProcess(process_label_); // TODO: this will break shit
+  process_ = model->managers()->process()->GetProcess(process_label_); // TODO: this will break shit
   if (!process_) {
     LOG_ERROR_P(PARAM_PROCESS) << "process " << process_label_ << " could not be found. Have you defined it?";
   }
@@ -49,7 +49,7 @@ void Process::DoBuild(shared_ptr<Model> model) {
  * Execute this report
  */
 void Process::DoExecute(shared_ptr<Model> model) {
-  process_ = model->managers().process()->GetProcess(process_label_); // TODO: this will break shit
+  process_ = model->managers()->process()->GetProcess(process_label_); // TODO: this will break shit
   if (!process_)
     LOG_CODE_ERROR() << "(!process): " << process_label_;
 

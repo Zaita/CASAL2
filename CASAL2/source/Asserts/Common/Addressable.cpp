@@ -67,7 +67,7 @@ void Addressable::DoBuild() {
   /**
    * subscribe this assert to the target time step in all years that were specified.
    */
-  TimeStep* time_step = model_->managers().time_step()->GetTimeStep(time_step_label_);
+  TimeStep* time_step = model_->managers()->time_step()->GetTimeStep(time_step_label_);
   if (!time_step)
     LOG_ERROR_P(PARAM_TIME_STEP) << "(" << time_step_label_ << ") does not exist. Have you defined it?";
   for (unsigned year : years_)

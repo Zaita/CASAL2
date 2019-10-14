@@ -17,6 +17,7 @@ namespace niwa {
 namespace reports {
 
 using std::scoped_lock;
+std::mutex Manager::lock_;
 
 #define LOCK_WAIT() static std::mutex io_mutex; \
 { \

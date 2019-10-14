@@ -27,7 +27,7 @@ public:
   MyObjective(shared_ptr<Model> model) : model_(model) { }
 
   Double operator()(const MyModel& model, const dvv& x_unbounded) {
-    auto estimates = model_->managers().estimate()->GetIsEstimated();
+    auto estimates = model_->managers()->estimate()->GetIsEstimated();
 
     for (int i = 0; i < x_unbounded.size(); ++i) {
       dvariable estimate = x_unbounded[i + 1];
@@ -36,13 +36,13 @@ public:
     }
 
 
-    model_->managers().estimate_transformation()->RestoreEstimates();
+    model_->managers()->estimate_transformation()->RestoreEstimates();
     model_->FullIteration();
 
     ObjectiveFunction& objective = model_->objective_function();
     objective.CalculateScore();
 
-    model_->managers().estimate_transformation()->TransformEstimates();
+    model_->managers()->estimate_transformation()->TransformEstimates();
     return objective.score();
   }
 
@@ -64,9 +64,9 @@ BetaDiff::BetaDiff(shared_ptr<Model> model) : Minimiser(model) {
  *
  */
 void BetaDiff::Execute() {
-  auto estimate_manager = model_->managers().estimate();
+  auto estimate_manager = model_->managers()->estimate();
   auto estimates = estimate_manager->GetIsEstimated();
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
 
   dvector lower_bounds((int)estimates.size());
   dvector upper_bounds((int)estimates.size());
@@ -103,7 +103,7 @@ void BetaDiff::Execute() {
     }
   }
   
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 
   switch(convergence) {
     case -1:

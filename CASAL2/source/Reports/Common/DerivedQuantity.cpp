@@ -27,7 +27,7 @@ DerivedQuantity::DerivedQuantity() {
  */
 void DerivedQuantity::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  derivedquantities::Manager& manager = *model->managers().derived_quantity();
+  derivedquantities::Manager& manager = *model->managers()->derived_quantity();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
 
   auto derived_quantities = manager.objects();
@@ -62,7 +62,7 @@ void DerivedQuantity::DoExecute(shared_ptr<Model> model) {
  */
 
 void DerivedQuantity::DoExecuteTabular(shared_ptr<Model> model) {
-  derivedquantities::Manager& manager = *model->managers().derived_quantity();
+  derivedquantities::Manager& manager = *model->managers()->derived_quantity();
   auto derived_quantities = manager.objects();
 
   if (first_run_) {

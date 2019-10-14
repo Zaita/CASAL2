@@ -187,7 +187,7 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
       utilities::RandomNumberGenerator::Instance().Reset(model->global_configuration().random_seed());
 
       // Thread off the reports
-      auto report_manager = model->managers().report();
+      auto report_manager = model->managers()->report();
       std::thread report_thread([report_manager]() { report_manager->FlushReports(); });
 
       // Run the model
@@ -210,7 +210,7 @@ int Run(int argc, char * argv[], niwa::utilities::RunParameters& options) {
     } // switch(run_mode)
 
     if (run_mode == RunMode::kTesting) {
-      auto minimiser = model->managers().minimiser()->active_minimiser();
+      auto minimiser = model->managers()->minimiser()->active_minimiser();
       if (minimiser)
         options.minimiser_ = minimiser->type();
     }

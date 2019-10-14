@@ -35,7 +35,7 @@ TimeStep* Factory::Create(shared_ptr<Model> model, const string& object_type, co
     object = new TimeStep(model);
 
     if (object)
-      model->managers().time_step()->AddObject(object);
+      model->managers()->time_step()->AddObject(object);
   }
 
   return object;

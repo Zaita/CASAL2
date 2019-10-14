@@ -20,6 +20,8 @@ namespace minimisers {
 
 using std::scoped_lock;
 
+std::mutex Manager::lock_;
+
 /**
  * Default constructor
  */

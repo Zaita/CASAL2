@@ -71,7 +71,7 @@ void Manager::Build(shared_ptr<Model> model) {
     }
   }
 
-  for (auto time_step : model->managers().time_step()->ordered_time_steps())
+  for (auto time_step : model->managers()->time_step()->ordered_time_steps())
     time_step->BuildInitialisationProcesses();
 }
 

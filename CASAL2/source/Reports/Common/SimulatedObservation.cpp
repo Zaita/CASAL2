@@ -33,7 +33,7 @@ SimulatedObservation::SimulatedObservation() {
  * build method
  */
 void SimulatedObservation::DoBuild(shared_ptr<Model> model) {
-  observation_ = model->managers().observation()->GetObservation(observation_label_);
+  observation_ = model->managers()->observation()->GetObservation(observation_label_);
   if (!observation_)
     LOG_ERROR_P(PARAM_OBSERVATION) << "(" << observation_label_ << ") could not be found. Have you defined it?";
 }

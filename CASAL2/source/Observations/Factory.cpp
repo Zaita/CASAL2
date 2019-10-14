@@ -89,7 +89,7 @@ Observation* Factory::Create(shared_ptr<Model> model, const string& object_type,
   }
 */
   if (result)
-    model->managers().observation()->AddObject(result);
+    model->managers()->observation()->AddObject(result);
 
   return result;
 }

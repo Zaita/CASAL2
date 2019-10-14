@@ -121,15 +121,15 @@ void Multivariate::FullIteration() {
 //		new_x = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
 ////		new_y = utilities::RandomNumberGenerator::Instance().uniform(-1.0, 1.0);
 //	} else {
-//		new_x = managers().selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
-////		new_y = managers().selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
+//		new_x = managers()->selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
+////		new_y = managers()->selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
 //	}
 //
 ////	Eigen::VectorXd test(2);
 ////	test << new_x, new_y;
 //	objective_score_ = exp(-new_x); //1.0 - mvn.pdf(test);
 //
-//	managers().penalty()->FlagPenalty("PI_Approximation", objective_score_);
+//	managers()->penalty()->FlagPenalty("PI_Approximation", objective_score_);
 //	cout << "Objective Score: " << objective_score_ << "; new_x/new_y: " << new_x << endl; //<< "/" << new_y << endl;
 	LOG_FATAL() << "Multivariate Model type has not yet been implemented";
 }

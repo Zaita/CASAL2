@@ -176,8 +176,9 @@ void ProportionsAtAge::DoValidate() {
 
       error_values_by_year[year].push_back(value);
     }
-	double x = error_values_by_year[year][0];
+
     if (error_values_by_year[year].size() == 1) {
+    	double x = error_values_by_year[year][0];
       error_values_by_year[year].assign(obs_expected - 1, x);
     }
     if (error_values_by_year[year].size() != obs_expected - 1)
@@ -223,7 +224,7 @@ void ProportionsAtAge::DoBuild() {
   // Build Selectivity pointers
   for(string label : selectivity_labels_) {
   	LOG_FINEST() << "label = " << label;
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
@@ -233,7 +234,7 @@ void ProportionsAtAge::DoBuild() {
 
   // Create a pointer to Ageing error misclassification matrix
   if( ageing_error_label_ != "") {
-  ageing_error_ = model_->managers().ageing_error()->GetAgeingError(ageing_error_label_);
+  ageing_error_ = model_->managers()->ageing_error()->GetAgeingError(ageing_error_label_);
   if (!ageing_error_)
     LOG_ERROR_P(PARAM_AGEING_ERROR) << "(" << ageing_error_label_ << ") could not be found. Have you defined it?";
   }
@@ -311,7 +312,7 @@ void ProportionsAtAge::Execute() {
         // for ages older than max_age_ that could be classified as an individual within the observation range
         unsigned age = ( (*category_iter)->min_age_ + data_offset);
         selectivity_result = selectivities_[selectivity_iter]->GetAgeResult(age, (*category_iter)->age_length_);
-        start_value   = (*cached_category_iter).data_[data_offset];
+        start_value   = (*cached_category_iter)->data_[data_offset];
         end_value     = (*category_iter)->data_[data_offset];
         final_value   = 0.0;
 

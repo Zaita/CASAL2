@@ -48,8 +48,8 @@ public:
   CategoriesWithAge(shared_ptr<Model> model, const vector<string>& categories, const unsigned& age);
   virtual                     ~CategoriesWithAge() = default;
   unsigned                    size();
-  DataType::iterator          begin();
-  DataType::iterator          end();
+  const DataType::iterator          begin();
+  const DataType::iterator          end();
 
 private:
   // Members

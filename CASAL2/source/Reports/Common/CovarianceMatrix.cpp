@@ -29,7 +29,7 @@ void CovarianceMatrix::DoExecute(shared_ptr<Model> model) {
    * This reports the Covariance, Correlation and Hessian matrix
    */
   LOG_TRACE();
-  auto minimiser_ = model->managers().minimiser()->active_minimiser();
+  auto minimiser_ = model->managers()->minimiser()->active_minimiser();
   covariance_matrix_ = minimiser_->covariance_matrix();
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
@@ -42,7 +42,7 @@ void CovarianceMatrix::DoExecute(shared_ptr<Model> model) {
   }
 
   if (model->run_mode() == RunMode::kMCMC) {
-    auto mcmc_ = model->managers().mcmc()->active_mcmc();
+    auto mcmc_ = model->managers()->mcmc()->active_mcmc();
     if (mcmc_->recalculate_covariance()) {
       cache_ << REPORT_END << "\n\n";
       LOG_FINE() << "During the mcmc run you recalculated the the covariance matrix, so we will print the modified matrix at the end of the chain";

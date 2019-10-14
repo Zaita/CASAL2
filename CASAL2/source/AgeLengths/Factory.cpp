@@ -46,7 +46,7 @@ AgeLength* Factory::Create(shared_ptr<Model> model, const string& object_type, c
       result = new VonBertalanffy(model);
 
     if (result)
-      model->managers().age_length()->AddObject(result);
+      model->managers()->age_length()->AddObject(result);
   }
 
   return result;

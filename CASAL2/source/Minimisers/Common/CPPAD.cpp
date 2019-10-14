@@ -42,21 +42,21 @@ public:
   typedef CPPAD_TESTVECTOR( AD<double> ) ADvector;
 
   void operator()(ADvector& fg, const ADvector& candidates) {
-    auto estimates = model_->managers().estimate()->GetIsEstimated();
+    auto estimates = model_->managers()->estimate()->GetIsEstimated();
 
     for (unsigned i = 0; i < candidates.size(); ++i) {
       Double estimate = candidates[i];
       estimates[i]->set_value(candidates[i]);
     }
 
-    model_->managers().estimate_transformation()->RestoreEstimates();
+    model_->managers()->estimate_transformation()->RestoreEstimates();
     model_->FullIteration();
 
     ObjectiveFunction& objective = model_->objective_function();
     objective.CalculateScore();
     fg[0] = objective.score();
 
-    model_->managers().estimate_transformation()->TransformEstimates();
+    model_->managers()->estimate_transformation()->TransformEstimates();
     return;
   }
 
@@ -86,14 +86,14 @@ CPPAD::CPPAD(shared_ptr<Model> model) : Minimiser(model) {
 void CPPAD::Execute() {
   typedef CPPAD_TESTVECTOR( double ) Dvector;
 
-  auto estimate_manager = model_->managers().estimate();
+  auto estimate_manager = model_->managers()->estimate();
   auto estimates = estimate_manager->GetIsEstimated();
 
   Dvector lower_bounds(estimates.size());
   Dvector upper_bounds(estimates.size());
   Dvector start_values(estimates.size());
 
-  model_->managers().estimate_transformation()->TransformEstimates();
+  model_->managers()->estimate_transformation()->TransformEstimates();
   for (unsigned i = 0; i < estimates.size(); ++i) {
     lower_bounds[i] = AS_DOUBLE(estimates[i]->lower_bound());
     upper_bounds[i] = AS_DOUBLE(estimates[i]->upper_bound());
@@ -197,7 +197,7 @@ void CPPAD::Execute() {
     cerr << "unknown error\n";
   }
 */
-  model_->managers().estimate_transformation()->RestoreEstimates();
+  model_->managers()->estimate_transformation()->RestoreEstimates();
 }
 
 } /* namespace minimisers */

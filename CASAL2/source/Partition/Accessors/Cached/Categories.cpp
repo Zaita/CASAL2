@@ -51,7 +51,7 @@ void Categories::BuildCache() {
     if (std::find(category.years_.begin(), category.years_.end(), year) == category.years_.end())
       continue; // Not valid in this year
 
-    data_.push_back(category);
+    data_.push_back(&category);
   }
 }
 

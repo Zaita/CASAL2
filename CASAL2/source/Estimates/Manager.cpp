@@ -97,7 +97,7 @@ void Manager::Validate(shared_ptr<Model> model) {
    */
   GlobalConfiguration& global_config = model->global_configuration();
   if (global_config.estimable_value_file() != "") {
-    Estimables& estimables = *model->managers().estimables();
+    Estimables& estimables = *model->managers()->estimables();
     vector<string> estimable_labels = estimables.GetEstimables();
 
     for (string label : estimable_labels) {
@@ -130,7 +130,7 @@ void Manager::Build(shared_ptr<Model> model) {
   }
 
   if (model->is_primary_thread_model() && model->global_configuration().create_mpd_file()) {
-    model->managers().report()->Pause();
+    model->managers()->report()->Pause();
 
     reports::MPD* report = new reports::MPD();
     report->set_block_type(PARAM_REPORT);
@@ -140,9 +140,9 @@ void Manager::Build(shared_ptr<Model> model) {
     report->parameters().Add(PARAM_TYPE, PARAM_MPD, __FILE__, __LINE__);
     report->parameters().Add(PARAM_FILE_NAME, "mpd.out", __FILE__, __LINE__);
     report->Validate(model->pointer());
-    model->managers().report()->AddObject(report);
+    model->managers()->report()->AddObject(report);
 
-    model->managers().report()->Resume();
+    model->managers()->report()->Resume();
   }
 }
 

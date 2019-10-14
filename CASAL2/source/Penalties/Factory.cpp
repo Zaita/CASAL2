@@ -37,7 +37,7 @@ Penalty* Factory::Create(shared_ptr<Model> model, const string& object_type, con
       object = new Process(model);
 
     if (object)
-      model->managers().penalty()->AddObject(object);
+      model->managers()->penalty()->AddObject(object);
   }
 
   return object;

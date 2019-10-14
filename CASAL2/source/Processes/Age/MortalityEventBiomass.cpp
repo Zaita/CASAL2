@@ -84,7 +84,7 @@ void MortalityEventBiomass::DoBuild() {
   partition_.Init(category_labels_);
 
   for (string label : selectivity_labels_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": selectivity " << label << " does not exist. Have you defined it?";
 
@@ -92,7 +92,7 @@ void MortalityEventBiomass::DoBuild() {
   }
 
   if (penalty_label_ != "") {
-    penalty_ = model_->managers().penalty()->GetProcessPenalty(penalty_label_);
+    penalty_ = model_->managers()->penalty()->GetProcessPenalty(penalty_label_);
     if (!penalty_) {
       LOG_ERROR_P(PARAM_PENALTY) << ": penalty " << penalty_label_ << " does not exist. Have you defined it?";
     }
@@ -115,7 +115,7 @@ void MortalityEventBiomass::DoReset() {
 void MortalityEventBiomass::DoExecute() {
   if (catch_years_[model_->current_year()] == 0)
     return;
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
   LOG_TRACE();
   /**
    * Work our how much of the stock is vulnerable

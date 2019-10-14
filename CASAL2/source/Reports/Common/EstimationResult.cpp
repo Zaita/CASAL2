@@ -33,7 +33,7 @@ EstimationResult::EstimationResult() {
  */
 void EstimationResult::DoExecute(shared_ptr<Model> model) {
 
-  auto minimiser = model->managers().minimiser()->active_minimiser();
+  auto minimiser = model->managers()->minimiser()->active_minimiser();
   if (minimiser == nullptr) {
     LOG_CODE_ERROR() << "minimiser == nullptr";
   }

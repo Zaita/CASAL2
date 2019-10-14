@@ -98,8 +98,8 @@ void PiApproximation::FullIteration() {
 		new_x = utilities::RandomNumberGenerator::Instance().uniform(0, size_);
 		new_y = utilities::RandomNumberGenerator::Instance().uniform(0, size_);
 	} else {
-		new_x = managers().selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
-		new_y = managers().selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
+		new_x = managers()->selectivity()->GetSelectivity("X")->GetAgeResult(5, nullptr);
+		new_y = managers()->selectivity()->GetSelectivity("Y")->GetAgeResult(5, nullptr);
 	}
 
 	// Calculate number of points in and out or cicle
@@ -116,7 +116,7 @@ void PiApproximation::FullIteration() {
 	double pi_approx 	= 4 * (insided / (insided + outsided));
 	objective_score_ 	= math::PI + abs(math::PI - pi_approx);
 
-	managers().penalty()->FlagPenalty("PI_Approximation", objective_score_);
+	managers()->penalty()->FlagPenalty("PI_Approximation", objective_score_);
 	cout << "Objective Score: " << objective_score_ << " (" << (inside_ + outside_) << ") - " << "inside_ / outside_: " << inside_ << " : " << outside_ << "; new_x/new_y: " << new_x << "/" << new_y << endl;
 }
 

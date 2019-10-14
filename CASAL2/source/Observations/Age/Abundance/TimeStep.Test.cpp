@@ -101,7 +101,7 @@ TEST_F(BasicModel, Observation_Abundance) {
   model_->Start(RunMode::kTesting);
   model_->FullIteration();
 
-  const vector<obs::Comparison>& comparisons = model_->managers().observation()->GetObservation("abundance")->comparisons(2008);
+  const vector<obs::Comparison>& comparisons = model_->managers()->observation()->GetObservation("abundance")->comparisons(2008);
   ASSERT_EQ(2u, comparisons.size());
 
   EXPECT_EQ("immature.male+immature.female", comparisons[0].category_);

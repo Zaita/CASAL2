@@ -60,9 +60,9 @@ void MCMC::Build() {
    * and resume the manager thread or we'll get weird crashes.
    */
   if (!model_->global_configuration().resume() && print_default_reports_) {
-    model_->managers().report()->Pause();
+    model_->managers()->report()->Pause();
 
-    if (model_->managers().report()->HasType(PARAM_MCMC_OBJECTIVE)) {
+    if (model_->managers()->report()->HasType(PARAM_MCMC_OBJECTIVE)) {
 //      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
 //      objective_report->set_block_type(PARAM_REPORT);
 //      objective_report->set_defined_file_name(__FILE__);
@@ -72,10 +72,10 @@ void MCMC::Build() {
 //      objective_report->parameters().Add(PARAM_FILE_NAME, "mcmc_objectives.out", __FILE__, __LINE__);
 //      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
 //      objective_report->Validate();
-//      model_->managers().report()->AddObject(objective_report);
+//      model_->managers()->report()->AddObject(objective_report);
     }
 
-    if (model_->managers().report()->HasType(PARAM_MCMC_SAMPLE)) {
+    if (model_->managers()->report()->HasType(PARAM_MCMC_SAMPLE)) {
 //      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
 //      sample_report->set_block_type(PARAM_REPORT);
 //      sample_report->set_defined_file_name(__FILE__);
@@ -85,19 +85,19 @@ void MCMC::Build() {
 //      sample_report->parameters().Add(PARAM_FILE_NAME, "mcmc_samples.out", __FILE__, __LINE__);
 //      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_INCREMENTAL_SUFFIX, __FILE__, __LINE__);
 //      sample_report->Validate();
-//      model_->managers().report()->AddObject(sample_report);
+//      model_->managers()->report()->AddObject(sample_report);
     }
 
-    model_->managers().report()->Resume();
+    model_->managers()->report()->Resume();
   } else if (model_->global_configuration().resume() && print_default_reports_) {
-    model_->managers().report()->Pause();
+    model_->managers()->report()->Pause();
 
     string objective_name = model_->global_configuration().mcmc_objective_file();
     string sample_name    = model_->global_configuration().mcmc_sample_file();
     LOG_FINE() << "Objective file name: " << objective_name;
     LOG_FINE() << "Sample file name: " << sample_name;
 
-    if (model_->managers().report()->HasType(PARAM_MCMC_OBJECTIVE)) {
+    if (model_->managers()->report()->HasType(PARAM_MCMC_OBJECTIVE)) {
 //      reports::MCMCObjective* objective_report = new reports::MCMCObjective(model_);
 //      objective_report->set_block_type(PARAM_REPORT);
 //      objective_report->set_defined_file_name(__FILE__);
@@ -107,10 +107,10 @@ void MCMC::Build() {
 //      objective_report->parameters().Add(PARAM_FILE_NAME, objective_name, __FILE__, __LINE__);
 //      objective_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
 //      objective_report->Validate();
-//      model_->managers().report()->AddObject(objective_report);
+//      model_->managers()->report()->AddObject(objective_report);
     }
 
-    if (model_->managers().report()->HasType(PARAM_MCMC_SAMPLE)) {
+    if (model_->managers()->report()->HasType(PARAM_MCMC_SAMPLE)) {
 //      reports::MCMCSample* sample_report = new reports::MCMCSample(model_);
 //      sample_report->set_block_type(PARAM_REPORT);
 //      sample_report->set_defined_file_name(__FILE__);
@@ -120,10 +120,10 @@ void MCMC::Build() {
 //      sample_report->parameters().Add(PARAM_FILE_NAME, sample_name, __FILE__, __LINE__);
 //      sample_report->parameters().Add(PARAM_WRITE_MODE, PARAM_APPEND, __FILE__, __LINE__);
 //      sample_report->Validate();
-//      model_->managers().report()->AddObject(sample_report);
+//      model_->managers()->report()->AddObject(sample_report);
     }
 
-    model_->managers().report()->Resume();
+    model_->managers()->report()->Resume();
   }
 
   DoBuild();

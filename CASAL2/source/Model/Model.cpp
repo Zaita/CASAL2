@@ -76,7 +76,6 @@ Model::Model() {
  */
 Model::~Model() {
 	delete global_configuration_;
-	delete managers_;
 	delete objects_;
 	delete factory_;
 	delete categories_;
@@ -140,12 +139,12 @@ unsigned Model::year_spread() const {
 /**
  *
  */
-Managers& Model::managers() {
+shared_ptr<Managers> Model::managers() {
 	LOG_TRACE();
-	if (managers_ == nullptr)
-		managers_ = new Managers(pointer());
+	if (!managers_)
+		managers_.reset(new Managers(pointer()));
 
-	return *managers_;
+	return managers_;
 }
 
 Objects& Model::objects() {
@@ -406,7 +405,7 @@ void Model::Build() {
 	LOG_TRACE();
 	categories()->Build();
 	partition().Build();
-	managers().Build();
+	managers()->Build();
 
 	Estimables &estimables = *managers_->estimables();
 	if (estimables.GetValueCount() > 0) {

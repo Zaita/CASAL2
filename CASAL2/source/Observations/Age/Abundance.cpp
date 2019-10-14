@@ -60,8 +60,10 @@ void Abundance::DoValidate() {
         << category_labels_.size() << ") * years (" << years_.size() << ")";
 
   // Error Value
-  if (error_values_.size() == 1 && obs.size() > 1)
-    error_values_.assign(obs.size(), error_values_[0]);
+  if (error_values_.size() == 1 && obs.size() > 1) {
+	  double error = error_values_[0];
+	  error_values_.assign(obs.size(), error);
+  }
   if (error_values_.size() != obs.size())
     LOG_ERROR_P(PARAM_ERROR_VALUE) << ": error_value length (" << error_values_.size()
         << ") must be same length as obs (" << obs.size() << ")";
@@ -88,7 +90,7 @@ void Abundance::DoValidate() {
  * the labels for other objects are valid.
  */
 void Abundance::DoBuild() {
-  catchability_ = model_->managers().catchability()->GetCatchability(catchability_label_);
+  catchability_ = model_->managers()->catchability()->GetCatchability(catchability_label_);
   if (!catchability_)
     LOG_ERROR_P(PARAM_CATCHABILITY) << ": catchability " << catchability_label_ << " could not be found. Have you defined it?";
 
@@ -106,7 +108,7 @@ void Abundance::DoBuild() {
 
   // Build Selectivity pointers
   for(string label : selectivity_labels_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
@@ -178,7 +180,7 @@ void Abundance::Execute() {
         age = (*category_iter)->min_age_ + data_offset;
 
         selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-        start_value = (*cached_category_iter).data_[data_offset];
+        start_value = (*cached_category_iter)->data_[data_offset];
         end_value = (*category_iter)->data_[data_offset];
         final_value = 0.0;
 

@@ -35,20 +35,22 @@ Thread::Thread(shared_ptr<Model> model) : model_(model) {
  * calling Loop.
  */
 void Thread::Launch() {
+	std::scoped_lock l(lock_);
+
 	std::function<void()> new_thread([this]() {
 		this->Loop();
 	});
 
-	thread_ = std::thread(new_thread);
+	thread_.reset(new std::thread(new_thread));
 }
 
 /**
  * This method will join our thread and block until it has been completed
  */
 void Thread::Join() {
-	LOG_FINEST() << "Joining thread " << thread_.get_id();
-	if (thread_.joinable())
-		thread_.join();
+	LOG_FINEST() << "Joining thread " << thread_->get_id();
+	if (thread_->joinable())
+		thread_->join();
 }
 
 /**
@@ -65,18 +67,19 @@ void Thread::Loop() {
 			std::scoped_lock l(lock_);
 			try {
 				if (new_candidates_.size() > 0) {
+					LOG_FINEST() << "Thread " << thread_->get_id() << " has model " << model_.get();
+
 					is_finished_ = false;
 					candidates_ = new_candidates_;
 					new_candidates_.clear();
-					objective_score_ = 0.0;
 
 					string cl = "";
 					for (auto candidate : candidates_)
 						cl += utilities::ToInline<double, string>(candidate) + ", ";
-					LOG_MEDIUM() << "[Thread# " << thread_.get_id() << "] Running candidates: " << cl;
+					LOG_MEDIUM() << "[Thread# " << thread_->get_id() << "] Running candidates: " << cl;
 
 					// TODO: Move this to the model
-					auto estimates = model_->managers().estimate()->GetIsEstimated();
+					auto estimates = model_->managers()->estimate()->GetIsEstimated();
 					if (candidates_.size() != estimates.size()) {
 						LOG_CODE_ERROR() << "The number of enabled estimates does not match the number of test solution values";
 					}
@@ -84,14 +87,14 @@ void Thread::Loop() {
 					for (unsigned i = 0; i < candidates_.size(); ++i)
 						estimates[i]->set_value(candidates_[i]);
 
-					model_->managers().estimate_transformation()->RestoreEstimates();
+					model_->managers()->estimate_transformation()->RestoreEstimates();
 					model_->FullIteration();
 
 					ObjectiveFunction& objective = model_->objective_function();
 					objective.CalculateScore();
-					objective_score_ = objective.score();
+					scores_.push(objective.score());
 
-					model_->managers().estimate_transformation()->TransformEstimates();
+					model_->managers()->estimate_transformation()->TransformEstimates();
 
 					is_finished_ = true;
 					continue;
@@ -103,7 +106,7 @@ void Thread::Loop() {
 
 			is_finished_ = true;
 			// Nothing to do, yield control back to CPU
-			std::this_thread::yield();
+			//std::this_thread::yield();
 		}
 	}
 }
@@ -118,6 +121,7 @@ void Thread::Loop() {
 void Thread::RunCandidates(const vector<double>& candidates) {
 	std::scoped_lock l(lock_);
 	new_candidates_ = candidates;
+	is_finished_ = false;
 }
 
 /**
@@ -126,7 +130,7 @@ void Thread::RunCandidates(const vector<double>& candidates) {
  * Note: We don't need a lock because terminate_ is atomic
  */
 void Thread::flag_terminate() {
-	std::scoped_lock l(lock_);
+	//std::scoped_lock l(lock_);
 	terminate_ = true;
 }
 
@@ -145,8 +149,18 @@ bool Thread::is_finished() {
  */
 double Thread::objective_score() {
 	std::scoped_lock l(lock_);
-	return objective_score_;
+	if (scores_.size() == 0)
+		LOG_CODE_ERROR() << "(scores_.size() == 0)";
+
+	double score = scores_.top();
+	scores_.pop();
+	return score;
 }
 
+
+shared_ptr<Model>	Thread::model() {
+	std::scoped_lock l(lock_);
+	return  model_;
+}
 
 } /* namespace niwa */

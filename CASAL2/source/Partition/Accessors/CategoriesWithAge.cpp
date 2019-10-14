@@ -64,7 +64,7 @@ unsigned CategoriesWithAge::size() {
  * Return an iterator to the first element in our vector
  * for the current year.
  */
-CategoriesWithAge::DataType::iterator CategoriesWithAge::begin() {
+const CategoriesWithAge::DataType::iterator CategoriesWithAge::begin() {
   return data_[model_->current_year()].begin();
 }
 
@@ -73,7 +73,7 @@ CategoriesWithAge::DataType::iterator CategoriesWithAge::begin() {
  * be compared to the begin iterator that was given to
  * any process.
  */
-CategoriesWithAge::DataType::iterator CategoriesWithAge::end() {
+const CategoriesWithAge::DataType::iterator CategoriesWithAge::end() {
   return data_[model_->current_year()].end();
 }
 

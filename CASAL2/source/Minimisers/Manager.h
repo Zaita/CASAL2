@@ -51,7 +51,7 @@ protected:
 private:
   // members
   Minimiser*                  			active_minimiser_ = nullptr;
-  std::mutex           							lock_;
+  static std::mutex           			lock_;
   bool															has_validated_ = false;
   bool															has_built_ = false;
 };

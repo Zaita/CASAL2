@@ -31,8 +31,8 @@ OutputParameters::OutputParameters() {
  * Execute this report.
  */
 void OutputParameters::DoExecute(shared_ptr<Model> model) {
-  vector<Estimate*> estimates = model->managers().estimate()->objects();
-  vector<Profile*>  profiles  = model->managers().profile()->objects();
+  vector<Estimate*> estimates = model->managers()->estimate()->objects();
+  vector<Profile*>  profiles  = model->managers()->profile()->objects();
 
   /**
    * if this is the first run we print the report header etc

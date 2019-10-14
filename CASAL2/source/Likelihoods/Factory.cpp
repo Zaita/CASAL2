@@ -56,7 +56,7 @@ Likelihood* Factory::Create(shared_ptr<Model> model, const string& object_type, 
     result = new Pseudo(model);
 
   if (result)
-    model->managers().likelihood()->AddObject(result);
+    model->managers()->likelihood()->AddObject(result);
 
   return result;
 }

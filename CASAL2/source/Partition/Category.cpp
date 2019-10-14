@@ -141,7 +141,7 @@ void Category::PopulateAgeLengthMatrix(Selectivity* selectivity) {
   auto& age_length_proportions = model_->partition().age_length_proportions(name_);
   unsigned year = model_->current_year() - model_->start_year();
   vector<unsigned> length_bins = model_->length_bins();
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
 
   LOG_FINEST() << "Year: " << year << "; time_step: " << time_step_index << "; length_bins: " << length_bins.size();
   LOG_FINEST() << "Years in proportions: " << age_length_proportions.size();
@@ -211,7 +211,7 @@ void Category::CalculateNumbersAtLength(Selectivity* selectivity,const vector<Do
 
   auto& age_length_proportions = model_->partition().age_length_proportions(name_);
   unsigned year_ndx = model_->current_year() - model_->start_year();
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
 
   if (year_ndx > age_length_proportions.size())
     LOG_CODE_ERROR() << "year_ndx > age_length_proportions.size()";

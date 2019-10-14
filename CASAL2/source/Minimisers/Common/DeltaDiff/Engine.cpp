@@ -268,7 +268,6 @@ double Engine::optimise_finite_differences(deltadiff::CallBack& objective, vecto
 
           dScoreI = objective(vCurrentValues);
           dScoreI += dPenalty;
-          cout << "NGP: " << dPenalty << endl;
           gradient_candidates.push_back(vCurrentValues);
 
           // Populate Gradient, and Restore Orig Value
@@ -277,7 +276,8 @@ double Engine::optimise_finite_differences(deltadiff::CallBack& objective, vecto
         }
       }
       LOG_MEDIUM() << "Running Threaded Gradient";
-      vector<double> gradient_scores = objective(gradient_candidates);
+      vector<double> scores(gradient_candidates.size(), 0.0);
+      objective(gradient_candidates, scores);
       LOG_MEDIUM() << "Finished Threaded Gradient";
       // Gradient Finished
     }

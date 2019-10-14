@@ -27,7 +27,7 @@ Catchability::Catchability() {
  */
 void Catchability::DoExecute(shared_ptr<Model> model) {
   LOG_TRACE();
-  catchabilities::Manager& manager = *model->managers().catchability();
+  catchabilities::Manager& manager = *model->managers()->catchability();
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";
 
   auto catchabilities = manager.objects();
@@ -46,7 +46,7 @@ void Catchability::DoExecute(shared_ptr<Model> model) {
 
 void Catchability::DoExecuteTabular(shared_ptr<Model> model) {
   LOG_TRACE();
-  catchabilities::Manager& manager = *model->managers().catchability();
+  catchabilities::Manager& manager = *model->managers()->catchability();
   auto catchabilities = manager.objects();
   if (first_run_) {
     cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

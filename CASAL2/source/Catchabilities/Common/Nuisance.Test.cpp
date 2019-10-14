@@ -429,7 +429,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_normal_prior_none) {
     AddConfigurationLine(normal_biomass, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kBasic);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.05629393317159407, catchability->q(), 1e-6);
 }
 
@@ -439,7 +439,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_normal_prior_none_estimation)
     AddConfigurationLine(normal_biomass, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kEstimation);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.052417942189074938, catchability->q(), 1e-6);
 }
 
@@ -450,7 +450,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_normal_prior_uniform_log) {
     AddConfigurationLine(uniform_log_q, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kBasic);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.056143632833131847, catchability->q(), 1e-6);
 }
 
@@ -461,7 +461,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_lognormal_prior_uniform_log) 
     AddConfigurationLine(uniform_log_q, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kBasic);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.057232970885068367, catchability->q(), 1e-6);
 }
 
@@ -470,7 +470,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_lognormal_prior_none) {
     AddConfigurationLine(lognormal_biomass, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kBasic);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.057403242558276682, catchability->q(), 1e-6);
 }
 TEST_F(InternalEmptyModel, Catchabilities_nuisance_lognormal_prior_lognormal) {
@@ -479,7 +479,7 @@ TEST_F(InternalEmptyModel, Catchabilities_nuisance_lognormal_prior_lognormal) {
     AddConfigurationLine(lognormal_q, __FILE__, 31);
     LoadConfiguration();
     model_->Start(RunMode::kBasic);
-    Catchability* catchability = model_->managers().catchability()->GetCatchability("chatTANq");
+    Catchability* catchability = model_->managers()->catchability()->GetCatchability("chatTANq");
     EXPECT_NEAR(0.057507359866387671, catchability->q(), 1e-6);
 }
 } /* namespace catchabilities */

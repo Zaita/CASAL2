@@ -207,34 +207,34 @@ base::Object* Objects::FindObjectOrNull(const string& parameter_absolute_name) {
     return nullptr;
 
   if (type == PARAM_PROCESS) {
-    result = model_->managers().process()->GetProcess(label);
+    result = model_->managers()->process()->GetProcess(label);
 
   } else if (type == PARAM_DERIVED_QUANTITY) {
-    result = model_->managers().derived_quantity()->GetDerivedQuantity(label);
+    result = model_->managers()->derived_quantity()->GetDerivedQuantity(label);
 
   } else if (type == PARAM_AGE_LENGTH) {
-    result = model_->managers().age_length()->FindAgeLength(label);
+    result = model_->managers()->age_length()->FindAgeLength(label);
 
   } else if (type == PARAM_LENGTH_WEIGHT) {
-    result = model_->managers().length_weight()->GetLengthWeight(label);
+    result = model_->managers()->length_weight()->GetLengthWeight(label);
 
   } else if (type == PARAM_INITIALISATION_PHASE) {
-    result = model_->managers().initialisation_phase()->GetInitPhase(label);
+    result = model_->managers()->initialisation_phase()->GetInitPhase(label);
 
   } else if (type == PARAM_ESTIMATE) {
-    result = model_->managers().estimate()->GetEstimateByLabel(label);
+    result = model_->managers()->estimate()->GetEstimateByLabel(label);
 
   } else if (type == PARAM_CATCHABILITY) {
-    result = model_->managers().catchability()->GetCatchability(label);
+    result = model_->managers()->catchability()->GetCatchability(label);
 
   } else if (type == PARAM_SELECTIVITY) {
-    result = model_->managers().selectivity()->GetSelectivity(label);
+    result = model_->managers()->selectivity()->GetSelectivity(label);
 
   } else if (type == PARAM_TIME_VARYING) {
-    result = model_->managers().time_varying()->GetTimeVarying(label);
+    result = model_->managers()->time_varying()->GetTimeVarying(label);
 
   } else if (type == PARAM_OBSERVATION) {
-    result = model_->managers().observation()->GetObservation(label);
+    result = model_->managers()->observation()->GetObservation(label);
 
   } else {
     LOG_FATAL() << "Currently the type " << type << " is not registered for addressable finding, first please check you have spelt it correctly, if you are "

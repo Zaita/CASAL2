@@ -113,7 +113,7 @@ TEST_F(InternalEmptyModel, Initialisation_StateCategoryByAge) {
   LoadConfiguration();
 
   model_->Start(RunMode::kBasic);
-  niwa::DerivedQuantity* dq = model_->managers().derived_quantity()->GetDerivedQuantity("SSB");
+  niwa::DerivedQuantity* dq = model_->managers()->derived_quantity()->GetDerivedQuantity("SSB");
   vector<double> expect = {33.51281314437621,  44.084583149802228, 62.038992626827039, 82.775717533653165, 102.9638431530089, 120.79049356072068, 135.57009890088847,  147.29749698571644, 156.30911917665628, 163.06745196537008, 168.04083651251662};
   for (unsigned i = 0; i < expect.size(); ++i) {
     unsigned year = 1990 + i;

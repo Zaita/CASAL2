@@ -49,7 +49,7 @@ Project* Factory::Create(shared_ptr<Model> model, const string& object_type, con
 
 
     if (result)
-      model->managers().project()->AddObject(result);
+      model->managers()->project()->AddObject(result);
   }
 
   return result;

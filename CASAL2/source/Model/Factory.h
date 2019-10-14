@@ -39,7 +39,7 @@ class Factory {
 public:
 	// methods
 	base::Object* CreateObject(const string &object_type, const string &sub_type, PartitionType partition_type = PartitionType::kInvalid);
-	shared_ptr<Model> 	Create(const string &object_type, const string &sub_type);
+	static shared_ptr<Model> Create(const string &object_type, const string &sub_type);
 
 private:
 	// methods

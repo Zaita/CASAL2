@@ -32,7 +32,7 @@ EstimateSummary::EstimateSummary() {
  */
 void EstimateSummary::DoExecute(shared_ptr<Model> model) {
   // Print the estimates
-  niwa::estimates::Manager& estimate_manager = *model->managers().estimate();
+  niwa::estimates::Manager& estimate_manager = *model->managers()->estimate();
   vector<Estimate*> estimates = estimate_manager.objects();
 
   cache_ << "*"<< type_ << "[" << label_ << "]" << "\n";

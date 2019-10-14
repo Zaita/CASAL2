@@ -59,7 +59,7 @@ void Categories::Init(const vector<string>& category_labels) {
  *
  * @return Iterator to first stored element for current year
  */
-Categories::DataType::iterator Categories::begin() {
+Categories::DataType::const_iterator Categories::begin() {
   return data_[model_->current_year()].begin();
 }
 
@@ -69,7 +69,7 @@ Categories::DataType::iterator Categories::begin() {
  *
  * @return End iterator for the stored elements for current year
  */
-Categories::DataType::iterator Categories::end() {
+Categories::DataType::const_iterator Categories::end() {
   return data_[model_->current_year()].end();
 }
 

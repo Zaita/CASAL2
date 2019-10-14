@@ -39,7 +39,7 @@ LengthWeight* Factory::Create(shared_ptr<Model> model, const string& object_type
       result = new Basic(model);
 
     if (result)
-      model->managers().length_weight()->AddObject(result);
+      model->managers()->length_weight()->AddObject(result);
   }
 
   return result;

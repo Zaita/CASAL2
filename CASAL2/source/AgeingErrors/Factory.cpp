@@ -46,7 +46,7 @@ AgeingError* Factory::Create(shared_ptr<Model> model, const string& object_type,
       result = new None(model);
 
     if (result)
-      model->managers().ageing_error()->AddObject(result);
+      model->managers()->ageing_error()->AddObject(result);
   }
 
   return result;

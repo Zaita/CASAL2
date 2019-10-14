@@ -37,7 +37,7 @@ void AgeLength::DoValidate(shared_ptr<Model> model) {
  *
  */
 void AgeLength::DoExecute(shared_ptr<Model> model) {
-  auto age_length = model->managers().age_length()->FindAgeLength(age_length_label_);
+  auto age_length = model->managers()->age_length()->FindAgeLength(age_length_label_);
   if (!age_length)
     LOG_FATAL() << "Could not find age_length " << age_length_label_ << " for the report";
 

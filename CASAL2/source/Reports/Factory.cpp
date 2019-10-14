@@ -152,7 +152,7 @@ Report* Factory::Create(shared_ptr<Model> model, const string& object_type, cons
     }
 
     if (result)
-      model->managers().report()->AddObject(result);
+      model->managers()->report()->AddObject(result);
   }
 
   return result;

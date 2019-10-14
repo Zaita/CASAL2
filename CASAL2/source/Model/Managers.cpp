@@ -13,6 +13,8 @@
 #include "Managers.h"
 
 #include <vector>
+#include <mutex>
+#include <thread>
 
 #include "../Model/Model.h"
 #include "../AdditionalPriors/Manager.h"
@@ -45,6 +47,9 @@
 // namespaces
 namespace niwa {
 using std::vector;
+
+using std::scoped_lock;
+std::mutex Managers::lock_;
 
 /**
  * Default constructor
@@ -117,6 +122,7 @@ Managers::~Managers() {
  *
  */
 shared_ptr<minimisers::Manager>	Managers::minimiser() {
+	std::scoped_lock l(lock_);
 	if (!minimiser_)
 		LOG_CODE_ERROR() << "(!minimiser_)";
 
@@ -127,6 +133,7 @@ shared_ptr<minimisers::Manager>	Managers::minimiser() {
  *
  */
 shared_ptr<reports::Manager> Managers::report() {
+	std::scoped_lock l(lock_);
 	if (!report_)
 		LOG_CODE_ERROR() << "(!report_)";
 
@@ -135,6 +142,7 @@ shared_ptr<reports::Manager> Managers::report() {
 
 
 void Managers::Validate() {
+//	std::scoped_lock l(lock_);
   LOG_TRACE();
   time_step_->Validate(model_);
   initialisation_phase_->Validate();
@@ -168,6 +176,7 @@ void Managers::Validate() {
 }
 
 void Managers::Build() {
+//	std::scoped_lock l(lock_);
   LOG_TRACE();
   time_step_->Build();
   initialisation_phase_->Build(model_);
@@ -204,6 +213,7 @@ void Managers::Build() {
 }
 
 void Managers::Reset() {
+	std::scoped_lock l(lock_);
   LOG_TRACE();
   age_length_->Reset();
   age_weight_->Reset();
@@ -228,7 +238,7 @@ void Managers::Reset() {
   likelihood_->Reset();
   if (model_->run_mode() == RunMode::kMCMC || model_->run_mode() == RunMode::kEstimation || model_->run_mode() == RunMode::kProfiling) {
     mcmc_->Reset();
-    minimiser_->Reset();
+//    minimiser_->Reset();
   }
 
   observation_->Reset();
@@ -236,7 +246,7 @@ void Managers::Reset() {
   process_->Reset();
   profile_->Reset();
   project_->Reset();
-  report_->Reset();
+//  report_->Reset();
   simulate_->Reset();
   time_step_->Reset();
   time_varying_->Reset();

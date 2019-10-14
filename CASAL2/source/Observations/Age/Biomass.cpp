@@ -113,7 +113,7 @@ void Biomass::DoValidate() {
 void Biomass::DoBuild() {
   LOG_TRACE();
 
-  catchability_ = model_->managers().catchability()->GetCatchability(catchability_label_);
+  catchability_ = model_->managers()->catchability()->GetCatchability(catchability_label_);
   if (!catchability_)
     LOG_FATAL_P(PARAM_CATCHABILITY) << ": catchability " << catchability_label_ << " could not be found. Have you defined it?";
 
@@ -132,7 +132,7 @@ void Biomass::DoBuild() {
 
   // Build Selectivity pointers
   for(string label : selectivity_labels_) {
-    Selectivity* selectivity = model_->managers().selectivity()->GetSelectivity(label);
+    Selectivity* selectivity = model_->managers()->selectivity()->GetSelectivity(label);
     if (!selectivity)
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
@@ -142,7 +142,7 @@ void Biomass::DoBuild() {
 
   if (parameters_.Get(PARAM_AGE_WEIGHT_LABELS)->has_been_defined()) {
     for (string label : age_weight_labels_) {
-      AgeWeight* age_weight = model_->managers().age_weight()->FindAgeWeight(label);
+      AgeWeight* age_weight = model_->managers()->age_weight()->FindAgeWeight(label);
       if (!age_weight)
         LOG_ERROR_P(PARAM_AGE_WEIGHT_LABELS) << " (" << label << ") could not be found. Have you defined it?";
       age_weights_.push_back(age_weight);
@@ -170,7 +170,7 @@ void Biomass::PreExecute() {
  */
 void Biomass::Execute() {
   LOG_FINEST() << "Entering observation " << label_;
-  unsigned time_step_index = model_->managers().time_step()->current_time_step();
+  unsigned time_step_index = model_->managers()->time_step()->current_time_step();
 
   Double expected_total = 0.0; // value in the model
   vector<string> keys;
@@ -211,7 +211,7 @@ void Biomass::Execute() {
           age = (*category_iter)->min_age_ + data_offset;
 
           selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-          start_value = (*cached_category_iter).data_[data_offset];
+          start_value = (*cached_category_iter)->data_[data_offset];
           end_value = (*category_iter)->data_[data_offset];
           final_value = 0.0;
 
@@ -231,7 +231,7 @@ void Biomass::Execute() {
           age = (*category_iter)->min_age_ + data_offset;
 
           selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-          start_value = (*cached_category_iter).data_[data_offset];
+          start_value = (*cached_category_iter)->data_[data_offset];
           end_value = (*category_iter)->data_[data_offset];
           final_value = 0.0;
 

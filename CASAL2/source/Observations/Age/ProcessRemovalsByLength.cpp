@@ -224,7 +224,7 @@ void ProcessRemovalsByLength::DoBuild() {
 
   length_results_.resize(number_bins_ * category_labels_.size(), 0.0);
 
-  auto time_step = model_->managers().time_step()->GetTimeStep(time_step_label_);
+  auto time_step = model_->managers()->time_step()->GetTimeStep(time_step_label_);
   if (!time_step) {
     LOG_FATAL_P(PARAM_TIME_STEP)<< time_step_label_ << " could not be found. Have you defined it?";
   } else {
@@ -290,7 +290,7 @@ void ProcessRemovalsByLength::Execute() {
 //  auto categories = model_->categories();
   unsigned year = model_->current_year();
   unsigned year_index = year - model_->start_year();
-  unsigned time_step = model_->managers().time_step()->current_time_step();
+  unsigned time_step = model_->managers()->time_step()->current_time_step();
   auto cached_partition_iter = cached_partition_->Begin();
   auto partition_iter = partition_->Begin(); // vector<vector<partition::Category> >
   map<unsigned, map<string, map<string, vector<Double>>>> &Removals_at_age = mortality_instantaneous_->catch_at();

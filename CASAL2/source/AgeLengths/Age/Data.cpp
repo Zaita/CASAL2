@@ -56,7 +56,7 @@ Data::~Data() {
 void Data::DoBuild() {
 
   LOG_FINE() << "Building age length block " << label_;
-  length_weight_ = model_->managers().length_weight()->GetLengthWeight(length_weight_label_);
+  length_weight_ = model_->managers()->length_weight()->GetLengthWeight(length_weight_label_);
   if (!length_weight_)
     LOG_ERROR_P(PARAM_LENGTH_WEIGHT) << "(" << length_weight_label_ << ") could not be found. Have you defined it?";
   if (!data_table_)
@@ -69,15 +69,15 @@ void Data::DoBuild() {
   /**
    * create key parameters that are used to interpolate mean length between time_steps, relative to step_data_supplied_
    */
-  TimeStep* time_step = model_->managers().time_step()->GetTimeStep(step_data_supplied_);
+  TimeStep* time_step = model_->managers()->time_step()->GetTimeStep(step_data_supplied_);
   if (!time_step)
     LOG_ERROR_P(PARAM_TIME_STEP_MEASUREMENTS_WERE_MADE) << "could not found time_step " << step_data_supplied_<< " please check this parameter?";
   // Get time step index
-  step_index_data_supplied_ = model_->managers().time_step()->GetTimeStepIndex(step_data_supplied_);
+  step_index_data_supplied_ = model_->managers()->time_step()->GetTimeStepIndex(step_data_supplied_);
   // Need to get ageing index
   unsigned time_step_index = 0;
 
-  const vector<TimeStep*> ordered_time_steps = model_->managers().time_step()->ordered_time_steps();
+  const vector<TimeStep*> ordered_time_steps = model_->managers()->time_step()->ordered_time_steps();
   for (auto time_step : ordered_time_steps) {
     for (auto process : time_step->processes()) {
        if (process->process_type() == ProcessType::kAgeing) {
