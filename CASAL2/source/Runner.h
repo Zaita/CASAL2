@@ -12,6 +12,7 @@
 // headers
 #include "GlobalConfiguration/GlobalConfiguration.h"
 #include "Model/Model.h"
+#include "ThreadPool/ThreadPool.h"
 
 // namespaces
 namespace niwa {
@@ -25,14 +26,17 @@ public:
 	int													Go();
 	void                  			set_run_parameters(utilities::RunParameters& options) { run_parameters_ = options; }
 	GlobalConfiguration&        global_configuration() { return global_configuration_; }
-	//Model&											model() { return master_model_; }
-
 
 private:
+	// methods
+	bool												RunQuery();
+	bool												RunEstimation();
+
 	// members
 	GlobalConfiguration					global_configuration_;
 	shared_ptr<Model>						master_model_;
 	utilities::RunParameters		run_parameters_;
+	shared_ptr<ThreadPool>			thread_pool_;
 };
 
 } /* namespace niwa */

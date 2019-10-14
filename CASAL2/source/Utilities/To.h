@@ -69,6 +69,7 @@ bool To(const ::std::string arg, Target &result) {
   try {
     result = boost::lexical_cast<Target>(arg);
   } catch (...) {
+  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
   return true;
@@ -106,6 +107,7 @@ inline bool To(const ::std::string arg, unsigned &result) {
 
     result = (unsigned)temp;
   } catch (...) {
+  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
 
@@ -185,6 +187,7 @@ bool To(const Source& arg, Target& result) {
   try {
     result = boost::lexical_cast<Target>(arg);
   } catch (...) {
+  	LOG_CODE_ERROR() << arg << " failed to be converted";
     return false;
   }
   return true;

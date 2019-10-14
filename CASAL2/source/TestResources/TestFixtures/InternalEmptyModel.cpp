@@ -51,6 +51,7 @@ void InternalEmptyModel::SetUp() {
 
   configuration_file_.clear();
   model_->global_configuration().flag_skip_config_file();
+  model_->flag_primary_thread_model();
 }
 
 /**

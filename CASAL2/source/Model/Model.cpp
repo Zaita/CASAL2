@@ -85,7 +85,12 @@ Model::~Model() {
 }
 
 /**
+ * Return the years this model is going to run in a vector.
+ * We return a vector because the years will be compared
+ * against processes etc that may run only on some years
  *
+ * When we're running in projection mode, add the projection
+ * years as well.
  */
 vector<unsigned> Model::years() const {
 	vector<unsigned> years;
@@ -99,6 +104,17 @@ vector<unsigned> Model::years() const {
 	return years;
 }
 
+/**
+ * Return the years this model is going to run in a vector.
+ * We return a vector because the years will be compared
+ * against processes etc that may run only on some years
+ *
+ * Include the projection years, regardless of the type
+ * of model run. This is used to validate the configuration
+ * files when objects may be specified in a projection year
+ * but the run is not a projection. We'd allow this as the
+ * file is still valid
+ */
 vector<unsigned> Model::years_all() const {
 	vector<unsigned> years;
 	unsigned year;
@@ -111,7 +127,8 @@ vector<unsigned> Model::years_all() const {
 }
 
 /**
- *
+ * Return the spread of years, including projection years
+ * if the run mode is a projection run mode.
  */
 unsigned Model::year_spread() const {
 	unsigned spread = (final_year_ - start_year_) + 1;
@@ -174,34 +191,34 @@ Categories* Model::categories() {
 }
 
 /**
- * Start our model. This is the entry point method for the model
- * after being called from the main() method.
- *
- * This method will start stepping through the states and verifying
- * each step.
+ * This method will prepare the model for iterations to be run.
+ * This takes the model through the Startup, Validation and Build states.
+ * When we've finished this method. We're ready to run a model iteration
+ * in any run mode. This is used by the Thread objects to prepare
+ * the models once, then allow the Minimisers/MCMCs etc to call Iterations
+ * over and over
  */
-bool Model::Start(RunMode::Type run_mode) {
+bool Model::PrepareForIterations() {
 	LOG_TRACE();
+
 	Logging &logging = Logging::Instance();
 	if (logging.errors().size() > 0) {
 		logging.FlushErrors();
 		return false;
 	}
 
-	LOG_MEDIUM() << "Model::Start() on thread " << std::this_thread::get_id();
+	LOG_MEDIUM() << "Model::PrepareForIterations() on thread " << std::this_thread::get_id();
 
 	// Make sure we've instantiated our pointers to sub objects
-  managers();
-  objects();
-  categories();
-  factory();
-  partition();
-  objective_function();
-  equation_parser();
+	managers();
+	objects();
+	categories();
+	factory();
+	partition();
+	objective_function();
+	equation_parser();
 
-  LOG_FINEST() << "Going into startup";
-	run_mode_ = run_mode;
-
+	LOG_FINEST() << "Going into startup";
 	if (state_ != State::kStartUp)
 	LOG_CODE_ERROR()
 	<< "Model state should always be startup when entering the start method, not " << state_;
@@ -245,6 +262,28 @@ bool Model::Start(RunMode::Type run_mode) {
 	LOG_FINE() << "Preparing Reports";
 	managers_->report()->Prepare(pointer());
 
+	return true;
+}
+
+/**
+ * Start our model. This is the entry point method for the model
+ * after being called from the main() method.
+ *
+ * This method will start stepping through the states and verifying
+ * each step.
+ */
+bool Model::Start(RunMode::Type run_mode) {
+	run_mode_ = run_mode;
+#ifdef TESTMODE
+	// TODO: Remove this later
+	/**
+	 * We're hacking this in for now because the unit tests do not know about
+	 * the runner and threading yet.
+	 */
+	PrepareForIterations();
+#endif
+
+	LOG_TRACE();
 	switch (run_mode_) {
 	case RunMode::kBasic:
 		RunBasic();
@@ -278,6 +317,11 @@ bool Model::Start(RunMode::Type run_mode) {
 		break;
 	}
 
+	Finalise();
+	return true;
+}
+
+void Model::Finalise() {
 	// finalise all reports
 	LOG_FINE() << "Finalising Reports";
 	state_ = State::kFinalise;
@@ -285,9 +329,7 @@ bool Model::Start(RunMode::Type run_mode) {
 		executor->Execute();
 	managers_->report()->Execute(pointer(), state_);
 	managers_->report()->Finalise(pointer());
-	return true;
 }
-
 /**
  * Populate the loaded parameters
  */

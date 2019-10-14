@@ -73,7 +73,7 @@ void Manager::Validate(shared_ptr<Model> model) {
  */
 void Manager::Build(shared_ptr<Model> model) {
 	std::scoped_lock l(lock_);
-  if (objects_.size() == 0 || has_built_)
+  if (objects_.size() == 0 || has_built_ || !has_validated_)
 		return;
 
   LOG_FINEST() << "objects_.size(): " << objects_.size();
@@ -105,6 +105,7 @@ void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
 	std::scoped_lock l(lock_);
 
 	LOG_TRACE();
+	LOG_FINE() << "Executing Models for state: " << (int)model_state;
   if (model_state == State::kFinalise && !model->is_primary_thread_model())
   	return;
 
@@ -119,7 +120,7 @@ void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
         else
           report->Execute(model);
       } else
-        LOG_FINE() << "Skipping report: " << report->label() << " because run mode is incorrect";
+        LOG_MEDIUM() << "Skipping report: " << report->label() << " because run mode is incorrect";
   }
 }
 
@@ -206,7 +207,7 @@ void Manager::Finalise(shared_ptr<Model> model) {
   bool tabular = model->global_configuration().print_tabular();
   for (auto report : objects_) {
     if ( (RunMode::Type)(report->run_mode() & run_mode) != run_mode) {
-      LOG_FINEST() << "Skipping report: " << report->label() << " because run mode is not right";
+      LOG_MEDIUM() << "Skipping report: " << report->label() << " because run mode is not right (" << (int)report->run_mode() << " & " << (int)run_mode << ")";
       continue;
     }
 
@@ -282,7 +283,9 @@ void Manager::FlushReports() {
 void Manager::Pause() {
 #ifndef TESTMODE
   pause_ = true;
-  while(!is_paused_) continue;
+  while(!is_paused_) {
+  	continue;
+  }
 #endif
 }
 

@@ -61,18 +61,22 @@ Report::Report() {
  * when the report is not running in the execute phase.
  */
 void Report::Validate(shared_ptr<Model> model) {
+	Report::lock_.lock();
   parameters_.Populate(model);
   DoValidate(model);
+  Report::lock_.unlock();
 }
 
 /**
  *
  */
 void Report::Build(shared_ptr<Model> model) {
+	Report::lock_.lock();
   if (time_step_ != "" && !model->managers().time_step()->GetTimeStep(time_step_))
     LOG_ERROR_P(PARAM_TIME_STEP) << ": " << time_step_ << " could not be found. Have you defined it?";
 
   DoBuild(model);
+  Report::lock_.unlock();
 }
 
 /**

@@ -68,7 +68,6 @@ Managers::Managers(shared_ptr<Model> model) {
   length_weight_          = new lengthweights::Manager();
   likelihood_             = new likelihoods::Manager();
   mcmc_                   = new mcmcs::Manager();
-  minimiser_              = new minimisers::Manager();
   observation_            = new observations::Manager();
   penalty_                = new penalties::Manager();
   process_                = new processes::Manager();
@@ -78,6 +77,11 @@ Managers::Managers(shared_ptr<Model> model) {
   simulate_               = new simulates::Manager();
   time_step_              = new timesteps::Manager();
   time_varying_           = new timevarying::Manager();
+
+#ifdef TESTMODE
+  minimiser_.reset(new minimisers::Manager());
+  report_.reset(new reports::Manager());
+#endif
 }
 
 /**
@@ -98,7 +102,6 @@ Managers::~Managers() {
   delete length_weight_;
   delete likelihood_;
   delete mcmc_;
-  delete minimiser_;
   delete observation_;
   delete penalty_;
   delete process_;
@@ -108,6 +111,16 @@ Managers::~Managers() {
   delete simulate_;
   delete time_step_;
   delete time_varying_;
+}
+
+/**
+ *
+ */
+shared_ptr<minimisers::Manager>	Managers::minimiser() {
+	if (!minimiser_)
+		LOG_CODE_ERROR() << "(!minimiser_)";
+
+	return minimiser_;
 }
 
 /**
@@ -138,14 +151,14 @@ void Managers::Validate() {
   length_weight_->Validate();
   likelihood_->Validate();
   mcmc_->Validate(model_);
-  minimiser_->Validate(model_);
+  minimiser_->Validate(model_->pointer());
   observation_->Validate();
   penalty_->Validate();
   profile_->Validate();
   project_->Validate();
-  LOG_FINE() << "About to Validate the Reports Manager";
+  LOG_FINE() << "Validating Reports";
   report_->Validate(model_->pointer());
-  LOG_FINE() << "Finished Validate of Reports Manager";
+  LOG_FINE() << "Validating Reports..Done";
   selectivity_->Validate();
   simulate_->Validate();
   time_varying_->Validate();
@@ -170,7 +183,8 @@ void Managers::Build() {
   length_weight_->Build();
   likelihood_->Build();
   mcmc_->Build();
-  minimiser_->Build();
+  if (minimiser_)
+  	minimiser_->Build();
   observation_->Build();
   penalty_->Build();
   profile_->Build();
@@ -179,10 +193,14 @@ void Managers::Build() {
   simulate_->Build();
   time_varying_->Build();
 
+  LOG_FINE() << "Building estimates and transformations...";
   estimate_->Build(model_);
   estimate_transformation_->Build();
+  LOG_FINE() << "Building estimates and transformations...Done";
 
-  report_->Build(model_->pointer());
+  if (report_)
+  	report_->Build(model_->pointer());
+  LOG_TRACE();
 }
 
 void Managers::Reset() {

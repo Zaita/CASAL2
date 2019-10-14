@@ -31,6 +31,7 @@ ObjectiveFunction::ObjectiveFunction() {
  * Execute the report
  */
 void ObjectiveFunction::DoExecute(shared_ptr<Model> model) {
+	LOG_MEDIUM() << "Boop";
 	if (!model->is_primary_thread_model() && model->run_mode() == RunMode::kBasic)
 		return;
 	if (!model->is_primary_thread_model() && model->run_mode() == RunMode::kEstimation)

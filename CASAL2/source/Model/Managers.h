@@ -72,7 +72,7 @@ public:
   virtual lengthweights::Manager*         length_weight() { return length_weight_; }
   virtual likelihoods::Manager*           likelihood() { return likelihood_; }
   virtual mcmcs::Manager*                 mcmc() { return mcmc_; }
-  virtual minimisers::Manager*            minimiser() { return minimiser_; }
+  virtual shared_ptr<minimisers::Manager>	minimiser();
   virtual observations::Manager*          observation() { return observation_; }
   virtual penalties::Manager*             penalty() { return penalty_; }
   virtual processes::Manager*             process() { return process_; }
@@ -84,6 +84,7 @@ public:
   virtual timesteps::Manager*             time_step() { return time_step_; }
   virtual timevarying::Manager*           time_varying() { return time_varying_; }
 
+  void set_minimiser(shared_ptr<minimisers::Manager> manager) { minimiser_ = manager; }
   void set_reports(shared_ptr<reports::Manager> manager) { report_ = manager; }
 
 protected:
@@ -110,7 +111,7 @@ protected:
   lengthweights::Manager*             length_weight_;
   likelihoods::Manager*               likelihood_;
   mcmcs::Manager*                     mcmc_;
-  minimisers::Manager*                minimiser_;
+  shared_ptr<minimisers::Manager>	    minimiser_;
   observations::Manager*              observation_;
   penalties::Manager*                 penalty_;
   processes::Manager*                 process_;

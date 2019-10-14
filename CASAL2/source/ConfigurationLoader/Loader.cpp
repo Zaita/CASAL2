@@ -279,9 +279,14 @@ void Loader::ParseBlock(shared_ptr<Model> model, vector<FileLine> &block) {
 	block_type = utilities::ToLowercase(block_type);
 	sub_type = utilities::ToLowercase(sub_type);
 
-	// We don't create reports on threaded models, only primary
+	// We don't create reports on threads, only primary
 	if (block_type == PARAM_REPORT && !model->is_primary_thread_model()) {
 		LOG_MEDIUM() << "skipping report." << sub_type << " because current model is not the primary thread model";
+		return;
+	}
+	// We don't create Minimisers on threads, only the primary model
+	if (block_type == PARAM_MINIMIZER && !model->is_primary_thread_model()) {
+		LOG_MEDIUM() << "skipping minimiser." << sub_type << " because current model is not the primary thread model";
 		return;
 	}
 

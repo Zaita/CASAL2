@@ -222,6 +222,7 @@
 #define PARAM_DE_SOLVER                           "de_solver"
 #define PARAM_DEBUG                               "debug"
 #define PARAM_DELTA                               "delta"
+#define PARAM_DELTADIFF														"deltadiff"
 #define PARAM_DERIVATIVE_TEST                     "derivative_test"
 #define PARAM_DERIVED                             "derived"
 #define PARAM_DERIVED_QUANTITIES                  "derived_quantities"

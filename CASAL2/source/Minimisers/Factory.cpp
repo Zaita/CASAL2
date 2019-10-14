@@ -30,6 +30,7 @@
 #include "Minimisers/Common/Dummy/Dummy.h"
 
 #ifndef USE_AUTODIFF
+#include "Minimisers/Common/DeltaDiff.h"
 #include "Minimisers/Common/DESolver.h"
 #include "Minimisers/Common/DLib.h"
 #include "Minimisers/Common/GammaDiff.h"
@@ -71,7 +72,9 @@ Minimiser* Factory::Create(shared_ptr<Model> model, const string& object_type, c
 #endif
 
 #ifndef USE_AUTODIFF
-    if (sub_type == PARAM_DE_SOLVER)
+    if (sub_type == PARAM_DELTADIFF)
+    	result = new DeltaDiff(model);
+    else if (sub_type == PARAM_DE_SOLVER)
       result = new DESolver(model);
     else if (sub_type == PARAM_DLIB)
       result = new DLib(model);

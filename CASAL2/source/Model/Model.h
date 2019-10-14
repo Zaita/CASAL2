@@ -68,8 +68,10 @@ public:
   // Methods
   Model();
   virtual                     ~Model();
+  virtual bool								PrepareForIterations();
   virtual bool                Start(RunMode::Type run_mode);
   virtual void                FullIteration();
+  void												Finalise();
   void                        Subscribe(State::Type state, Executor* executor) { executors_[state].push_back(executor); }
   void                        PopulateParameters();
 
@@ -108,6 +110,8 @@ public:
   void												flag_primary_thread_model() { is_primary_thread_model_ = true; }
   bool												is_primary_thread_model() const { return is_primary_thread_model_; }
   unsigned										threads() const { return threads_; }
+  bool												addressables_value_file() const { return addressable_values_file_; }
+  void												set_run_mode(RunMode::Type run_mode) { run_mode_ = run_mode; }
 
   // manager accessors
   virtual Managers&           managers();

@@ -28,6 +28,7 @@ namespace niwa {
 namespace ublas = boost::numeric::ublas;
 
 class Model;
+class ThreadPool;
 
 namespace MinimiserResult {
 enum Type {
@@ -60,6 +61,7 @@ public:
   virtual void                DoBuild() = 0;
   virtual void                DoReset() = 0;
   virtual void                Execute() = 0;
+  virtual void								ExecuteThreaded(shared_ptr<ThreadPool> thread_pool) { Execute(); }
 
   // Acessors
   bool                        active() const { return active_; }
