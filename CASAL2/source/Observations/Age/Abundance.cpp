@@ -114,8 +114,10 @@ void Abundance::DoBuild() {
     selectivities_.push_back(selectivity);
   }
 
-    if (selectivities_.size() == 1 && category_labels_.size() != 1)
-      selectivities_.assign(category_labels_.size(), selectivities_[0]);
+    if (selectivities_.size() == 1 && category_labels_.size() != 1) {
+    	auto selectivity = selectivities_[0];
+      selectivities_.assign(category_labels_.size(), selectivity);
+    }
 
 
   if (partition_->category_count() != selectivities_.size())

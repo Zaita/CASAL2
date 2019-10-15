@@ -15,7 +15,7 @@
 #include <vector>
 #include <memory>
 #include <atomic>
-#include <stack>
+#include <queue>
 
 #include "../Utilities/NoCopy.h"
 
@@ -52,7 +52,7 @@ private:
 	std::atomic<bool>						terminate_ = false;
 	vector<double>							new_candidates_;
 	vector<double>							candidates_;
-	std::stack<double>					scores_;
+	std::queue<double>					scores_;
 	std::mutex									lock_;
 
 	DISALLOW_COPY_AND_ASSIGN(Thread);

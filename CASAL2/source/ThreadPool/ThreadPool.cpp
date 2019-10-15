@@ -51,16 +51,21 @@ void ThreadPool::RunCandidates(const vector<vector<double>>& candidates, vector<
 	vector<int> thread_ids(candidates.size(), -1); // Track which thread is doing the work for each candidate
 	using namespace std::chrono_literals;
 	LOG_MEDIUM() << "Running a collection of " << candidates.size() << " candidates";
+//	cout << "candidates.size(): " << candidates.size() << endl;
 //	std::this_thread::sleep_for(5s);
 	// loop over our candidates, then find a thread for each one to be run in
+	unsigned last_thread = 0;
 	for (unsigned i = 0; i < candidates.size(); ++i) {
 		bool found_thread = false;
 		LOG_MEDIUM() << "Looking for thread for candidate set " << i+1;
 		while (!found_thread) {
-			for (int thread_idx = 0; thread_idx < (int)threads_.size(); ++thread_idx) {
+			if (last_thread >= threads_.size())
+				last_thread = 0;
+			for (int thread_idx = last_thread; thread_idx < (int)threads_.size(); ++thread_idx) {
 				auto& thread = threads_[thread_idx];
 				// is this thread available?
 				if (thread->is_finished()) {
+//					cout << "Found thread " << thread_idx << " for candidate set " << i << endl;
 					LOG_MEDIUM() << "Found thread " << thread_idx << " for candidate set " << i;
 					LOG_MEDIUM() << "candidates[i].size(): " << candidates[i].size();
 
@@ -68,6 +73,8 @@ void ThreadPool::RunCandidates(const vector<vector<double>>& candidates, vector<
 					found_thread = true;
 					thread->RunCandidates(candidates[i]);
 					thread_ids[i] = thread_idx;
+					last_thread = thread_idx + 1;
+					break;
 				}
 			}
 		}
@@ -81,8 +88,9 @@ void ThreadPool::RunCandidates(const vector<vector<double>>& candidates, vector<
 		while(!thread->is_finished())
 			std::this_thread::yield();
 
-		scores_[i] = thread->objective_score();
-		LOG_MEDIUM() << "Thread " << thread_ids[i] << " has returned score " << scores_[i];
+		scores[i] = thread->objective_score();
+
+		LOG_MEDIUM() << "Thread " << thread_ids[i] << " has returned score " << scores[i];
 	}
 
 	return;

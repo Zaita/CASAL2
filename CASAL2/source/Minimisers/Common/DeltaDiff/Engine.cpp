@@ -185,62 +185,74 @@ double Engine::optimise_finite_differences(deltadiff::CallBack& objective, vecto
       long double dOrigValue;
       long double dStepSizeI;
       long double dScoreI;
-//      vector<vector<double>> gradient_candidates;
-//      vector<double> gradient_penalties;
-//      for (int i = 0; i < iVectorSize; ++i) {
-//        if (math::IsEqual(vLowerBounds[i], vUpperBounds[i])) {
-//          vGradientValues[i] = 0.0;
-//
-//        } else {
-//        	 dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
-//
-//           // Backup Orig Value, and Assign New Var
-//           dOrigValue        = vScaledValues[i];
-//           vScaledValues[i]  += dStepSizeI;
-//           dStepSizeI        = vScaledValues[i] - dOrigValue;
-//
-//           dPenalty = 0.0;
-//           buildCurrentValues();
-//           gradient_penalties.push_back(dPenalty);
-//           gradient_candidates.push_back(vCurrentValues);
-//           cout << "TGP: " << dPenalty << endl;
-//
-//           vScaledValues[i]    = dOrigValue;
-//        }
-//      } // for (int i = 0; i < iVectorSize; ++i)
+      vector<vector<double>> gradient_candidates;
+      vector<double> gradient_penalties;
+      for (int i = 0; i < iVectorSize; ++i) {
+        if (math::IsEqual(vLowerBounds[i], vUpperBounds[i])) {
+          vGradientValues[i] = 0.0;
+
+        } else {
+        	 dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
+
+           // Backup Orig Value, and Assign New Var
+           dOrigValue        = vScaledValues[i];
+           vScaledValues[i]  += dStepSizeI;
+           dStepSizeI        = vScaledValues[i] - dOrigValue;
+
+           dPenalty = 0.0;
+           buildCurrentValues();
+           gradient_penalties.push_back(dPenalty);
+           gradient_candidates.push_back(vCurrentValues);
+//           cout << "Current Values: ";
+//             for (auto x : vCurrentValues)
+//             	cout << x << " ";
+//           cout << endl;
+//           cout << "Penalty for above candidates: " << dPenalty << endl;
+
+           vScaledValues[i]    = dOrigValue;
+        }
+      } // for (int i = 0; i < iVectorSize; ++i)
+
 //      for (auto x : gradient_candidates) {
-//				cout << "TGC: ";
+//				cout << "Gradient Candidates: ";
 //					for (auto y : x)
 //						cout << y << ", ";
 //				cout << endl;
 //      }
-//
-//      vector<double> gradient_scores = objective(gradient_candidates);
-//      if (gradient_scores.size() != iVectorSize)
-//      	LOG_CODE_ERROR() << "(gradient_scores.size() != iVectorSize)";
-//      if (gradient_penalties.size() != iVectorSize)
-//      	LOG_CODE_ERROR() << "(gradient_penalties.size() != iVectorSize)";
-//
-//      for (int i = 0; i < iVectorSize; ++i) {
-//      	 	 dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
-//
-//          // Backup Orig Value, and Assign New Var
-//          dOrigValue        = vScaledValues[i];
-//          vScaledValues[i]  += dStepSizeI;
-//          dStepSizeI        = vScaledValues[i] - dOrigValue;
-//
-//          dScoreI = gradient_scores[i];
-//          dScoreI += gradient_penalties[i];
-////          cout << "Score: " << dScoreI << " + Penalty: " << gradient_penalties[i] << endl;
-//
-//          // Populate Gradient, and Restore Orig Value
-//          vGradientValues[i]  = (dScoreI - dScore) / dStepSizeI;
-//          vScaledValues[i]    = dOrigValue;
-//      }
-//      cout << "TG: ";
-//      for (auto val : vGradientValues)
-//      	cout << val << ", ";
+
+
+      if (gradient_penalties.size() != iVectorSize)
+      	LOG_CODE_ERROR() << "(gradient_penalties.size() != iVectorSize)";
+      vector<double> gradient_scores(iVectorSize, 0.0);
+
+      objective(gradient_candidates, gradient_scores);
+//      cout << "Returned Scores: ";
+//      for (auto x : gradient_scores)
+//      	cout << x << " ";
 //      cout << endl;
+
+      for (int i = 0; i < iVectorSize; ++i) {
+      	 	 dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
+
+          // Backup Orig Value, and Assign New Var
+          dOrigValue        = vScaledValues[i];
+          vScaledValues[i]  += dStepSizeI;
+          dStepSizeI        = vScaledValues[i] - dOrigValue;
+
+          dScoreI = gradient_scores[i];
+          dScoreI += gradient_penalties[i];
+//          cout << "Score: " << gradient_scores[i] << " + Penalty: " << gradient_penalties[i] << endl;
+
+          // Populate Gradient, and Restore Orig Value
+          vGradientValues[i]  = (dScoreI - dScore) / dStepSizeI;
+          vScaledValues[i]    = dOrigValue;
+      }
+//      cout << "Thread: ";
+//      for (auto val : vGradientValues)
+//      	cout << val << " ";
+//      cout << endl;
+//
+//      cout << "-------------------------" << endl;
 
       /**************************************************************************************************************************
        * ************************************************************************************************************************
@@ -249,37 +261,44 @@ double Engine::optimise_finite_differences(deltadiff::CallBack& objective, vecto
        * ************************************************************************************************************************
        * ************************************************************************************************************************
        */
-      vector<vector<double>> gradient_candidates;
-      for (int i = 0; i < iVectorSize; ++i) {
-        if (math::IsEqual(vLowerBounds[i], vUpperBounds[i])) {
-          vGradientValues[i] = 0.0;
+//      for (int i = 0; i < iVectorSize; ++i) {
+//        if (math::IsEqual(vLowerBounds[i], vUpperBounds[i])) {
+//          vGradientValues[i] = 0.0;
+//
+//        } else {
+//          // Workout how much to change the variable by
+//          dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
+//
+//          // Backup Orig Value, and Assign New Var
+//          dOrigValue        = vScaledValues[i];
+//          vScaledValues[i]  += dStepSizeI;
+//          dStepSizeI        = vScaledValues[i] - dOrigValue;
+//
+//          dPenalty = 0.0;
+//          buildCurrentValues();
+//
+//          dScoreI = objective(vCurrentValues);
+//          cout << "Current Values: ";
+//          for (auto x : vCurrentValues)
+//          	cout << x << " ";
+//          cout << endl;
+//          cout << "Normal Score: " << dScoreI << " Penalty: " << dPenalty << endl;
+//          dScoreI += dPenalty;
+//          gradient_candidates.push_back(vCurrentValues);
+//
+//          // Populate Gradient, and Restore Orig Value
+//          vGradientValues[i]  = (dScoreI - dScore) / dStepSizeI;
+//          vScaledValues[i]    = dOrigValue;
+//        }
+//      }
 
-        } else {
-          // Workout how much to change the variable by
-          dStepSizeI  = dStepSize * ((vScaledValues[i] > 0) ? 1 : -1);
+//      cout << "Normal: ";
+//      for (auto x : vGradientValues)
+//      	cout << x << ", ";
+//      cout << endl;
 
-          // Backup Orig Value, and Assign New Var
-          dOrigValue        = vScaledValues[i];
-          vScaledValues[i]  += dStepSizeI;
-          dStepSizeI        = vScaledValues[i] - dOrigValue;
-
-          dPenalty = 0.0;
-          buildCurrentValues();
-
-          dScoreI = objective(vCurrentValues);
-          dScoreI += dPenalty;
-          gradient_candidates.push_back(vCurrentValues);
-
-          // Populate Gradient, and Restore Orig Value
-          vGradientValues[i]  = (dScoreI - dScore) / dStepSizeI;
-          vScaledValues[i]    = dOrigValue;
-        }
-      }
-      LOG_MEDIUM() << "Running Threaded Gradient";
-      vector<double> scores(gradient_candidates.size(), 0.0);
-      objective(gradient_candidates, scores);
-      LOG_MEDIUM() << "Finished Threaded Gradient";
       // Gradient Finished
+//      cout << "--------------------------------------------------------------------------" << endl;
     }
     // Call our Function Minimiser
     clMinimiser.fMin(vScaledValues, dScore, vGradientValues);

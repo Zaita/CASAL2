@@ -73,10 +73,10 @@ void Thread::Loop() {
 					candidates_ = new_candidates_;
 					new_candidates_.clear();
 
-					string cl = "";
-					for (auto candidate : candidates_)
-						cl += utilities::ToInline<double, string>(candidate) + ", ";
-					LOG_MEDIUM() << "[Thread# " << thread_->get_id() << "] Running candidates: " << cl;
+//					string cl = "";
+//					for (auto candidate : candidates_)
+//						cl += utilities::ToInline<double, string>(candidate) + ", ";
+//					LOG_MEDIUM() << "[Thread# " << thread_->get_id() << "] Running candidates: " << cl;
 
 					// TODO: Move this to the model
 					auto estimates = model_->managers()->estimate()->GetIsEstimated();
@@ -92,12 +92,12 @@ void Thread::Loop() {
 
 					ObjectiveFunction& objective = model_->objective_function();
 					objective.CalculateScore();
+//					cout << "Pushing Score: " << objective.score() << " to stack" << endl;
 					scores_.push(objective.score());
 
 					model_->managers()->estimate_transformation()->TransformEstimates();
 
 					is_finished_ = true;
-					continue;
 				}
 			}
 			catch (...) {
@@ -106,7 +106,7 @@ void Thread::Loop() {
 
 			is_finished_ = true;
 			// Nothing to do, yield control back to CPU
-			//std::this_thread::yield();
+			std::this_thread::yield();
 		}
 	}
 }
@@ -152,7 +152,8 @@ double Thread::objective_score() {
 	if (scores_.size() == 0)
 		LOG_CODE_ERROR() << "(scores_.size() == 0)";
 
-	double score = scores_.top();
+	double score = scores_.front();
+//	cout << "score is " << score << endl;
 	scores_.pop();
 	return score;
 }
