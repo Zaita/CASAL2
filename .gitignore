@@ -159,3 +159,9 @@
 /ThirdParty/googletest_googlemock/__pycache__
 /ThirdParty/boost/boost_1_71_0
 /ThirdParty/boost/__pycache__
+/CASAL2/source/Casal2.sln
+/CASAL2/source/Casal2.vcxproj
+/CASAL2/source/Casal2.vcxproj.filters
+/CASAL2/source/Casal2.vcxproj.user
+/CASAL2/source/Debug
+/Documentation/GettingStartedGuide/*.aux
