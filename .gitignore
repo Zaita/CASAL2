@@ -166,3 +166,6 @@
 /CASAL2/source/Debug
 /Documentation/GettingStartedGuide/*.aux
 /Documentation/.project
+/BuildSystem/buildtools/classes/__pycache__
+/ThirdParty/dlib/__pycache__
+/ThirdParty/dlib/dlib-19.17
