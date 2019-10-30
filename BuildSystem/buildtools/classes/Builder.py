@@ -8,11 +8,12 @@ import re
 import time
 import pytz
 from datetime import datetime, date
+import importlib.util
 
 import Globals
+from Version import *
 
 EX_OK = getattr(os, "EX_OK", 0)
-
 """
 This class is responsible for building the main code base of the project
 """
@@ -20,51 +21,26 @@ class MainCode:
   cmake_compiler_ = ""
   output_directory_ = "";
   
-  def start(self, build_library):
+  def start(self):
     start = time.time()
     print( "--> Starting build of the main code base")
     print( "--> Build configuration " + Globals.build_target_ + " : " + Globals.build_parameters_)
     print( "--> Operating System: " + Globals.operating_system_)
-    print( "--> Building Library?: " + str(build_library))
     
-    self.cmake_compiler_ = [ 'Unix', 'MinGW' ][ Globals.operating_system_ == "windows" ]
-    print( "--> CMake Compiler: " + self.cmake_compiler_)
+    self.cmake_compiler_ = Globals.cmake_compiler_ #[ 'Unix', 'MinGW' ][ Globals.operating_system_ == "windows" ]
+    print( "--> CMake Compiler: " + Globals.cmake_compiler_)
     
     # Check to see if the third party libraries have been built
-    third_party_dir = "bin/" + Globals.operating_system_ + "/thirdparty"
+    third_party_dir = "bin/" + Globals.operating_system_ + "_" + Globals.compiler_ + "/thirdparty"
     if not os.path.exists(third_party_dir):
       return Globals.PrintError("Third party libraries have not been built. Please build these first with thirdparty argument")
 
-    # Build the Version.h file
-    if Globals.git_path_ != '':
-      print( '-- Build CASAL2/source/Version.h with Git log information')
-      p = subprocess.Popen(['git', '--no-pager', 'log', '-n', '1', '--pretty=format:%H%n%h%n%ci' ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-      out, err = p.communicate()
-      lines = out.decode('utf-8').split('\n')
-      if len(lines) != 3:
-        return Globals.PrintError('Format printed by GIT did not meet expectations. Expected 3 lines but got ' + str(len(lines)))
-
-      time_pieces = lines[2].split(' ')
-      temp = ' '.join(time_pieces)
-      local_time = datetime.strptime(temp, '%Y-%m-%d %H:%M:%S %z')
-      utc_time   = local_time.astimezone(pytz.utc)
-            
-      version = '// This file is automatically built by the build system. Do not modify this file\n'
-      version += '#ifndef VERSION_H_\n'
-      version += '#define VERSION_H_\n'
-      version += '#define SOURCE_CONTROL_REVISION ' + lines[0] + '\n'
-      version += '#define SOURCE_CONTROL_DATE "' + utc_time.strftime('%Y-%m-%d') + '"\n'
-      version += '#define SOURCE_CONTROL_YEAR "' + utc_time.strftime('%Y') + '"\n'
-      version += '#define SOURCE_CONTROL_MONTH "' + utc_time.strftime('%B') + '"\n'
-      version += '#define SOURCE_CONTROL_TIME "' + utc_time.strftime('%H:%M:%S') + '"\n'
-      version += '#define SOURCE_CONTROL_VERSION "' + utc_time.strftime('%Y-%m-%d %H:%M:%S %Z') + ' (rev. ' + lines[1] + ')"\n'
-      version += '#endif\n'
-
-      fo = open('../CASAL2/source/Version.h', 'w')
-      fo.write(version)
-      fo.close()
+    ## Build Version.h
+    version = Version()
+    version.create_version_header()
     
-    self.output_directory_ = "bin/" + Globals.operating_system_ + "/" + Globals.build_target_ 
+    self.output_directory_ = "bin/" + Globals.operating_system_ + "_" + Globals.compiler_ + "/" + Globals.build_target_ 
+    cmake_os_path = Globals.operating_system_ + "_" + Globals.compiler_
 
     if Globals.build_parameters_ != "":
       self.output_directory_ += "_" + Globals.build_parameters_
@@ -75,8 +51,11 @@ class MainCode:
     
     os.chdir(self.output_directory_);
     
+    if Globals.build_target_.upper() == "TEST": # Handle new keyword TEST in CMake v3
+      Globals.build_target_ = "TESTMODE"
+
     print( '--> Preparing CMake command')
-    build_string = 'cmake -G "' + self.cmake_compiler_ + ' Makefiles" -D' + Globals.build_target_.upper() + '=1'
+    build_string = 'cmake ' + self.cmake_compiler_ + ' -D' + Globals.build_target_.upper() + '=1'
     if Globals.build_parameters_ != "":
       build_string += ' -D' + Globals.build_parameters_.upper() + '=1'
     build_string += ' ../../..'
@@ -86,16 +65,11 @@ class MainCode:
       return Globals.PrintError("Failed to execute cmake successfully to rebuild the make files")
     
     print( "--> Build main code base")
-    if Globals.operating_system_ == "windows":
-      if os.system("mingw32-make -j 12") != EX_OK:
-        return Globals.PrintError("Failed to build code base. Please see above for build error")
-    else:
-      if os.system("make -j 12") != EX_OK:
-        return Globals.PrintError("Failed to build code base. Please see above for build error")
+    if os.system(Globals.make_command_) != EX_OK:
+      return Globals.PrintError("Failed to build code base. Please see above for build error")
 
     elapsed = time.time() - start
-    print( 'Compile finished in ' + str(round(elapsed, 2)) + ' seconds')
-    
+    print( 'Compile finished in ' + str(round(elapsed, 2)) + ' seconds')    
     return True    
 
 """
@@ -116,7 +90,7 @@ class ThirdPartyLibraries:
     print("-- Compiler: " + Globals.compiler_)
   
     print( "-- Checking if output folder structure exists"  )
-    self.output_directory_ = os.path.normpath(os.getcwd()) + "/bin/" + Globals.operating_system_ + "/thirdparty"
+    self.output_directory_ = os.path.normpath(os.getcwd()) + "/bin/" + Globals.operating_system_ + "_" + Globals.compiler_ + "/thirdparty"
     if not os.path.exists(self.output_directory_):
       print( "-- Creating output directory: " + self.output_directory_)
       os.makedirs(self.output_directory_)
@@ -140,11 +114,6 @@ class ThirdPartyLibraries:
     if not os.path.exists(self.lib_release_directory):
       print( "-- Creating lib release directory: " + self.lib_release_directory)
       os.makedirs(self.lib_release_directory)
-
-    self.lib_special_directory = self.lib_directory + "/special"
-    if not os.path.exists(self.lib_special_directory):
-      print( "-- Creating lib special directory: " + self.lib_special_directory)
-      os.makedirs(self.lib_special_directory)
       
     self.input_directory = "../ThirdParty/"
     third_party_list = os.listdir(self.input_directory)
@@ -153,7 +122,6 @@ class ThirdPartyLibraries:
     Globals.target_include_path_      = self.output_directory_ + '/include/'
     Globals.target_debug_lib_path_    = self.output_directory_ + '/lib/debug/'
     Globals.target_release_lib_path_  = self.output_directory_ + '/lib/release/'
-    Globals.target_special_lib_path_  = self.output_directory_ + '/lib/special/'
     
     cwd = os.path.normpath(os.getcwd())    
     build_module_name = "build"    
@@ -187,11 +155,26 @@ class ThirdPartyLibraries:
       """
       # Handle loading the windows file and building this on windows
       """
+      file_name = "";
       if Globals.operating_system_ == "windows":
-        if not os.path.exists('windows.py'):
-          return Globals.PrintError('Third party library ' + folder + ' does not have a windows.py file.\nThis file is required to build this library on Windows')
-        import windows as third_party_builder
-        builder = third_party_builder.Builder()        
+        file_name = "windows"
+      elif Globals.operating_system_ == "linux":
+        file_name = "linux"
+
+      if Globals.compiler_ == "gcc":
+        file_name += "_gcc"
+      elif Globals.compiler_ == "msvc":
+        file_name += "_msvc"
+
+
+      #file_name += ".py"
+
+      if Globals.operating_system_ == "windows":
+        if not os.path.exists(file_name + ".py"):
+          return Globals.PrintError('Third party library ' + folder + ' does not have a ' + file_name + '.py file.\nThis file is required to build this library on Windows')
+        print(os.path.normpath(os.getcwd()))        
+        builder = importlib.import_module(file_name).Builder()
+        
         if os.path.exists(success_file) and Globals.build_parameters_ == "" and hasattr(builder, 'version_') and str(library_version) == str(builder.version_) and str(library_version) != str(-1.0):
             print( '--> Skipping library ' + folder + ' (version already installed)')
             success = True
@@ -214,7 +197,7 @@ class ThirdPartyLibraries:
               print( "")
             else:
               return Globals.PrintError('Third party library ' + folder + ' had an error during the build. Check log files for more information')
-        del sys.modules["windows"]
+        del sys.modules[file_name]
         
       else:
         if not os.path.exists('linux.py'):
@@ -246,52 +229,6 @@ class ThirdPartyLibraries:
     print( "")
     print( "--> All third party libraries have been built successfully")
     return True
-
-
-class FrontEnd:
-  def start(self):
-    start = time.time()
-    print( "--> Starting build of the front end code base")
-    print( "--> Build configuration " + Globals.build_target_ + " : " + Globals.build_parameters_)
-    print( "--> Operating System: " + Globals.operating_system_)
-    
-    self.cmake_compiler_ = [ 'Unix', 'MinGW' ][ Globals.operating_system_ == "windows" ]
-    print( "--> CMake Compiler: " + self.cmake_compiler_)
-
-    # Check to see if the third party libraries have been built
-    third_party_dir = "bin/" + Globals.operating_system_ + "/thirdparty"
-    if not os.path.exists(third_party_dir):
-      return Globals.PrintError("Third party libraries have not been built. Please build these first with thirdparty argument")
-    
-    self.output_directory_ = "bin/" + Globals.operating_system_ + "/" + Globals.build_target_ 
-
-    if Globals.build_parameters_ != "":
-      self.output_directory_ += "_" + Globals.build_parameters_
-      
-    if not os.path.exists(self.output_directory_):
-      os.makedirs(self.output_directory_);
-    print( "--> Target output directory: " + self.output_directory_)
-    
-    os.chdir(self.output_directory_);
-    
-    print( '--> Preparing CMake command')
-    build_string = 'cmake -G "' + self.cmake_compiler_ + ' Makefiles" ../../../../FrontEnd'
-    print( "--> CMake command: " + build_string)
-    if os.system(build_string) != EX_OK:
-      return Globals.PrintError("Failed to execute cmake successfully to rebuild the make files")
-    
-    print( "--> Build main code base")
-    if Globals.operating_system_ == "windows":
-      if os.system("mingw32-make") != EX_OK:
-        return Globals.PrintError("Failed to build code base. Please see above for build error")
-    else:
-      if os.system("make") != EX_OK:
-        return Globals.PrintError("Failed to build code base. Please see above for build error")
-
-    elapsed = time.time() - start
-    print( 'Compile finished in ' + str(round(elapsed, 2)) + ' seconds')
-    
-    return True 
 
 """
 This class is responsible for cleaning the build folders

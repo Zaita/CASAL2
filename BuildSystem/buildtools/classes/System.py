@@ -33,7 +33,46 @@ class SystemInfo:
       Globals.path_ += cwd + '\\bin\\' + Globals.operating_system_ + '\\release_betadiff;'
     else:
       Globals.path_ += cwd + '/bin/' + Globals.operating_system_ + '/release_betadiff'
-    
+
+  """
+  Populate the Global variables with the different EXE locations based on the Operating
+  System
+  """
+  def set_required_tools_paths(self):
+    print("--> Setting the paths for the required tools")
+    self.determine_compiler();
+
+    if Globals.operating_system_ == "windows":
+      Globals.cmd_path_      = self.find_exe_path('cmd.exe')
+      Globals.python_cmd_    = "python"
+      Globals.gfortran_path_ = self.find_exe_path('gfortran.exe')
+      Globals.latex_path_    = self.find_exe_path('bibtex.exe')
+      Globals.git_path_      = self.find_exe_path('git.exe')    
+    else:
+      Globals.python_cmd_    = "python3"
+      Globals.gfortran_path_ = self.find_exe_path('gfortran')
+      Globals.latex_path_    = self.find_exe_path('bibtex')
+      Globals.git_path_      = self.find_exe_path('git')    
+      if self.find_exe_path('unzip') == '':
+        return Globals.PrintError('unzip is not in the current path. Please ensure it has been installed')
+      if self.find_exe_path('cmake') == '':
+        return Globals.PrintError('cmake is not in the current path. Please ensure it has been intalled')    
+
+    self.set_new_path()
+
+    if Globals.git_path_ == "":
+      return Globals.PrintError("git is not in the current path. Please install a git command line client (e.g http://git-scm.com/downloads)")  
+    if Globals.operating_system_ == 'windows' and os.path.exists(Globals.git_path_ + '\\sh.exe'):
+      return Globals.PrintError("git version has sh.exe in the same location. This will conflict with cmake. Please upgrade to a 64bit version of Git")    
+    if not self.find_compiler_version():
+      return False
+
+    return True  
+
+  """
+  Override the environment path including the packages we've included with this
+  source base. For Windows we've included unixutilities and cmake
+  """
   def set_new_path(self):
     print("-- Overriding the system path with new values")
     if Globals.operating_system_ == "windows":
@@ -42,6 +81,9 @@ class SystemInfo:
       os.environ['PATH'] = Globals.path_ + ":" + self.original_path_
     print('-- New Path: ' + os.environ['PATH'])
     
+  """
+  Reset the path to what was there before we started the build system.
+  """
   def reset_original_path(self):
     os.environ['PATH'] = self.original_path_
     
@@ -90,6 +132,10 @@ class SystemInfo:
     if p.wait() == 0:
       Globals.compiler_ = "gcc"
       Globals.compiler_path_ = out.decode("utf-8").rstrip() 
+      if Globals.operating_system_ == "windows":
+        Globals.make_command_ = "mingw32-make -j " + str(Globals.threads_)
+      else:
+        Globals.make_command_ = "make -j " + str(Globals.threads_)
       print("-- G++ Path: " + out.decode("utf-8").rstrip())
       return
 
@@ -100,6 +146,7 @@ class SystemInfo:
     if p.wait() == 0:
       Globals.compiler_ = "msvc"
       Globals.compiler_path_ = out.decode("utf-8").rstrip()
+      Globals.make_command_ = "devenv Casal2.sln /Build Release" 
       print("-- Visual Studio Path: " + out.decode("utf-8").rstrip())
       return   
 
@@ -110,6 +157,10 @@ class SystemInfo:
     if p.wait() == 0:
       Globals.compiler_ = "clang"
       Globals.compiler_path_ = out.decode("utf-8").rstrip() 
+      if Globals.operating_system_ == "windows":
+        Globals.make_command_ = "mingw32-make -j " + str(Globals.threads_)
+      else:
+        Globals.make_command_ = "make -j " + str(Globals.threads_)
       print("-- Clang Path: " + out.decode("utf-8").rstrip())
       return
     
@@ -123,13 +174,15 @@ class SystemInfo:
     if Globals.operating_system_ == "windows":
       Globals.compiler_path_ = Globals.compiler_path_.replace("/", "\\")
 
+    self.get_cmake_compiler_string()
+
     if Globals.compiler_ == "clang":
       return self.find_clang_version()
     elif Globals.compiler_ == "gcc":
       return self.find_gcc_version()
     elif Globals.compiler_ == "msvc":
       return self.find_msvc_version()
-
+    
     return False
 
 
@@ -194,5 +247,22 @@ class SystemInfo:
     if int(pieces[0]) < 19:
       return Globals.PrintError("msvc version " + Globals.compiler_version_ + " is not supported due to it's age")
 
-    return True    
+    return True   
+
+    """
+    Get the compiler string to use for CMake
+    """
+  def get_cmake_compiler_string(self):
+    if Globals.compiler_ == "clang":
+      Globals.cmake_compiler_ = '-DOUTPUT_PATH:STRING=windows_clang'
+    elif Globals.compiler_ == "gcc" and Globals.operating_system_ == "windows":
+      Globals.cmake_compiler_ = '-G "MinGW Makefiles" -DOUTPUT_PATH:STRING=windows_gcc'
+    elif Globals.compiler_ == "gcc" and Globals.operating_system_ == "linux":
+      Globals.cmake_compiler_ = '-G "Unix Makefiles" -DOUTPUT_PATH:STRING=linux_gcc'
+    elif Globals.compiler_ == "msvc":
+      Globals.cmake_compiler_ = '-DOUTPUT_PATH:STRING=windows_msvc'
+    else:
+      Globals.cmake_compiler_ = "get_cmake_compiler_string() error"
+    
+    return True
   
