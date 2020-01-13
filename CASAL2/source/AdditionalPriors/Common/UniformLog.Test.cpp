@@ -47,13 +47,13 @@ TEST(AdditionalPriors, UniformLog) {
 	// Set up some pairs of n, log(n) to be checked by our uniform log prior
 	std::vector<std::pair<double, double>> values = {
 		{5, 1.609438}, {10, 2.302585}, {15, 2.70805}, {20, 2.995732},
-		{25, 3.218876}, {22, 3.091042}, {12, 2.484907}, {2, 0.0693147}
+		{25, 3.218876}, {22, 3.091042}, {12, 2.484907}, {2, 0.69314718055994529}
 	};
 
 	// iterate over the values and compare them against what we calculate
 	for (auto pair : values) {
 		target = pair.first;
-		EXPECT_DOUBLE_EQ(pair.second, ul.GetScore());
+		EXPECT_NEAR(pair.second, ul.GetScore(), 1e-5);
 	}
 }
 
