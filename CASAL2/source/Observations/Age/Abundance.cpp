@@ -182,10 +182,9 @@ void Abundance::Execute() {
         age = (*category_iter)->min_age_ + data_offset;
 
         selectivity_result = selectivities_[category_offset]->GetAgeResult(age, (*category_iter)->age_length_);
-        start_value = (*cached_category_iter)->data_[data_offset];
+        start_value = (*cached_category_iter).data_[data_offset];
         end_value = (*category_iter)->data_[data_offset];
         final_value = 0.0;
-
         if (mean_proportion_method_)
           final_value = start_value + ((end_value - start_value) * proportion_of_time_);
         else {
@@ -196,6 +195,9 @@ void Abundance::Execute() {
         }
 
         expected_total += selectivity_result * final_value;
+        LOG_FINEST() << "age: " << age << "; selectivity_result: " << selectivity_result << "; start_value: "
+        	<< start_value << "; end_value: " << end_value << "; final_value: " << final_value << "; expected_total: " << expected_total
+					<< "proportion_of_time_: " << proportion_of_time_;
       }
     }
 
@@ -206,7 +208,9 @@ void Abundance::Execute() {
       // If nuisance q then the default value for Q is 1 but this has a null effect on the expectations so I am just skipping it replicate this and get
       // around issues with bounds in the estimation system
       expected_total *= catchability_->q();
+      LOG_FINEST() << "expected_total: " << expected_total << "; catchability_->q(): " << catchability_->q();
     }
+
     error_value = error_values_by_year_[current_year];
 
     // Store the values

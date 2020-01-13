@@ -43,10 +43,10 @@ using niwa::utilities::Double;
 class Categories {
 public:
   // Typedef
-  typedef vector<partition::Category*> DataType;
+  typedef vector<partition::Category> DataType;
 
   // Methods
-  Categories() = delete;
+  Categories() = default;
   explicit Categories(shared_ptr<Model> model);
   virtual                     ~Categories() = default;
   void                        Init(const vector<string>& category_labels);

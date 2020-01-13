@@ -107,8 +107,10 @@ void Manager::Execute(shared_ptr<Model> model, State::Type model_state) {
 
 	LOG_TRACE();
 	LOG_FINE() << "Executing Models for state: " << (int)model_state;
-  if (model_state == State::kFinalise && !model->is_primary_thread_model())
+  if (model_state == State::kFinalise && !model->is_primary_thread_model()) {
+  	LOG_FINEST() << "Model is not the primary thread model";
   	return;
+  }
 
   RunMode::Type run_mode = model->run_mode();
   bool tabular = model->global_configuration().print_tabular();

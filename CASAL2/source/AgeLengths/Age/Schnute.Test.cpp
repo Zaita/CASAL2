@@ -92,6 +92,9 @@ TEST(AgeLengths, Schnute) {
   EXPECT_DOUBLE_EQ(1.5, schnute.cv(1990, 0, 8));
   EXPECT_DOUBLE_EQ(1.5, schnute.cv(1990, 0, 9));
   EXPECT_DOUBLE_EQ(1.5, schnute.cv(1990, 0, 10));
+
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(mock_managers.get()));
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(model.get()));
 }
 
 /**
@@ -133,6 +136,9 @@ TEST(AgeLengths, Schnute_BuildCV_ByLength_Proportion) {
   EXPECT_DOUBLE_EQ(84.907129213795571, schnute.mean_length(0, 8));
   EXPECT_DOUBLE_EQ(88.226983724973564, schnute.mean_length(0, 9));
   EXPECT_DOUBLE_EQ(91.068783855484241, schnute.mean_length(0, 10));
+
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(mock_managers.get()));
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(model.get()));
 }
 
 
@@ -168,6 +174,9 @@ TEST(AgeLengths, Schnute_BuildCV_ByLength_ProportionAndTimeStep) {
   EXPECT_DOUBLE_EQ(0.20000000000000001, schnute.cv(1990, 1, 9));
   EXPECT_DOUBLE_EQ(0.20000000000000001, schnute.cv(1990, 1, 10));
   EXPECT_DOUBLE_EQ(0.0,                 schnute.cv(1990, 1, 11));
+
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(mock_managers.get()));
+  EXPECT_TRUE(testing::Mock::VerifyAndClearExpectations(model.get()));
 }
 
 /**

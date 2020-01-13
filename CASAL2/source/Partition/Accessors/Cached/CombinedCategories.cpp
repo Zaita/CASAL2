@@ -52,8 +52,8 @@ void CombinedCategories::BuildCache() {
     // just re-populate
     for (auto& iter : data_) { // vector<vector<partition::Category> >
       for (auto& category : iter) {
-        partition::Category& part_cat = partition.category(category->name_);
-        category->data_ = part_cat.data_;
+        partition::Category& part_cat = partition.category(category.name_);
+        category.data_ = part_cat.data_;
       }
     }
     return;
@@ -72,7 +72,7 @@ void CombinedCategories::BuildCache() {
       if (std::find(category.years_.begin(), category.years_.end(), year) == category.years_.end())
         continue; // Not valid in this year
 
-      data_[i].push_back(&category);
+      data_[i].push_back(category);
     }
   }
 

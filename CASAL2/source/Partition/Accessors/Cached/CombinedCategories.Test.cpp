@@ -98,16 +98,16 @@ TEST_F(BasicModel, Accessors_Cached_CombinedCategories) {
 
   auto cache_iter = accessor->Begin();
   ASSERT_EQ(cache_iter->size(), 2u);
-  EXPECT_EQ((*cache_iter)[0]->name_, "immature.male");
-  EXPECT_EQ((*cache_iter)[1]->name_, "immature.female");
+  EXPECT_EQ((*cache_iter)[0].name_, "immature.male");
+  EXPECT_EQ((*cache_iter)[1].name_, "immature.female");
 
   ++cache_iter;
   ASSERT_EQ(cache_iter->size(), 1u);
-  EXPECT_EQ((*cache_iter)[0]->name_, "immature.male");
+  EXPECT_EQ((*cache_iter)[0].name_, "immature.male");
 
   ++cache_iter;
   ASSERT_EQ(cache_iter->size(), 1u);
-  EXPECT_EQ((*cache_iter)[0]->name_, "immature.female");
+  EXPECT_EQ((*cache_iter)[0].name_, "immature.female");
 }
 
 } /* namespace cached */

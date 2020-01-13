@@ -218,7 +218,7 @@ bool Iterative::CheckConvergence() {
       return false;
 
     for (unsigned i = 0; i < (*category)->data_.size(); ++i)
-      variance += fabs((*cached_category)->data_[i] - (*category)->data_[i]) / sum;
+      variance += fabs((*cached_category).data_[i] - (*category)->data_[i]) / sum;
   }
 
   if (variance < lambda_)

@@ -81,7 +81,8 @@ private:
   // members
   shared_ptr<Model>                      model_ = nullptr;
 
-  DISALLOW_COPY_AND_ASSIGN(Category);
+  // TODO: Re-enable this when we have a single unified accessor
+  //DISALLOW_COPY_AND_ASSIGN(Category);
 };
 
 } /* namespace partitions */

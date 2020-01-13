@@ -43,7 +43,7 @@ using niwa::utilities::Double;
 class CombinedCategories {
 public:
   // Typedef
-  typedef vector<vector<partition::Category*> > DataType;
+  typedef vector<vector<partition::Category> > DataType;
 
   // Methods
   CombinedCategories() = delete;

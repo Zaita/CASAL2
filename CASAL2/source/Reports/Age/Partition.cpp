@@ -44,6 +44,7 @@ void Partition::DoValidate(shared_ptr<Model> model) {
  *
  */
 void Partition::DoExecute(shared_ptr<Model> model) {
+	LOG_TRACE();
   // First, figure out the lowest and highest ages/length
   unsigned lowest         = 9999;
   unsigned highest        = 0;

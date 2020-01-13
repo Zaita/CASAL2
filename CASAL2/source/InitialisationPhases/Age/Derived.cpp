@@ -180,24 +180,24 @@ void Derived::Execute() {
       // We are assuming it is the last element, If categories can have different age ranges, this will have to change.
       unsigned plus_index = (*category)->data_.size() - 1;
 
-      LOG_FINEST() << "Cached plus group " << (*cached_category)->data_[plus_index] << " 1 year plus group " << (*category)->data_[plus_index];
+      LOG_FINEST() << "Cached plus group " << (*cached_category).data_[plus_index] << " 1 year plus group " << (*category)->data_[plus_index];
       //if (the plus group has been populated)
-      if ((*cached_category)->data_[plus_index] > 0) {
-        c = (*category)->data_[plus_index] / (*cached_category)->data_[plus_index] - 1; //zero fun
+      if ((*cached_category).data_[plus_index] > 0) {
+        c = (*category)->data_[plus_index] / (*cached_category).data_[plus_index] - 1; //zero fun
         LOG_FINEST() << "The value of c = " << c;
         if (c > 0.99) {
           c = 0.99;
         } else if (c < 0.0)
           c = 0.0;
         // reset the partition back to the original Cached partition
-        (*category)->data_ = (*cached_category)->data_;
+        (*category)->data_ = (*cached_category).data_;
         LOG_FINEST() << "plus group pre adjustment = " << (*category)->data_[plus_index];
         // now multiply the approximated change to the plus group
         (*category)->data_[plus_index] *= 1 / (1 - c);
         LOG_FINEST() << "Adjustment based an approximation for the plus group = " << (*category)->data_[plus_index];
       } else {
         // reset the partition back to the original Cached partition
-        (*category)->data_ = (*cached_category)->data_;
+        (*category)->data_ = (*cached_category).data_;
       }
     }
   }
@@ -269,8 +269,8 @@ void Derived::Execute() {
     auto category = partition_.begin();
     for (; category != partition_.end(); ++category, ++cached_category) {
       for(unsigned n_age = 0; n_age <  (*category)->data_.size(); ++n_age)
-        LOG_FINEST() << "new part = " << (*category)->data_[n_age] << " old part = " << (*cached_category)->data_[n_age];
-      (*category)->data_ = (*cached_category)->data_;
+        LOG_FINEST() << "new part = " << (*category)->data_[n_age] << " old part = " << (*cached_category).data_[n_age];
+      (*category)->data_ = (*cached_category).data_;
     }
   }
 }

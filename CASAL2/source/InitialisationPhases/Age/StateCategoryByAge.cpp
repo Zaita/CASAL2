@@ -121,7 +121,7 @@ void StateCategoryByAge::Execute() {
   auto cached_partition_iter  = cached_partition_.begin();
   auto partition_iter = partition_.begin();
   for (unsigned category_offset = 0; category_offset < category_labels_.size(); ++category_offset, ++partition_iter, ++cached_partition_iter) {
-    (*partition_iter)->data_ = (*cached_partition_iter)->data_;
+    (*partition_iter)->data_ = (*cached_partition_iter).data_;
   }
   LOG_FINE() << "Finished executing statebycategory initialisation";
 }
