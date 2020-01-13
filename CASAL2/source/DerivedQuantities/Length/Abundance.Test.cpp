@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Abundance.h"
+#include "Abundance.h"
 
 #include <iostream>
 

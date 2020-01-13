@@ -58,10 +58,14 @@ TagLoss::TagLoss(shared_ptr<Model> model)
 void TagLoss::DoValidate() {
   LOG_FINEST() << "Number of categories = " << category_labels_.size() << " number of proportions given = " << tag_loss_input_.size();
 
-  if (tag_loss_input_.size() == 1)
-    tag_loss_input_.assign(category_labels_.size(), tag_loss_input_[0]);
-  if (selectivity_names_.size() == 1)
-    selectivity_names_.assign(category_labels_.size(), selectivity_names_[0]);
+  if (tag_loss_input_.size() == 1) {
+  	auto tag_loss_input = tag_loss_input_[0];
+    tag_loss_input_.assign(category_labels_.size(), tag_loss_input);
+  }
+  if (selectivity_names_.size() == 1) {
+  	auto name = selectivity_names_[0];
+    selectivity_names_.assign(category_labels_.size(), name);
+  }
 
   if (tag_loss_input_.size() != category_labels_.size()) {
     LOG_ERROR_P(PARAM_TAG_LOSS_RATE)

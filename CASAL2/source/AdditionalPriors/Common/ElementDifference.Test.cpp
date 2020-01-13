@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../ElementDifference.h"
+#include "ElementDifference.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

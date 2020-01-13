@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Nuisance.h"
+#include "Nuisance.h"
 
 #include <iostream>
 

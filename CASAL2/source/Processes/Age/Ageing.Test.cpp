@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Ageing.h"
+#include "Ageing.h"
 
 #include <iostream>
 

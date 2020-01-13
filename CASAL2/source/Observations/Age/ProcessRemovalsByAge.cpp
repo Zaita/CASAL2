@@ -177,7 +177,8 @@ void ProcessRemovalsByAge::DoValidate() {
       error_values_by_year[year].push_back(value);
     }
     if (error_values_by_year[year].size() == 1) {
-      error_values_by_year[year].assign(obs_expected - 1, error_values_by_year[year][0]);
+    	Double value = error_values_by_year[year][0];
+      error_values_by_year[year].assign(obs_expected - 1, value);
     }
     if (error_values_by_year[year].size() != obs_expected - 1)
       LOG_FATAL_P(PARAM_ERROR_VALUES) << "We counted " << error_values_by_year[year].size() << " error values by year but expected " << obs_expected -1 << " based on the obs table";

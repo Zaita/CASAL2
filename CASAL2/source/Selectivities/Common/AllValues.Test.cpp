@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../AllValues.h"
+#include "AllValues.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../MortalityEvent.h"
+#include "MortalityEvent.h"
 
 #include <iostream>
 

@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Biomass.h"
+#include "Biomass.h"
 
 #include <iostream>
 

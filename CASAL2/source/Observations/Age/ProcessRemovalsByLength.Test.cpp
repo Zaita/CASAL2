@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../ProcessRemovalsByLength.h"
+#include "ProcessRemovalsByLength.h"
 
 #include <iostream>
 

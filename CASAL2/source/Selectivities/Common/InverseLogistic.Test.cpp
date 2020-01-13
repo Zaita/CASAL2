@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../InverseLogistic.h"
+#include "InverseLogistic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

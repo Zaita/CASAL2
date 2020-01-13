@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../RecruitmentConstant.h"
+#include "RecruitmentConstant.h"
 
 #include <iostream>
 

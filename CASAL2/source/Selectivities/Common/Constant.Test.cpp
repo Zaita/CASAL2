@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Constant.h"
+#include "Constant.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

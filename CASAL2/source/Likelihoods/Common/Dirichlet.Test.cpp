@@ -5,7 +5,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Dirichlet.h"
+#include "Dirichlet.h"
 
 #include <iostream>
 #include <gmock/gmock.h>

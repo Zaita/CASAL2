@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../../TimeStep.h"
+#include "TimeStep.h" // TODO: Why is this timestep?
 
 #include <iostream>
 

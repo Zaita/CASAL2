@@ -11,7 +11,7 @@
  */
 #ifdef TESTMODE
 
-#include "../../Category.h"
+#include "Category.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>

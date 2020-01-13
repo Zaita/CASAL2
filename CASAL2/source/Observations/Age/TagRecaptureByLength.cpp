@@ -250,7 +250,8 @@ void TagRecaptureByLength::DoValidate() {
         scanned_by_year[year].push_back(value);
       }
       if (scanned_by_year[year].size() == 1) {
-        scanned_by_year[year].assign(obs_expected - 1, scanned_by_year[year][0]);
+      	auto value = scanned_by_year[year][0];
+        scanned_by_year[year].assign(obs_expected - 1, value);
       }
       if (scanned_by_year[year].size() != obs_expected - 1) {
         LOG_FATAL_P(PARAM_SCANNED) << "We recieved " << scanned_by_year[year].size() << " columns but expected " << obs_expected - 1 << ", please check you have specified the table correctly";
@@ -359,8 +360,10 @@ void TagRecaptureByLength::DoBuild() {
       LOG_ERROR_P(PARAM_SELECTIVITIES) << ": Selectivity " << label << " does not exist. Have you defined it?";
     selectivities_.push_back(selectivity);
   }
-  if (selectivities_.size() == 1 && category_labels_.size() != 1)
-    selectivities_.assign(category_labels_.size(), selectivities_[0]);
+  if (selectivities_.size() == 1 && category_labels_.size() != 1) {
+  	auto selectivity = selectivities_[0];
+    selectivities_.assign(category_labels_.size(), selectivity);
+  }
 
 
   for(string label : tagged_selectivity_labels_) {
@@ -371,8 +374,10 @@ void TagRecaptureByLength::DoBuild() {
         tagged_selectivities_.push_back(selectivity);
   }
 
-  if (tagged_selectivities_.size() == 1 && category_labels_.size() != 1)
-    tagged_selectivities_.assign(category_labels_.size(), tagged_selectivities_[0]);
+  if (tagged_selectivities_.size() == 1 && category_labels_.size() != 1) {
+  	auto tagged_copy = tagged_selectivities_[0];
+    tagged_selectivities_.assign(category_labels_.size(), tagged_copy);
+  }
 
   if (time_step_proportion_ < 0.0 || time_step_proportion_ > 1.0)
     LOG_ERROR_P(PARAM_TIME_STEP_PROPORTION) << ": time_step_proportion (" << AS_DOUBLE(time_step_proportion_) << ") must be between 0.0 and 1.0";

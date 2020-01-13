@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../AllValuesBounded.h"
+#include "AllValuesBounded.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

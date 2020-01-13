@@ -11,8 +11,8 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../Objects.h"
-#include "../Objects.Mock.h"
+#include "Objects.h"
+#include "Objects.Mock.h"
 
 #include <iostream>
 #include <string>

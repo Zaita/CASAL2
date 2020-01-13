@@ -12,7 +12,7 @@
  */
 #ifdef TESTMODE
 
-#include "../../RossSeaComplex.h"
+#include "RossSeaComplex.h"
 
 #include "../../Model/Models/Age.h"
 #include "../../TestResources/TestFixtures/InternalEmptyModel.h"

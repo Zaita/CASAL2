@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../MortalityInstantaneous.h"
+#include "MortalityInstantaneous.h"
 
 #include "../../ObjectiveFunction/ObjectiveFunction.h"
 #include "../../Processes/Manager.h"

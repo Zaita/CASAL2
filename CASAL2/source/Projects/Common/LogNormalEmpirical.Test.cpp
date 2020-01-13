@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../LogNormalEmpirical.h"
+#include "LogNormalEmpirical.h"
 
 #include <iostream>
 

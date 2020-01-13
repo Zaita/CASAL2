@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../Partition.h"
+#include "Partition.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

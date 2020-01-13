@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../Categories.h"
+#include "Categories.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

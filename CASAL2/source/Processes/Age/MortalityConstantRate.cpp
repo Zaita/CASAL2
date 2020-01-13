@@ -56,10 +56,15 @@ MortalityConstantRate::MortalityConstantRate(shared_ptr<Model> model)
 void MortalityConstantRate::DoValidate() {
 //  category_labels_ = model_->categories()->ExpandLabels(category_labels_, parameters_.Get(PARAM_CATEGORIES));
 
-  if (m_input_.size() == 1)
-    m_input_.assign(category_labels_.size(), m_input_[0]);
-  if (selectivity_names_.size() == 1)
-    selectivity_names_.assign(category_labels_.size(), selectivity_names_[0]);
+  if (m_input_.size() == 1) {
+  	auto m_input = m_input_[0];
+    m_input_.assign(category_labels_.size(), m_input);
+  }
+
+  if (selectivity_names_.size() == 1) {
+  	auto name = selectivity_names_[0];
+    selectivity_names_.assign(category_labels_.size(), name);
+  }
 
   if (m_input_.size() != category_labels_.size()) {
     LOG_ERROR_P(PARAM_M)

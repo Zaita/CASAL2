@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../VectorSmoothing.h"
+#include "VectorSmoothing.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

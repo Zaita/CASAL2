@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../VonBertalanffy.h"
+#include "VonBertalanffy.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

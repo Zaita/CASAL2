@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../EmpiricalSampling.h"
+#include "EmpiricalSampling.h"
 
 #include <iostream>
 

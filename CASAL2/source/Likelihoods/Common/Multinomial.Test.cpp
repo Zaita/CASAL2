@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Multinomial.h"
+#include "Multinomial.h"
 
 #include <iostream>
 #include <gmock/gmock.h>

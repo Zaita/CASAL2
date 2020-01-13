@@ -10,7 +10,7 @@
  * $Date: 2008-03-04 16:33:32 +1300 (Tue, 04 Mar 2008) $
  */
 #ifdef TESTMODE
-#include "../../KnifeEdge.h"
+#include "KnifeEdge.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

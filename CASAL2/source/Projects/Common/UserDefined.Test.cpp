@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../UserDefined.h"
+#include "UserDefined.h"
 
 #include <iostream>
 

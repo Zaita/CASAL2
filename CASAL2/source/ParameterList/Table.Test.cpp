@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../Table.h"
+#include "Table.h"
 
 #include <iostream>
 

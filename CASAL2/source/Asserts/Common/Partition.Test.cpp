@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "../../Partition.h"
+#include "Partition.h"
 
 #include "../../Model/Models/Age.h"
 #include "../../TestResources/TestFixtures/InternalEmptyModel.h"

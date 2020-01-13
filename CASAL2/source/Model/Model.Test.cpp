@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../model.h"
+#include "Model.h"
 
 #include <iostream>
 

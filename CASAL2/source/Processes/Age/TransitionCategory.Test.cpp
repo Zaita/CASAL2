@@ -13,7 +13,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../TransitionCategory.h"
+#include "TransitionCategory.h"
 
 #include <iostream>
 

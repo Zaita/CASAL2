@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Logistic.h"
+#include "Logistic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

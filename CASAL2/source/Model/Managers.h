@@ -58,6 +58,7 @@ class Managers {
   friend class Model;
   friend class MockManagers;
 public:
+  Managers() = delete;
   virtual                     ~Managers();
 
   // accessors

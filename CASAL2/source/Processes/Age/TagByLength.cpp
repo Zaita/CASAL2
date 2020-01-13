@@ -189,9 +189,10 @@ void TagByLength::DoValidate() {
     }
 
     // build a map of n data by year
-    if (n_.size() == 1)
-      n_.assign(years_.size(), n_[0]);
-    else if (n_.size() != years_.size())
+    if (n_.size() == 1) {
+    	auto n_copy = n_[0];
+      n_.assign(years_.size(), n_copy);
+    } else if (n_.size() != years_.size())
       LOG_ERROR_P(PARAM_N) << " values provied (" << n_.size() << ") does not match the number of years (" << years_.size() << ")";
     n_by_year_ = utilities::Map::create(years_, n_);
 

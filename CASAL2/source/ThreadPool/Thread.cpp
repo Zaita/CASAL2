@@ -140,7 +140,7 @@ void Thread::flag_terminate() {
  * Note: We don't need a lock because is_finished_ is atomic
  */
 bool Thread::is_finished() {
-	std::scoped_lock l(lock_);
+//	std::scoped_lock l(lock_);
 	return is_finished_;
 }
 

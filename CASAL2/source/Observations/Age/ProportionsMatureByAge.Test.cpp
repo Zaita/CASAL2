@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../ProportionsMatureByAge.h"
+#include "ProportionsMatureByAge.h"
 
 #include <iostream>
 

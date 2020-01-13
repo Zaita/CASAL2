@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "../../LogNormal.h"
+#include "LogNormal.h"
 
 #include <iostream>
 #include <gmock/gmock.h>

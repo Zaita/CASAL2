@@ -11,8 +11,8 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Constant.h"
-#include "../../Constant.Mock.h"
+#include "Constant.h"
+#include "Constant.Mock.h"
 
 #include <iostream>
 #include <gmock/gmock.h>

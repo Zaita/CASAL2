@@ -57,7 +57,8 @@ void TransitionCategory::DoValidate() {
   LOG_TRACE();
 
   if (selectivity_names_.size() == 1) {
-    selectivity_names_.assign(from_category_names_.size(), selectivity_names_[0]);
+  	auto name = selectivity_names_[0];
+    selectivity_names_.assign(from_category_names_.size(), name);
   }
 
 //  // Validate Categories

@@ -70,7 +70,7 @@ public:
   MOCK_CONST_METHOD0(partition_type, PartitionType());
   MOCK_CONST_METHOD0(length_bins, vector<unsigned>&());
   MOCK_CONST_METHOD0(length_plus, bool());
-  MOCK_METHOD0(managers, niwa::Managers&());
+  MOCK_METHOD0(managers, shared_ptr<Managers>());
   MOCK_METHOD0(categories, niwa::Categories*());
   MOCK_METHOD0(objects, niwa::Objects&());
 

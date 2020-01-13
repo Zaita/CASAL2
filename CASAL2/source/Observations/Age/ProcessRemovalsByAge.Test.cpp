@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../ProcessRemovalsByAge.h"
+#include "ProcessRemovalsByAge.h"
 
 #include <iostream>
 

@@ -9,7 +9,7 @@
  */
 #ifdef TESTMODE
 
-#include "../../CasalComplex2.h"
+#include "CasalComplex2.h"
 
 #include "../../Model/Models/Age.h"
 #include "../../ObjectiveFunction/ObjectiveFunction.h"

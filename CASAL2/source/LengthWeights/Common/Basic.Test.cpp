@@ -11,7 +11,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Basic.h"
+#include "Basic.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

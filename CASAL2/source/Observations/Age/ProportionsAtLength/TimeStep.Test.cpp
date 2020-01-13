@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../../TimeStep.h"
+#include "TimeStep.h"
 
 #include <iostream>
 

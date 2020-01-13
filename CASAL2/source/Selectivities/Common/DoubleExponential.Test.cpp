@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../DoubleExponential.h"
+#include "DoubleExponential.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

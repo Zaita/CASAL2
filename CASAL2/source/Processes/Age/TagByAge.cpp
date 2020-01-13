@@ -89,7 +89,8 @@ void TagByAge::DoValidate() {
    * Build our loss rate map
    */
   if (loss_rate_.size() == 1) {
-    loss_rate_.assign(from_category_labels_.size(), loss_rate_[0]);
+  	auto loss_rate_copy = loss_rate_[0];
+    loss_rate_.assign(from_category_labels_.size(), loss_rate_copy);
     loss_rate_by_category_ = utilities::Map::create(from_category_labels_, loss_rate_);
 
   } else if (loss_rate_.size() == from_category_labels_.size()) {
@@ -170,9 +171,10 @@ void TagByAge::DoValidate() {
     }
 
     // build a map of n data by year
-    if (n_.size() == 1)
-      n_.assign(years_.size(), n_[0]);
-    else if (n_.size() != years_.size())
+    if (n_.size() == 1) {
+    	auto n_copy = n_[0];
+      n_.assign(years_.size(), n_copy);
+    } else if (n_.size() != years_.size())
       LOG_ERROR_P(PARAM_N) << " values provied (" << n_.size() << ") does not match the number of years (" << years_.size() << ")";
     map<unsigned, Double> n_by_year = utilities::Map::create(years_, n_);
 

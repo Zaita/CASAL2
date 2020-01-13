@@ -53,8 +53,10 @@ MortalityConstantRate::MortalityConstantRate(shared_ptr<Model> model)
  * - Check the categories are real
  */
 void MortalityConstantRate::DoValidate() {
-  if (m_input_.size() == 1)
-    m_input_.assign(category_labels_.size(), m_input_[0]);
+  if (m_input_.size() == 1) {
+  	double m_copy = m_input_[0];
+    m_input_.assign(category_labels_.size(), m_copy);
+  }
 //  if (selectivity_names_.size() == 1)
 //    selectivity_names_.assign(category_labels_.size(), selectivity_names_[0]);
 

@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../../Process.h"
+#include "Process.h"
 
 #include <iostream>
 

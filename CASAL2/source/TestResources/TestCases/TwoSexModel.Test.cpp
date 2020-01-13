@@ -12,7 +12,7 @@
  */
 #ifdef TESTMODE
 
-#include "../../TwoSexModel.h"
+#include "TwoSexModel.h"
 
 #include "../../DerivedQuantities/Manager.h"
 #include "../../Model/Models/Age.h"

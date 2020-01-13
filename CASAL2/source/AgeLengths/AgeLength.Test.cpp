@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../AgeLength.h"
+#include "AgeLength.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

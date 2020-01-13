@@ -41,6 +41,7 @@ public:
 
 private:
   shared_ptr<ThreadPool>      thread_pool_;
+  unsigned                    count_ = 0;
 };
 
 } /* namespace deltadiff */

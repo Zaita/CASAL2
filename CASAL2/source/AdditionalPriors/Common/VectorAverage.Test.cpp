@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../VectorAverage.h"
+#include "VectorAverage.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

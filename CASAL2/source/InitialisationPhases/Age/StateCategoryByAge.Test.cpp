@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../StateCategoryByAge.h"
+#include "StateCategoryByAge.h"
 
 #include <iostream>
 

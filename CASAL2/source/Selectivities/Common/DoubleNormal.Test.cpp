@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../DoubleNormal.h"
+#include "DoubleNormal.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

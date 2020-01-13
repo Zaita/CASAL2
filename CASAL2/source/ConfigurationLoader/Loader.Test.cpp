@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../Loader.h"
+#include "Loader.h"
 
 #include <iostream>
 

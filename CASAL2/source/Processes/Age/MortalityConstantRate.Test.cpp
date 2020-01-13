@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../MortalityConstantRate.h"
+#include "MortalityConstantRate.h"
 
 #include <iostream>
 

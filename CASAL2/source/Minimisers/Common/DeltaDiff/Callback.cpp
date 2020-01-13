@@ -56,6 +56,9 @@ double CallBack::operator()(const vector<double>& Parameters) {
   objective.CalculateScore();
 
   model_->managers()->estimate_transformation()->TransformEstimates();
+
+  ++count_;
+
   return objective.score();
 }
 
@@ -63,6 +66,8 @@ double CallBack::operator()(const vector<double>& Parameters) {
  *
  */
 void CallBack::operator()(const vector<vector<double>>& Parameters, vector<double>& scores) {
+	cout << "Count: " << count_ << endl;
+	count_ = 0;
 	thread_pool_->RunCandidates(Parameters, scores);
 }
 

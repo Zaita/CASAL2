@@ -123,16 +123,22 @@ void MortalityInstantaneous::DoValidate() {
    * Validate the non-table parameters now. These are mostly related to the natural mortality
    * aspect of the process.
    */
-  if (selectivity_labels_.size() == 1)
-      selectivity_labels_.assign(category_labels_.size(), selectivity_labels_[0]);
+  if (selectivity_labels_.size() == 1) {
+  	auto label = selectivity_labels_[0];
+    selectivity_labels_.assign(category_labels_.size(), label);
+  }
+
   if (selectivity_labels_.size() != category_labels_.size()) {
     LOG_FATAL_P(PARAM_SELECTIVITIES)
         << ": Number of selectivities provided is not the same as the number of categories provided. Expected: "
         << category_labels_.size()<< " but got " << selectivity_labels_.size();
   }
 
-  if (m_input_.size() == 1)
-    m_input_.assign(category_labels_.size(), m_input_[0]);
+  if (m_input_.size() == 1) {
+  	auto m_input_copy = m_input_[0];
+    m_input_.assign(category_labels_.size(), m_input_copy);
+  }
+
   if (m_input_.size() != category_labels_.size())
     LOG_FATAL_P(PARAM_M)
         << ": Number of Ms provided is not the same as the number of categories provided. Expected: "

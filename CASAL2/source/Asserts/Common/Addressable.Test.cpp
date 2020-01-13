@@ -13,7 +13,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "../../Addressable.h"
+#include "Addressable.h"
 
 #include "../../Model/Models/Age.h"
 #include "../../ObjectiveFunction/ObjectiveFunction.h"

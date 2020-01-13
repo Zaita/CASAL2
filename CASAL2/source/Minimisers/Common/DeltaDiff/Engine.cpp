@@ -221,8 +221,8 @@ double Engine::optimise_finite_differences(deltadiff::CallBack& objective, vecto
 //      }
 
 
-      if (gradient_penalties.size() != iVectorSize)
-      	LOG_CODE_ERROR() << "(gradient_penalties.size() != iVectorSize)";
+//      if (gradient_penalties.size() != iVectorSize)
+//      	LOG_CODE_ERROR() << "(gradient_penalties.size() != iVectorSize)";
       vector<double> gradient_scores(iVectorSize, 0.0);
 
       objective(gradient_candidates, gradient_scores);

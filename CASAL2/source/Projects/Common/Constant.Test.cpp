@@ -9,7 +9,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Constant.h"
+#include "Constant.h"
 
 #include <iostream>
 

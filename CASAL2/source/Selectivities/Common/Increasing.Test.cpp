@@ -12,7 +12,7 @@
 #ifdef TESTMODE
 
 // Headers
-#include "../../Increasing.h"
+#include "Increasing.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

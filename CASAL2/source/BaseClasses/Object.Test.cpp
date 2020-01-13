@@ -14,7 +14,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "../Object.h"
+#include "Object.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

@@ -10,7 +10,7 @@
 #ifdef TESTMODE
 
 // headers
-#include "../../BinomialApprox.h"
+#include "BinomialApprox.h"
 
 #include <iostream>
 #include <gmock/gmock.h>
