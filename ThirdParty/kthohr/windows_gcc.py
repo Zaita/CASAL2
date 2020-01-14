@@ -17,7 +17,7 @@ class Builder():
     '''
     BUILD EVERYTHING FOR ARMADILLO
     '''
-    build_armadillo = False
+    build_armadillo = True
     if build_armadillo:
         print('-- Building Sub-Library Armadillo')
         print('-- Cleaning up old files')
@@ -81,11 +81,11 @@ class Builder():
     '''
     BUILD THE KTHOHR LIBRARY
     '''
-    build_kthohr = False
+    build_kthohr = True
     if build_kthohr:
         print('-- Building Kthohr')
         print('-- Cleaning up old files')
-        kthohrFileName   = 'kthor'   
+        kthohrFileName   = 'kthohr'   
         library = 'libkthohr.a'
  
         if os.path.exists(Globals.target_include_path_ + kthohrFileName):

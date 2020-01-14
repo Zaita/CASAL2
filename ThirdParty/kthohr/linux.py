@@ -85,7 +85,7 @@ class Builder():
     if build_kthohr:
         print('-- Building Kthohr')
         print('-- Cleaning up old files')
-        kthohrFileName   = 'kthor'   
+        kthohrFileName   = 'kthohr'   
         library = 'libkthohr.a'
  
         if os.path.exists(Globals.target_include_path_ + kthohrFileName):
