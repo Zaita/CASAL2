@@ -45,6 +45,6 @@ steps:
   displayName: 'Build "Unit Test" standalone binary'
 
 - script: |
-    cd BuildSystem/bin/linux/test/
+    cd BuildSystem/bin/linux_gcc/test/
     ./casal2
   displayName: 'Run Unit Tests standalone binary'
