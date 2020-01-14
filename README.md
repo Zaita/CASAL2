@@ -3,7 +3,7 @@ Casal2
 
 [![Build Status](https://dev.azure.com/zaita/Casal2%20-%20Zaita%20Version/_apis/build/status/Zaita.CASAL2%20(Linux)?branchName=master)](https://dev.azure.com/zaita/Casal2%20-%20Zaita%20Version/_build/latest?definitionId=1&branchName=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/zaita/casal2/badge)](https://www.codefactor.io/repository/github/zaita/casal2)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 
 # About This Fork
 This fork is designed to be the bleeding edge of structured population dynamics. The code base will be sync'd with the Casal2 mainbase frequently, but will offer extended functionality to improve performance and scientific possibilities.
