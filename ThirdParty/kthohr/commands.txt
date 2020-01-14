@@ -1,0 +1,8 @@
+cd kthohr\lapack-3.9.0
+mkdir build
+cd build
+cmake -G "MinGW Makefiles" ..
+mingw32-make
+
+copy libs to libs
+copy kthohr to Source/MCMC/Children/kthohr
