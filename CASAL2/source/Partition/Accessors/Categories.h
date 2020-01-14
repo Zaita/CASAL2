@@ -35,7 +35,7 @@ using std::map;
 using std::vector;
 using std::pair;
 using std::string;
-using niwa::utilities::Double;
+using ::niwa::utilities::Double;
 
 /**
  * Class Definition

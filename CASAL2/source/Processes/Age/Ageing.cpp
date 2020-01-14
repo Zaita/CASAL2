@@ -19,9 +19,10 @@
 #include "../../Utilities/Map.h"
 
 // Namespaces
-namespace niwa {
-namespace processes {
-namespace age {
+namespace niwa::processes::age {
+//namespace niwa {
+//namespace processes {
+//namespace age {
 
 /**
  * Default constructor
@@ -67,7 +68,7 @@ void Ageing::DoExecute() {
 
   for (auto category : partition_) {
     moved_fish = 0.0;
-    for (Double& data : category->data_) {
+    for (Double& data : category.data_) {
       amount_to_move = data;
       data -= amount_to_move;
       data += moved_fish;
@@ -76,10 +77,11 @@ void Ageing::DoExecute() {
     }
 
     if (model_->age_plus())
-      (* category->data_.rbegin() ) += moved_fish;
+      (*category.data_.rbegin()) += moved_fish;
   }
 }
 
-} /* namespace age */
-} /* namespace processes */
-} /* namespace niwa */
+//} /* namespace age */
+//} /* namespace processes */
+//} /* namespace niwa */
+}

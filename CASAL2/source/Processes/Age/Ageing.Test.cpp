@@ -23,9 +23,10 @@
 #include "../../TestResources/TestFixtures/BasicModel.h"
 
 // Namespaces
-namespace niwa {
-namespace processes {
-namespace age {
+namespace niwa::processes::age {
+//namespace niwa {
+//namespace processes {
+//namespace age {
 
 using std::cout;
 using std::endl;
@@ -94,9 +95,9 @@ TEST_F(BasicModel, Processes_Ageing) {
     EXPECT_DOUBLE_EQ(0.0, immature_female.data_[i]) << " where i = " << i << "; age = " << i + immature_female.min_age_;
 }
 
-} /* namespace age */
-} /* namespace processes */
-} /* namespace niwa */
-
+//} /* namespace age */
+//} /* namespace processes */
+//} /* namespace niwa */
+}
 
 #endif /* TESTMODE */

@@ -18,15 +18,14 @@
 #define AGEING_H_
 
 // Headers
-#include "../../Partition/Accessors/Categories.h"
+#include "../../Partition/Accessor.h"
 #include "../../Processes/Process.h"
 
 // Namespaces
-namespace niwa {
-namespace processes {
-namespace age {
-
-namespace accessor = niwa::partition::accessors;
+namespace niwa::processes::age {
+//namespace niwa {
+//namespace processes {
+//namespace age {
 
 /**
  * Class Definition
@@ -43,12 +42,14 @@ public:
 
 private:
   // Members
-  accessor::Categories        partition_;
+  partition::Accessor					partition_;
   vector<string>              category_labels_;
 };
 
-} /* namespace age */
-} /* namespace processes */
-} /* namespace niwa */
+//} /* namespace age */
+//} /* namespace processes */
+//} /* namespace niwa */
+
+}
 
 #endif /* AGEING_H_ */
