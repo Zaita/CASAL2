@@ -35,7 +35,6 @@ protected:
   // methods
   void                        DoValidate() override final;
   void                        DoBuild() override final;
-  void                        BuildCovarianceMatrix();
   bool                        DoCholeskyDecmposition();
   void                        GenerateRandomStart();
   void                        FillMultivariateNormal(Double step_size);
@@ -58,7 +57,6 @@ protected:
   Double                      correlation_diff_ = 0;
   string                      proposal_distribution_ = "";
   unsigned                    df_ = 0;
-  ublas::matrix<Double>       covariance_matrix_lt;
   vector<Double>              candidates_;
   vector<bool>                is_enabled_estimate_;
   vector<unsigned>            adapt_step_size_;

@@ -16,6 +16,7 @@
 #include "../Model/Managers.h"
 #include "../MCMCs/Manager.h"
 #include "../MCMCs/Common/IndependenceMetropolis.h"
+//#include "../MCMCs/Common/Kthohr.h"
 #include "../MCMCs/Common/RasmussenDunn.h"
 
 // namespaces
@@ -31,6 +32,10 @@ MCMC* Factory::Create(shared_ptr<Model> model, const string& object_type, const 
   if (object_type == PARAM_MCMC) {
     if (sub_type == "" || sub_type == PARAM_INDEPENDENCE_METROPOLIS || sub_type == PARAM_METROPOLIS_HASTINGS)
       object = new IndependenceMetropolis(model);
+#ifndef TESTMODE
+//    else if (sub_type == PARAM_KTHOHR)
+//    	object = new Kthohr(model);
+#endif
     else if (sub_type == PARAM_RASMUSSEN_DUNN)
     	object = new RasmussenDunn(model);
 

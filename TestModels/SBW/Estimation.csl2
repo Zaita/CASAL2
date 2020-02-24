@@ -7,8 +7,8 @@
 ################################### Minimiser ###############################
 
 @minimiser beta_diff
-type betadiff
-#type numerical_differences
+#type betadiff
+type numerical_differences
 iterations 4000
 tolerance 0.000002
 evaluations 10000

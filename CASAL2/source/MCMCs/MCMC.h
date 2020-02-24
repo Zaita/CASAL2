@@ -75,11 +75,18 @@ protected:
   virtual void                DoBuild() = 0;
   virtual void                DoExecute() = 0;
 
+  // methods
+  void                        BuildCovarianceMatrix();
+
   // members
-  shared_ptr<Model>                      model_;
+  shared_ptr<Model>           model_;
   unsigned                    length_ = 0;
   unsigned                    starting_iteration_ = 0;
   ublas::matrix<Double>       covariance_matrix_;
+  ublas::matrix<Double>       covariance_matrix_lt;
+  string                      correlation_method_ = "";
+  Double                      max_correlation_ = 0;
+  Double                      correlation_diff_ = 0;
   vector<mcmc::ChainLink>     chain_;
 
   bool                        active_;

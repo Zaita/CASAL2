@@ -73,6 +73,7 @@ void MCMCObjective::DoExecute(shared_ptr<Model> model) {
     }
     cache_ << "samples {d} \n";
     cache_ << "sample objective_score prior likelihood penalties additional_priors jacobians step_size acceptance_rate acceptance_rate_since_adapt\n";
+    first_write_ = false;
   }
 
   auto chain = mcmc_->chain();
