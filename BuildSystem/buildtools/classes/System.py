@@ -142,11 +142,11 @@ class SystemInfo:
       else:
         Globals.make_command_ = "make -j " + str(Globals.threads_)
 
-      if path.startswith("/c/"):
-        path = path.replace("/c/", "c:/")
-        path = path.replace("/", "\\")
+      if Globals.compiler_path_.startswith("/c/"):
+        Globals.compiler_path_ = Globals.compiler_path_.replace("/c/", "c:/")
+        Globals.compiler_path_ = Globals.compiler_path_.replace("/", "\\")
 
-      print("-- G++ Path: " + out.decode("utf-8").rstrip())
+      print("-- G++ Path: " + Globals.compiler_path_)
       return
 
     # Check for Visual Studio
