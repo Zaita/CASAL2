@@ -42,11 +42,11 @@ public:
  */
 TEST(AdditionalPriors, VectorAverage) {
   // layout is mu, sigma, a, b, expected_score
-	vector<double> example_ycs = {0.478482, 0.640663, 0.640091, 0.762361, 0.560125, 0.651637, 0.764833, 0.645498, 0.678341};
-	string method = "k";
+  vector<double> example_ycs = {0.478482, 0.640663, 0.640091, 0.762361, 0.560125, 0.651637, 0.764833, 0.645498, 0.678341};
+  string method = "k";
   vector<vector<double>> values = {
-      {1, 100, 12.46850242587778},
-      {2, 200, 366.18007151842227}
+    {1, 100, 12.46850242587778},
+    {2, 200, 366.18007151842227}
   };
 
   shared_ptr<Model> model = shared_ptr<Model>(new Model());

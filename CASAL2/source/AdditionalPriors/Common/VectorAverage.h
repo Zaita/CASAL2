@@ -32,7 +32,7 @@ public:
   // methods
   VectorAverage(shared_ptr<Model> model);
   virtual                     ~VectorAverage() = default;
-  Double                      GetScore() final;
+  Double                      GetScore() override final;
 
 protected:
   // methods

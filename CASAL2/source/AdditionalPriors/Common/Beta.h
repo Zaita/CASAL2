@@ -6,12 +6,17 @@
  * @section LICENSE
  *
  * Copyright NIWA Science ©2014 - www.niwa.co.nz
+ *
+ * @section DESCRIPTION
+ *
+ * TODO: Add documentation
  */
 #ifndef ADDITIONALPRIORS_BETA_H_
 #define ADDITIONALPRIORS_BETA_H_
 
 // headers
 #include "../../AdditionalPriors/AdditionalPrior.h"
+
 
 // namespaces
 namespace niwa {
@@ -23,13 +28,14 @@ public:
   // methods
   Beta(shared_ptr<Model> model);
   virtual                     ~Beta() = default;
-  void                        DoValidate() final;
-  void                        DoBuild() final;
-  Double                      GetScore() final;
+  void                        DoValidate() override final;
+  void                        DoBuild() override final;
+  Double                      GetScore() override final;
 
 protected:
   // members
-  Double* 										addressable_ = nullptr;
+  Double*                     addressable_ = nullptr;
+
   Double                      mu_ = 0.0;
   Double                      sigma_ = 0.0;
   Double                      a_ = 0.0;

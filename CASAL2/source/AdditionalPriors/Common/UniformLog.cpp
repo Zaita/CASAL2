@@ -24,21 +24,21 @@ namespace additionalpriors {
  *
  * Bind any parameters that are allowed to be loaded from the configuration files.
  * Set bounds on registered parameters
- * Register any parameters that can be an estimated or utilised in other run modes (e.g profiling, yields, projections etc)
+ * Register any parameters that can be an estimated or utilised in other run modes (e.g., profiling, yields, projections, etc.)
  * Set some initial values
  *
- * Note: The constructor is parsed to generate Latex for the documentation.
+ * Note: The constructor is parsed to generate LaTeX for the documentation.
  */
 UniformLog::UniformLog(shared_ptr<Model> model) : AdditionalPrior(model) { }
 
 /**
- * Build our Uniform LOg
+ * Build the object
  */
 void UniformLog::DoBuild() {
-	string error = "";
-	if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {
-		LOG_FATAL_P(PARAM_PARAMETER) << "could not be verified for use in additional_prior.uniform_log. Error was " << error;
-	}
+  string error = "";
+  if (!model_->objects().VerfiyAddressableForUse(parameter_, addressable::kLookup, error)) {
+    LOG_FATAL_P(PARAM_PARAMETER) << "could not be verified for use in additional_prior.uniform_log. Error: " << error;
+  }
 
   addressable::Type addressable_type = model_->objects().GetAddressableType(parameter_);
   LOG_FINEST() << "type = " << addressable_type;
@@ -47,17 +47,18 @@ void UniformLog::DoBuild() {
       LOG_CODE_ERROR() << "Invalid addressable type: " << parameter_;
       break;
     case addressable::kSingle:
-    	addressable_ = model_->objects().GetAddressable(parameter_);
+      addressable_ = model_->objects().GetAddressable(parameter_);
       break;
     default:
-      LOG_ERROR() << "The addressable you have provided for use in a additional priors: " << parameter_ << " is not a type that is supported for Uniform_log additional priors";
+      LOG_ERROR() << "The addressable provided for use in additional priors '" << parameter_
+        << "' has a type that is not supported for uniform_log additional priors";
       break;
   }
-
 }
 
 /**
- * Return the score for
+ * Get the score
+  * @return The score
  */
 Double UniformLog::GetScore() {
   Double value = (*addressable_);

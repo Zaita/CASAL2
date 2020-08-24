@@ -6,6 +6,10 @@
  * @section LICENSE
  *
  * Copyright NIWA Science ©2014 - www.niwa.co.nz
+ *
+ * @section DESCRIPTION
+ *
+ * TODO: Add documentation
  */
 #ifndef ADDITIONALPRIORS_UNIFORM_LOG_H_
 #define ADDITIONALPRIORS_UNIFORM_LOG_H_
@@ -22,7 +26,7 @@ namespace additionalpriors {
 class UniformLog : public AdditionalPrior {
 public:
   // methods
-	UniformLog(shared_ptr<Model> model);
+  UniformLog(shared_ptr<Model> model);
   virtual                     ~UniformLog() = default;
   void                        DoValidate() final {};
   void                        DoBuild() final;
@@ -30,8 +34,8 @@ public:
 
 protected:
   // members
-  Double* 										addressable_ = nullptr;
-  Double											score_ = 0.0;
+  Double*                     addressable_ = nullptr;
+  Double                      score_ = 0.0;
 };
 
 } /* namespace additionalpriors */

@@ -34,7 +34,7 @@ public:
 
 protected:
   // methods
-  void                        DoValidate() final {};
+  void                        DoValidate() final;
   void                        DoBuild() final;
   // members
   string                      second_parameter_;

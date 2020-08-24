@@ -39,15 +39,14 @@ public:
   void                        Reset() { };
   string                      parameter() const { return parameter_; }
 
-
 protected:
   // pure virtual methods
   virtual void                DoValidate() = 0;
   virtual void                DoBuild() = 0;
 
   // members
-  string											parameter_;
-  shared_ptr<Model>                      model_;
+  string                      parameter_;
+  shared_ptr<Model>           model_;
   ScoreFunction               score_function_ = 0;
 };
 
