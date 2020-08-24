@@ -141,6 +141,11 @@ class SystemInfo:
         Globals.make_command_ = "mingw32-make -j " + str(Globals.threads_)
       else:
         Globals.make_command_ = "make -j " + str(Globals.threads_)
+
+      if path.startswith("/c/"):
+        path = path.replace("/c/", "c:/")
+        path = path.replace("/", "\\")
+
       print("-- G++ Path: " + out.decode("utf-8").rstrip())
       return
 
