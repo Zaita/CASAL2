@@ -104,6 +104,11 @@ class SystemInfo:
     for line in fi:
         path = line
     path = path.replace(exe + '\n', '').rstrip()
+
+    if Globals.operating_system_ == "windows" and path.startswith("/c/"):
+      path = path.replace("/c/", "c:/")
+      path = path.replace("/", "\\")
+      
     print('-- ' + exe + ' found @ ' + path)
 
     if path != "" and Globals.operating_system_ == "windows":
