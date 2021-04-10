@@ -27,16 +27,7 @@ class Version:
 			print("[WARNING] - No Git was found. Cannot create Version.h file")
 			return True
 
-		git_path = f"{Globals.git_path_}git"
-		if Globals.operating_system_ == "windows":
-			git_path += ".exe"
-		print(f"-- git_path: {git_path}")
-
-		git_path = git_path.replace("/c/", "c:/")
-    	git_path = git_path.replace("/", "\\")
-    	print(f"-- git_path: {git_path}")
-
-		p = subprocess.Popen([git_path, '--no-pager', 'log', '-n', '1', '--pretty=format:%H%n%h%n%ci' ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		p = subprocess.Popen(['git', '--no-pager', 'log', '-n', '1', '--pretty=format:%H%n%h%n%ci' ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		out, err = p.communicate()
 		lines = out.decode('utf-8').split('\n')
 		if len(lines) != 3:
