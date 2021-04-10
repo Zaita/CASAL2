@@ -17,26 +17,4 @@ steps:
 - script: |
     cd BuildSystem
     doBuild.bat thirdparty googletest_googlemock
-  env:
-    MAKEFLAGS: "SHELL=cmd"    
   displayName: 'Build Google Test'
-
-- script: |
-    cd BuildSystem
-    doBuild.bat thirdparty
-  displayName: 'Build third-party libraries'
-
-- script: |
-    cd BuildSystem
-    doBuild.bat debug
-  displayName: 'Build "Debug" standalone binary'
-
-- script: |
-    cd BuildSystem
-    doBuild.bat test
-  displayName: 'Build "Unit Test" standalone binary'
-
-- script: |
-    cd BuildSystem/bin/windows/test/
-    casal2.exe
-  displayName: 'Run Unit Tests standalone binary'
