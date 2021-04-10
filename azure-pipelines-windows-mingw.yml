@@ -16,6 +16,11 @@ steps:
 
 - script: |
     cd BuildSystem
+    doBuild.bat thirdparty googletest_googlemock
+  displayName: 'Build Google Test'
+
+- script: |
+    cd BuildSystem
     doBuild.bat thirdparty
   displayName: 'Build third-party libraries'
 

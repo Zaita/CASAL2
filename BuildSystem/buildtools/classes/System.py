@@ -47,7 +47,7 @@ class SystemInfo:
       Globals.python_cmd_    = "python"
       Globals.gfortran_path_ = self.find_exe_path('gfortran.exe')
       Globals.latex_path_    = self.find_exe_path('bibtex.exe')
-      Globals.git_path_      = self.find_exe_path('git.exe')    
+      Globals.git_path_      = self.find_exe_path('git.exe', add_to_path=False)    
     else:
       Globals.python_cmd_    = "python3"
       Globals.gfortran_path_ = self.find_exe_path('gfortran')
@@ -91,7 +91,7 @@ class SystemInfo:
   This method will search the path for a specific EXE and then ensure we put it in to our
   path
   """
-  def find_exe_path(self, exe):
+  def find_exe_path(self, exe, add_to_path=True):
     print('-- Searching path for ' + exe)
     if os.system('which ' + exe + ' > which.tmp 2> err.tmp') != EX_OK:
       os.system('rm -rf err.tmp')
@@ -111,10 +111,11 @@ class SystemInfo:
       
     print('-- ' + exe + ' found @ ' + path)
 
-    if path != "" and Globals.operating_system_ == "windows":
-      Globals.path_ = path + ";" + Globals.path_
-    elif path != "":
-      Globals.path_ = path + ":" + Globals.path_
+    if add_to_path:
+      if path != "" and Globals.operating_system_ == "windows":
+        Globals.path_ = path + ";" + Globals.path_
+      elif path != "":
+        Globals.path_ = path + ":" + Globals.path_
 
     os.system('rm -rf err.tmp')      
     if os.system('rm -rf which.tmp') != EX_OK:
