@@ -56,7 +56,7 @@ class SystemInfo:
       if self.find_exe_path('unzip') == '':
         return Globals.PrintError('unzip is not in the current path. Please ensure it has been installed')
       if self.find_exe_path('cmake') == '':
-        return Globals.PrintError('cmake is not in the current path. Please ensure it has been intalled')    
+        return Globals.PrintError('cmake is not in the current path. Please ensure it has been installed')    
 
     self.set_new_path()
 
@@ -76,7 +76,7 @@ class SystemInfo:
   def set_new_path(self):
     print("-- Overriding the system path with new values")
     if Globals.operating_system_ == "windows":
-      os.environ['PATH'] = Globals.path_ + ":" + self.original_path_
+      os.environ['PATH'] = Globals.path_ + ";" + self.original_path_
     else:
       os.environ['PATH'] = Globals.path_ + ":" + self.original_path_
     print('-- New Path: ' + os.environ['PATH'])
@@ -105,9 +105,9 @@ class SystemInfo:
         path = line
     path = path.replace(exe + '\n', '').rstrip()
 
-    if Globals.operating_system_ == "windows" and path.startswith("/c/"):
-      path = path.replace("/c/", "c:/")
-      path = path.replace("/", "\\")
+    #if Globals.operating_system_ == "windows" and path.startswith("/c/"):
+    #  path = path.replace("/c/", "c:/")
+    #  path = path.replace("/", "\\")
       
     print('-- ' + exe + ' found @ ' + path)
 
