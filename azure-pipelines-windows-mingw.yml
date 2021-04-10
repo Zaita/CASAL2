@@ -17,6 +17,8 @@ steps:
 - script: |
     cd BuildSystem
     doBuild.bat thirdparty googletest_googlemock
+  env:
+    MAKEFLAGS: "SHELL=cmd"    
   displayName: 'Build Google Test'
 
 - script: |
