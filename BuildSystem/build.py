@@ -17,6 +17,7 @@ from Archiver import *
 from ModelRunner import *
 from DebBuilder import *
 from CommandLineInterface import *
+from Version import *
 
 """
 Get the build information from the user
@@ -80,6 +81,10 @@ def start():
 		"""
 		deb_builder = DebBuilder()
 		return deb_builder.start(build_parameters)
+	elif build_target == "version":
+		version = Version()
+		version.create_version_header(display_output=True)
+
 	return False # Default return from this, we didn't find a run mode
   
 """

@@ -19,7 +19,7 @@ class Version:
 	def __init__(self):
 		print("--> Starting Version Class")
 
-	def create_version_header(self):
+	def create_version_header(self, display_output=False):
 		print("--> Creating Version.h from Git Information")
 		
 		# Build the Version.h file
@@ -27,10 +27,10 @@ class Version:
 			print("[WARNING] - No Git was found. Cannot create Version.h file")
 			return True
 
-		git_path = f"{Globals.git_path_}/git"
+		git_path = f"{Globals.git_path_}git"
 		if Globals.operating_system_ == "windows":
 			git_path += ".exe"
-
+		print(f"-- git_path: {git_path}")
 		p = subprocess.Popen([git_path, '--no-pager', 'log', '-n', '1', '--pretty=format:%H%n%h%n%ci' ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		out, err = p.communicate()
 		lines = out.decode('utf-8').split('\n')
@@ -52,6 +52,9 @@ class Version:
 		version += '#define SOURCE_CONTROL_TIME "' + utc_time.strftime('%H:%M:%S') + '"\n'
 		version += '#define SOURCE_CONTROL_VERSION "' + utc_time.strftime('%Y-%m-%d %H:%M:%S %Z') + ' (rev. ' + lines[1] + ')"\n'
 		version += '#endif\n'
+
+		if display_output:
+			print(version)
 
 		fo = open('../CASAL2/source/Version.h', 'w')
 		fo.write(version)

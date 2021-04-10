@@ -26,7 +26,7 @@ threads_          = 12
 
 allowed_build_targets_ = [ "debug", "release", "documentation", "thirdparty", "thirdpartylean",
                            "test", "archive", "all", "clean", "cleanall", "help",
-                           "check", "modelrunner", "installer", "deb", "rlibrary"]
+                           "check", "modelrunner", "installer", "deb", "rlibrary", "version"]
 allowed_build_types_ = [ "debug", "release", "test" ]
 allowed_library_parameters_ = [ "release", "test" ]
 
